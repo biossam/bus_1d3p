@@ -1,7 +1,7 @@
 {
  "name": "버스 15분 수학",
  "short_name": "일일삼제",
- "start_url": "./",
+ "start_url": "./?app=1",
  "scope": "./",
  "display": "browser",
  "background_color": "#FFF8EE",
