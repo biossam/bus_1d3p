@@ -3021,4 +3021,4 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lp],[data-
 </body>
 </html>
 
-<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))</script></body></html>
+<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).catch(()=>{}))</script></body></html>
