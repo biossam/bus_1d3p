@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-10 01:16"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -2775,7 +2775,7 @@ function settingsHTML(){
   <div class="card"><h3>시험 범위 조정</h3><p class="muted small">학교마다 범위가 달라요. 각 개념이 어느 시험에 들어가는지 바꿀 수 있어요.</p>
   ${Object.keys(UNITS).filter(u=>!UNITS[u].g).map(u=>`<div class="ut">${subjOf(u)} · ${UNITS[u].t}</div>${CONCEPTS.filter(c=>c.u===u).map(c=>`<div class="maprow"><span>${esc(c.t)}</span><select data-map="${c.id}">${Object.entries(EXAMS).filter(([k])=>/^\d-\d$/.test(k)).map(([k,t])=>`<option value="${k}" ${examOf(c.id)===k?'selected':''}>${t}</option>`).join('')}</select></div>`).join('')}`).join('')}
   </div>
-  <div class="card"><h3>저장</h3><p class="muted small"><span id="sync" class="sync"></span><br>학습 기록은 이 기기의 브라우저에 저장돼요. 같은 기기·같은 브라우저로 들어오면 이어서 할 수 있고, 브라우저 기록을 지우면 함께 지워져요.</p>
+  <div class="card"><h3>저장</h3><p class="muted small">앱 버전 <b>${APPVER}</b> <button class="mini" onclick="hardRefresh()">🔄 최신 버전으로 새로고침</button><br><span id="sync" class="sync"></span><br>학습 기록은 이 기기의 브라우저에 저장돼요. 같은 기기·같은 브라우저로 들어오면 이어서 할 수 있고, 브라우저 기록을 지우면 함께 지워져요.</p>
   <button class="ghost wide" data-act="reset">기록 전체 초기화</button><div id="resetbox"></div></div>`;
 }
 
@@ -3008,7 +3008,7 @@ function lpConcepts(){const ids=rangeIds();const units=[...new Set(ids.map(id=>C
   return `<div class="lplist">${units.map(u=>`<div class="lpu">${esc(UNITS[u].t)}</div>`+ids.filter(id=>C[id].u===u).map(id=>`<button data-lpc="${id}"><i class="${dot(id)}"></i><span>${esc(C[id].t)}</span>${!(S.c[id]&&S.c[id].seen)?'<em>NEW</em>':''}</button>`).join('')).join('')}</div>`}
 function lpPick(){ask('📘','어떤 개념으로 15분 할까요?','고른 개념으로 플래시 복습 → 백지 테스트 → 맞춤 문제가 열려요.',[],'닫기',lpConcepts())}
 function lpOpen(){const t=dailyToday?dailyToday():0;const ch=chooseBlank();
-  ask('🚌','오늘은 무엇부터 할까요?','',[],'둘러보기',
+  ask('🚌','오늘은 무엇부터 할까요?','<span style="font-size:11px;opacity:.6">앱 버전 '+APPVER+'</span>',[],'둘러보기',
    `<button class="lpbig d" data-lp="daily">📅 오늘의 3문제${t>=3?' (완료 ✓)':t?` (${t}/3)`:''}<small>${(typeof retryLeft==='function'&&retryLeft())?'지난 오답부터 다시 풀고 새 3문제':'시험 대비 매일 3문제'}</small></button>
     <button class="lpbig s" data-lp="auto">✨ 추천 15분<small>${esc(C[ch.cid].t)}${ch.isNew?' · NEW':' · 복습'}</small></button>
     <button class="lpbig c" data-lp="pick">📘 개념 골라서 15분<small>내가 고른 개념으로 백지 테스트</small></button>`)}
@@ -3021,4 +3021,5 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lp],[data-
 </body>
 </html>
 
-<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).catch(()=>{}))</script></body></html>
+<script>if("serviceWorker" in navigator){const had=!!navigator.serviceWorker.controller;let rl=false;navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had&&!rl){rl=true;location.reload()}});addEventListener("load",()=>navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{}))}
+async function hardRefresh(){try{if(window.caches){for(const k of await caches.keys())await caches.delete(k)}if(navigator.serviceWorker){for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister()}}catch(e){}location.replace(location.pathname+"?r="+Date.now())}</script></body></html>
