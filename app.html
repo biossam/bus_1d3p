@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 19:46"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 19:53"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -51,6 +51,27 @@
 .rmroom.on{background:#4A3B33;border-color:#4A3B33;color:#fff}.rmroom.on small{background:rgba(255,255,255,.2)}.rmroom.add{border-style:dashed;color:#1F7A68;border-color:#7CD7C2;background:#F4FCF9}.rmroom.add.on{background:#1F7A68;color:#fff}
 .rmtypes .rmshop em{font-style:normal;font-size:11px;line-height:1.3;color:#8A7B70}.rmrname{border:2px solid #E5DCCF;border-radius:10px;padding:5px 8px;font:600 13px sans-serif;width:110px}
 .rmshop.on{outline:3px solid #7CD7C2}
+.rmbtn.cam{background:#FFF0C9;border-color:#FFC23D;color:#8A5A00}
+.rmcam{display:none}.rmcam.on{display:block;position:fixed;inset:0;z-index:10000;background:#FDF8F1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.camwrap{max-width:480px;margin:0 auto;padding:10px 14px 28px}
+.camtop{display:flex;align-items:center;justify-content:space-between;padding:4px 0 10px}.camtop b{font-family:'Jua',sans-serif;font-weight:400;font-size:21px;color:#4A3B33}
+.camx{width:38px;height:38px;border-radius:50%;border:2px solid #E5DCCF;background:#fff;font-size:17px;cursor:pointer}
+.camstage{background:var(--fb);border:2px solid #E5DCCF;border-radius:18px;padding:12px 12px 0;box-shadow:0 6px 18px rgba(74,59,51,.12)}
+.camview{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#FFF6E6;touch-action:none}
+.camview video,.camview .cambg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.camview video{transform:scaleX(-1)}
+.cammsg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:14px;line-height:1.6;color:#6B5B50}
+.camcat{position:absolute;transform:translate(-50%,-100%);cursor:grab;touch-action:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.18))}.camcat svg{display:block;width:100%;height:auto}
+.camcat.sel{outline:2px dashed rgba(255,255,255,.95);outline-offset:2px;border-radius:10px}
+.camcd{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 120px 'Jua',sans-serif;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.35);pointer-events:none;opacity:0;font-style:normal}.camcd.go{animation:camcd .8s ease-out}@keyframes camcd{0%{opacity:1;transform:scale(1.4)}100%{opacity:0;transform:scale(.8)}}
+.camfoot{padding:9px 4px 11px;color:var(--ft)}.camfoot span{display:block;font-family:'Jua',sans-serif;font-size:18px}.camfoot small{opacity:.75;font-size:12px}
+.campanel{margin-top:12px}.camrow{display:flex;align-items:center;gap:8px;margin:12px 0 6px;font-size:14px;color:#4A3B33}.camrow small{color:#8A7B70;font-size:11px}.camrow input[type=range]{flex:1;accent-color:#FF7563}
+.camcats{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.camcats::-webkit-scrollbar{display:none}
+.camc{flex:none;display:flex;flex-direction:column;align-items:center;gap:2px;width:66px;padding:6px 2px;border:2px solid #E5DCCF;border-radius:12px;background:#fff;cursor:pointer}.camc span{font-size:10.5px;line-height:1.2;color:#4A3B33;text-align:center}.camc.on{border-color:#FF7563;background:#FFF1EE}
+.camopts{display:flex;flex-wrap:wrap;gap:6px}.camopts button{border:2px solid #E5DCCF;background:#fff;border-radius:99px;padding:5px 11px;font:700 13px sans-serif;color:#4A3B33;cursor:pointer}.camopts button.on{background:#4A3B33;border-color:#4A3B33;color:#fff}
+.camfr{width:28px;height:28px;border-radius:50%;border:3px solid;cursor:pointer}.camfr.on{box-shadow:0 0 0 3px #FF7563}
+.cambtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.cambig{flex:1 1 100%;border:none;border-radius:14px;padding:14px;background:#FF7563;color:#fff;font:400 20px 'Jua',sans-serif;cursor:pointer;box-shadow:0 4px 0 #D9534A}
+.cambtn{flex:1;text-align:center;border:2px solid #E5DCCF;border-radius:12px;padding:9px 6px;background:#fff;font:700 13px sans-serif;color:#4A3B33;cursor:pointer;white-space:nowrap}
+.camshot{display:block;width:100%;border-radius:14px;box-shadow:0 6px 18px rgba(74,59,51,.15)}.camhint{font-size:12px;color:#8A7B70;text-align:center;margin:8px 0 0}
 </style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
@@ -3141,7 +3162,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     const sel=RM_EDIT&&RM_SEL!=null?R.items.find(x=>x.id===RM_SEL):null;
     const inv=Object.keys(RM_ITEMS).filter(k=>R.own.includes(k));
     body=`${roomsBar}${roomSceneHTML()}
-    <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}<input class="rmrname" data-rmrname maxlength="10" value="${esc(cur.name)}" placeholder="방 이름">${R.rooms.length>1?'<button class="rmbtn" data-rmdelroom>🗑 이 방 없애기</button>':''}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button><button class="rmbtn" data-rmtab="cats">🐱 식구 고르기</button>${rmLive().length?'<button class="rmbtn seek" data-rmseek>🙈 숨바꼭질</button>':''}${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} ${o.g==='toy'?'놀아 주기':'주기'} ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식과 놀잇감을 살 수 있어요</span>'}`}</div>
+    <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}<input class="rmrname" data-rmrname maxlength="10" value="${esc(cur.name)}" placeholder="방 이름">${R.rooms.length>1?'<button class="rmbtn" data-rmdelroom>🗑 이 방 없애기</button>':''}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button><button class="rmbtn" data-rmtab="cats">🐱 식구 고르기</button>${rmAll().length?'<button class="rmbtn cam" data-rmcam>📸 셀카</button>':''}${rmLive().length?'<button class="rmbtn seek" data-rmseek>🙈 숨바꼭질</button>':''}${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} ${o.g==='toy'?'놀아 주기':'주기'} ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식과 놀잇감을 살 수 있어요</span>'}`}</div>
     ${RM_EDIT?`<div class="rminv"><b>가진 가구 놓기</b>${inv.map(k=>`<button class="rminvb" data-rmadd="${k}"><svg viewBox="0 0 60 60" width="34" height="34">${RM_ITEMS[k].s}</svg><span>${RM_ITEMS[k].n}</span></button>`).join('')}</div>`:''}`;
   }else if(RM_TAB==='shop'){
     const card=(kind,k,o)=>{const own=R.own.includes(k);const on=(kind==='wall'&&R.wall===k)||(kind==='floor'&&R.floor===k);
@@ -3173,10 +3194,11 @@ function rmDragInit(){const sc=document.getElementById('rmscene');if(!sc||!RM_ED
     const up=()=>{el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);if(!moved)RM_SEL=RM_SEL===it.id?null:it.id;save();rmRender()};
     el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up)})})}
 document.addEventListener('click',e=>{if(RM_SEEK&&e.target.closest('#rmscene')){e.preventDefault();e.stopPropagation();const hit=[...document.querySelectorAll('#rmscene .rmc.rmhid')].find(c=>{const r=c.getBoundingClientRect();return e.clientX>=r.left-6&&e.clientX<=r.right+6&&e.clientY>=r.top-6&&e.clientY<=r.bottom+6});if(hit)rmFound(hit);return}
-  const t=e.target.closest('[data-rmroom],[data-rmnew],[data-rmmk],[data-rmhome],[data-rmdelroom],[data-rmseek],[data-rmsnack],[data-rm],[data-rmtab],[data-rmadd],[data-rmbuy],[data-rmc],[data-act="room"],[data-act="dexopen2"]');if(!t)return;
+  const t=e.target.closest('[data-rmcam],[data-rmroom],[data-rmnew],[data-rmmk],[data-rmhome],[data-rmdelroom],[data-rmseek],[data-rmsnack],[data-rm],[data-rmtab],[data-rmadd],[data-rmbuy],[data-rmc],[data-act="room"],[data-act="dexopen2"]');if(!t)return;
   if(t.matches('[data-act="room"]')){e.preventDefault();e.stopPropagation();closeModal();RM_TAB='room';RM_EDIT=false;go('room');return}
   if(t.matches('[data-act="dexopen2"]')){e.preventDefault();e.stopPropagation();openDex();return}
   const R=rmS();e.preventDefault();e.stopPropagation();
+  if(t.dataset.rmcam!=null){camOpen();return}
   if(t.dataset.rmseek!=null){rmSeek();return}
   if(t.dataset.rmroom){R.cur=+t.dataset.rmroom;RM_NEW=false;RM_EDIT=false;RM_SEL=null;RM_SEEK=null;if(RM_TAB==='shop')RM_TAB='room';save();return rmRender()}
   if(t.dataset.rmnew!=null){RM_NEW=!RM_NEW;RM_EDIT=false;if(RM_TAB==='shop')RM_TAB='room';return rmRender()}
@@ -3217,6 +3239,7 @@ function rmPlay(em){const sc=document.getElementById('rmscene');if(!sc)return;co
 let RM_SEEK=null;
 function rmPose(b,pose){
   const tail=(d)=>`<path d="${d}" stroke="${RM_OL}" stroke-width="5.4" fill="none" stroke-linecap="round"/><path d="${d}" stroke="${b.b}" stroke-width="3.4" fill="none" stroke-linecap="round"/>`;
+  if(pose==='wave'){const c=rmCat(b);return c.replace('<svg viewBox="-2 -2 44 54">','<svg viewBox="-6 -2 48 54">').replace('</svg>',`<path d="M12 42C4 40 0 34 0 26" stroke="${RM_OL}" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M12 42C4 40 0 34 0 26" stroke="${b.b}" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="0" cy="23" r="4" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.4"/><path d="M-1.4 21v1.8M1.4 21v1.8" stroke="${RM_OL}" stroke-width=".9"/><path d="M-6 16q-2 3 0 6M-3 13q-3 4 0 8" stroke="#FF9F7A" stroke-width="1.2" fill="none" stroke-linecap="round" class="camwv"/></svg>`)}
   if(pose==='sleep')return `<svg viewBox="-2 -2 44 54">${tail('M6 46c-6 2-8-4-2-6')}<ellipse cx="22" cy="44" rx="16" ry="7.5" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><g transform="translate(5,15) scale(.72)">${bFace(b,true)}</g><text x="34" y="18" class="rmz">z</text><text x="38" y="11" class="rmz z2">z</text></svg>`;
   if(pose==='lie')return `<svg viewBox="-2 -2 44 54">${tail('M38 44c6 0 7-6 3-8')}<ellipse cx="24" cy="44" rx="15" ry="6.5" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M6 49h8M12 49h8" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(-3,13) scale(.78)">${bFace(b)}</g></svg>`;
   if(pose==='stretch')return `<svg viewBox="-2 -2 44 54">${tail('M34 30c6-6 8-12 4-16')}<path d="M6 44c4-6 22-14 30-12 3 1 2 6-1 8-6 3-20 6-29 6z" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M4 48h9M30 46v4" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(-6,20) scale(.68)">${bFace(b)}</g></svg>`;
@@ -3255,6 +3278,84 @@ function rmFound(el){if(!el.classList.contains('rmhid'))return;el.classList.remo
     RM_SEEK=null;const sc3=document.getElementById('rmscene');sc3.classList.remove('rmseeking');const bd=sc3.querySelector('.rmsbadge');if(bd)bd.remove();toast(msg);setTimeout(()=>{if(VIEW==='room')render()},1800)}
   else rmSeekBadge()}
 function rmSeekBadge(){const sc=document.getElementById('rmscene');if(!sc||!RM_SEEK)return;let b=sc.querySelector('.rmsbadge');if(!b){b=document.createElement('div');b.className='rmsbadge';sc.appendChild(b)}b.textContent=`🔍 ${RM_SEEK.f} / ${RM_SEEK.n}`}
+
+// ----- 📸 고양이랑 셀카 -----
+const CAM_POSES=[['sit','앉기'],['wave','손 흔들기'],['lie','눕기'],['stretch','기지개'],['sleep','쿨쿨']];
+const CAM_FRAMES=[['#FFFFFF','#4A3B33'],['#FFE3EA','#B0476A'],['#DDF5EF','#1F7A68'],['#E6EEFF','#3D5BA9'],['#2E3A6B','#FFE08A']];
+let CAM=null;
+function camSvg(b,pose,flip){let v=rmPose(b,pose).replace('<svg ',`<svg xmlns="http://www.w3.org/2000/svg" width="${pose==='wave'?480:440}" height="540" `);if(flip)v=v.replace(/(<svg[^>]*>)/,'$1<g transform="translate(40,0) scale(-1,1)">').replace(/<\/svg>$/,'</g></svg>');return v}
+function camOpen(){const R=rmS();const pool=rmLive().length?rmLive():rmAll();
+  CAM={cats:pool.slice(0,1).map((i,n)=>({i,x:72,y:96,s:34,pose:'wave',f:0})),sel:0,frame:0,facing:'user',stream:null,bg:null,shot:null};
+  let el=document.getElementById('rmcam');if(!el){el=document.createElement('div');el.id='rmcam';document.body.appendChild(el)}
+  el.className='rmcam on';camDraw();camStart()}
+function camClose(){camStop();const el=document.getElementById('rmcam');if(el){el.className='rmcam';el.innerHTML=''}CAM=null}
+function camStop(){if(CAM&&CAM.stream){CAM.stream.getTracks().forEach(t=>t.stop());CAM.stream=null}}
+async function camStart(){camStop();const v=document.getElementById('camv');const msg=document.getElementById('cammsg');
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){if(msg)msg.innerHTML='이 화면에서는 카메라를 쓸 수 없어요.<br><b>📷 사진 고르기</b>로 찍어 둔 사진을 써 보세요.';return}
+  try{const st=await navigator.mediaDevices.getUserMedia({video:{facingMode:CAM.facing,width:{ideal:1280},height:{ideal:960}},audio:false});if(!CAM){st.getTracks().forEach(t=>t.stop());return}
+    CAM.stream=st;CAM.bg=null;const v2=document.getElementById('camv');if(v2){v2.srcObject=st;v2.play().catch(()=>{})}if(msg)msg.style.display='none';camDraw(true)}
+  catch(e){if(msg){msg.style.display='';msg.innerHTML='카메라를 켤 수 없어요. (권한을 허락했는지 확인해 주세요)<br><b>📷 사진 고르기</b>나 <b>🎨 배경만</b>으로도 찍을 수 있어요.'}}}
+function camCatHTML(c,n){const b=BREEDS[c.i];return `<div class="camcat ${n===CAM.sel?'sel':''}" data-camcat="${n}" style="left:${c.x}%;top:${c.y}%;width:${c.s}%">${camSvg(b,c.pose,c.f)}</div>`}
+function camDraw(keepVideo){const el=document.getElementById('rmcam');if(!el||!CAM)return;const R=rmS();const all=rmAll();const live=rmLive();const fr=CAM_FRAMES[CAM.frame];
+  const names=CAM.cats.map(c=>BREEDS[c.i].n).join(', ');const sc=CAM.cats[CAM.sel];
+  if(CAM.shot){el.innerHTML=`<div class="camwrap"><div class="camtop"><b>📸 찰칵!</b><button class="camx" data-cam="close">✕</button></div>
+    <img class="camshot" src="${CAM.shot}" alt="고양이랑 셀카"><p class="camhint">저장이 안 되면 사진을 길게 눌러 저장하세요</p>
+    <div class="cambtns"><button class="cambig" data-cam="save">💾 저장하기</button>${navigator.canShare?'<button class="cambtn" data-cam="share">📤 보내기</button>':''}<button class="cambtn" data-cam="again">↩ 다시 찍기</button></div></div>`;return}
+  const video=keepVideo&&document.getElementById('camv');
+  el.innerHTML=`<div class="camwrap"><div class="camtop"><b>📸 고양이랑 셀카</b><button class="camx" data-cam="close">✕</button></div>
+    <div class="camstage" id="camstage" style="--fb:${fr[0]};--ft:${fr[1]}"><div class="camview">${CAM.bg?`<img class="cambg" src="${CAM.bg}" alt="">`:CAM.bgc?`<div class="cambg" style="background:${CAM.bgc}"></div>`:'<video id="camv" autoplay playsinline muted></video><div class="cammsg" id="cammsg">카메라를 켜는 중…</div>'}
+      ${CAM.cats.map(camCatHTML).join('')}<i class="camcd" id="camcd"></i></div>
+      <div class="camfoot"><span>🐾 ${esc(R.name||'나')} & ${esc(names||'고양이')}</span><small>${new Date().toLocaleDateString('ko-KR')} · 일일삼제 미니홈피</small></div></div>
+    <div class="campanel">
+      <div class="camrow"><b>함께 찍을 고양이</b> <small>(최대 3마리 · 끌어서 옮기고, 눌러서 고르세요)</small></div>
+      <div class="camcats">${(live.length?live.concat(all.filter(i=>!live.includes(i))):all).map(i=>{const on=CAM.cats.findIndex(c=>c.i===i);return `<button class="camc ${on>=0?'on':''}" data-campick="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BREEDS[i])}</svg><span>${esc(BREEDS[i].n)}</span></button>`}).join('')}</div>
+      ${sc?`<div class="camrow"><b>${esc(BREEDS[sc.i].n)}</b> 포즈</div><div class="camopts">${CAM_POSES.map(([k,t])=>`<button class="${sc.pose===k?'on':''}" data-campose="${k}">${t}</button>`).join('')}<button data-cam="flip">↔ 방향</button></div>
+      <div class="camrow"><b>크기</b><input type="range" min="14" max="70" value="${sc.s}" data-camsize></div>`:''}
+      <div class="camrow"><b>테두리</b>${CAM_FRAMES.map((f,n)=>`<button class="camfr ${CAM.frame===n?'on':''}" data-camfr="${n}" style="background:${f[0]};border-color:${f[1]}"></button>`).join('')}</div>
+      <div class="cambtns"><button class="cambig" data-cam="shoot">📸 찰칵 (3초)</button>${CAM.bg||CAM.bgc?'<button class="cambtn" data-cam="camera">🎥 카메라로</button>':'<button class="cambtn" data-cam="switch">🔄 앞/뒤</button>'}<label class="cambtn">📷 사진 고르기<input type="file" accept="image/*" data-camfile hidden></label><button class="cambtn" data-cam="plain">🎨 배경만</button></div>
+      <p class="camhint">사진은 이 기기에만 저장돼요. 다른 곳으로 보내지지 않아요.</p></div></div>`;
+  if(video){const v=document.getElementById('camv');v.replaceWith(video);const m=document.getElementById('cammsg');if(m&&CAM.stream)m.style.display='none'}
+  else if(CAM.stream&&document.getElementById('camv')){const v=document.getElementById('camv');v.srcObject=CAM.stream;v.play().catch(()=>{});const m=document.getElementById('cammsg');if(m)m.style.display='none'}
+  camDragInit()}
+function camDragInit(){const st=document.querySelector('#rmcam .camview');if(!st)return;
+  st.querySelectorAll('.camcat').forEach(el=>el.addEventListener('pointerdown',e=>{e.preventDefault();const n=+el.dataset.camcat;const c=CAM.cats[n];const r=st.getBoundingClientRect();const x0=e.clientX,y0=e.clientY,cx=c.x,cy=c.y;let moved=false;
+    const chg=CAM.sel!==n;if(chg){CAM.sel=n;st.querySelectorAll('.camcat').forEach(z=>z.classList.toggle('sel',+z.dataset.camcat===n))}
+    try{el.setPointerCapture(e.pointerId)}catch(_){}
+    const mv=ev=>{const dx=(ev.clientX-x0)/r.width*100,dy=(ev.clientY-y0)/r.height*100;if(Math.abs(dx)+Math.abs(dy)>1)moved=true;c.x=Math.max(0,Math.min(100,cx+dx));c.y=Math.max(15,Math.min(115,cy+dy));el.style.left=c.x+'%';el.style.top=c.y+'%'};
+    const up=()=>{el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);if(chg)camPanel()};
+    el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up)}))}
+function camPanel(){camDraw(true)}
+function camLoadImg(src){return new Promise((ok,no)=>{const im=new Image();im.onload=()=>ok(im);im.onerror=no;im.src=src})}
+async function camShoot(){const cd=document.getElementById('camcd');for(const n of [3,2,1]){if(!CAM)return;if(cd){cd.textContent=n;cd.className='camcd go'}await new Promise(r=>setTimeout(r,800));if(cd)cd.className='camcd'}
+  if(!CAM)return;const W=900,H=1200,FT=150,P=36;const cv=document.createElement('canvas');cv.width=W+P*2;cv.height=H+P+FT;const x=cv.getContext('2d');const fr=CAM_FRAMES[CAM.frame];
+  x.fillStyle=fr[0];x.fillRect(0,0,cv.width,cv.height);x.save();x.beginPath();x.roundRect?x.roundRect(P,P,W,H,28):x.rect(P,P,W,H);x.clip();
+  const cover=(w,h)=>{const s=Math.max(W/w,H/h);return [P+(W-w*s)/2,P+(H-h*s)/2,w*s,h*s]};
+  const v=document.getElementById('camv');
+  if(CAM.bg){const im=await camLoadImg(CAM.bg);const [a,b,c,d]=cover(im.width,im.height);x.drawImage(im,a,b,c,d)}
+  else if(CAM.bgc){x.fillStyle=CAM.bgc.match(/#[0-9A-Fa-f]{6}/)[0];x.fillRect(P,P,W,H)}
+  else if(v&&v.videoWidth){const [a,b,c,d]=cover(v.videoWidth,v.videoHeight);if(CAM.facing==='user'){x.translate(2*P+W,0);x.scale(-1,1)}x.drawImage(v,a,b,c,d);x.setTransform(1,0,0,1,0,0)}
+  else{x.fillStyle='#FFF6E6';x.fillRect(P,P,W,H)}
+  for(const c of CAM.cats){const im=await camLoadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(camSvg(BREEDS[c.i],c.pose,c.f)));const w=W*c.s/100,h=w*(c.pose==='wave'?54/48:54/44);x.drawImage(im,P+W*c.x/100-w/2,P+H*c.y/100-h,w,h)}
+  x.restore();x.fillStyle=fr[1];x.textBaseline='middle';x.font="44px Jua, 'IBM Plex Sans KR', sans-serif";const R=rmS();
+  x.fillText('🐾 '+(R.name||'나')+' & '+CAM.cats.map(c=>BREEDS[c.i].n).join(', '),P+6,H+P+FT*.42,W-12);x.font="26px 'IBM Plex Sans KR', sans-serif";x.globalAlpha=.75;x.fillText(new Date().toLocaleDateString('ko-KR')+' · 일일삼제 미니홈피',P+6,H+P+FT*.78);x.globalAlpha=1;
+  CAM.shot=cv.toDataURL('image/png');camStop();R.love=R.love||{};CAM.cats.forEach(c=>R.love[c.i]=(R.love[c.i]||0)+1);save();camDraw()}
+function camFileName(){const d=new Date();return `고양이셀카_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}.png`}
+document.addEventListener('click',async e=>{const t=e.target.closest('#rmcam [data-cam],#rmcam [data-campick],#rmcam [data-campose],#rmcam [data-camfr]');if(!t||!CAM)return;e.preventDefault();e.stopPropagation();const a=t.dataset.cam;
+  if(t.dataset.campick){const i=+t.dataset.campick;const k=CAM.cats.findIndex(c=>c.i===i);if(k>=0){CAM.cats.splice(k,1);CAM.sel=Math.max(0,Math.min(CAM.sel,CAM.cats.length-1))}else{if(CAM.cats.length>=3){toast('최대 3마리까지 함께 찍을 수 있어요');return}const n=CAM.cats.length;CAM.cats.push({i,x:[72,28,50][n],y:[96,96,70][n],s:n==2?26:32,pose:CAM_POSES[(n*2+1)%CAM_POSES.length][0],f:n==1?1:0});CAM.sel=CAM.cats.length-1}return camDraw(true)}
+  if(t.dataset.campose){CAM.cats[CAM.sel].pose=t.dataset.campose;return camDraw(true)}
+  if(t.dataset.camfr){CAM.frame=+t.dataset.camfr;return camDraw(true)}
+  if(a==='close')return camClose();
+  if(a==='flip'){const c=CAM.cats[CAM.sel];c.f=c.f?0:1;return camDraw(true)}
+  if(a==='shoot'){if(!CAM.cats.length){toast('함께 찍을 고양이를 골라 주세요');return}return camShoot()}
+  if(a==='switch'){CAM.facing=CAM.facing==='user'?'environment':'user';const v=document.getElementById('camv');if(v)v.style.transform=CAM.facing==='user'?'':'none';return camStart()}
+  if(a==='camera'){CAM.bg=null;CAM.bgc=null;camDraw();return camStart()}
+  if(a==='plain'){camStop();CAM.bg=null;const cs=['#FFF6E6','#E9FAF5','#E6EEFF','#FFF4F6','#FFF0C9'];CAM.bgc=cs[(cs.indexOf(CAM.bgc)+1)%cs.length];return camDraw()}
+  if(a==='again'){CAM.shot=null;if(CAM.bg||CAM.bgc)return camDraw();camDraw();return camStart()}
+  if(a==='save'){const l=document.createElement('a');l.href=CAM.shot;l.download=camFileName();document.body.appendChild(l);l.click();l.remove();toast('사진을 저장했어요 📸');return}
+  if(a==='share'){try{const bl=await (await fetch(CAM.shot)).blob();const f=new File([bl],camFileName(),{type:'image/png'});if(navigator.canShare({files:[f]}))await navigator.share({files:[f],title:'고양이랑 셀카'});else toast('이 기기에서는 보내기를 쓸 수 없어요')}catch(err){}return}
+},true);
+document.addEventListener('input',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camsize]')){const c=CAM.cats[CAM.sel];if(!c)return;c.s=+t.value;const el=document.querySelector(`#rmcam .camcat[data-camcat="${CAM.sel}"]`);if(el)el.style.width=c.s+'%'}});
+document.addEventListener('change',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camfile]')&&t.files&&t.files[0]){const rd=new FileReader();rd.onload=()=>{camStop();CAM.bgc=null;CAM.bg=rd.result;camDraw()};rd.readAsDataURL(t.files[0])}});
 </script>
 </body>
 </html>
