@@ -53,7 +53,8 @@ function pubPeople(r) { return [...r.people.values()].map(p => ({ pid: p.pid, ni
 function broadcast(r, ev) { r.last = now(); r.seq++; const line = `id: ${r.seq}\ndata: ${JSON.stringify(ev)}\n\n`; for (const p of r.people.values()) for (const c of p.clients) c.write(line); }
 function auth(body) { const r = rooms.get(String(body.code || '')); if (!r) return [null, null, 'gone']; const p = r.people.get(String(body.pid || '')); if (!p || !safeEq(p.tok, tokHash(body.tok))) return [r, null, 'auth']; return [r, p, null]; }
 function closeRoom(r, why) { broadcast(r, { t: 'closed', why }); for (const p of r.people.values()) for (const c of p.clients) c.end(); rooms.delete(r.code); }
-function addPerson(r, nick, cats) { const pid = crypto.randomBytes(6).toString('hex'), tok = crypto.randomBytes(18).toString('base64url'); const p = { pid, tok: tokHash(tok), nick: cleanNick(nick), cats: cleanCats(cats), clients: new Set(), last: now(), acts: { t: 0, n: 0 } }; r.people.set(pid, p); return [p, tok]; }
+function uniqNick(r, n) { const used = new Set([...r.people.values()].map(p => p.nick)); if (!used.has(n)) return n; for (let k = 2; k < 99; k++) { const m = n.slice(0, 7) + k; if (!used.has(m)) return m; } return n; }
+function addPerson(r, nick, cats) { const pid = crypto.randomBytes(6).toString('hex'), tok = crypto.randomBytes(18).toString('base64url'); const p = { pid, tok: tokHash(tok), nick: uniqNick(r, cleanNick(nick)), cats: cleanCats(cats), clients: new Set(), last: now(), acts: { t: 0, n: 0 } }; r.people.set(pid, p); return [p, tok]; }
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x'); const ip = clientIp(req);
