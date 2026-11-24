@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-11 00:08"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 19:31"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -9,7 +9,37 @@
 .lplist button i{width:9px;height:9px;border-radius:50%;flex:none;background:var(--gray)}.lplist button i.low{background:var(--coral)}.lplist button i.mid{background:var(--sun)}.lplist button i.high{background:var(--mint)}
 .lplist button em{margin-left:auto;font-style:normal;font-size:11px;color:var(--coral);font-weight:800}
 .lpbig{display:block;width:100%;padding:14px;margin:6px 0;border-radius:18px;border:0;font-size:16px;font-weight:800;cursor:pointer;color:#fff}.lpbig.d{background:#5B8DEF}.lpbig.s{background:var(--mint)}.lpbig.c{background:#FFC23D;color:#3A2E12}.lpbig small{display:block;font-size:12px;font-weight:600;opacity:.9;margin-top:2px}
-.dexph{width:44px;height:40px;object-fit:cover;border-radius:10px;display:block}.catph{display:block;width:min(220px,70vw);height:auto;max-height:200px;object-fit:cover;border-radius:18px;margin:0 auto;box-shadow:0 3px 0 rgba(74,59,52,.15)}.phcr{font-size:10.5px;opacity:.65}.phcr a{color:inherit}</style></head><body>
+.dexph{width:44px;height:40px;object-fit:cover;border-radius:10px;display:block}.catph{display:block;width:min(220px,70vw);height:auto;max-height:200px;object-fit:cover;border-radius:18px;margin:0 auto;box-shadow:0 3px 0 rgba(74,59,52,.15)}.phcr{font-size:10.5px;opacity:.65}.phcr a{color:inherit}.mhcard{display:flex;align-items:center;gap:12px;width:100%;margin:12px 0 4px;padding:12px 14px;border-radius:20px;border:2px solid #C9DAFF;background:linear-gradient(135deg,#EEF4FF,#FFF4F6);color:var(--ink);text-align:left;cursor:pointer;box-shadow:var(--shadow)}
+.mhcard .mhci{font-size:30px}.mhcard b{display:block;font-family:'Jua',sans-serif;font-weight:400;font-size:18px}.mhcard small{color:var(--sub);font-size:13px}.mhcard .mhgo{margin-left:auto;font-size:26px;color:#5B8DEF}
+.mh{background:#8FB8F0;background:repeating-linear-gradient(45deg,#9DC2F3 0 10px,#8FB8F0 10px 20px);border-radius:22px;padding:10px;margin-bottom:16px}
+.mhtop{display:flex;gap:12px;align-items:center;font-size:12px;color:#fff;padding:2px 6px 8px;font-weight:700}.mhtop b{color:#FFE08A}.mhtop .mhurl{margin-left:auto;opacity:.9}
+.mhbook{display:grid;grid-template-columns:150px 1fr;gap:8px;background:#fff;border-radius:16px;padding:8px;border:2px solid #6E9BE0}
+@media(max-width:620px){.mhbook{grid-template-columns:1fr}}
+.mhside{background:#F6F9FF;border:1.5px dashed #B7CCF2;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:6px;align-items:center}
+@media(max-width:620px){.mhside{display:grid;grid-template-columns:64px 1fr;align-items:start}.mhside .mhava{grid-row:span 3}}
+.mhava{width:64px;height:72px;background:#fff;border-radius:12px;border:1.5px solid #DCE6F8;display:grid;place-items:center;font-size:30px}
+.mhmsg{height:58px!important;min-height:0!important}.mhname,.mhmsg{width:100%;border:1.5px solid #DCE6F8;border-radius:10px;padding:5px 8px;font:inherit;font-size:13px;background:#fff;color:#333;resize:none}.mhname{font-weight:700;text-align:center}
+.mhst{display:flex;gap:10px;font-size:12px;color:#5B6B8C;font-weight:700}
+.mhmain{min-width:0}.mhtitle{font-size:19px;margin:2px 4px 6px;color:#3D5A99}
+.mhtabs{display:flex;gap:4px;margin-bottom:8px}.mhtabs button{flex:1;border:1.5px solid #C9DAFF;background:#F2F6FF;border-radius:10px;padding:6px 2px;font-size:13px;font-weight:700;color:#5B6B8C;cursor:pointer}.mhtabs button.on{background:#5B8DEF;color:#fff;border-color:#5B8DEF}
+.rmscene{position:relative;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:2px solid #4A3B34;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.rmwall{position:absolute;left:0;right:0;top:0;height:60%}.rmfloor{position:absolute;left:0;right:0;bottom:0;height:40%;border-top:3px solid #4A3B34;box-shadow:inset 0 10px 14px -8px rgba(0,0,0,.25)}
+.rmi{position:absolute;transform-origin:50% 100%}.rmi svg{display:block;overflow:visible}.rmi.ed{cursor:grab;touch-action:none;outline:1.5px dashed rgba(91,141,239,.55);outline-offset:2px;border-radius:6px}.rmi.sel{outline:2.5px solid #FF7563}
+.rmc{position:absolute;width:11%;transform:translate(-50%,-100%);transition:left 2.4s linear,top 2.4s linear;cursor:pointer}
+.rmc svg{display:block;overflow:visible;width:100%;height:auto}.mhava svg{width:52px;height:auto}.rmc.rmflip svg{transform:scaleX(-1)}.rmc.rmwalk svg{animation:rmbob .35s ease-in-out infinite alternate}@keyframes rmbob{to{translate:0 -6%}}
+.rmc .rmheart{position:absolute;left:40%;top:-10%;font-style:normal;animation:rmup 1.6s ease-out forwards}@keyframes rmup{to{transform:translateY(-40px);opacity:0}}
+.rmbowl{position:absolute;left:50%;top:84%;transform:translate(-50%,-100%);font-size:28px;z-index:200;animation:rmpop .3s ease-out}@keyframes rmpop{from{transform:translate(-50%,-100%) scale(.2)}}
+.rmempty{position:absolute;left:50%;top:78%;transform:translate(-50%,-50%);background:rgba(255,255,255,.88);border-radius:12px;padding:8px 12px;font-size:13px;text-align:center;color:#4A3B34;width:80%}
+.rmbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}.rmbtn{border:2px solid #C9DAFF;background:#fff;color:#3D5A99;border-radius:999px;padding:7px 12px;font-weight:800;font-size:13px;cursor:pointer}.rmbtn.on{background:#FF7563;border-color:#FF7563;color:#fff}.rmbtn.snack{background:#FFF2CF;border-color:#FFC23D;color:#7A5A12}
+.rmhint{font-size:12px;color:#7A8499}
+.rminv{display:flex;gap:6px;overflow-x:auto;padding:6px 2px;align-items:center}.rminv b{font-size:12px;white-space:nowrap;color:#5B6B8C}.rminvb{flex:none;display:flex;flex-direction:column;align-items:center;border:1.5px solid #DCE6F8;border-radius:12px;background:#fff;padding:4px 6px;font-size:11px;color:#333;cursor:pointer}
+.rmcoin{background:#FFF8E1;border:2px solid #FFE08A;border-radius:14px;padding:8px 12px;margin-bottom:6px;font-size:14px;color:#5A4410}.rmcoin b{font-size:18px;margin-left:6px}.rmcoin span{display:block;font-size:12px;opacity:.8}
+.rmh{margin:12px 2px 6px;font-size:14px;color:#3D5A99}
+.rmgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px}
+.rmshop{display:flex;flex-direction:column;align-items:center;gap:2px;border:1.5px solid #DCE6F8;border-radius:14px;background:#fff;padding:6px 4px;font-size:12px;color:#333;cursor:pointer}.rmshop em{font-style:normal;font-size:11px;font-weight:800;color:#C9802B}.rmshop.own em{color:#2FB59E}.rmshop.on{border-color:#5B8DEF;background:#EEF4FF}
+.rmsw{display:block;width:46px;height:46px;border-radius:10px;border:1.5px solid #4A3B34}.rmemo{font-style:normal;font-size:32px;line-height:46px}
+.rmph{width:56px;height:50px;object-fit:cover;border-radius:10px}
+</style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -2384,8 +2414,9 @@ function render(){
   else if(VIEW==='practice')m.innerHTML=practicePickHTML();
   else if(VIEW==='record')m.innerHTML=recordHTML();
   else if(VIEW==='settings')m.innerHTML=settingsHTML();
+  else if(VIEW==='room')m.innerHTML=roomHTML();
   else if(VIEW==='run')m.innerHTML=runHTML();
-  if(VIEW!=='run')m.insertAdjacentHTML('afterbegin',topbarHTML()+'<nav class="topnav" aria-label="메뉴">'+navHTML()+'</nav>');
+  if(VIEW!=='run')m.insertAdjacentHTML('afterbegin',topbarHTML()+'<nav class="topnav" aria-label="메뉴">'+navHTML()+'</nav>');if(VIEW==='room'&&typeof rmWander==='function'){rmWander();rmDragInit()};
   placeCats(m);
   {const v=catSync();if(S.setNew&&VIEW!=='run'){{const k=S.setNew;setTimeout(()=>toast('🐾 문제 세트 완료! 고양이 '+(k>1?k+'마리가':'한 마리가')+' 어딘가에 숨었어요'),900);S.setNew=0;save()}}CAT_PREV=v}
   renderShelf();renderMapSide();
@@ -2577,7 +2608,7 @@ function catFall(el){const t=document.createElement('span');t.innerHTML=el.datas
 function catBig(b){const u=catImg(b);return u?`<img class="catph" src="${u}" alt="" data-fb='${`<svg viewBox="0 -2 40 36" width="96" height="86">${bFace(b)}</svg>`.replace(/'/g,"&#39;")}' onerror="catFall(this)">`:`<svg viewBox="0 -2 40 36" width="96" height="86">${bFace(b)}</svg>`}
 function dexHTML(){const dx=S.dex||{};const n=Object.keys(dx).length;
   return `<div class="dex">${BREEDS.map(b=>dx[b.i]?`<button class="dexi on" data-dexb="${b.i}">${catImg(b)?`<img class="dexph" src="${catImg(b)}" alt="" loading="lazy" data-fb='${`<svg viewBox="0 -2 40 36" width="44" height="40">${bFace(b)}</svg>`.replace(/'/g,"&#39;")}' onerror="catFall(this)">`:`<svg viewBox="0 -2 40 36" width="44" height="40">${bFace(b)}</svg>`}<span>${esc(b.n)}</span></button>`:`<div class="dexi"><svg viewBox="0 -2 40 36" width="44" height="40" class="sil">${bFace(b)}</svg><span>???</span></div>`).join('')}</div><p class="small muted center">${n}/${BREEDS.length}종 만났어요</p>`}
-function openDex(){ask('📖','고양이 도감','문제 세트를 끝까지 풀 때마다 숨은 고양이가 나타나요. 찾으면 도감에 모여요. 7일 연속 공부하면 한 마리를 선물로 받아요! 하루 쉴 때마다 도감의 고양이 중 한 마리가 집을 나가요.',[],'닫기',dexHTML())}
+function openDex(){ask('📖','고양이 도감','문제 세트를 끝까지 풀 때마다 숨은 고양이가 나타나요. 찾으면 도감에 모여요. 7일 연속 공부하면 한 마리를 선물로 받아요! 하루 쉴 때마다 도감의 고양이 중 한 마리가 집을 나가요.',[{t:'🏠 미니홈피에서 고양이들 보기',cls:'go',fn:()=>{RM_TAB='room';RM_EDIT=false;go('room')}}],'닫기',dexHTML())}
 let LOST_SHOWN=false;
 function dexDecay(){
   const t=today();S.dex=S.dex||{};
@@ -2598,8 +2629,8 @@ const CAT_SLOTS=['hero','win','box','brand','daily','tail','loaf','nav','peekb',
 function catOrd(){const d=today();if(CAT_ORDER._d!==d){const sx=(S.seedX=S.seedX||Math.floor(Math.random()*1e6));const a=CAT_SLOTS.slice();let t=(d*2654435761+sx*40503)>>>0;const rnd=()=>{t=(t+0x6D2B79F5)>>>0;let x=Math.imul(t^(t>>>15),1|t);x=(x+Math.imul(x^(x>>>7),61|x))^x;return ((x^(x>>>14))>>>0)/4294967296};for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}const ci=a.indexOf('card');if(ci>=0){a.splice(ci,1);a.push('card')}a._d=d;CAT_ORDER=a}return CAT_ORDER}
 let CAT_PREV=null;
 function catSync(){const t=today();if(S.setDay!==t){S.setDay=t;S.setN=0;S.cats=[];S.catStart=t;save()}else if(S.catStart!==t){S.cats=[];S.catStart=t;save()}return Math.min(S.setN||0,CAT_TOTAL)}
-function setDone(n=1){catSync();const b=S.setN||0;S.setN=Math.min(CAT_TOTAL,b+n);if(S.setN>b)S.setNew=S.setN-b;save();weekGift()}
-function weekGift(){const st=streakInfo();if(st.n<7)return;const k=st.start+':'+Math.floor(st.n/7);if(S.giftKey===k)return;S.dex=S.dex||{};const left=BREEDS.filter(b=>!S.dex[b.i]);S.giftKey=k;if(!left.length){save();return}const br=left[Math.floor(Math.random()*left.length)];S.dex[br.i]=today();save();
+function setDone(n=1){catSync();try{rmEarn(n)}catch(e){}const b=S.setN||0;S.setN=Math.min(CAT_TOTAL,b+n);if(S.setN>b)S.setNew=S.setN-b;save();weekGift()}
+function weekGift(){const st=streakInfo();if(st.n<7)return;const k=st.start+':'+Math.floor(st.n/7);if(S.giftKey===k)return;S.dex=S.dex||{};const left=BREEDS.filter(b=>!S.dex[b.i]);S.giftKey=k;if(!left.length){save();return}const br=left[Math.floor(Math.random()*left.length)];S.dex[br.i]=today();try{rmEarn(5)}catch(e){}save();
   setTimeout(()=>ask(`<svg viewBox="0 -2 40 36" width="96" height="86">${bFace(br)}</svg>`,'🎁 일주일 연속 공부 선물!',`${st.n}일 연속으로 공부했어요. <b>${esc(br.n)}</b> 고양이가 무료로 도감에 들어왔어요!<br><span class="small">${esc(br.t)}</span>`,[{t:'📖 도감 보기',cls:'go',fn:openDex}],'고마워요'),1200)}
 function hcat(id,html,cls=''){if(catOrd().indexOf(id)>=catSync())return '';const f=(S.cats||[]).includes(id);return `<button class="hcat ${cls} ${f?'found':''}" data-cat="${id}" aria-label="숨은 고양이">${html}</button>`}
 const GARLAND=(()=>{const cols=['#FF7563','#FFC23D','#2FB59E','#5B8DEF','#F7A8C4'];let t='';for(let i=0;i<9;i++){const x=6+i*30;t+=`<path d="M${x} ${8+Math.sin(i/8*Math.PI)*6} l12 0 l-6 13z" fill="${cols[i%5]}"/>`}return `<svg class="sh-garland" viewBox="0 0 282 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 6 Q141 22 282 6" stroke="#B98A63" stroke-width="1.5" fill="none"/>${t}</svg>`})();
@@ -2713,6 +2744,7 @@ function homeHTML(){
     </div>
     <button class="big" data-act="start">${done?'한 번 더 시작':'시작하기'} ▶</button><button class="pickc" data-lp="pick">📘 개념 골라서 15분</button>
   </section>
+  ${(()=>{const R=rmS();const n=rmLive().length;return `<button class="mhcard" data-act="room"><span class="mhci">🏠</span><span><b>${esc(R.name||'나')}의 미니홈피</b><small>고양이 ${n}마리가 살고 있어요 · 🐟 ${R.coins||0}</small></span><span class="mhgo">›</span></button>`})()}
   <div class="quick"><button class="qb lib" data-act="shelfopen"><span class="qi">📚</span><b>나의 서재</b><small>이해한 개념 ${CONCEPTS.filter(c=>onShelf(c.id)).length}권 · 🐾 ${catSync()}마리</small></button><button class="qb map" data-act="mapopen"><span class="qi">🗺️</span><b>개념 지도</b><small>${esc(rangeName())} · ${ids.filter(id=>{const m=mastery(id);return m!=null&&m>=.8}).length}/${ids.length} 완성</small></button></div>
   ${dailyHTML()}
   <div class="stats">
@@ -3026,6 +3058,102 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lp],[data-
   const a=b.dataset.lp;if(a==='daily'){closeModal();lpDaily()}else if(a==='auto'){closeModal();startSession()}else if(a==='pick')lpPick()},true);
 (function lpBoot(n){const md=document.getElementById('modal');if(md&&md.classList.contains('on')){if(n<40)setTimeout(()=>lpBoot(n+1),500);return}
   if(VIEW==='home'&&!RUN)lpOpen()})(0);
+
+// ===== ROOM_PATCH: 미니홈피 · 고양이와 함께 사는 내 방 =====
+const RM_OL='#4A3B34';
+const RM_ITEMS={
+ window:{n:'창문',c:0,p:'wall',w:22,s:`<rect x="6" y="6" width="48" height="44" rx="4" fill="#CFEFFF" stroke="${RM_OL}" stroke-width="2"/><circle cx="40" cy="18" r="5" fill="#FFD66B"/><path d="M12 38c6-6 12-6 18 0s12 6 18 0" stroke="#fff" stroke-width="3" fill="none"/><path d="M30 6v44M6 28h48" stroke="${RM_OL}" stroke-width="2"/><path d="M4 4c8 10 8 30 2 48M56 4c-8 10-8 30-2 48" fill="#FFB8C6" stroke="${RM_OL}" stroke-width="1.6"/>`},
+ clock:{n:'벽시계',c:1,p:'wall',w:11,s:`<circle cx="30" cy="30" r="22" fill="#FFF6E6" stroke="${RM_OL}" stroke-width="2.4"/><path d="M30 30V16M30 30l9 6" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="30" r="2.5" fill="#FF7563"/><path d="M14 10l-5-5M46 10l5-5" stroke="${RM_OL}" stroke-width="2"/>`},
+ frame:{n:'액자',c:1,p:'wall',w:13,s:`<rect x="8" y="8" width="44" height="40" rx="3" fill="#E8BE86" stroke="${RM_OL}" stroke-width="2"/><rect x="14" y="14" width="32" height="28" fill="#DDF5EF"/><path d="M30 37c-8-6-11-10-8-14 2-3 6-2 8 1 2-3 6-4 8-1 3 4 0 8-8 14z" fill="#FF7563" stroke="${RM_OL}" stroke-width="1.2"/>`},
+ lights:{n:'꼬마전구',c:2,p:'wall',w:32,s:`<path d="M2 14c14 12 42 12 56 0" stroke="${RM_OL}" stroke-width="1.6" fill="none"/>${[8,18,30,42,52].map((x,i)=>`<circle cx="${x}" cy="${i==2?25:i%4?22:17}" r="4" fill="${['#FFC23D','#FF7563','#7CD7C2','#5B8DEF','#FFC23D'][i]}" stroke="${RM_OL}" stroke-width="1.2"/>`).join('')}`},
+ wshelf:{n:'벽 선반',c:1,p:'wall',w:18,s:`<rect x="4" y="40" width="52" height="6" rx="2" fill="#D9A86A" stroke="${RM_OL}" stroke-width="1.8"/><rect x="10" y="22" width="7" height="18" fill="#5B8DEF" stroke="${RM_OL}" stroke-width="1.4"/><rect x="18" y="26" width="7" height="14" fill="#FFC23D" stroke="${RM_OL}" stroke-width="1.4"/><path d="M40 40c-4 0-5-3-5-6h12c0 3-1 6-5 6z" fill="#FF9F7A" stroke="${RM_OL}" stroke-width="1.4"/><path d="M41 34c-2-6-6-8-8-8 2 4 5 6 8 8zm0 0c1-7 5-10 8-10-1 5-4 8-8 10z" fill="#7CD7C2" stroke="${RM_OL}" stroke-width="1.2"/>`},
+ rug:{n:'동그란 러그',c:1,p:'floor',w:34,z:-1,s:`<ellipse cx="30" cy="40" rx="28" ry="12" fill="#FFB8C6" stroke="${RM_OL}" stroke-width="2"/><ellipse cx="30" cy="40" rx="19" ry="7.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-dasharray="4 3"/>`},
+ cushion:{n:'방석',c:0,p:'floor',w:15,s:`<ellipse cx="30" cy="42" rx="22" ry="10" fill="#7CD7C2" stroke="${RM_OL}" stroke-width="2"/><ellipse cx="30" cy="39" rx="16" ry="6" fill="#B5EADD"/><circle cx="30" cy="39" r="1.8" fill="${RM_OL}"/>`},
+ box:{n:'종이 상자',c:1,p:'floor',w:16,s:`<path d="M8 26h44v24H8z" fill="#D9A86A" stroke="${RM_OL}" stroke-width="2" stroke-linejoin="round"/><path d="M8 26l-4-8h20l4 8M52 26l4-8H36l-4 8" fill="#E8BE86" stroke="${RM_OL}" stroke-width="2" stroke-linejoin="round"/><path d="M24 36h12" stroke="${RM_OL}" stroke-width="1.6"/>`},
+ plant:{n:'화분',c:1,p:'floor',w:12,s:`<path d="M20 40h20l-3 16H23z" fill="#FF9F7A" stroke="${RM_OL}" stroke-width="2" stroke-linejoin="round"/><path d="M30 40C30 26 20 20 12 18c2 10 10 16 18 22zm0 0c0-14 8-24 18-26-1 12-8 20-18 26zm0 0c0-12 0-20 0-30" fill="#7CD7C2" stroke="${RM_OL}" stroke-width="1.8"/>`},
+ lamp:{n:'스탠드',c:2,p:'floor',w:12,s:`<path d="M18 22l6-16h12l6 16z" fill="#FFE08A" stroke="${RM_OL}" stroke-width="2" stroke-linejoin="round"/><path d="M30 22v30" stroke="${RM_OL}" stroke-width="2.4"/><ellipse cx="30" cy="54" rx="10" ry="3.5" fill="#E8BE86" stroke="${RM_OL}" stroke-width="2"/>`},
+ shelf:{n:'책장',c:2,p:'floor',w:18,s:`<rect x="10" y="4" width="40" height="52" rx="2" fill="#D9A86A" stroke="${RM_OL}" stroke-width="2"/><path d="M10 22h40M10 40h40" stroke="${RM_OL}" stroke-width="2"/>${[[14,'#5B8DEF'],[20,'#FF7563'],[26,'#FFC23D'],[34,'#7CD7C2']].map(([x,c])=>`<rect x="${x}" y="9" width="5" height="13" fill="${c}" stroke="${RM_OL}" stroke-width="1"/>`).join('')}${[[16,'#FFC23D'],[22,'#7CD7C2'],[38,'#FF7563']].map(([x,c])=>`<rect x="${x}" y="27" width="5" height="13" fill="${c}" stroke="${RM_OL}" stroke-width="1"/>`).join('')}`},
+ fish:{n:'어항',c:2,p:'floor',w:13,s:`<rect x="16" y="40" width="28" height="16" rx="2" fill="#E8BE86" stroke="${RM_OL}" stroke-width="2"/><circle cx="30" cy="26" r="15" fill="#CFEFFF" stroke="${RM_OL}" stroke-width="2"/><path d="M24 28c3-4 8-4 10 0-2 4-7 4-10 0zm10 0l5-3v6z" fill="#FF9F43" stroke="${RM_OL}" stroke-width="1.2"/>`},
+ tower:{n:'캣타워',c:3,p:'floor',w:20,s:`<rect x="26" y="10" width="7" height="44" fill="#E8D5B5" stroke="${RM_OL}" stroke-width="1.8"/><rect x="8" y="8" width="26" height="7" rx="3" fill="#B39DDB" stroke="${RM_OL}" stroke-width="1.8"/><rect x="26" y="28" width="28" height="7" rx="3" fill="#B39DDB" stroke="${RM_OL}" stroke-width="1.8"/><rect x="8" y="52" width="46" height="6" rx="3" fill="#9575CD" stroke="${RM_OL}" stroke-width="1.8"/><path d="M12 15v8" stroke="${RM_OL}" stroke-width="1.4"/><circle cx="12" cy="25" r="2.6" fill="#FF7563" stroke="${RM_OL}" stroke-width="1"/>`},
+ sofa:{n:'소파',c:3,p:'floor',w:30,s:`<rect x="10" y="18" width="40" height="18" rx="6" fill="#FF9F7A" stroke="${RM_OL}" stroke-width="2"/><rect x="6" y="32" width="48" height="16" rx="5" fill="#FFB89A" stroke="${RM_OL}" stroke-width="2"/><rect x="2" y="26" width="10" height="22" rx="5" fill="#FF9F7A" stroke="${RM_OL}" stroke-width="2"/><rect x="48" y="26" width="10" height="22" rx="5" fill="#FF9F7A" stroke="${RM_OL}" stroke-width="2"/><path d="M10 48v6M50 48v6" stroke="${RM_OL}" stroke-width="2.4"/>`},
+ bed:{n:'고양이 침대',c:3,p:'floor',w:22,s:`<ellipse cx="30" cy="42" rx="26" ry="12" fill="#5B8DEF" stroke="${RM_OL}" stroke-width="2"/><ellipse cx="30" cy="40" rx="18" ry="7" fill="#E6EEFF"/><path d="M8 38c4-6 40-6 44 0" stroke="#fff" stroke-width="2" fill="none" stroke-dasharray="3 3"/>`},
+ yarn:{n:'털실 공',c:1,p:'floor',w:8,s:`<circle cx="30" cy="40" r="14" fill="#FF7563" stroke="${RM_OL}" stroke-width="2"/><path d="M18 34c8 2 16 8 20 16M22 28c6 4 14 12 16 20M30 26c-2 8 0 18 8 26" stroke="#fff" stroke-width="1.4" fill="none"/><path d="M44 42c8 2 10 8 6 12" stroke="#FF7563" stroke-width="1.6" fill="none"/>`},
+};
+const RM_WALL={cream:{n:'크림',c:0,css:'#FFF6E6'},mint:{n:'민트 도트',c:1,css:'radial-gradient(circle,#B5EADD 2.4px,transparent 2.6px) 0 0/18px 18px,#E9FAF5'},sky:{n:'하늘 줄무늬',c:1,css:'repeating-linear-gradient(90deg,#E6EEFF 0 14px,#D3E1FF 14px 28px)'},pink:{n:'분홍 체크',c:2,css:'repeating-linear-gradient(0deg,rgba(255,184,198,.45) 0 10px,transparent 10px 20px),repeating-linear-gradient(90deg,rgba(255,184,198,.45) 0 10px,transparent 10px 20px),#FFF4F6'},night:{n:'밤하늘',c:3,css:'radial-gradient(circle,#FFE08A 1.4px,transparent 1.8px) 0 0/26px 22px,radial-gradient(circle,#fff 1px,transparent 1.4px) 12px 9px/30px 26px,#2E3A6B'}};
+const RM_FLOOR={wood:{n:'나무 마루',c:0,css:'repeating-linear-gradient(90deg,#E8BE86 0 38px,#DDAE72 38px 40px),#E8BE86'},tile:{n:'체크 타일',c:1,css:'conic-gradient(#fff 25%,#E9E4DB 0 50%,#fff 0 75%,#E9E4DB 0) 0 0/32px 32px'},grass:{n:'잔디',c:2,css:'radial-gradient(circle at 30% 40%,#8FD694 2px,transparent 3px) 0 0/16px 14px,#A8E0A0'},carpet:{n:'보라 카펫',c:2,css:'radial-gradient(circle,#B39DDB 1.6px,transparent 2px) 0 0/14px 14px,#D8CCF0'}};
+const RM_SNACK={churu:{n:'츄르',c:1,e:'🍡',love:1},fishsnack:{n:'생선 간식',c:2,e:'🐟',love:2},catnip:{n:'캣닢 쿠키',c:3,e:'🌿',love:3}};
+function rmS(){if(!S.room){S.room={name:'',msg:'',wall:'cream',floor:'wood',coins:3,own:['window','cushion','cream','wood'],items:[{id:1,k:'window',x:28,y:34,f:0},{id:2,k:'cushion',x:62,y:86,f:0}],nid:3};save()}return S.room}
+function rmEarn(n){const R=rmS();R.coins=(R.coins||0)+n;save()}
+function rmLive(){const ks=Object.keys(S.dex||{}).map(Number).filter(i=>BREEDS[i]);ks.sort((a,b)=>(S.dex[b]||0)-(S.dex[a]||0));return ks.slice(0,16)}
+function rmCat(b){return `<svg viewBox="-2 -2 44 54"><path d="M30 42c9 0 10-10 5-13" stroke="${RM_OL}" stroke-width="5.4" fill="none" stroke-linecap="round"/><path d="M30 42c9 0 10-10 5-13" stroke="${b.b}" stroke-width="3.4" fill="none" stroke-linecap="round"/><ellipse cx="20" cy="40" rx="12" ry="9" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M13 48v-3M27 48v-3" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(1,-1) scale(.95)">${bFace(b)}</g></svg>`}
+let RM_TAB='room',RM_EDIT=false,RM_SEL=null,RM_T=null;
+function rmItemHTML(it){const I=RM_ITEMS[it.k];if(!I)return '';const sel=RM_EDIT&&RM_SEL===it.id;
+  return `<div class="rmi ${RM_EDIT?'ed':''} ${sel?'sel':''}" data-rmi="${it.id}" style="left:${it.x}%;top:${it.y}%;width:${I.w}%;z-index:${I.z===-1?1:(I.p==='wall'?2:Math.round(it.y))};transform:translate(-50%,-100%) scaleX(${it.f?-1:1})"><svg viewBox="0 0 60 60" width="100%">${I.s}</svg></div>`}
+function roomSceneHTML(){const R=rmS();const live=rmLive();
+  const cats=live.map((i,n)=>{const x=10+((i*37+n*23)%80),y=70+((i*13+n*7)%24);return `<div class="rmc" data-rmc="${i}" style="left:${x}%;top:${y}%;z-index:${y+1}">${rmCat(BREEDS[i])}</div>`}).join('');
+  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
+function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S.days[k]&&(S.days[k].sess||S.days[k].solved||S.days[k].n)).length||Object.keys(S.days||{}).length;
+  const td=(S.daily&&S.daily.log&&S.daily.log[dayStr(today())])||0;const live=rmLive();
+  const nm=R.name||'나';
+  let body='';
+  if(RM_TAB==='room'){
+    const sel=RM_EDIT&&RM_SEL!=null?R.items.find(x=>x.id===RM_SEL):null;
+    const inv=Object.keys(RM_ITEMS).filter(k=>R.own.includes(k));
+    body=`${roomSceneHTML()}
+    <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button>${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} 주기 ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식을 사서 줄 수 있어요</span>'}`}</div>
+    ${RM_EDIT?`<div class="rminv"><b>가진 가구 놓기</b>${inv.map(k=>`<button class="rminvb" data-rmadd="${k}"><svg viewBox="0 0 60 60" width="34" height="34">${RM_ITEMS[k].s}</svg><span>${RM_ITEMS[k].n}</span></button>`).join('')}</div>`:''}`;
+  }else if(RM_TAB==='shop'){
+    const card=(kind,k,o)=>{const own=R.own.includes(k);const on=(kind==='wall'&&R.wall===k)||(kind==='floor'&&R.floor===k);
+      const pv=kind==='item'?`<svg viewBox="0 0 60 60" width="46" height="46">${o.s}</svg>`:`<i class="rmsw" style="background:${o.css}"></i>`;
+      return `<button class="rmshop ${own?'own':''} ${on?'on':''}" data-rmbuy="${kind}:${k}">${pv}<span>${o.n}</span><em>${on?'사용 중':own?(kind==='item'?'가짐 ✓':'바꾸기'):o.c?`🐟 ${o.c}`:'무료'}</em></button>`};
+    body=`<div class="rmcoin">내 생선 <b>🐟 ${R.coins||0}</b><span>문제 세트 1개를 끝까지 풀면 🐟 1개, 오늘의 15분을 끝내면 🐟 2개</span></div>
+    <h4 class="rmh">고양이 간식</h4><div class="rmgrid">${Object.entries(RM_SNACK).map(([k,o])=>`<button class="rmshop" data-rmbuy="snack:${k}"><i class="rmemo">${o.e}</i><span>${o.n}</span><em>🐟 ${o.c}</em></button>`).join('')}</div>
+    <h4 class="rmh">가구</h4><div class="rmgrid">${Object.entries(RM_ITEMS).map(([k,o])=>card('item',k,o)).join('')}</div>
+    <h4 class="rmh">벽지</h4><div class="rmgrid">${Object.entries(RM_WALL).map(([k,o])=>card('wall',k,o)).join('')}</div>
+    <h4 class="rmh">바닥</h4><div class="rmgrid">${Object.entries(RM_FLOOR).map(([k,o])=>card('floor',k,o)).join('')}</div>`;
+  }else{
+    body=`<p class="rmhint" style="margin:0 0 8px">도감에서 가장 최근에 만난 고양이 ${live.length?'최대 16마리가':'들이'} 방에서 함께 살아요.</p><div class="rmgrid">${live.map(i=>{const b=BREEDS[i];return `<button class="rmshop own" data-rmc="${i}">${catImg(b)?`<img src="${catImg(b)}" alt="" class="rmph" onerror="this.remove()">`:`<svg viewBox="0 -2 40 36" width="46" height="42">${bFace(b)}</svg>`}<span>${esc(b.n)}</span></button>`}).join('')||'<p class="rmhint">아직 없어요</p>'}</div><button class="rmbtn" style="margin-top:10px" data-act="dexopen2">📖 고양이 도감 보기</button>`;
+  }
+  return `<div class="mh"><div class="mhtop"><span>TODAY <b>${td}</b></span><span>TOTAL <b>${days}</b></span><span class="mhurl">일일삼제 미니홈피</span></div>
+  <div class="mhbook"><aside class="mhside"><div class="mhava">${live.length?rmCat(BREEDS[live[0]]):'🐾'}</div>
+    <input class="mhname" data-rmname maxlength="12" value="${esc(R.name)}" placeholder="이름 쓰기">
+    <textarea class="mhmsg" data-rmmsg maxlength="60" rows="3" placeholder="오늘의 한마디">${esc(R.msg)}</textarea>
+    <div class="mhst"><span>🐱 ${live.length}마리</span><span>🐟 ${R.coins||0}</span></div></aside>
+  <section class="mhmain"><h2 class="mhtitle">${esc(nm)}의 미니룸</h2>
+    <div class="mhtabs">${[['room','🏠 미니룸'],['shop','🛍 꾸미기 상점'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
+function rmWander(){clearInterval(RM_T);RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}
+  document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(Math.random()<.45)return;const x0=parseFloat(el.style.left),x=6+Math.random()*86,y=64+Math.random()*31;
+    el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)})},3200)}
+function rmRender(){if(VIEW!=='room')return;render()}
+function rmDragInit(){const sc=document.getElementById('rmscene');if(!sc||!RM_EDIT)return;
+  sc.querySelectorAll('.rmi').forEach(el=>{el.addEventListener('pointerdown',e=>{e.preventDefault();const R=rmS();const it=R.items.find(x=>x.id===+el.dataset.rmi);const I=RM_ITEMS[it.k];const r=sc.getBoundingClientRect();let moved=false;const sx=e.clientX,sy=e.clientY;el.setPointerCapture(e.pointerId);
+    const mv=ev=>{if(Math.abs(ev.clientX-sx)+Math.abs(ev.clientY-sy)>4)moved=true;if(!moved)return;let x=(ev.clientX-r.left)/r.width*100,y=(ev.clientY-r.top)/r.height*100+6;
+      x=Math.max(4,Math.min(96,x));y=I.p==='wall'?Math.max(18,Math.min(58,y)):Math.max(62,Math.min(99,y));it.x=+x.toFixed(1);it.y=+y.toFixed(1);el.style.left=it.x+'%';el.style.top=it.y+'%';if(I.p!=='wall'&&I.z!==-1)el.style.zIndex=Math.round(it.y)};
+    const up=()=>{el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);if(!moved)RM_SEL=RM_SEL===it.id?null:it.id;save();rmRender()};
+    el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up)})})}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-rmsnack],[data-rm],[data-rmtab],[data-rmadd],[data-rmbuy],[data-rmc],[data-act="room"],[data-act="dexopen2"]');if(!t)return;
+  if(t.matches('[data-act="room"]')){e.preventDefault();e.stopPropagation();closeModal();RM_TAB='room';RM_EDIT=false;go('room');return}
+  if(t.matches('[data-act="dexopen2"]')){e.preventDefault();e.stopPropagation();openDex();return}
+  const R=rmS();e.preventDefault();e.stopPropagation();
+  if(t.dataset.rmtab){RM_TAB=t.dataset.rmtab;RM_EDIT=false;RM_SEL=null;return rmRender()}
+  if(t.dataset.rm==='edit'){RM_EDIT=!RM_EDIT;RM_SEL=null;return rmRender()}
+  if(t.dataset.rm==='flip'){const it=R.items.find(x=>x.id===RM_SEL);if(it){it.f=it.f?0:1;save()}return rmRender()}
+  if(t.dataset.rm==='del'){R.items=R.items.filter(x=>x.id!==RM_SEL);RM_SEL=null;save();return rmRender()}
+  if(t.dataset.rmadd){const k=t.dataset.rmadd,I=RM_ITEMS[k];const id=R.nid++;R.items.push({id,k,x:50,y:I.p==='wall'?40:84,f:0});RM_SEL=id;save();toast(`${I.n}을(를) 놓았어요. 끌어서 옮겨 보세요`);return rmRender()}
+  if(t.dataset.rmbuy&&t.dataset.rmbuy.startsWith('snack:')){const k=t.dataset.rmbuy.slice(6),o=RM_SNACK[k];if((R.coins||0)<o.c){toast(`생선이 ${o.c-(R.coins||0)}개 더 필요해요 🐟`);return}R.coins-=o.c;R.snack=R.snack||{};R.snack[k]=(R.snack[k]||0)+1;save();toast(`${o.e} ${o.n}을(를) 샀어요! 미니룸에서 주세요`);return rmRender()}
+  if(t.dataset.rmbuy){const [kind,k]=t.dataset.rmbuy.split(':');const o=kind==='item'?RM_ITEMS[k]:kind==='wall'?RM_WALL[k]:RM_FLOOR[k];
+    if(!R.own.includes(k)){if((R.coins||0)<o.c){toast(`생선이 ${o.c-(R.coins||0)}개 더 필요해요 🐟`);return}R.coins-=o.c;R.own.push(k);toast(`${o.n}을(를) 샀어요!`)}
+    if(kind==='wall')R.wall=k;else if(kind==='floor')R.floor=k;else{RM_TAB='room';RM_EDIT=true;const id=R.nid++;R.items.push({id,k,x:50,y:o.p==='wall'?40:84,f:0});RM_SEL=id}
+    save();return rmRender()}
+  if(t.dataset.rmc!=null){if(RM_EDIT)return;const b=BREEDS[+t.dataset.rmc];if(!b)return;const lv=(R.love&&R.love[b.i])||0;ask(catBig(b),esc(b.n),esc(b.t)+`<br><b>💗 친밀도 ${lv}</b>`+catCredit(b),[],'닫기');return}
+  if(t.dataset.rmsnack){const k=t.dataset.rmsnack,o=RM_SNACK[k];R.snack=R.snack||{};if(!(R.snack[k]>0))return;R.snack[k]--;R.love=R.love||{};const live=rmLive();live.forEach(i=>R.love[i]=(R.love[i]||0)+o.love);save();rmFeed(o.e);return}
+},true);
+document.addEventListener('input',e=>{const t=e.target;if(t.matches('[data-rmname]')){rmS().name=t.value.slice(0,12);save();const h=document.querySelector('.mhtitle');if(h)h.textContent=(t.value||'나')+'의 미니룸'}else if(t.matches('[data-rmmsg]')){rmS().msg=t.value.slice(0,60);save()}});
+
+function rmFeed(em){const sc=document.getElementById('rmscene');if(!sc)return;const bowl=document.createElement('div');bowl.className='rmbowl';bowl.textContent=em;sc.appendChild(bowl);
+  const cats=[...sc.querySelectorAll('.rmc')];cats.forEach((el,i)=>{const a=i/Math.max(1,cats.length)*Math.PI*2;const x=50+Math.cos(a)*(10+cats.length*.8),y=82+Math.sin(a)*7;el.classList.toggle('rmflip',x>50);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;
+    setTimeout(()=>{el.classList.remove('rmwalk');const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)},2300)});
+  setTimeout(()=>bowl.remove(),4200);toast(cats.length?`냠냠! 고양이들의 친밀도가 올랐어요 💗`:'아직 함께 사는 고양이가 없어요')}
 </script>
 </body>
 </html>
