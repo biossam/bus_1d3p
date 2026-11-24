@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 21:19"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 21:25"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -90,6 +90,13 @@
 .ptnet{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);z-index:290;background:#4A3B33;color:#fff;border-radius:99px;padding:3px 12px;font-size:12px}
 .ptbar{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}.ptbar b{font-size:13px;color:#4A3B33;width:44px}.ptbar button{width:44px;height:44px;border-radius:12px;border:2px solid #E5DCCF;background:#fff;font-size:22px;cursor:pointer}.ptbar button:active{transform:scale(.92)}
 .ptsays{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.ptsays button{border:2px solid #E5DCCF;background:#fff;border-radius:99px;padding:6px 11px;font:700 13px sans-serif;color:#4A3B33;cursor:pointer}
+.rmjs{position:absolute;width:12%;transform:translate(-50%,-100%);transition:left 2.4s linear,top 2.4s linear;cursor:pointer;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}.rmjs svg{display:block;width:100%;height:auto}
+.rmjs.rmflip svg{transform:scaleX(-1)}.rmjs.rmwalk svg{animation:rmbob .4s ease-in-out infinite alternate}.rmjs.jsjump svg{animation:jsjump .5s ease-out}@keyframes jsjump{0%,100%{transform:translateY(0)}40%{transform:translateY(-14%)}}
+.rmjs.off{opacity:.45}.jsbub{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);white-space:nowrap;font:700 11px sans-serif;font-style:normal;color:#4A3B33;background:#fff;border:2px solid #4A3B33;border-radius:12px;padding:3px 8px;animation:rmpop .25s ease-out;z-index:5}
+.mhava{cursor:pointer;overflow:hidden}.mhava svg{width:78%;height:auto;margin-top:6%}
+.jsbox{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid #E5DCCF;border-radius:16px;padding:10px 14px}.jsprev{width:110px;text-align:center;background:#FFF6E6;border-radius:14px;padding:6px 4px}.jsprev svg{width:84px;height:auto}.jsprev span{display:block;font-family:'Jua',sans-serif;font-size:15px;color:#4A3B33}
+.jsbtns{flex:1}.jsrow{margin-top:12px}.jsrow>b{display:block;font-size:13px;color:#4A3B33;margin-bottom:6px}.jssw{display:flex;flex-wrap:wrap;gap:8px}.jssw button{width:30px;height:30px;border-radius:50%;border:2px solid #4A3B33;cursor:pointer}.jssw button.on{box-shadow:0 0 0 3px #FF7563}
+.ptjs{width:11%;z-index:140!important}
 </style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
@@ -3166,7 +3173,7 @@ function rmItemHTML(it){const I=RM_ITEMS[it.k];if(!I)return '';const sel=RM_EDIT
   return `<div class="rmi ${RM_EDIT?'ed':''} ${sel?'sel':''}" data-rmi="${it.id}" style="left:${it.x}%;top:${it.y}%;width:${I.w}%;z-index:${I.z===-1?1:(I.p==='wall'?2:Math.round(it.y))};transform:translate(-50%,-100%) scaleX(${it.f?-1:1})"><svg viewBox="0 0 60 60" width="100%">${I.s}</svg></div>`}
 function roomSceneHTML(){const R=rmS();const live=rmLive();
   const cats=live.map((i,n)=>{const x=10+((i*37+n*23)%80),y=70+((i*13+n*7)%24);return `<div class="rmc" data-rmc="${i}" style="left:${x}%;top:${y}%;z-index:${y+1}">${rmCat(BREEDS[i])}</div>`}).join('');
-  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
+  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}<div class="rmjs" style="left:${R.jx||50}%;top:${R.jy||90}%;z-index:${Math.round(R.jy||90)+1}">${jsSvg(rmLook())}</div>${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
 function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S.days[k]&&(S.days[k].sess||S.days[k].solved||S.days[k].n)).length||Object.keys(S.days||{}).length;
   const td=(S.daily&&S.daily.log&&S.daily.log[dayStr(today())])||0;const live=rmLive();
   const nm=R.name||'나';
@@ -3191,16 +3198,16 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     <h4 class="rmh">가구</h4><div class="rmgrid">${Object.entries(RM_ITEMS).map(([k,o])=>card('item',k,o)).join('')}</div>
     <h4 class="rmh">벽지</h4><div class="rmgrid">${Object.entries(RM_WALL).map(([k,o])=>card('wall',k,o)).join('')}</div>
     <h4 class="rmh">바닥</h4><div class="rmgrid">${Object.entries(RM_FLOOR).map(([k,o])=>card('floor',k,o)).join('')}</div>`;
-  }else{
+  }else if(RM_TAB==='me'){body=jsTabHTML()}else{
     const first=R.rooms[0].id;body=`${roomsBar}<p class="rmhint" style="margin:0 0 8px"><b>${RM_RT[cur.t].e} ${esc(cur.name)}</b>에서 살 고양이를 눌러서 골라요. (한 방에 최대 16마리${R.cur===first?'':' · 다시 누르면 '+esc(rmJ(R.rooms[0].name,'으로'))+' 돌아가요'})</p><div class="rmgrid">${all.map(i=>{const b=BREEDS[i];const h=rmHomeOf(i);const here=h===R.cur;const hr=R.rooms.find(r=>r.id===h);return `<button class="rmshop ${here?'own on':''}" data-rmhome="${i}">${catImg(b)?`<img src="${catImg(b)}" alt="" class="rmph" onerror="this.remove()">`:`<svg viewBox="0 -2 40 36" width="46" height="42">${bFace(b)}</svg>`}<span>${esc(b.n)}</span><em>${here?'✓ 이 방':RM_RT[hr.t].e+' '+esc(hr.name)}</em></button>`}).join('')||'<p class="rmhint">아직 없어요. 문제 세트를 풀고 숨은 고양이를 찾아 보세요!</p>'}</div><button class="rmbtn" style="margin-top:10px" data-act="dexopen2">📖 고양이 도감 보기</button>`;
   }
   return `<div class="mh"><div class="mhtop"><span>TODAY <b>${td}</b></span><span>TOTAL <b>${days}</b></span><span class="mhurl">일일삼제 미니홈피</span></div>
-  <div class="mhbook"><aside class="mhside"><div class="mhava">${live.length?rmCat(BREEDS[live[0]]):'🐾'}</div>
+  <div class="mhbook"><aside class="mhside"><div class="mhava" data-rmtab="me" title="내 집사 꾸미기">${jsSvg(rmLook())}</div>
     <input class="mhname" data-rmname maxlength="12" value="${esc(R.name)}" placeholder="이름 쓰기">
     <textarea class="mhmsg" data-rmmsg maxlength="60" rows="3" placeholder="오늘의 한마디">${esc(R.msg)}</textarea>
     <div class="mhst"><span>🐱 ${all.length}마리</span><span>⭐ ${R.coins||0}</span></div></aside>
   <section class="mhmain"><h2 class="mhtitle">${esc(nm)}의 ${RM_NEW?'새 방':esc(cur.name)}</h2>
-    <div class="mhtabs">${[['room','🏠 미니룸'],['shop','🛍 꾸미기 상점'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
+    <div class="mhtabs">${[['room','🏠 미니룸'],['me','🧑 내 집사'],['shop','🛍 상점'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
 function rmWander(){clearInterval(RM_T);RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}
   document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(Math.random()<.45)return;const x0=parseFloat(el.style.left),x=6+Math.random()*86,y=64+Math.random()*31;
     el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)})},3200)}
@@ -3272,7 +3279,7 @@ function rmAllSpots(){const R=rmS();const o=[];R.items.forEach(it=>(RM_SPOTS[it.
 function rmMove(el,x,y,z,pose,walk=true){const x0=parseFloat(el.style.left);el.classList.toggle('rmflip',x<x0);if(walk){rmSetPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');rmSetPose(el,pose)},walk?2400:0)}
 function rmWander(){clearInterval(RM_T);const used={};
-  RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}if(RM_SEEK||RM_EDIT)return;
+  RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}if(RM_SEEK||RM_EDIT)return;try{jsWalk()}catch(e){}
     const spots=rmAllSpots();
     document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
       if(el._spot){delete used[el._spot];el._spot=null}
@@ -3313,9 +3320,11 @@ async function camStart(){camStop();const v=document.getElementById('camv');cons
   try{const st=await navigator.mediaDevices.getUserMedia({video:{facingMode:CAM.facing,width:{ideal:1280},height:{ideal:960}},audio:false});if(!CAM){st.getTracks().forEach(t=>t.stop());return}
     CAM.stream=st;CAM.bg=null;const v2=document.getElementById('camv');if(v2){v2.srcObject=st;v2.play().catch(()=>{})}if(msg)msg.style.display='none';camDraw(true)}
   catch(e){if(msg){msg.style.display='';msg.innerHTML='카메라를 켤 수 없어요. (권한을 허락했는지 확인해 주세요)<br><b>📷 사진 고르기</b>나 <b>🎨 배경만</b>으로도 찍을 수 있어요.'}}}
-function camCatHTML(c,n){const b=BREEDS[c.i];return `<div class="camcat ${n===CAM.sel?'sel':''}" data-camcat="${n}" style="left:${c.x}%;top:${c.y}%;width:${c.s}%">${camSvg(b,c.pose,c.f)}</div>`}
+function camCatHTML(c,n){return `<div class="camcat ${n===CAM.sel?'sel':''}" data-camcat="${n}" style="left:${c.x}%;top:${c.y}%;width:${c.s}%">${c.i<0?camJs(c.f):camSvg(BREEDS[c.i],c.pose,c.f)}</div>`}
+function camJs(flip){let v=jsSvg(rmLook(),true);if(flip)v=v.replace(/(<svg[^>]*>)/,'$1<g transform="translate(60,0) scale(-1,1)">').replace(/<\/svg>$/,'</g></svg>');return v}
+function camName(i){return i<0?'내 집사':BREEDS[i].n}
 function camDraw(keepVideo){const el=document.getElementById('rmcam');if(!el||!CAM)return;const R=rmS();const all=rmAll();const live=rmLive();const fr=CAM_FRAMES[CAM.frame];
-  const names=CAM.cats.map(c=>BREEDS[c.i].n).join(', ');const sc=CAM.cats[CAM.sel];
+  const names=CAM.cats.filter(c=>c.i>=0).map(c=>BREEDS[c.i].n).join(', ');const sc=CAM.cats[CAM.sel];
   if(CAM.shot){el.innerHTML=`<div class="camwrap"><div class="camtop"><b>📸 찰칵!</b><button class="camx" data-cam="close">✕</button></div>
     <img class="camshot" src="${CAM.shot}" alt="고양이랑 셀카"><p class="camhint">저장이 안 되면 사진을 길게 눌러 저장하세요</p>
     <div class="cambtns"><button class="cambig" data-cam="save">💾 저장하기</button>${navigator.canShare?'<button class="cambtn" data-cam="share">📤 보내기</button>':''}<button class="cambtn" data-cam="again">↩ 다시 찍기</button></div></div>`;return}
@@ -3326,8 +3335,8 @@ function camDraw(keepVideo){const el=document.getElementById('rmcam');if(!el||!C
       <div class="camfoot"><span>🐾 ${esc(R.name||'나')} & ${esc(names||'고양이')}</span><small>${new Date().toLocaleDateString('ko-KR')} · 일일삼제 미니홈피</small></div></div>
     <div class="campanel">
       <div class="camrow"><b>함께 찍을 고양이</b> <small>(최대 3마리 · 끌어서 옮기고, 눌러서 고르세요)</small></div>
-      <div class="camcats">${(live.length?live.concat(all.filter(i=>!live.includes(i))):all).map(i=>{const on=CAM.cats.findIndex(c=>c.i===i);return `<button class="camc ${on>=0?'on':''}" data-campick="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BREEDS[i])}</svg><span>${esc(BREEDS[i].n)}</span></button>`}).join('')}</div>
-      ${sc?`<div class="camrow"><b>${esc(BREEDS[sc.i].n)}</b> 포즈</div><div class="camopts">${CAM_POSES.map(([k,t])=>`<button class="${sc.pose===k?'on':''}" data-campose="${k}">${t}</button>`).join('')}<button data-cam="flip">↔ 방향</button></div>
+      <div class="camcats"><button class="camc ${CAM.cats.some(c=>c.i<0)?'on':''}" data-campick="-1"><svg viewBox="8 6 44 44" width="34" height="30">${jsSvg(rmLook()).replace(/^<svg[^>]*>|<\/svg>$/g,'')}</svg><span>내 집사</span></button>${(live.length?live.concat(all.filter(i=>!live.includes(i))):all).map(i=>{const on=CAM.cats.findIndex(c=>c.i===i);return `<button class="camc ${on>=0?'on':''}" data-campick="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BREEDS[i])}</svg><span>${esc(BREEDS[i].n)}</span></button>`}).join('')}</div>
+      ${sc?`<div class="camrow"><b>${esc(camName(sc.i))}</b> ${sc.i<0?'':'포즈'}</div><div class="camopts">${sc.i<0?'':CAM_POSES.map(([k,t])=>`<button class="${sc.pose===k?'on':''}" data-campose="${k}">${t}</button>`).join('')}<button data-cam="flip">↔ 방향</button></div>
       <div class="camrow"><b>크기</b><input type="range" min="14" max="70" value="${sc.s}" data-camsize></div>`:''}
       <div class="camrow"><b>테두리</b>${CAM_FRAMES.map((f,n)=>`<button class="camfr ${CAM.frame===n?'on':''}" data-camfr="${n}" style="background:${f[0]};border-color:${f[1]}"></button>`).join('')}</div>
       <div class="cambtns"><button class="cambig" data-cam="shoot">📸 찰칵 (3초)</button>${CAM.bg||CAM.bgc?'<button class="cambtn" data-cam="camera">🎥 카메라로</button>':'<button class="cambtn" data-cam="switch">🔄 앞/뒤</button>'}<label class="cambtn">📷 사진 고르기<input type="file" accept="image/*" data-camfile hidden></label><button class="cambtn" data-cam="plain">🎨 배경만</button></div>
@@ -3353,13 +3362,13 @@ async function camShoot(){const cd=document.getElementById('camcd');for(const n 
   else if(CAM.bgc){x.fillStyle=CAM.bgc.match(/#[0-9A-Fa-f]{6}/)[0];x.fillRect(P,P,W,H)}
   else if(v&&v.videoWidth){const [a,b,c,d]=cover(v.videoWidth,v.videoHeight);if(CAM.facing==='user'){x.translate(2*P+W,0);x.scale(-1,1)}x.drawImage(v,a,b,c,d);x.setTransform(1,0,0,1,0,0)}
   else{x.fillStyle='#FFF6E6';x.fillRect(P,P,W,H)}
-  for(const c of CAM.cats){const im=await camLoadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(camSvg(BREEDS[c.i],c.pose,c.f)));const w=W*c.s/100,h=w*(c.pose==='wave'?54/48:54/44);x.drawImage(im,P+W*c.x/100-w/2,P+H*c.y/100-h,w,h)}
+  for(const c of CAM.cats){const im=await camLoadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(c.i<0?camJs(c.f):camSvg(BREEDS[c.i],c.pose,c.f)));const w=W*c.s/100,h=w*(c.i<0?84/60:c.pose==='wave'?54/48:54/44);x.drawImage(im,P+W*c.x/100-w/2,P+H*c.y/100-h,w,h)}
   x.restore();x.fillStyle=fr[1];x.textBaseline='middle';x.font="44px Jua, 'IBM Plex Sans KR', sans-serif";const R=rmS();
-  x.fillText('🐾 '+(R.name||'나')+' & '+CAM.cats.map(c=>BREEDS[c.i].n).join(', '),P+6,H+P+FT*.42,W-12);x.font="26px 'IBM Plex Sans KR', sans-serif";x.globalAlpha=.75;x.fillText(new Date().toLocaleDateString('ko-KR')+' · 일일삼제 미니홈피',P+6,H+P+FT*.78);x.globalAlpha=1;
-  CAM.shot=cv.toDataURL('image/png');camStop();R.love=R.love||{};CAM.cats.forEach(c=>R.love[c.i]=(R.love[c.i]||0)+1);save();camDraw()}
+  x.fillText('🐾 '+(R.name||'나')+' & '+(CAM.cats.filter(c=>c.i>=0).map(c=>BREEDS[c.i].n).join(', ')||'고양이'),P+6,H+P+FT*.42,W-12);x.font="26px 'IBM Plex Sans KR', sans-serif";x.globalAlpha=.75;x.fillText(new Date().toLocaleDateString('ko-KR')+' · 일일삼제 미니홈피',P+6,H+P+FT*.78);x.globalAlpha=1;
+  CAM.shot=cv.toDataURL('image/png');camStop();R.love=R.love||{};CAM.cats.forEach(c=>{if(c.i>=0)R.love[c.i]=(R.love[c.i]||0)+1});save();camDraw()}
 function camFileName(){const d=new Date();return `고양이셀카_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}.png`}
 document.addEventListener('click',async e=>{const t=e.target.closest('#rmcam [data-cam],#rmcam [data-campick],#rmcam [data-campose],#rmcam [data-camfr]');if(!t||!CAM)return;e.preventDefault();e.stopPropagation();const a=t.dataset.cam;
-  if(t.dataset.campick){const i=+t.dataset.campick;const k=CAM.cats.findIndex(c=>c.i===i);if(k>=0){CAM.cats.splice(k,1);CAM.sel=Math.max(0,Math.min(CAM.sel,CAM.cats.length-1))}else{if(CAM.cats.length>=3){toast('최대 3마리까지 함께 찍을 수 있어요');return}const n=CAM.cats.length;CAM.cats.push({i,x:[72,28,50][n],y:[96,96,70][n],s:n==2?26:32,pose:CAM_POSES[(n*2+1)%CAM_POSES.length][0],f:n==1?1:0});CAM.sel=CAM.cats.length-1}return camDraw(true)}
+  if(t.dataset.campick){const i=+t.dataset.campick;const k=CAM.cats.findIndex(c=>c.i===i);if(k>=0){CAM.cats.splice(k,1);CAM.sel=Math.max(0,Math.min(CAM.sel,CAM.cats.length-1))}else{if(CAM.cats.length>=(CAM.cats.some(c=>c.i<0)||i<0?4:3)){toast('고양이는 최대 3마리까지 함께 찍을 수 있어요');return}if(i<0){CAM.cats.push({i:-1,x:30,y:100,s:40,pose:'sit',f:0});CAM.sel=CAM.cats.length-1;return camDraw(true)}const n=CAM.cats.filter(c=>c.i>=0).length;CAM.cats.push({i,x:[72,28,50][n],y:[96,96,70][n],s:n==2?26:32,pose:CAM_POSES[(n*2+1)%CAM_POSES.length][0],f:n==1?1:0});CAM.sel=CAM.cats.length-1}return camDraw(true)}
   if(t.dataset.campose){CAM.cats[CAM.sel].pose=t.dataset.campose;return camDraw(true)}
   if(t.dataset.camfr){CAM.frame=+t.dataset.camfr;return camDraw(true)}
   if(a==='close')return camClose();
@@ -3374,6 +3383,80 @@ document.addEventListener('click',async e=>{const t=e.target.closest('#rmcam [da
 },true);
 document.addEventListener('input',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camsize]')){const c=CAM.cats[CAM.sel];if(!c)return;c.s=+t.value;const el=document.querySelector(`#rmcam .camcat[data-camcat="${CAM.sel}"]`);if(el)el.style.width=c.s+'%'}});
 document.addEventListener('change',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camfile]')&&t.files&&t.files[0]){const rd=new FileReader();rd.onload=()=>{camStop();CAM.bgc=null;CAM.bg=rd.result;camDraw()};rd.readAsDataURL(t.files[0])}});
+
+// ===== JIBSA: 고양이 집사 캐릭터 =====
+const JS_SKIN=['#FFE3CF','#F7CFAE','#E8B48B','#C98B62','#9A6444'];
+const JS_HC=['#3B2A22','#6B4630','#B07A4A','#E8C16A','#2F3550','#E58FA6','#8C8C96'];
+const JS_TC=['#FF9F7A','#7CD7C2','#8FB0F5','#FFD66B','#C9A7EB','#FFB8C6','#FFFFFF','#4A4F6B'];
+const JS_PC=['#5B6B8C','#3B3F4F','#B08A6A','#7CA8D9','#E8A0B4'];
+const JS_OPT={
+  hair:[['short','짧은 머리'],['bob','단발'],['long','긴 머리'],['pony','포니테일'],['bun','똥머리'],['curly','곱슬']],
+  top:[['apron','집사 앞치마'],['hoodie','고양이 후드'],['tee','티셔츠'],['dress','원피스'],['suit','집사 정장']],
+  acc:[['none','없음'],['catears','고양이 귀띠'],['ribbon','리본'],['glasses','동그란 안경'],['cap','모자'],['flower','꽃핀']],
+  face:[['smile','방긋'],['wink','윙크'],['happy','행복'],['ooh','놀람']],
+  hold:[['none','빈손'],['churu','츄르'],['wand','낚싯대'],['book','수학책'],['cat','아기 고양이']]};
+function rmLook(){const R=rmS();R.look=Object.assign({skin:0,hair:'short',hc:0,top:'apron',tc:0,pc:0,acc:'catears',face:'smile',hold:'none'},R.look||{});return R.look}
+function jsClean(o){o=o||{};const pick=(k,arr)=>arr.some(a=>a[0]===o[k])?o[k]:arr[0][0];const n=(k,max)=>Math.max(0,Math.min(max-1,(+o[k]|0)));
+  return {skin:n('skin',JS_SKIN.length),hair:pick('hair',JS_OPT.hair),hc:n('hc',JS_HC.length),top:pick('top',JS_OPT.top),tc:n('tc',JS_TC.length),pc:n('pc',JS_PC.length),acc:pick('acc',JS_OPT.acc),face:pick('face',JS_OPT.face),hold:pick('hold',JS_OPT.hold)}}
+function jsSvg(o,xmlns){o=jsClean(o);const OL=RM_OL,sk=JS_SKIN[o.skin],hc=JS_HC[o.hc],tc=JS_TC[o.tc],pc=JS_PC[o.pc];const st=`stroke="${OL}" stroke-width="1.6" stroke-linejoin="round"`;
+  let back='',front='',body='',acc='',hold='',face='';
+  // 머리 뒤
+  if(o.hair==='bob')back=`<path d="M11 28C11 9 49 9 49 28V44c0 3-5 3-5 0V32H16v12c0 3-5 3-5 0z" fill="${hc}" ${st}/>`;
+  if(o.hair==='long')back=`<path d="M11 28C11 9 49 9 49 28V62c0 3-6 3-6 0V34H17v28c0 3-6 3-6 0z" fill="${hc}" ${st}/>`;
+  if(o.hair==='pony')back=`<path d="M44 16c10-2 14 8 10 18-2 5-6 6-6 2 2-6 0-12-6-14z" fill="${hc}" ${st}/>`;
+  if(o.hair==='bun')back=`<circle cx="30" cy="10" r="7" fill="${hc}" ${st}/>`;
+  if(o.hair==='curly')back=`<g fill="${hc}" ${st}>${[[13,24],[11,33],[14,41],[47,24],[49,33],[46,41]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>`;
+  // 몸
+  const arm=(x1,y1,x2,y2,c)=>`<path d="M${x1} ${y1}L${x2} ${y2}" stroke="${OL}" stroke-width="6.4" stroke-linecap="round"/><path d="M${x1} ${y1}L${x2} ${y2}" stroke="${c}" stroke-width="4" stroke-linecap="round"/><circle cx="${x2}" cy="${y2+1}" r="2.8" fill="${sk}" ${st}/>`;
+  const sleeve=o.top==='apron'?tc:tc;
+  const legs=`<rect x="22" y="66" width="6.5" height="11" rx="2" fill="${pc}" ${st}/><rect x="31.5" y="66" width="6.5" height="11" rx="2" fill="${pc}" ${st}/><ellipse cx="25" cy="78.5" rx="5" ry="2.8" fill="${OL}"/><ellipse cx="35" cy="78.5" rx="5" ry="2.8" fill="${OL}"/>`;
+  const armL=arm(20,50,14,61,sleeve),armR=o.hold==='none'?arm(40,50,46,61,sleeve):arm(40,50,47,55,sleeve);
+  if(o.top==='dress')body=`${legs}<path d="M21 46h18l7 24H14z" fill="${tc}" ${st}/><path d="M16 64h28" stroke="#fff" stroke-width="1.6" stroke-dasharray="2 2"/>`;
+  else body=`${legs}<path d="M20 49c0-3 2-4 5-4h10c3 0 5 1 5 4l1 19H19z" fill="${tc}" ${st}/>`;
+  if(o.top==='apron')body+=`<path d="M23 50h14v17H23z" fill="#fff" ${st}/><path d="M23 50l-2-4M37 50l2-4" stroke="${OL}" stroke-width="1.2"/><g fill="#FFB8C6"><circle cx="30" cy="60" r="2.6"/><circle cx="26.8" cy="56.4" r="1.2"/><circle cx="29" cy="55" r="1.2"/><circle cx="31.4" cy="55" r="1.2"/><circle cx="33.4" cy="56.6" r="1.2"/></g>`;
+  if(o.top==='hoodie')body+=`<path d="M24 60h12v6H24z" fill="none" ${st}/><path d="M27 46v6M33 46v6" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>`;
+  if(o.top==='tee')body+=`<path d="M27 54c1-2 2-2 3 0 1-2 2-2 3 0-1 3-2 4-3 5-1-1-2-2-3-5z" fill="#FF7563"/>`;
+  if(o.top==='suit')body+=`<path d="M30 46l-5 6 5 15 5-15z" fill="#fff" ${st}/><path d="M28 47h4l-1 2h-2z" fill="#FF7563" stroke="${OL}" stroke-width="1"/><circle cx="30" cy="58" r=".9" fill="${OL}"/><circle cx="30" cy="62" r=".9" fill="${OL}"/>`;
+  body+=armL+armR;
+  // 고양이 후드 귀(머리 뒤에)
+  if(o.top==='hoodie')back=`<path d="M10 30C9 8 51 8 50 30l-2 14H12z" fill="${tc}" ${st}/><path d="M13 16l1-11 9 6zM47 16l-1-11-9 6z" fill="${tc}" ${st}/><path d="M15 13l.6-5 4 3zM45 13l-.6-5-4 3z" fill="#FFB8C6"/>`+back;
+  // 머리
+  const head=`<circle cx="15" cy="31" r="3" fill="${sk}" ${st}/><circle cx="45" cy="31" r="3" fill="${sk}" ${st}/><circle cx="30" cy="28" r="16.5" fill="${sk}" ${st}/>`;
+  const bang={short:`M13.5 27C13 12 47 12 46.5 27C44 21 39 19 35.5 22.5C32.5 18 26 18.5 23.5 22.5C20 20.5 15.5 22 13.5 27z`,
+    bob:`M13.5 28C13 12 47 12 46.5 28C40 26 35 23 32 19C28 24 21 27 13.5 28z`,long:`M13.5 28C13 12 47 12 46.5 28C40 26 35 23 32 19C28 24 21 27 13.5 28z`,
+    pony:`M13.5 27C13 12 47 12 46.5 27C43 22 37 21 33 17C30 22 20 24 13.5 27z`,bun:`M13.5 26C13 12 47 12 46.5 26C42 22 34 19 30 21C26 19 18 22 13.5 26z`,
+    curly:`M13.5 27C13 12 47 12 46.5 27C45 23 42 22 40 23C39 20 35 19 33 21C31 18 27 18 25 21C23 19 19 20 18 23C16 22 14 24 13.5 27z`}[o.hair];
+  front=o.top==='hoodie'&&o.hair!=='curly'?`<path d="${bang}" fill="${hc}" ${st} transform="translate(30 27) scale(.96) translate(-30 -27)"/>`:`<path d="${bang}" fill="${hc}" ${st}/>`;
+  // 얼굴
+  const eye=(x)=>`<ellipse cx="${x}" cy="31" rx="1.9" ry="2.5" fill="${OL}"/><circle cx="${x+.7}" cy="30" r=".7" fill="#fff"/>`;
+  const arc=(x)=>`<path d="M${x-2.2} 31.5q2.2-2.8 4.4 0" stroke="${OL}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
+  face=(o.face==='happy'?arc(24)+arc(36):o.face==='wink'?eye(24)+arc(36):eye(24)+eye(36))+`<ellipse cx="20.5" cy="36" rx="2.6" ry="1.6" fill="#FFB8C6" opacity=".85"/><ellipse cx="39.5" cy="36" rx="2.6" ry="1.6" fill="#FFB8C6" opacity=".85"/>`+
+    (o.face==='ooh'?`<ellipse cx="30" cy="38" rx="1.8" ry="2.2" fill="#B5544A" stroke="${OL}" stroke-width="1"/>`:`<path d="M27 37q1.5 2.2 3 0q1.5 2.2 3 0" stroke="${OL}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`);
+  // 꾸미기
+  if(o.acc==='catears')acc=`<path d="M17 18l2-10 7 6zM43 18l-2-10-7 6z" fill="${OL}"/><path d="M19.5 15.5l1-5 3.5 3zM40.5 15.5l-1-5-3.5 3z" fill="#FFB8C6"/><path d="M15 21C18 12 42 12 45 21" stroke="${OL}" stroke-width="2" fill="none"/>`;
+  if(o.acc==='ribbon')acc=`<g transform="translate(41 16) rotate(20)"><path d="M0 0l-7-4v8zM0 0l7-4v8z" fill="#FF7563" ${st}/><circle r="2" fill="#FF9F7A" ${st}/></g>`;
+  if(o.acc==='glasses')acc=`<circle cx="24" cy="31" r="4.4" fill="rgba(255,255,255,.25)" stroke="${OL}" stroke-width="1.4"/><circle cx="36" cy="31" r="4.4" fill="rgba(255,255,255,.25)" stroke="${OL}" stroke-width="1.4"/><path d="M28.4 31h3.2" stroke="${OL}" stroke-width="1.4"/>`;
+  if(o.acc==='cap')acc=`<path d="M13 22C13 8 47 8 47 22z" fill="#5B8DEF" ${st}/><path d="M30 22h19c2 0 2 3 0 3H30z" fill="#4A78D6" ${st}/><g fill="#fff"><circle cx="30" cy="15" r="2"/><circle cx="27.4" cy="12" r=".9"/><circle cx="30" cy="11" r=".9"/><circle cx="32.6" cy="12" r=".9"/></g>`;
+  if(o.acc==='flower')acc=`<g transform="translate(18 17)">${[0,72,144,216,288].map(a=>`<ellipse rx="2.4" ry="3.6" transform="rotate(${a}) translate(0 -3)" fill="#FFB8C6" stroke="${OL}" stroke-width="1"/>`).join('')}<circle r="2" fill="#FFD66B" stroke="${OL}" stroke-width="1"/></g>`;
+  // 손에 든 것
+  if(o.hold==='churu')hold=`<g transform="translate(48 52) rotate(-25)"><rect x="-2.4" y="-9" width="4.8" height="12" rx="1.4" fill="#FFD66B" ${st}/><path d="M-2.4 -5h4.8" stroke="#FF7563" stroke-width="1.6"/></g>`;
+  if(o.hold==='wand')hold=`<path d="M47 56L56 34" stroke="${OL}" stroke-width="1.6" stroke-linecap="round"/><path d="M56 34c2 4 1 8-2 10" stroke="${OL}" stroke-width=".9" fill="none"/><path d="M54 44c-3 1-4 4-2 6 2-1 3-3 2-6z" fill="#7CD7C2" stroke="${OL}" stroke-width="1"/>`;
+  if(o.hold==='book')hold=`<g transform="translate(48 55) rotate(-12)"><rect x="-6" y="-7" width="12" height="14" rx="1.5" fill="#5B8DEF" ${st}/><path d="M-3 -1h6M0 -4v6" stroke="#fff" stroke-width="1.4"/></g>`;
+  if(o.hold==='cat')hold=`<g transform="translate(50 53)"><ellipse cx="0" cy="2" rx="7" ry="5" fill="#FFC9A3" ${st}/><path d="M-6 -2l1-6 4 3zM6 -2l-1-6-4 3z" fill="#FFC9A3" ${st}/><circle cx="-2.4" cy="0" r=".9" fill="${OL}"/><circle cx="2.4" cy="0" r=".9" fill="${OL}"/><path d="M-1 2.4q1 1 2 0" stroke="${OL}" stroke-width=".8" fill="none"/></g>`;
+  return `<svg ${xmlns?'xmlns="http://www.w3.org/2000/svg" width="480" height="672" ':''}viewBox="0 0 60 84">${back}${body}${head}${front}${face}${acc}${hold}</svg>`}
+// 미니홈피 탭
+function jsTabHTML(){const o=rmLook();const R=rmS();
+  const sw=(k,arr)=>`<div class="jsrow"><b>${{skin:'피부',hc:'머리 색',tc:'옷 색',pc:'바지·신발'}[k]}</b><div class="jssw">${arr.map((c,n)=>`<button class="${o[k]===n?'on':''}" data-jsopt="${k}:${n}" style="background:${c}" aria-label="${n+1}"></button>`).join('')}</div></div>`;
+  const ch=(k,lab)=>`<div class="jsrow"><b>${lab}</b><div class="camopts">${JS_OPT[k].map(([v,t])=>`<button class="${o[k]===v?'on':''}" data-jsopt="${k}:${v}">${t}</button>`).join('')}</div></div>`;
+  return `<div class="jsbox"><div class="jsprev">${jsSvg(o)}<span>${esc(R.name||'나')}</span></div><div class="jsbtns"><button class="rmbtn" data-jsrand>🎲 아무거나</button></div></div>
+   ${ch('hair','머리 모양')}${sw('hc',JS_HC)}${sw('skin',JS_SKIN)}${ch('top','옷')}${sw('tc',JS_TC)}${sw('pc',JS_PC)}${ch('acc','꾸미기')}${ch('face','표정')}${ch('hold','손에 든 것')}
+   <p class="rmhint" style="margin-top:12px">만든 집사는 미니룸에서 고양이들과 함께 지내고, 친구랑 놀기와 셀카에도 나와요.</p>`}
+function jsWalk(){const el=document.querySelector('#rmscene .rmjs');if(!el||RM_SEEK||RM_EDIT)return;if(Math.random()<.55)return;const x0=parseFloat(el.style.left),x=10+Math.random()*80,y=78+Math.random()*18;el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)}
+const JS_SAY=['오늘도 3문제 풀었어!','다들 밥 먹었니? 🍡','공부 끝나면 놀아 줄게!','우리 냥이들 최고 💗','숨바꼭질 할 사람~?','츄르 시간이다!'];
+document.addEventListener('click',e=>{const t=e.target.closest('[data-jsopt],[data-jsrand],#rmscene .rmjs');if(!t)return;e.preventDefault();e.stopPropagation();const o=rmLook();
+  if(t.classList.contains('rmjs')){if(RM_EDIT||RM_SEEK)return;t.classList.remove('jsjump');void t.offsetWidth;t.classList.add('jsjump');const h=document.createElement('i');h.className='jsbub';h.textContent=JS_SAY[Math.floor(Math.random()*JS_SAY.length)];t.appendChild(h);setTimeout(()=>h.remove(),2200);return}
+  if(t.dataset.jsrand!=null){const r=a=>Math.floor(Math.random()*a);Object.assign(o,{skin:r(JS_SKIN.length),hc:r(JS_HC.length),tc:r(JS_TC.length),pc:r(JS_PC.length)});['hair','top','acc','face','hold'].forEach(k=>o[k]=JS_OPT[k][r(JS_OPT[k].length)][0]);save();return rmRender()}
+  const [k,v]=t.dataset.jsopt.split(':');o[k]=/^\d+$/.test(v)?+v:v;save();rmRender()},true);
 
 // ===== PARTY: 친구랑 놀기 (QR 초대 · 실시간) =====
 const PT_URL=(()=>{try{const o=localStorage.getItem('ptURL');if(o)return o}catch(e){}return /^(localhost|127\.)/.test(location.hostname)?'http://localhost:8790':'https://bus-cat-party.onrender.com'})();
@@ -3411,8 +3494,8 @@ function ptDraw(){const el=ptEl();const R=rmS();const cur=rmCur(R);
 async function ptStart(kind){const R=rmS();PT.nick=(PT.nick||'').trim();if(!PT.nick){toast('친구들이 알아볼 수 있게 별명을 써 주세요');const n=document.querySelector('#rmparty [data-ptnick]');if(n)n.focus();return}R.ptNick=PT.nick;save();
   if(kind==='join'&&!/^\d{4}$/.test(PT.code)){toast('4자리 방 코드를 넣어 주세요');return}
   ptMsg('🚪 놀이터로 가는 중…','');if(!await ptWake()){if(PT)ptMsg('😿 놀이터에 연결할 수 없어요','인터넷 연결을 확인하고 다시 해 봐요.','<button class="cambig" data-pt="menu">처음으로</button>');return}
-  try{let j;if(kind==='host'){const cur=rmCur(R);j=await ptApi('/api/create',{nick:PT.nick,cats:rmLive().slice(0,12).map(i=>({i})),snap:{name:cur.name,t:cur.t,wall:cur.wall,floor:cur.floor,items:cur.items.map(it=>({k:it.k,x:it.x,y:it.y,f:it.f}))}})}
-    else j=await ptApi('/api/join',{code:PT.code,nick:PT.nick,cats:PT.bring.map(i=>({i}))});
+  try{let j;if(kind==='host'){const cur=rmCur(R);j=await ptApi('/api/create',{nick:PT.nick,look:rmLook(),cats:rmLive().slice(0,12).map(i=>({i})),snap:{name:cur.name,t:cur.t,wall:cur.wall,floor:cur.floor,items:cur.items.map(it=>({k:it.k,x:it.x,y:it.y,f:it.f}))}})}
+    else j=await ptApi('/api/join',{code:PT.code,nick:PT.nick,look:rmLook(),cats:PT.bring.map(i=>({i}))});
     Object.assign(PT,{code:j.code,pid:j.pid,tok:j.tok,host:kind==='host',st:{},people:[],scr:'play',qr:kind==='host'});ptConnect()}catch(e){if(PT)ptErr(e)}}
 function ptConnect(){const es=new EventSource(`${PT_URL}/api/events?code=${PT.code}&pid=${PT.pid}&tok=${encodeURIComponent(PT.tok)}`);PT.es=es;
   es.onmessage=ev=>{if(!PT)return;let d;try{d=JSON.parse(ev.data)}catch(e){return}ptOn(d)};
@@ -3421,7 +3504,7 @@ function ptConnect(){const es=new EventSource(`${PT_URL}/api/events?code=${PT.co
 function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats||[]).forEach(c=>{if(BREEDS[c.i])o.push({k:p.pid+'-'+c.i,i:c.i,own:p.nick,pid:p.pid,host:p.host})}));return o}
 function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();return}
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
-    if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);if(ptKeys().map(c=>c.k).join()!==before)ptPlay();else ptPeople();ptReward();return}
+    if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);const jb=[...document.querySelectorAll('#ptscene .ptjs')].map(x=>x.dataset.ptj).join();if(ptKeys().map(c=>c.k).join()!==before||jb!==(PT.people||[]).map(p=>p.pid).join())ptPlay();else{ptPeople();(PT.people||[]).forEach(p=>{const j=document.querySelector(`#ptscene [data-ptj="${p.pid}"]`);if(j)j.classList.toggle('off',!p.on)})}ptReward();return}
   if(d.t==='pos'){d.pos.forEach(p=>{const o=PT.st[p.k];PT.st[p.k]=p;const el=document.querySelector(`#ptscene [data-ptc="${p.k}"]`);if(el)ptApply(el,p,p.w&&o&&(o.x!==p.x||o.y!==p.y))});return}
   if(d.t==='toy')return ptToy(d.e,d.path,d.by);
   if(d.t==='snack')return ptSnack(d.e,d.x,d.y,d.by);
@@ -3436,7 +3519,7 @@ function ptPose(el,pose){if(el._pose===pose)return;el._pose=pose;const keep=[...
 function ptPeople(){const b=document.getElementById('ptpeople');if(!b)return;b.innerHTML=(PT.people||[]).map(p=>`<span class="ptp ${p.on?'':'off'} ${p.pid===PT.pid?'me':''}" data-ptp="${p.pid}" style="--pc:${ptColor(p.pid)}">${p.host?'🏠':'🐾'} ${esc(p.nick)}${p.pid===PT.pid?' (나)':''}${p.on?'':' · 잠깐 나감'}</span>`).join('')}
 function ptBubble(by,txt){const sc=document.getElementById('ptscene');if(!sc||!PT)return;const p=by&&(PT.people||[]).find(x=>x.pid===by);const b=document.createElement('div');b.className='ptbub';b.innerHTML=(p?`<b>${esc(p.nick)}</b> `:'')+txt;
   const box=document.getElementById('ptbubs');(box||sc).appendChild(b);setTimeout(()=>b.classList.add('out'),2600);setTimeout(()=>b.remove(),3200);
-  if(p){const chip=document.querySelector(`#ptpeople [data-ptp="${by}"]`);if(chip){chip.classList.remove('talk');void chip.offsetWidth;chip.classList.add('talk')}}}
+  if(p){const j=document.querySelector(`#ptscene [data-ptj="${by}"]`);if(j){j.classList.remove('jsjump');void j.offsetWidth;j.classList.add('jsjump');const h=document.createElement('i');h.className='jsbub';h.textContent=txt.replace(/<[^>]*>/g,'');j.appendChild(h);setTimeout(()=>h.remove(),2400)}const chip=document.querySelector(`#ptpeople [data-ptp="${by}"]`);if(chip){chip.classList.remove('talk');void chip.offsetWidth;chip.classList.add('talk')}}}
 function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const W=RM_WALL[s.wall]||RM_WALL.cream,F=RM_FLOOR[s.floor]||RM_FLOOR.wood;const host=(PT.people||[]).find(p=>p.host);
   const keys=ptKeys();const url=location.origin+location.pathname+'?party='+PT.code;
   const cats=keys.map((c,n)=>{const p=PT.st[c.k]||{x:10+((c.i*37+n*23)%80),y:70+((c.i*13+n*7)%24),pose:'sit'};p.z=p.z||Math.round(p.y)+1;PT.st[c.k]=Object.assign({k:c.k},p);return `<div class="rmc" data-ptc="${c.k}" data-i="${c.i}" style="left:${p.x}%;top:${p.y}%;z-index:${p.z}">${rmPose(BREEDS[c.i],'sit')}<span class="ptown" style="background:${ptColor(c.pid)}">${c.pid===PT.pid?'나':(c.host?'🏠':'')+esc(c.own)}</span></div>`}).join('');
@@ -3445,7 +3528,7 @@ function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const 
     <div class="ptcodebar"><span>방 코드 <b>${PT.code}</b></span><button class="cambtn" data-pt="qr">📱 초대 QR ${PT.qr?'접기':'보기'}</button></div>
     ${PT.qr?`<div class="ptqr"><div id="ptqrimg">QR 만드는 중…</div><p>친구가 카메라로 찍거나, 일일삼제 → 미니홈피 → 👫 → <b>코드 ${PT.code}</b>를 넣으면 들어와요</p></div>`:''}
     <div class="ptpeople" id="ptpeople"></div>
-    <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
+    <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}${(PT.people||[]).map((p,n,a)=>{const x=a.length<2?50:12+76*n/(a.length-1),y=91-(n%2)*5;return `<div class="rmjs ptjs ${p.on?'':'off'}" data-ptj="${p.pid}" style="left:${x}%;top:${y}%;z-index:${Math.round(y)+1}">${jsSvg(p.look||{})}<span class="ptown" style="background:${ptColor(p.pid)}">${p.pid===PT.pid?'나':esc(p.nick)}</span></div>`}).join('')}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
     <div class="ptbar"><b>놀잇감</b>${PT_TOYS.map(e=>`<button data-pttoy="${e}">${e}</button>`).join('')}</div>
     <div class="ptbar"><b>간식</b>${PT_SNACKS.map(e=>`<button data-ptsnack="${e}">${e}</button>`).join('')}</div>
     <div class="ptsays">${PT_SAYS.map((t,n)=>`<button data-ptsay="${n}">${t}</button>`).join('')}</div>

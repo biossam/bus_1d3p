@@ -49,12 +49,14 @@ function readJson(req) {
   });
 }
 function newCode() { for (let k = 0; k < 50; k++) { const c = String(crypto.randomInt(1000, 10000)); if (!rooms.has(c)) return c; } return null; }
-function pubPeople(r) { return [...r.people.values()].map(p => ({ pid: p.pid, nick: p.nick, host: p.pid === r.host, cats: p.cats, on: p.clients.size > 0 })); }
+function pubPeople(r) { return [...r.people.values()].map(p => ({ pid: p.pid, nick: p.nick, host: p.pid === r.host, cats: p.cats, look: p.look, on: p.clients.size > 0 })); }
 function broadcast(r, ev) { r.last = now(); r.seq++; const line = `id: ${r.seq}\ndata: ${JSON.stringify(ev)}\n\n`; for (const p of r.people.values()) for (const c of p.clients) c.write(line); }
 function auth(body) { const r = rooms.get(String(body.code || '')); if (!r) return [null, null, 'gone']; const p = r.people.get(String(body.pid || '')); if (!p || !safeEq(p.tok, tokHash(body.tok))) return [r, null, 'auth']; return [r, p, null]; }
 function closeRoom(r, why) { broadcast(r, { t: 'closed', why }); for (const p of r.people.values()) for (const c of p.clients) c.end(); rooms.delete(r.code); }
+const LOOK = { hair: ['short', 'bob', 'long', 'pony', 'bun', 'curly'], top: ['apron', 'hoodie', 'tee', 'dress', 'suit'], acc: ['none', 'catears', 'ribbon', 'glasses', 'cap', 'flower'], face: ['smile', 'wink', 'happy', 'ooh'], hold: ['none', 'churu', 'wand', 'book', 'cat'] };
+function cleanLook(o) { o = o && typeof o === 'object' ? o : {}; const r = {}; for (const [k, a] of Object.entries(LOOK)) r[k] = a.includes(o[k]) ? o[k] : a[0]; for (const [k, m] of [['skin', 5], ['hc', 7], ['tc', 8], ['pc', 5]]) r[k] = num(o[k], 0, m - 1) | 0; return r; }
 function uniqNick(r, n) { const used = new Set([...r.people.values()].map(p => p.nick)); if (!used.has(n)) return n; for (let k = 2; k < 99; k++) { const m = n.slice(0, 7) + k; if (!used.has(m)) return m; } return n; }
-function addPerson(r, nick, cats) { const pid = crypto.randomBytes(6).toString('hex'), tok = crypto.randomBytes(18).toString('base64url'); const p = { pid, tok: tokHash(tok), nick: uniqNick(r, cleanNick(nick)), cats: cleanCats(cats), clients: new Set(), last: now(), acts: { t: 0, n: 0 } }; r.people.set(pid, p); return [p, tok]; }
+function addPerson(r, nick, cats, look) { const pid = crypto.randomBytes(6).toString('hex'), tok = crypto.randomBytes(18).toString('base64url'); const p = { pid, tok: tokHash(tok), nick: uniqNick(r, cleanNick(nick)), cats: cleanCats(cats), look: cleanLook(look), clients: new Set(), last: now(), acts: { t: 0, n: 0 } }; r.people.set(pid, p); return [p, tok]; }
 
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x'); const ip = clientIp(req);
@@ -81,7 +83,7 @@ const server = http.createServer(async (req, res) => {
       if (rooms.size >= MAX_ROOMS) return send(req, res, 503, { err: 'full' });
       const code = newCode(); if (!code) return send(req, res, 503, { err: 'full' });
       const r = { code, created: now(), last: now(), seq: 0, snap: cleanSnap(body.snap), people: new Map(), pos: [], host: null };
-      const [p, tok] = addPerson(r, body.nick, body.cats); r.host = p.pid; rooms.set(code, r);
+      const [p, tok] = addPerson(r, body.nick, body.cats, body.look); r.host = p.pid; rooms.set(code, r);
       return send(req, res, 200, { code, pid: p.pid, tok });
     }
     if (url.pathname === '/api/join') {
@@ -89,7 +91,7 @@ const server = http.createServer(async (req, res) => {
       const r = rooms.get(String(body.code || '').replace(/\D/g, ''));
       if (!r) return send(req, res, 404, { err: 'gone' });
       if (r.people.size >= MAX_PEOPLE) return send(req, res, 409, { err: 'many' });
-      const [p, tok] = addPerson(r, body.nick, (body.cats || []).slice(0, 3));
+      const [p, tok] = addPerson(r, body.nick, (body.cats || []).slice(0, 3), body.look);
       broadcast(r, { t: 'people', people: pubPeople(r), join: p.nick });
       return send(req, res, 200, { code: r.code, pid: p.pid, tok });
     }
