@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 19:31"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 19:34"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -39,6 +39,8 @@
 .rmshop{display:flex;flex-direction:column;align-items:center;gap:2px;border:1.5px solid #DCE6F8;border-radius:14px;background:#fff;padding:6px 4px;font-size:12px;color:#333;cursor:pointer}.rmshop em{font-style:normal;font-size:11px;font-weight:800;color:#C9802B}.rmshop.own em{color:#2FB59E}.rmshop.on{border-color:#5B8DEF;background:#EEF4FF}
 .rmsw{display:block;width:46px;height:46px;border-radius:10px;border:1.5px solid #4A3B34}.rmemo{font-style:normal;font-size:32px;line-height:46px}
 .rmph{width:56px;height:50px;object-fit:cover;border-radius:10px}
+
+.rmtoy{position:absolute;font-size:24px;z-index:150;transform:translate(-50%,-100%);transition:left 1.1s ease-in-out,top 1.1s ease-in-out;animation:rmspin .6s linear infinite alternate}@keyframes rmspin{from{rotate:-15deg}to{rotate:15deg}}.rmh small{font-size:11px;color:#8A93A6;font-weight:400}.rmhave{font-size:10px;color:#2FB59E}
 </style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
@@ -2744,7 +2746,7 @@ function homeHTML(){
     </div>
     <button class="big" data-act="start">${done?'한 번 더 시작':'시작하기'} ▶</button><button class="pickc" data-lp="pick">📘 개념 골라서 15분</button>
   </section>
-  ${(()=>{const R=rmS();const n=rmLive().length;return `<button class="mhcard" data-act="room"><span class="mhci">🏠</span><span><b>${esc(R.name||'나')}의 미니홈피</b><small>고양이 ${n}마리가 살고 있어요 · 🐟 ${R.coins||0}</small></span><span class="mhgo">›</span></button>`})()}
+  ${(()=>{const R=rmS();const n=rmLive().length;return `<button class="mhcard" data-act="room"><span class="mhci">🏠</span><span><b>${esc(R.name||'나')}의 미니홈피</b><small>고양이 ${n}마리가 살고 있어요 · ⭐ ${R.coins||0}</small></span><span class="mhgo">›</span></button>`})()}
   <div class="quick"><button class="qb lib" data-act="shelfopen"><span class="qi">📚</span><b>나의 서재</b><small>이해한 개념 ${CONCEPTS.filter(c=>onShelf(c.id)).length}권 · 🐾 ${catSync()}마리</small></button><button class="qb map" data-act="mapopen"><span class="qi">🗺️</span><b>개념 지도</b><small>${esc(rangeName())} · ${ids.filter(id=>{const m=mastery(id);return m!=null&&m>=.8}).length}/${ids.length} 완성</small></button></div>
   ${dailyHTML()}
   <div class="stats">
@@ -3081,7 +3083,11 @@ const RM_ITEMS={
 };
 const RM_WALL={cream:{n:'크림',c:0,css:'#FFF6E6'},mint:{n:'민트 도트',c:1,css:'radial-gradient(circle,#B5EADD 2.4px,transparent 2.6px) 0 0/18px 18px,#E9FAF5'},sky:{n:'하늘 줄무늬',c:1,css:'repeating-linear-gradient(90deg,#E6EEFF 0 14px,#D3E1FF 14px 28px)'},pink:{n:'분홍 체크',c:2,css:'repeating-linear-gradient(0deg,rgba(255,184,198,.45) 0 10px,transparent 10px 20px),repeating-linear-gradient(90deg,rgba(255,184,198,.45) 0 10px,transparent 10px 20px),#FFF4F6'},night:{n:'밤하늘',c:3,css:'radial-gradient(circle,#FFE08A 1.4px,transparent 1.8px) 0 0/26px 22px,radial-gradient(circle,#fff 1px,transparent 1.4px) 12px 9px/30px 26px,#2E3A6B'}};
 const RM_FLOOR={wood:{n:'나무 마루',c:0,css:'repeating-linear-gradient(90deg,#E8BE86 0 38px,#DDAE72 38px 40px),#E8BE86'},tile:{n:'체크 타일',c:1,css:'conic-gradient(#fff 25%,#E9E4DB 0 50%,#fff 0 75%,#E9E4DB 0) 0 0/32px 32px'},grass:{n:'잔디',c:2,css:'radial-gradient(circle at 30% 40%,#8FD694 2px,transparent 3px) 0 0/16px 14px,#A8E0A0'},carpet:{n:'보라 카펫',c:2,css:'radial-gradient(circle,#B39DDB 1.6px,transparent 2px) 0 0/14px 14px,#D8CCF0'}};
-const RM_SNACK={churu:{n:'츄르',c:1,e:'🍡',love:1},fishsnack:{n:'생선 간식',c:2,e:'🐟',love:2},catnip:{n:'캣닢 쿠키',c:3,e:'🌿',love:3}};
+const RM_SNACK={
+ churu:{n:'츄르',c:1,e:'🍡',love:1,g:'food'},can:{n:'참치 통조림',c:2,e:'🥫',love:2,g:'food'},chicken:{n:'닭가슴살',c:2,e:'🍗',love:2,g:'food'},
+ milk:{n:'고양이 우유',c:1,e:'🥛',love:1,g:'food'},cookie:{n:'캣닢 쿠키',c:3,e:'🍪',love:3,g:'food'},cake:{n:'생일 케이크',c:5,e:'🎂',love:5,g:'food'},
+ wand:{n:'낚싯대 장난감',c:2,e:'🪶',love:2,g:'toy'},mouse:{n:'쥐돌이 인형',c:2,e:'🐭',love:2,g:'toy'},ball:{n:'방울 공',c:1,e:'⚽',love:1,g:'toy'},
+ laser:{n:'레이저 포인터',c:3,e:'🔴',love:3,g:'toy'},butterfly:{n:'나비 장난감',c:3,e:'🦋',love:3,g:'toy'},bubble:{n:'비눗방울',c:2,e:'🫧',love:2,g:'toy'}};
 function rmS(){if(!S.room){S.room={name:'',msg:'',wall:'cream',floor:'wood',coins:3,own:['window','cushion','cream','wood'],items:[{id:1,k:'window',x:28,y:34,f:0},{id:2,k:'cushion',x:62,y:86,f:0}],nid:3};save()}return S.room}
 function rmEarn(n){const R=rmS();R.coins=(R.coins||0)+n;save()}
 function rmLive(){const ks=Object.keys(S.dex||{}).map(Number).filter(i=>BREEDS[i]);ks.sort((a,b)=>(S.dex[b]||0)-(S.dex[a]||0));return ks.slice(0,16)}
@@ -3100,14 +3106,14 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     const sel=RM_EDIT&&RM_SEL!=null?R.items.find(x=>x.id===RM_SEL):null;
     const inv=Object.keys(RM_ITEMS).filter(k=>R.own.includes(k));
     body=`${roomSceneHTML()}
-    <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button>${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} 주기 ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식을 사서 줄 수 있어요</span>'}`}</div>
+    <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button>${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} ${o.g==='toy'?'놀아 주기':'주기'} ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식과 놀잇감을 살 수 있어요</span>'}`}</div>
     ${RM_EDIT?`<div class="rminv"><b>가진 가구 놓기</b>${inv.map(k=>`<button class="rminvb" data-rmadd="${k}"><svg viewBox="0 0 60 60" width="34" height="34">${RM_ITEMS[k].s}</svg><span>${RM_ITEMS[k].n}</span></button>`).join('')}</div>`:''}`;
   }else if(RM_TAB==='shop'){
     const card=(kind,k,o)=>{const own=R.own.includes(k);const on=(kind==='wall'&&R.wall===k)||(kind==='floor'&&R.floor===k);
       const pv=kind==='item'?`<svg viewBox="0 0 60 60" width="46" height="46">${o.s}</svg>`:`<i class="rmsw" style="background:${o.css}"></i>`;
-      return `<button class="rmshop ${own?'own':''} ${on?'on':''}" data-rmbuy="${kind}:${k}">${pv}<span>${o.n}</span><em>${on?'사용 중':own?(kind==='item'?'가짐 ✓':'바꾸기'):o.c?`🐟 ${o.c}`:'무료'}</em></button>`};
-    body=`<div class="rmcoin">내 생선 <b>🐟 ${R.coins||0}</b><span>문제 세트 1개를 끝까지 풀면 🐟 1개, 오늘의 15분을 끝내면 🐟 2개</span></div>
-    <h4 class="rmh">고양이 간식</h4><div class="rmgrid">${Object.entries(RM_SNACK).map(([k,o])=>`<button class="rmshop" data-rmbuy="snack:${k}"><i class="rmemo">${o.e}</i><span>${o.n}</span><em>🐟 ${o.c}</em></button>`).join('')}</div>
+      return `<button class="rmshop ${own?'own':''} ${on?'on':''}" data-rmbuy="${kind}:${k}">${pv}<span>${o.n}</span><em>${on?'사용 중':own?(kind==='item'?'가짐 ✓':'바꾸기'):o.c?`⭐ ${o.c}`:'무료'}</em></button>`};
+    body=`<div class="rmcoin">내 포인트 <b>⭐ ${R.coins||0}</b><span>문제 세트 1개를 끝까지 풀면 ⭐1, 오늘의 15분을 끝내면 ⭐2, 7일 연속이면 ⭐5</span></div>
+    ${[['food','🍽 간식'],['toy','🧶 놀잇감']].map(([g,gt])=>`<h4 class="rmh">${gt} <small>(1번 쓰면 없어져요)</small></h4><div class="rmgrid">${Object.entries(RM_SNACK).filter(([k,o])=>o.g===g).map(([k,o])=>`<button class="rmshop" data-rmbuy="snack:${k}"><i class="rmemo">${o.e}</i><span>${o.n}</span><em>⭐ ${o.c}</em>${(R.snack||{})[k]?`<small class="rmhave">${R.snack[k]}개 있음</small>`:''}</button>`).join('')}</div>`).join('')}
     <h4 class="rmh">가구</h4><div class="rmgrid">${Object.entries(RM_ITEMS).map(([k,o])=>card('item',k,o)).join('')}</div>
     <h4 class="rmh">벽지</h4><div class="rmgrid">${Object.entries(RM_WALL).map(([k,o])=>card('wall',k,o)).join('')}</div>
     <h4 class="rmh">바닥</h4><div class="rmgrid">${Object.entries(RM_FLOOR).map(([k,o])=>card('floor',k,o)).join('')}</div>`;
@@ -3118,7 +3124,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
   <div class="mhbook"><aside class="mhside"><div class="mhava">${live.length?rmCat(BREEDS[live[0]]):'🐾'}</div>
     <input class="mhname" data-rmname maxlength="12" value="${esc(R.name)}" placeholder="이름 쓰기">
     <textarea class="mhmsg" data-rmmsg maxlength="60" rows="3" placeholder="오늘의 한마디">${esc(R.msg)}</textarea>
-    <div class="mhst"><span>🐱 ${live.length}마리</span><span>🐟 ${R.coins||0}</span></div></aside>
+    <div class="mhst"><span>🐱 ${live.length}마리</span><span>⭐ ${R.coins||0}</span></div></aside>
   <section class="mhmain"><h2 class="mhtitle">${esc(nm)}의 미니룸</h2>
     <div class="mhtabs">${[['room','🏠 미니룸'],['shop','🛍 꾸미기 상점'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
 function rmWander(){clearInterval(RM_T);RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}
@@ -3140,13 +3146,13 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-rmsnack],[
   if(t.dataset.rm==='flip'){const it=R.items.find(x=>x.id===RM_SEL);if(it){it.f=it.f?0:1;save()}return rmRender()}
   if(t.dataset.rm==='del'){R.items=R.items.filter(x=>x.id!==RM_SEL);RM_SEL=null;save();return rmRender()}
   if(t.dataset.rmadd){const k=t.dataset.rmadd,I=RM_ITEMS[k];const id=R.nid++;R.items.push({id,k,x:50,y:I.p==='wall'?40:84,f:0});RM_SEL=id;save();toast(`${I.n}을(를) 놓았어요. 끌어서 옮겨 보세요`);return rmRender()}
-  if(t.dataset.rmbuy&&t.dataset.rmbuy.startsWith('snack:')){const k=t.dataset.rmbuy.slice(6),o=RM_SNACK[k];if((R.coins||0)<o.c){toast(`생선이 ${o.c-(R.coins||0)}개 더 필요해요 🐟`);return}R.coins-=o.c;R.snack=R.snack||{};R.snack[k]=(R.snack[k]||0)+1;save();toast(`${o.e} ${o.n}을(를) 샀어요! 미니룸에서 주세요`);return rmRender()}
+  if(t.dataset.rmbuy&&t.dataset.rmbuy.startsWith('snack:')){const k=t.dataset.rmbuy.slice(6),o=RM_SNACK[k];if((R.coins||0)<o.c){toast(`포인트가 ${o.c-(R.coins||0)} 더 필요해요 ⭐`);return}R.coins-=o.c;R.snack=R.snack||{};R.snack[k]=(R.snack[k]||0)+1;save();toast(`${o.e} ${o.n}을(를) 샀어요! 미니룸에서 ${o.g==='toy'?'놀아 주세요':'주세요'}`);return rmRender()}
   if(t.dataset.rmbuy){const [kind,k]=t.dataset.rmbuy.split(':');const o=kind==='item'?RM_ITEMS[k]:kind==='wall'?RM_WALL[k]:RM_FLOOR[k];
-    if(!R.own.includes(k)){if((R.coins||0)<o.c){toast(`생선이 ${o.c-(R.coins||0)}개 더 필요해요 🐟`);return}R.coins-=o.c;R.own.push(k);toast(`${o.n}을(를) 샀어요!`)}
+    if(!R.own.includes(k)){if((R.coins||0)<o.c){toast(`포인트가 ${o.c-(R.coins||0)} 더 필요해요 ⭐`);return}R.coins-=o.c;R.own.push(k);toast(`${o.n}을(를) 샀어요!`)}
     if(kind==='wall')R.wall=k;else if(kind==='floor')R.floor=k;else{RM_TAB='room';RM_EDIT=true;const id=R.nid++;R.items.push({id,k,x:50,y:o.p==='wall'?40:84,f:0});RM_SEL=id}
     save();return rmRender()}
   if(t.dataset.rmc!=null){if(RM_EDIT)return;const b=BREEDS[+t.dataset.rmc];if(!b)return;const lv=(R.love&&R.love[b.i])||0;ask(catBig(b),esc(b.n),esc(b.t)+`<br><b>💗 친밀도 ${lv}</b>`+catCredit(b),[],'닫기');return}
-  if(t.dataset.rmsnack){const k=t.dataset.rmsnack,o=RM_SNACK[k];R.snack=R.snack||{};if(!(R.snack[k]>0))return;R.snack[k]--;R.love=R.love||{};const live=rmLive();live.forEach(i=>R.love[i]=(R.love[i]||0)+o.love);save();rmFeed(o.e);return}
+  if(t.dataset.rmsnack){const k=t.dataset.rmsnack,o=RM_SNACK[k];R.snack=R.snack||{};if(!(R.snack[k]>0))return;R.snack[k]--;R.love=R.love||{};const live=rmLive();live.forEach(i=>R.love[i]=(R.love[i]||0)+o.love);save();(o.g==='toy'?rmPlay:rmFeed)(o.e);return}
 },true);
 document.addEventListener('input',e=>{const t=e.target;if(t.matches('[data-rmname]')){rmS().name=t.value.slice(0,12);save();const h=document.querySelector('.mhtitle');if(h)h.textContent=(t.value||'나')+'의 미니룸'}else if(t.matches('[data-rmmsg]')){rmS().msg=t.value.slice(0,60);save()}});
 
@@ -3154,6 +3160,13 @@ function rmFeed(em){const sc=document.getElementById('rmscene');if(!sc)return;co
   const cats=[...sc.querySelectorAll('.rmc')];cats.forEach((el,i)=>{const a=i/Math.max(1,cats.length)*Math.PI*2;const x=50+Math.cos(a)*(10+cats.length*.8),y=82+Math.sin(a)*7;el.classList.toggle('rmflip',x>50);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;
     setTimeout(()=>{el.classList.remove('rmwalk');const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)},2300)});
   setTimeout(()=>bowl.remove(),4200);toast(cats.length?`냠냠! 고양이들의 친밀도가 올랐어요 💗`:'아직 함께 사는 고양이가 없어요')}
+
+function rmPlay(em){const sc=document.getElementById('rmscene');if(!sc)return;const toy=document.createElement('div');toy.className='rmtoy';toy.textContent=em;sc.appendChild(toy);
+  const cats=[...sc.querySelectorAll('.rmc')];let n=0;
+  const hop=()=>{const x=10+Math.random()*80,y=66+Math.random()*28;toy.style.left=x+'%';toy.style.top=y+'%';
+    cats.forEach((el,i)=>{const dx=(i%5-2)*5,dy=(Math.floor(i/5)-1)*4;const cx=Math.max(5,Math.min(95,x+dx)),cy=Math.max(64,Math.min(98,y+6+dy));el.classList.toggle('rmflip',cx<parseFloat(el.style.left));el.classList.add('rmwalk');el.style.transition='left 1.1s ease-out,top 1.1s ease-out';el.style.left=cx+'%';el.style.top=cy+'%';el.style.zIndex=Math.round(cy)+1});
+    if(++n<5)setTimeout(hop,1300);else setTimeout(()=>{toy.remove();cats.forEach(el=>{el.classList.remove('rmwalk');el.style.transition='';const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)})},1300)};
+  hop();toast(cats.length?'신나게 놀았어요! 고양이들의 친밀도가 올랐어요 💗':'아직 함께 사는 고양이가 없어요')}
 </script>
 </body>
 </html>
