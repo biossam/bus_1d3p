@@ -55,7 +55,7 @@ function rmItemHTML(it){const I=RM_ITEMS[it.k];if(!I)return '';const sel=RM_EDIT
   return `<div class="rmi ${RM_EDIT?'ed':''} ${sel?'sel':''}" data-rmi="${it.id}" style="left:${it.x}%;top:${it.y}%;width:${I.w}%;z-index:${I.z===-1?1:(I.p==='wall'?2:Math.round(it.y))};transform:translate(-50%,-100%) scaleX(${it.f?-1:1})"><svg viewBox="0 0 60 60" width="100%">${I.s}</svg></div>`}
 function roomSceneHTML(){const R=rmS();const live=rmLive();
   const cats=live.map((i,n)=>{const x=10+((i*37+n*23)%80),y=70+((i*13+n*7)%24);return `<div class="rmc" data-rmc="${i}" style="left:${x}%;top:${y}%;z-index:${y+1}">${rmCat(BREEDS[i])}</div>`}).join('');
-  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}<div class="rmjs ${R.jpose==='dance'?'jsdance':''}" style="left:${R.jx||50}%;top:${R.jy||90}%;z-index:${Math.round(R.jy||90)+1}">${jsSvg(rmLook(),false,R.jpose)}</div>${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
+  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}<div class="rmjs" style="left:${R.jx||50}%;top:${R.jy||90}%;z-index:${Math.round(R.jy||90)+1}">${jsSvg(rmLook())}</div>${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
 function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S.days[k]&&(S.days[k].sess||S.days[k].solved||S.days[k].n)).length||Object.keys(S.days||{}).length;
   const td=(S.daily&&S.daily.log&&S.daily.log[dayStr(today())])||0;const live=rmLive();
   const nm=R.name||'나';
@@ -68,7 +68,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
   }else if(RM_TAB==='room'){
     const sel=RM_EDIT&&RM_SEL!=null?R.items.find(x=>x.id===RM_SEL):null;
     const inv=Object.keys(RM_ITEMS).filter(k=>R.own.includes(k));
-    body=`${roomsBar}${roomSceneHTML()}${RM_EDIT?'':jsActBar(R.jpose||'stand','data-jsact')}
+    body=`${roomsBar}${roomSceneHTML()}
     <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}<input class="rmrname" data-rmrname maxlength="10" value="${esc(cur.name)}" placeholder="방 이름">${R.rooms.length>1?'<button class="rmbtn" data-rmdelroom>🗑 이 방 없애기</button>':''}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button><button class="rmbtn" data-rmtab="cats">🐱 식구 고르기</button>${rmAll().length?'<button class="rmbtn cam" data-rmcam>📸 셀카</button>':''}<button class="rmbtn party" data-rmparty>👫 친구랑 놀기</button>${rmLive().length?'<button class="rmbtn seek" data-rmseek>🙈 숨바꼭질</button>':''}${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} ${o.g==='toy'?'놀아 주기':'주기'} ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식과 놀잇감을 살 수 있어요</span>'}`}</div>
     ${RM_EDIT?`<div class="rminv"><b>가진 가구 놓기</b>${inv.map(k=>`<button class="rminvb" data-rmadd="${k}"><svg viewBox="0 0 60 60" width="34" height="34">${RM_ITEMS[k].s}</svg><span>${RM_ITEMS[k].n}</span></button>`).join('')}</div>`:''}`;
   }else if(RM_TAB==='shop'){

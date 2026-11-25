@@ -123,7 +123,7 @@ const server = http.createServer(async (req, res) => {
           if (n >= total) { const score = {}; Object.values(r.seek.found).forEach(q => score[q] = (score[q] || 0) + 1); r.seek = null; broadcast(r, { t: 'seekend', score }); }
           break;
         }
-        case 'jsa': { const JA = ['stand', 'wave', 'cheer', 'dance', 'sit', 'sleep', 'hug']; p.js = { x: num(body.x, 4, 96), y: num(body.y, 60, 100), pose: JA.includes(body.pose) ? body.pose : 'stand' }; broadcast(r, { t: 'jsa', by, ...p.js }); break; }
+        case 'jsa': { const JA = ['stand', 'wave', 'cheer', 'dance', 'clap', 'read', 'think', 'stretch', 'sit', 'sleep', 'spin', 'pet']; p.js = { x: num(body.x, 4, 96), y: num(body.y, 60, 100), pose: JA.includes(body.pose) ? body.pose : 'stand' }; broadcast(r, { t: 'jsa', by, ...p.js }); break; }
         case 'pet': broadcast(r, { t: 'pet', k: String(body.k || '').slice(0, 20).replace(/[^a-z0-9-]/g, ''), by }); break;
         case 'cats': p.cats = cleanCats((body.cats || []).slice(0, by === r.host ? 12 : 3)); broadcast(r, { t: 'people', people: pubPeople(r) }); break;
         case 'leave':

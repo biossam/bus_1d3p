@@ -47,7 +47,7 @@ function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[])
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
     if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);const jb=[...document.querySelectorAll('#ptscene .ptjs')].map(x=>x.dataset.ptj).join();if(ptKeys().map(c=>c.k).join()!==before||jb!==(PT.people||[]).map(p=>p.pid).join())ptPlay();else{ptPeople();(PT.people||[]).forEach(p=>{const j=document.querySelector(`#ptscene [data-ptj="${p.pid}"]`);if(j)j.classList.toggle('off',!p.on)})}ptReward();return}
   if(d.t==='jsa'){PT.js=PT.js||{};const o=PT.js[d.by]||{};PT.js[d.by]={x:d.x,y:d.y,pose:d.pose};const el=document.querySelector(`#ptscene [data-ptj="${d.by}"]`);const p=(PT.people||[]).find(x=>x.pid===d.by);
-    if(el){if(o.pose!==d.pose||el.dataset.pose!==d.pose)jsSetPose(el,p&&p.look||{},d.pose);if(o.x!==d.x||o.y!==d.y)jsGoTo(el,d.x,d.y);if(d.pose==='hug'&&o.pose!=='hug'){const sc=document.getElementById('ptscene');if(sc)jsHug(sc,el)}}
+    if(el){if(o.pose!==d.pose||el.dataset.pose!==d.pose)jsSetPose(el,p&&p.look||{},d.pose);if(o.x!==d.x||o.y!==d.y)jsGoTo(el,d.x,d.y);if(d.pose==='pet'&&o.pose!=='pet'){const sc=document.getElementById('ptscene');if(sc)jsHug(sc,el)}}
     if(d.by===PT.pid)document.querySelectorAll('[data-ptjsact]').forEach(b=>b.classList.toggle('on',b.dataset.ptjsact===d.pose));return}
   if(d.t==='seek')return ptSeekStart(d.hides,{},d.by);
   if(d.t==='found')return ptFound(d);
@@ -160,8 +160,17 @@ document.addEventListener('click',e=>{if(!PT||!PT.seek)return;const sc=e.target.
   let hit=null,best=1e9;sc.querySelectorAll('.rmc.rmhid:not(.ptpend)').forEach(c=>{const r=c.getBoundingClientRect();if(e.clientX>=r.left-6&&e.clientX<=r.right+6&&e.clientY>=r.top-6&&e.clientY<=r.bottom+6){const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height*.3));if(d<best){best=d;hit=c}}});
   if(hit){hit.classList.add('ptpend');ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'found',k:hit.dataset.ptc}).then(j=>{hit.classList.remove('ptpend');if(j&&j.late)toast('아깝다! 친구가 먼저 찾았어요')}).catch(()=>hit.classList.remove('ptpend'))}},true);
 
-// ----- 친구랑 놀기: 내 집사 움직이기 -----
+// ----- 친구랑 놀기: 내 집사 움직이기 (yang2수학 동작 사용) -----
+const PT_JACT=[['stand','🧍 서기','']].concat(JS_ACTS);
+function jsActBar(cur,attr){return `<div class="jsact"><b>🧑 내 집사</b>${PT_JACT.map(([k,t])=>`<button class="${cur===k?'on':''}" ${attr}="${k}">${t}</button>`).join('')}</div><p class="rmhint jshint">바닥을 누르면 내 집사가 그쪽으로 걸어가요</p>`}
+function jsSetPose(el,look,pose){const keep=[...el.querySelectorAll('.ptown,.jsbub')];el.innerHTML=jsSvg(look,false,pose==='spin'?'stand':pose);keep.forEach(k=>el.appendChild(k));el.classList.remove('jsdance','jsspin','jscheer');void el.offsetWidth;
+  if(pose==='dance')el.classList.add('jsdance');if(pose==='spin')el.classList.add('jsspin');if(pose==='cheer'||pose==='clap')el.classList.add('jscheer');el.dataset.pose=pose;
+  const a=JS_ACTS.find(x=>x[0]===pose);if(a&&a[2])jsSay(el,a[2]);if(pose==='pet'){const h=document.createElement('i');h.className='jshrt';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1700)}}
+function jsGoTo(el,x,y){const x0=parseFloat(el.style.left)||50;el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)}
+function jsFloorPt(sc,e){const r=sc.getBoundingClientRect();return {x:Math.max(6,Math.min(94,(e.clientX-r.left)/r.width*100)),y:Math.max(66,Math.min(97,(e.clientY-r.top)/r.height*100))}}
+function jsHug(sc,el){const x=parseFloat(el.style.left),y=parseFloat(el.style.top);let best=null,bd=1e9;sc.querySelectorAll('.rmc').forEach(c=>{const d=Math.hypot(parseFloat(c.style.left)-x,parseFloat(c.style.top)-y);if(d<bd){bd=d;best=c}});
+  if(!best||bd>22)return null;const h=document.createElement('i');h.className='rmheart';h.textContent='💗';best.appendChild(h);setTimeout(()=>h.remove(),1600);return best}
 function ptMyJs(){const el=document.querySelector(`#ptscene [data-ptj="${PT.pid}"]`);const J=(PT.js||{})[PT.pid];return {x:J?J.x:el?parseFloat(el.style.left):50,y:J?J.y:el?parseFloat(el.style.top):90,pose:J?J.pose:'stand'}}
 document.addEventListener('click',e=>{if(!PT||!PT.pid||PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;if(e.target.closest('.rmc,.rmjs,button,.rmbowl,.rmtoy,.rmcover'))return;
-  const p=jsFloorPt(sc,e);const me=ptMyJs();const pose=['sit','sleep','hug'].includes(me.pose)?'stand':me.pose;
+  const p=jsFloorPt(sc,e);const me=ptMyJs();const pose='stand';
   ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'jsa',x:+p.x.toFixed(1),y:+p.y.toFixed(1),pose}).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요')})});
