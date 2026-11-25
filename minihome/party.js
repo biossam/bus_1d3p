@@ -46,6 +46,9 @@ function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats|
 function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();if(d.seek)ptSeekStart(d.seek.hides,d.seek.found,null,true);return}
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
     if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);const jb=[...document.querySelectorAll('#ptscene .ptjs')].map(x=>x.dataset.ptj).join();if(ptKeys().map(c=>c.k).join()!==before||jb!==(PT.people||[]).map(p=>p.pid).join())ptPlay();else{ptPeople();(PT.people||[]).forEach(p=>{const j=document.querySelector(`#ptscene [data-ptj="${p.pid}"]`);if(j)j.classList.toggle('off',!p.on)})}ptReward();return}
+  if(d.t==='jsa'){PT.js=PT.js||{};const o=PT.js[d.by]||{};PT.js[d.by]={x:d.x,y:d.y,pose:d.pose};const el=document.querySelector(`#ptscene [data-ptj="${d.by}"]`);const p=(PT.people||[]).find(x=>x.pid===d.by);
+    if(el){if(o.pose!==d.pose||el.dataset.pose!==d.pose)jsSetPose(el,p&&p.look||{},d.pose);if(o.x!==d.x||o.y!==d.y)jsGoTo(el,d.x,d.y);if(d.pose==='hug'&&o.pose!=='hug'){const sc=document.getElementById('ptscene');if(sc)jsHug(sc,el)}}
+    if(d.by===PT.pid)document.querySelectorAll('[data-ptjsact]').forEach(b=>b.classList.toggle('on',b.dataset.ptjsact===d.pose));return}
   if(d.t==='seek')return ptSeekStart(d.hides,{},d.by);
   if(d.t==='found')return ptFound(d);
   if(d.t==='seekend')return ptSeekEnd(d.score);
@@ -72,7 +75,8 @@ function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const 
     <div class="ptcodebar"><span>방 코드 <b>${PT.code}</b></span><button class="cambtn" data-pt="qr">📱 초대 QR ${PT.qr?'접기':'보기'}</button></div>
     ${PT.qr?`<div class="ptqr"><div id="ptqrimg">QR 만드는 중…</div><p>친구가 카메라로 찍거나, 일일삼제 → 미니홈피 → 👫 → <b>코드 ${PT.code}</b>를 넣으면 들어와요</p></div>`:''}
     <div class="ptpeople" id="ptpeople"></div>
-    <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}${(PT.people||[]).map((p,n,a)=>{const x=a.length<2?50:12+76*n/(a.length-1),y=91-(n%2)*5;return `<div class="rmjs ptjs ${p.on?'':'off'}" data-ptj="${p.pid}" style="left:${x}%;top:${y}%;z-index:${Math.round(y)+1}">${jsSvg(p.look||{})}<span class="ptown" style="background:${ptColor(p.pid)}">${p.pid===PT.pid?'나':esc(p.nick)}</span></div>`}).join('')}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
+    <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}${(PT.people||[]).map((p,n,a)=>{const J=PT.js&&PT.js[p.pid]||p.js;const x=J?J.x:(a.length<2?50:12+76*n/(a.length-1)),y=J?J.y:91-(n%2)*5,ps=J?J.pose:'stand';return `<div class="rmjs ptjs ${p.on?'':'off'} ${ps==='dance'?'jsdance':''} ${p.pid===PT.pid?'mine':''}" data-ptj="${p.pid}" style="left:${x}%;top:${y}%;z-index:${Math.round(y)+1}">${jsSvg(p.look||{},false,ps)}<span class="ptown" style="background:${ptColor(p.pid)}">${p.pid===PT.pid?'나':esc(p.nick)}</span></div>`}).join('')}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
+    ${jsActBar(((PT.js||{})[PT.pid]||{}).pose||'stand','data-ptjsact')}
     <div class="ptbar"><b>놀잇감</b>${PT_TOYS.map(e=>`<button data-pttoy="${e}">${e}</button>`).join('')}</div>
     <div class="ptbar"><b>놀이</b><button class="ptseekbtn" data-pt="seek">🙈 다 같이 숨바꼭질</button></div>
     <div class="ptbar"><b>간식</b>${PT_SNACKS.map(e=>`<button data-ptsnack="${e}">${e}</button>`).join('')}</div>
@@ -103,7 +107,7 @@ function ptToy(e,path,by){const sc=document.getElementById('ptscene');if(!sc||!p
 function ptSnack(e,x,y,by){const sc=document.getElementById('ptscene');if(!sc)return;PT.busy=Date.now()+5000;ptBubble(by,`${e} 간식을 줬어요!`);const bowl=document.createElement('div');bowl.className='rmbowl';bowl.textContent=e;bowl.style.left=x+'%';bowl.style.top=y+'%';sc.appendChild(bowl);
   const list=ptGather(x,y-4);ptRun(list,1.6);setTimeout(()=>ptRest(list),1900);setTimeout(()=>bowl.remove(),4200)}
 function ptCatCard(k){const c=ptKeys().find(x=>x.k===k);if(!c)return;const b=BREEDS[c.i];ask(catBig(b),esc(b.n),`<b>${esc(c.own)}</b>의 고양이예요<br><span class="small">${esc(b.t)}</span>`+catCredit(b),[{t:'💗 쓰다듬기',cls:'go',fn:()=>{if(PT)ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'pet',k}).catch(()=>{})}}],'닫기')}
-document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-pt],#rmparty [data-ptbring],#rmparty [data-pttoy],#rmparty [data-ptsnack],#rmparty [data-ptsay],#rmparty [data-ptc],[data-rmparty]');if(!t)return;e.preventDefault();e.stopPropagation();
+document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-ptjsact],#rmparty [data-pt],#rmparty [data-ptbring],#rmparty [data-pttoy],#rmparty [data-ptsnack],#rmparty [data-ptsay],#rmparty [data-ptc],[data-rmparty]');if(!t)return;e.preventDefault();e.stopPropagation();
   if(t.dataset.rmparty!=null)return ptOpen();
   if(PT&&PT.seek&&t.dataset.ptc)return;
   if(!PT)return;const a=t.dataset.pt;const act=(o)=>ptApi('/api/act',Object.assign({code:PT.code,pid:PT.pid,tok:PT.tok},o)).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요');else if(err.code==='seeking')toast('벌써 숨바꼭질 중이에요!')});
@@ -119,6 +123,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-p
   if(t.dataset.ptsnack)return act({t:'snack',e:t.dataset.ptsnack,x:+(15+Math.random()*70).toFixed(1),y:+(80+Math.random()*14).toFixed(1)});
   if(t.dataset.ptsay)return act({t:'say',m:+t.dataset.ptsay});
   if(t.dataset.ptc)return ptCatCard(t.dataset.ptc);
+  if(t.dataset.ptjsact){const me=ptMyJs();return act({t:'jsa',x:me.x,y:me.y,pose:t.dataset.ptjsact})}
 },true);
 document.addEventListener('input',e=>{if(!PT)return;const t=e.target;if(t.matches('#rmparty [data-ptnick]'))PT.nick=t.value.slice(0,8);else if(t.matches('#rmparty [data-ptcode]')){t.value=t.value.replace(/\D/g,'').slice(0,4);PT.code=t.value}});
 (()=>{try{const q=new URLSearchParams(location.search);const c=(q.get('party')||'').replace(/\D/g,'').slice(0,4);if(!c)return;q.delete('party');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash);
@@ -154,3 +159,9 @@ function ptSeekEnd(score){if(!PT)return;const sc=document.getElementById('ptscen
 document.addEventListener('click',e=>{if(!PT||!PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;e.preventDefault();e.stopPropagation();
   let hit=null,best=1e9;sc.querySelectorAll('.rmc.rmhid:not(.ptpend)').forEach(c=>{const r=c.getBoundingClientRect();if(e.clientX>=r.left-6&&e.clientX<=r.right+6&&e.clientY>=r.top-6&&e.clientY<=r.bottom+6){const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height*.3));if(d<best){best=d;hit=c}}});
   if(hit){hit.classList.add('ptpend');ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'found',k:hit.dataset.ptc}).then(j=>{hit.classList.remove('ptpend');if(j&&j.late)toast('아깝다! 친구가 먼저 찾았어요')}).catch(()=>hit.classList.remove('ptpend'))}},true);
+
+// ----- 친구랑 놀기: 내 집사 움직이기 -----
+function ptMyJs(){const el=document.querySelector(`#ptscene [data-ptj="${PT.pid}"]`);const J=(PT.js||{})[PT.pid];return {x:J?J.x:el?parseFloat(el.style.left):50,y:J?J.y:el?parseFloat(el.style.top):90,pose:J?J.pose:'stand'}}
+document.addEventListener('click',e=>{if(!PT||!PT.pid||PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;if(e.target.closest('.rmc,.rmjs,button,.rmbowl,.rmtoy,.rmcover'))return;
+  const p=jsFloorPt(sc,e);const me=ptMyJs();const pose=['sit','sleep','hug'].includes(me.pose)?'stand':me.pose;
+  ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'jsa',x:+p.x.toFixed(1),y:+p.y.toFixed(1),pose}).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요')})});

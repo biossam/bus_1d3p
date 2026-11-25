@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-25 10:43"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-26 01:55"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -103,6 +103,11 @@
 .jsbox{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid #E5DCCF;border-radius:16px;padding:10px 14px}.jsprev{width:110px;text-align:center;background:#FFF6E6;border-radius:14px;padding:6px 4px}.jsprev svg{width:84px;height:auto}.jsprev span{display:block;font-family:'Jua',sans-serif;font-size:15px;color:#4A3B33}
 .jsbtns{flex:1}.jsrow{margin-top:12px}.jsrow>b{display:block;font-size:13px;color:#4A3B33;margin-bottom:6px}.jssw{display:flex;flex-wrap:wrap;gap:8px}.jssw button{width:30px;height:30px;border-radius:50%;border:2px solid #4A3B33;cursor:pointer}.jssw button.on{box-shadow:0 0 0 3px #FF7563}
 .ptjs{width:11%;z-index:140!important}
+.jsact{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:10px}.jsact b{font-size:13px;color:#4A3B33;margin-right:2px}.jsact button{border:2px solid #E5DCCF;background:#fff;border-radius:99px;padding:5px 10px;font:700 12.5px sans-serif;color:#4A3B33;cursor:pointer}.jsact button.on{background:#4A3B33;border-color:#4A3B33;color:#fff}
+.jshint{margin:4px 0 0!important;font-size:11.5px}
+.rmjs.jsdance svg{animation:jsdance .7s ease-in-out infinite}@keyframes jsdance{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-6%)}}
+.rmjs.rmflip.jsdance svg{animation:jsdance .7s ease-in-out infinite}
+.ptjs.mine .ptown{box-shadow:0 0 0 2px #FFD66B}
 </style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
@@ -3179,7 +3184,7 @@ function rmItemHTML(it){const I=RM_ITEMS[it.k];if(!I)return '';const sel=RM_EDIT
   return `<div class="rmi ${RM_EDIT?'ed':''} ${sel?'sel':''}" data-rmi="${it.id}" style="left:${it.x}%;top:${it.y}%;width:${I.w}%;z-index:${I.z===-1?1:(I.p==='wall'?2:Math.round(it.y))};transform:translate(-50%,-100%) scaleX(${it.f?-1:1})"><svg viewBox="0 0 60 60" width="100%">${I.s}</svg></div>`}
 function roomSceneHTML(){const R=rmS();const live=rmLive();
   const cats=live.map((i,n)=>{const x=10+((i*37+n*23)%80),y=70+((i*13+n*7)%24);return `<div class="rmc" data-rmc="${i}" style="left:${x}%;top:${y}%;z-index:${y+1}">${rmCat(BREEDS[i])}</div>`}).join('');
-  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}<div class="rmjs" style="left:${R.jx||50}%;top:${R.jy||90}%;z-index:${Math.round(R.jy||90)+1}">${jsSvg(rmLook())}</div>${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
+  return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}<div class="rmjs ${R.jpose==='dance'?'jsdance':''}" style="left:${R.jx||50}%;top:${R.jy||90}%;z-index:${Math.round(R.jy||90)+1}">${jsSvg(rmLook(),false,R.jpose)}</div>${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
 function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S.days[k]&&(S.days[k].sess||S.days[k].solved||S.days[k].n)).length||Object.keys(S.days||{}).length;
   const td=(S.daily&&S.daily.log&&S.daily.log[dayStr(today())])||0;const live=rmLive();
   const nm=R.name||'나';
@@ -3192,7 +3197,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
   }else if(RM_TAB==='room'){
     const sel=RM_EDIT&&RM_SEL!=null?R.items.find(x=>x.id===RM_SEL):null;
     const inv=Object.keys(RM_ITEMS).filter(k=>R.own.includes(k));
-    body=`${roomsBar}${roomSceneHTML()}
+    body=`${roomsBar}${roomSceneHTML()}${RM_EDIT?'':jsActBar(R.jpose||'stand','data-jsact')}
     <div class="rmbar">${RM_EDIT?`<button class="rmbtn on" data-rm="edit">✔ 다 꾸몄어요</button>${sel?`<button class="rmbtn" data-rm="flip">↔ 뒤집기</button><button class="rmbtn" data-rm="del">↩ 넣기</button>`:'<span class="rmhint">가구를 끌어서 옮기고, 눌러서 고르세요</span>'}<input class="rmrname" data-rmrname maxlength="10" value="${esc(cur.name)}" placeholder="방 이름">${R.rooms.length>1?'<button class="rmbtn" data-rmdelroom>🗑 이 방 없애기</button>':''}`:`<button class="rmbtn" data-rm="edit">🛠 방 꾸미기</button><button class="rmbtn" data-rmtab="cats">🐱 식구 고르기</button>${rmAll().length?'<button class="rmbtn cam" data-rmcam>📸 셀카</button>':''}<button class="rmbtn party" data-rmparty>👫 친구랑 놀기</button>${rmLive().length?'<button class="rmbtn seek" data-rmseek>🙈 숨바꼭질</button>':''}${Object.entries(RM_SNACK).filter(([k])=>(R.snack||{})[k]>0).map(([k,o])=>`<button class="rmbtn snack" data-rmsnack="${k}">${o.e} ${o.n} ${o.g==='toy'?'놀아 주기':'주기'} ×${R.snack[k]}</button>`).join('')||'<span class="rmhint">상점에서 간식과 놀잇감을 살 수 있어요</span>'}`}</div>
     ${RM_EDIT?`<div class="rminv"><b>가진 가구 놓기</b>${inv.map(k=>`<button class="rminvb" data-rmadd="${k}"><svg viewBox="0 0 60 60" width="34" height="34">${RM_ITEMS[k].s}</svg><span>${RM_ITEMS[k].n}</span></button>`).join('')}</div>`:''}`;
   }else if(RM_TAB==='shop'){
@@ -3391,6 +3396,7 @@ document.addEventListener('input',e=>{if(!CAM)return;const t=e.target;if(t.match
 document.addEventListener('change',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camfile]')&&t.files&&t.files[0]){const rd=new FileReader();rd.onload=()=>{camStop();CAM.bgc=null;CAM.bg=rd.result;camDraw()};rd.readAsDataURL(t.files[0])}});
 
 // ===== JIBSA: 고양이 집사 캐릭터 =====
+const JS_ACT=[['stand','🧍 서기'],['wave','👋 인사'],['cheer','🙌 만세'],['dance','💃 춤'],['sit','🪑 앉기'],['sleep','😴 낮잠'],['hug','🤗 안아 주기']];const JS_ACTK=JS_ACT.map(a=>a[0]);
 const JS_SKIN=['#FFE3CF','#F7CFAE','#E8B48B','#C98B62','#9A6444'];
 const JS_HC=['#3B2A22','#6B4630','#B07A4A','#E8C16A','#2F3550','#E58FA6','#8C8C96'];
 const JS_TC=['#FF9F7A','#7CD7C2','#8FB0F5','#FFD66B','#C9A7EB','#FFB8C6','#FFFFFF','#4A4F6B'];
@@ -3404,7 +3410,7 @@ const JS_OPT={
 function rmLook(){const R=rmS();R.look=Object.assign({skin:0,hair:'short',hc:0,top:'apron',tc:0,pc:0,acc:'catears',face:'smile',hold:'none'},R.look||{});return R.look}
 function jsClean(o){o=o||{};const pick=(k,arr)=>arr.some(a=>a[0]===o[k])?o[k]:arr[0][0];const n=(k,max)=>Math.max(0,Math.min(max-1,(+o[k]|0)));
   return {skin:n('skin',JS_SKIN.length),hair:pick('hair',JS_OPT.hair),hc:n('hc',JS_HC.length),top:pick('top',JS_OPT.top),tc:n('tc',JS_TC.length),pc:n('pc',JS_PC.length),acc:pick('acc',JS_OPT.acc),face:pick('face',JS_OPT.face),hold:pick('hold',JS_OPT.hold)}}
-function jsSvg(o,xmlns){o=jsClean(o);const OL=RM_OL,sk=JS_SKIN[o.skin],hc=JS_HC[o.hc],tc=JS_TC[o.tc],pc=JS_PC[o.pc];const st=`stroke="${OL}" stroke-width="1.6" stroke-linejoin="round"`;
+function jsSvg(o,xmlns,pose){o=jsClean(o);pose=JS_ACTK.includes(pose)?pose:'stand';const low=pose==='sit'||pose==='sleep';const OL=RM_OL,sk=JS_SKIN[o.skin],hc=JS_HC[o.hc],tc=JS_TC[o.tc],pc=JS_PC[o.pc];const st=`stroke="${OL}" stroke-width="1.6" stroke-linejoin="round"`;
   let back='',front='',body='',acc='',hold='',face='';
   // 머리 뒤
   if(o.hair==='bob')back=`<path d="M11 28C11 9 49 9 49 28V44c0 3-5 3-5 0V32H16v12c0 3-5 3-5 0z" fill="${hc}" ${st}/>`;
@@ -3415,8 +3421,8 @@ function jsSvg(o,xmlns){o=jsClean(o);const OL=RM_OL,sk=JS_SKIN[o.skin],hc=JS_HC[
   // 몸
   const arm=(x1,y1,x2,y2,c)=>`<path d="M${x1} ${y1}L${x2} ${y2}" stroke="${OL}" stroke-width="6.4" stroke-linecap="round"/><path d="M${x1} ${y1}L${x2} ${y2}" stroke="${c}" stroke-width="4" stroke-linecap="round"/><circle cx="${x2}" cy="${y2+1}" r="2.8" fill="${sk}" ${st}/>`;
   const sleeve=o.top==='apron'?tc:tc;
-  const legs=`<rect x="22" y="66" width="6.5" height="11" rx="2" fill="${pc}" ${st}/><rect x="31.5" y="66" width="6.5" height="11" rx="2" fill="${pc}" ${st}/><ellipse cx="25" cy="78.5" rx="5" ry="2.8" fill="${OL}"/><ellipse cx="35" cy="78.5" rx="5" ry="2.8" fill="${OL}"/>`;
-  const armL=arm(20,50,14,61,sleeve),armR=o.hold==='none'?arm(40,50,46,61,sleeve):arm(40,50,47,55,sleeve);
+  const legs=low?`<rect x="20" y="65" width="8.5" height="6" rx="3" fill="${pc}" ${st}/><rect x="31.5" y="65" width="8.5" height="6" rx="3" fill="${pc}" ${st}/><ellipse cx="23" cy="72" rx="4.6" ry="2.6" fill="${OL}"/><ellipse cx="37" cy="72" rx="4.6" ry="2.6" fill="${OL}"/>`:`<rect x="22" y="66" width="6.5" height="11" rx="2" fill="${pc}" ${st}/><rect x="31.5" y="66" width="6.5" height="11" rx="2" fill="${pc}" ${st}/><ellipse cx="25" cy="78.5" rx="5" ry="2.8" fill="${OL}"/><ellipse cx="35" cy="78.5" rx="5" ry="2.8" fill="${OL}"/>`;
+  const up=pose==='cheer'||pose==='dance';const armL=up?arm(20,50,12,37,sleeve):pose==='hug'?arm(20,50,27,57,sleeve):arm(20,50,14,61,sleeve);const armR=up||pose==='wave'?arm(40,50,48,37,sleeve):pose==='hug'?arm(40,50,33,57,sleeve):o.hold==='none'?arm(40,50,46,61,sleeve):arm(40,50,47,55,sleeve);
   if(o.top==='dress')body=`${legs}<path d="M21 46h18l7 24H14z" fill="${tc}" ${st}/><path d="M16 64h28" stroke="#fff" stroke-width="1.6" stroke-dasharray="2 2"/>`;
   else body=`${legs}<path d="M20 49c0-3 2-4 5-4h10c3 0 5 1 5 4l1 19H19z" fill="${tc}" ${st}/>`;
   if(o.top==='apron')body+=`<path d="M23 50h14v17H23z" fill="#fff" ${st}/><path d="M23 50l-2-4M37 50l2-4" stroke="${OL}" stroke-width="1.2"/><g fill="#FFB8C6"><circle cx="30" cy="60" r="2.6"/><circle cx="26.8" cy="56.4" r="1.2"/><circle cx="29" cy="55" r="1.2"/><circle cx="31.4" cy="55" r="1.2"/><circle cx="33.4" cy="56.6" r="1.2"/></g>`;
@@ -3436,8 +3442,8 @@ function jsSvg(o,xmlns){o=jsClean(o);const OL=RM_OL,sk=JS_SKIN[o.skin],hc=JS_HC[
   // 얼굴
   const eye=(x)=>`<ellipse cx="${x}" cy="31" rx="1.9" ry="2.5" fill="${OL}"/><circle cx="${x+.7}" cy="30" r=".7" fill="#fff"/>`;
   const arc=(x)=>`<path d="M${x-2.2} 31.5q2.2-2.8 4.4 0" stroke="${OL}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
-  face=(o.face==='happy'?arc(24)+arc(36):o.face==='wink'?eye(24)+arc(36):eye(24)+eye(36))+`<ellipse cx="20.5" cy="36" rx="2.6" ry="1.6" fill="#FFB8C6" opacity=".85"/><ellipse cx="39.5" cy="36" rx="2.6" ry="1.6" fill="#FFB8C6" opacity=".85"/>`+
-    (o.face==='ooh'?`<ellipse cx="30" cy="38" rx="1.8" ry="2.2" fill="#B5544A" stroke="${OL}" stroke-width="1"/>`:`<path d="M27 37q1.5 2.2 3 0q1.5 2.2 3 0" stroke="${OL}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`);
+  const fc=pose==='sleep'?'happy':pose==='cheer'||pose==='dance'?'happy':o.face;face=(fc==='happy'?arc(24)+arc(36):fc==='wink'?eye(24)+arc(36):eye(24)+eye(36))+`<ellipse cx="20.5" cy="36" rx="2.6" ry="1.6" fill="#FFB8C6" opacity=".85"/><ellipse cx="39.5" cy="36" rx="2.6" ry="1.6" fill="#FFB8C6" opacity=".85"/>`+
+    (fc==='ooh'?`<ellipse cx="30" cy="38" rx="1.8" ry="2.2" fill="#B5544A" stroke="${OL}" stroke-width="1"/>`:`<path d="M27 37q1.5 2.2 3 0q1.5 2.2 3 0" stroke="${OL}" stroke-width="1.3" fill="none" stroke-linecap="round"/>`);
   // 꾸미기
   if(o.acc==='catears')acc=`<path d="M17 18l2-10 7 6zM43 18l-2-10-7 6z" fill="${OL}"/><path d="M19.5 15.5l1-5 3.5 3zM40.5 15.5l-1-5-3.5 3z" fill="#FFB8C6"/><path d="M15 21C18 12 42 12 45 21" stroke="${OL}" stroke-width="2" fill="none"/>`;
   if(o.acc==='ribbon')acc=`<g transform="translate(41 16) rotate(20)"><path d="M0 0l-7-4v8zM0 0l7-4v8z" fill="#FF7563" ${st}/><circle r="2" fill="#FF9F7A" ${st}/></g>`;
@@ -3449,7 +3455,10 @@ function jsSvg(o,xmlns){o=jsClean(o);const OL=RM_OL,sk=JS_SKIN[o.skin],hc=JS_HC[
   if(o.hold==='wand')hold=`<path d="M47 56L56 34" stroke="${OL}" stroke-width="1.6" stroke-linecap="round"/><path d="M56 34c2 4 1 8-2 10" stroke="${OL}" stroke-width=".9" fill="none"/><path d="M54 44c-3 1-4 4-2 6 2-1 3-3 2-6z" fill="#7CD7C2" stroke="${OL}" stroke-width="1"/>`;
   if(o.hold==='book')hold=`<g transform="translate(48 55) rotate(-12)"><rect x="-6" y="-7" width="12" height="14" rx="1.5" fill="#5B8DEF" ${st}/><path d="M-3 -1h6M0 -4v6" stroke="#fff" stroke-width="1.4"/></g>`;
   if(o.hold==='cat')hold=`<g transform="translate(50 53)"><ellipse cx="0" cy="2" rx="7" ry="5" fill="#FFC9A3" ${st}/><path d="M-6 -2l1-6 4 3zM6 -2l-1-6-4 3z" fill="#FFC9A3" ${st}/><circle cx="-2.4" cy="0" r=".9" fill="${OL}"/><circle cx="2.4" cy="0" r=".9" fill="${OL}"/><path d="M-1 2.4q1 1 2 0" stroke="${OL}" stroke-width=".8" fill="none"/></g>`;
-  return `<svg ${xmlns?'xmlns="http://www.w3.org/2000/svg" width="480" height="672" ':''}viewBox="0 0 60 84">${back}${body}${head}${front}${face}${acc}${hold}</svg>`}
+  if(pose!=='stand'&&pose!=='sit'&&pose!=='hug')hold='';if(pose==='hug')hold=`<path d="M30 52c-2-2-5 0-3 3l3 3 3-3c2-3-1-5-3-3z" fill="#FF7563" stroke="${OL}" stroke-width=".8"/>`;
+  const zz=pose==='sleep'?`<text x="46" y="14" class="rmz">z</text><text x="51" y="7" class="rmz z2">z</text>`:'';
+  const all=`${back}${body}${head}${front}${face}${acc}${hold}`;
+  return `<svg ${xmlns?'xmlns="http://www.w3.org/2000/svg" width="480" height="672" ':''}viewBox="0 0 60 84">${low?`<g transform="translate(0 6)">${all}</g>`:all}${zz}</svg>`}
 // 미니홈피 탭
 function jsTabHTML(){const o=rmLook();const R=rmS();
   const sw=(k,arr)=>`<div class="jsrow"><b>${{skin:'피부',hc:'머리 색',tc:'옷 색',pc:'바지·신발'}[k]}</b><div class="jssw">${arr.map((c,n)=>`<button class="${o[k]===n?'on':''}" data-jsopt="${k}:${n}" style="background:${c}" aria-label="${n+1}"></button>`).join('')}</div></div>`;
@@ -3457,12 +3466,26 @@ function jsTabHTML(){const o=rmLook();const R=rmS();
   return `<div class="jsbox"><div class="jsprev">${jsSvg(o)}<span>${esc(R.name||'나')}</span></div><div class="jsbtns"><button class="rmbtn" data-jsrand>🎲 아무거나</button></div></div>
    ${ch('hair','머리 모양')}${sw('hc',JS_HC)}${sw('skin',JS_SKIN)}${ch('top','옷')}${sw('tc',JS_TC)}${sw('pc',JS_PC)}${ch('acc','꾸미기')}${ch('face','표정')}${ch('hold','손에 든 것')}
    <p class="rmhint" style="margin-top:12px">만든 집사는 미니룸에서 고양이들과 함께 지내고, 친구랑 놀기와 셀카에도 나와요.</p>`}
-function jsWalk(){const el=document.querySelector('#rmscene .rmjs');if(!el||RM_SEEK||RM_EDIT)return;if(Math.random()<.55)return;const x0=parseFloat(el.style.left),x=10+Math.random()*80,y=78+Math.random()*18;el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)}
+function jsWalk(){const el=document.querySelector('#rmscene .rmjs');if(!el||RM_SEEK||RM_EDIT)return;const R=rmS();if(Date.now()-(R.jman||0)<30000||['sit','sleep','dance','hug'].includes(R.jpose))return;if(Math.random()<.55)return;const x0=parseFloat(el.style.left),x=10+Math.random()*80,y=78+Math.random()*18;el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)}
 const JS_SAY=['오늘도 3문제 풀었어!','다들 밥 먹었니? 🍡','공부 끝나면 놀아 줄게!','우리 냥이들 최고 💗','숨바꼭질 할 사람~?','츄르 시간이다!'];
 document.addEventListener('click',e=>{const t=e.target.closest('[data-jsopt],[data-jsrand],#rmscene .rmjs');if(!t)return;e.preventDefault();e.stopPropagation();const o=rmLook();
   if(t.classList.contains('rmjs')){if(RM_EDIT||RM_SEEK)return;t.classList.remove('jsjump');void t.offsetWidth;t.classList.add('jsjump');const h=document.createElement('i');h.className='jsbub';h.textContent=JS_SAY[Math.floor(Math.random()*JS_SAY.length)];t.appendChild(h);setTimeout(()=>h.remove(),2200);return}
   if(t.dataset.jsrand!=null){const r=a=>Math.floor(Math.random()*a);Object.assign(o,{skin:r(JS_SKIN.length),hc:r(JS_HC.length),tc:r(JS_TC.length),pc:r(JS_PC.length)});['hair','top','acc','face','hold'].forEach(k=>o[k]=JS_OPT[k][r(JS_OPT[k].length)][0]);save();return rmRender()}
   const [k,v]=t.dataset.jsopt.split(':');o[k]=/^\d+$/.test(v)?+v:v;save();rmRender()},true);
+
+// ----- 집사 움직이기 · 동작 바꾸기 -----
+function jsActBar(cur,attr){return `<div class="jsact"><b>🧑 집사</b>${JS_ACT.map(([k,t])=>`<button class="${cur===k?'on':''}" ${attr}="${k}">${t}</button>`).join('')}</div><p class="rmhint jshint">바닥을 누르면 집사가 그쪽으로 걸어가요</p>`}
+function jsGoTo(el,x,y,done){const x0=parseFloat(el.style.left)||50,y0=parseFloat(el.style.top)||90;const d=Math.hypot(x-x0,(y-y0)*.75);const t=Math.max(.5,Math.min(3,d*.045));
+  el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.transition=`left ${t}s linear,top ${t}s linear`;el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');el.style.transition='';done&&done()},t*1000)}
+function jsSetPose(el,look,pose){const keep=[...el.querySelectorAll('.ptown,.jsbub')];el.innerHTML=jsSvg(look,false,pose);keep.forEach(k=>el.appendChild(k));el.classList.toggle('jsdance',pose==='dance');el.dataset.pose=pose}
+function jsFloorPt(sc,e){const r=sc.getBoundingClientRect();return {x:Math.max(6,Math.min(94,(e.clientX-r.left)/r.width*100)),y:Math.max(66,Math.min(98,(e.clientY-r.top)/r.height*100+4))}}
+function jsHug(sc,el){const x=parseFloat(el.style.left),y=parseFloat(el.style.top);let best=null,bd=1e9;sc.querySelectorAll('.rmc').forEach(c=>{const d=Math.hypot(parseFloat(c.style.left)-x,parseFloat(c.style.top)-y);if(d<bd){bd=d;best=c}});
+  if(!best||bd>22){toast('가까이 있는 고양이가 없어요. 고양이 옆으로 걸어가 보세요');return null}const h=document.createElement('i');h.className='rmheart';h.textContent='💗';best.appendChild(h);setTimeout(()=>h.remove(),1600);return best}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-jsact]');const sc=document.getElementById('rmscene');
+  if(t){e.preventDefault();e.stopPropagation();const R=rmS();R.jpose=t.dataset.jsact;R.jman=Date.now();save();document.querySelectorAll('[data-jsact]').forEach(b=>b.classList.toggle('on',b===t));
+    const el=sc&&sc.querySelector('.rmjs');if(el){jsSetPose(el,rmLook(),R.jpose);if(R.jpose==='hug'){const c=jsHug(sc,el);if(c&&c.dataset.rmc!=null){R.love=R.love||{};const i=+c.dataset.rmc;R.love[i]=(R.love[i]||0)+1;save();toast(`${rmJ(BREEDS[i].n,'을','를')} 꼭 안아 줬어요 💗`)}}}return}
+  if(!sc||VIEW!=='room'||RM_TAB!=='room'||RM_EDIT||RM_SEEK)return;if(!sc.contains(e.target)||e.target.closest('.rmc,.rmjs,button,.rmbowl,.rmtoy,.rmcover'))return;
+  const el=sc.querySelector('.rmjs');if(!el)return;const R=rmS();const p=jsFloorPt(sc,e);R.jx=+p.x.toFixed(1);R.jy=+p.y.toFixed(1);R.jman=Date.now();if(['sit','sleep','hug'].includes(R.jpose)){R.jpose='stand';jsSetPose(el,rmLook(),'stand');document.querySelectorAll('[data-jsact]').forEach(b=>b.classList.toggle('on',b.dataset.jsact==='stand'))}save();jsGoTo(el,p.x,p.y)});
 
 // ===== PARTY: 친구랑 놀기 (QR 초대 · 실시간) =====
 const PT_URL=(()=>{try{const o=localStorage.getItem('ptURL');if(o)return o}catch(e){}return /^(localhost|127\.)/.test(location.hostname)?'http://localhost:8790':'https://bus-cat-party.onrender.com'})();
@@ -3511,6 +3534,9 @@ function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats|
 function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();if(d.seek)ptSeekStart(d.seek.hides,d.seek.found,null,true);return}
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
     if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);const jb=[...document.querySelectorAll('#ptscene .ptjs')].map(x=>x.dataset.ptj).join();if(ptKeys().map(c=>c.k).join()!==before||jb!==(PT.people||[]).map(p=>p.pid).join())ptPlay();else{ptPeople();(PT.people||[]).forEach(p=>{const j=document.querySelector(`#ptscene [data-ptj="${p.pid}"]`);if(j)j.classList.toggle('off',!p.on)})}ptReward();return}
+  if(d.t==='jsa'){PT.js=PT.js||{};const o=PT.js[d.by]||{};PT.js[d.by]={x:d.x,y:d.y,pose:d.pose};const el=document.querySelector(`#ptscene [data-ptj="${d.by}"]`);const p=(PT.people||[]).find(x=>x.pid===d.by);
+    if(el){if(o.pose!==d.pose||el.dataset.pose!==d.pose)jsSetPose(el,p&&p.look||{},d.pose);if(o.x!==d.x||o.y!==d.y)jsGoTo(el,d.x,d.y);if(d.pose==='hug'&&o.pose!=='hug'){const sc=document.getElementById('ptscene');if(sc)jsHug(sc,el)}}
+    if(d.by===PT.pid)document.querySelectorAll('[data-ptjsact]').forEach(b=>b.classList.toggle('on',b.dataset.ptjsact===d.pose));return}
   if(d.t==='seek')return ptSeekStart(d.hides,{},d.by);
   if(d.t==='found')return ptFound(d);
   if(d.t==='seekend')return ptSeekEnd(d.score);
@@ -3537,7 +3563,8 @@ function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const 
     <div class="ptcodebar"><span>방 코드 <b>${PT.code}</b></span><button class="cambtn" data-pt="qr">📱 초대 QR ${PT.qr?'접기':'보기'}</button></div>
     ${PT.qr?`<div class="ptqr"><div id="ptqrimg">QR 만드는 중…</div><p>친구가 카메라로 찍거나, 일일삼제 → 미니홈피 → 👫 → <b>코드 ${PT.code}</b>를 넣으면 들어와요</p></div>`:''}
     <div class="ptpeople" id="ptpeople"></div>
-    <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}${(PT.people||[]).map((p,n,a)=>{const x=a.length<2?50:12+76*n/(a.length-1),y=91-(n%2)*5;return `<div class="rmjs ptjs ${p.on?'':'off'}" data-ptj="${p.pid}" style="left:${x}%;top:${y}%;z-index:${Math.round(y)+1}">${jsSvg(p.look||{})}<span class="ptown" style="background:${ptColor(p.pid)}">${p.pid===PT.pid?'나':esc(p.nick)}</span></div>`}).join('')}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
+    <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}${(PT.people||[]).map((p,n,a)=>{const J=PT.js&&PT.js[p.pid]||p.js;const x=J?J.x:(a.length<2?50:12+76*n/(a.length-1)),y=J?J.y:91-(n%2)*5,ps=J?J.pose:'stand';return `<div class="rmjs ptjs ${p.on?'':'off'} ${ps==='dance'?'jsdance':''} ${p.pid===PT.pid?'mine':''}" data-ptj="${p.pid}" style="left:${x}%;top:${y}%;z-index:${Math.round(y)+1}">${jsSvg(p.look||{},false,ps)}<span class="ptown" style="background:${ptColor(p.pid)}">${p.pid===PT.pid?'나':esc(p.nick)}</span></div>`}).join('')}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
+    ${jsActBar(((PT.js||{})[PT.pid]||{}).pose||'stand','data-ptjsact')}
     <div class="ptbar"><b>놀잇감</b>${PT_TOYS.map(e=>`<button data-pttoy="${e}">${e}</button>`).join('')}</div>
     <div class="ptbar"><b>놀이</b><button class="ptseekbtn" data-pt="seek">🙈 다 같이 숨바꼭질</button></div>
     <div class="ptbar"><b>간식</b>${PT_SNACKS.map(e=>`<button data-ptsnack="${e}">${e}</button>`).join('')}</div>
@@ -3568,7 +3595,7 @@ function ptToy(e,path,by){const sc=document.getElementById('ptscene');if(!sc||!p
 function ptSnack(e,x,y,by){const sc=document.getElementById('ptscene');if(!sc)return;PT.busy=Date.now()+5000;ptBubble(by,`${e} 간식을 줬어요!`);const bowl=document.createElement('div');bowl.className='rmbowl';bowl.textContent=e;bowl.style.left=x+'%';bowl.style.top=y+'%';sc.appendChild(bowl);
   const list=ptGather(x,y-4);ptRun(list,1.6);setTimeout(()=>ptRest(list),1900);setTimeout(()=>bowl.remove(),4200)}
 function ptCatCard(k){const c=ptKeys().find(x=>x.k===k);if(!c)return;const b=BREEDS[c.i];ask(catBig(b),esc(b.n),`<b>${esc(c.own)}</b>의 고양이예요<br><span class="small">${esc(b.t)}</span>`+catCredit(b),[{t:'💗 쓰다듬기',cls:'go',fn:()=>{if(PT)ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'pet',k}).catch(()=>{})}}],'닫기')}
-document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-pt],#rmparty [data-ptbring],#rmparty [data-pttoy],#rmparty [data-ptsnack],#rmparty [data-ptsay],#rmparty [data-ptc],[data-rmparty]');if(!t)return;e.preventDefault();e.stopPropagation();
+document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-ptjsact],#rmparty [data-pt],#rmparty [data-ptbring],#rmparty [data-pttoy],#rmparty [data-ptsnack],#rmparty [data-ptsay],#rmparty [data-ptc],[data-rmparty]');if(!t)return;e.preventDefault();e.stopPropagation();
   if(t.dataset.rmparty!=null)return ptOpen();
   if(PT&&PT.seek&&t.dataset.ptc)return;
   if(!PT)return;const a=t.dataset.pt;const act=(o)=>ptApi('/api/act',Object.assign({code:PT.code,pid:PT.pid,tok:PT.tok},o)).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요');else if(err.code==='seeking')toast('벌써 숨바꼭질 중이에요!')});
@@ -3584,6 +3611,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-p
   if(t.dataset.ptsnack)return act({t:'snack',e:t.dataset.ptsnack,x:+(15+Math.random()*70).toFixed(1),y:+(80+Math.random()*14).toFixed(1)});
   if(t.dataset.ptsay)return act({t:'say',m:+t.dataset.ptsay});
   if(t.dataset.ptc)return ptCatCard(t.dataset.ptc);
+  if(t.dataset.ptjsact){const me=ptMyJs();return act({t:'jsa',x:me.x,y:me.y,pose:t.dataset.ptjsact})}
 },true);
 document.addEventListener('input',e=>{if(!PT)return;const t=e.target;if(t.matches('#rmparty [data-ptnick]'))PT.nick=t.value.slice(0,8);else if(t.matches('#rmparty [data-ptcode]')){t.value=t.value.replace(/\D/g,'').slice(0,4);PT.code=t.value}});
 (()=>{try{const q=new URLSearchParams(location.search);const c=(q.get('party')||'').replace(/\D/g,'').slice(0,4);if(!c)return;q.delete('party');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash);
@@ -3619,6 +3647,12 @@ function ptSeekEnd(score){if(!PT)return;const sc=document.getElementById('ptscen
 document.addEventListener('click',e=>{if(!PT||!PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;e.preventDefault();e.stopPropagation();
   let hit=null,best=1e9;sc.querySelectorAll('.rmc.rmhid:not(.ptpend)').forEach(c=>{const r=c.getBoundingClientRect();if(e.clientX>=r.left-6&&e.clientX<=r.right+6&&e.clientY>=r.top-6&&e.clientY<=r.bottom+6){const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height*.3));if(d<best){best=d;hit=c}}});
   if(hit){hit.classList.add('ptpend');ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'found',k:hit.dataset.ptc}).then(j=>{hit.classList.remove('ptpend');if(j&&j.late)toast('아깝다! 친구가 먼저 찾았어요')}).catch(()=>hit.classList.remove('ptpend'))}},true);
+
+// ----- 친구랑 놀기: 내 집사 움직이기 -----
+function ptMyJs(){const el=document.querySelector(`#ptscene [data-ptj="${PT.pid}"]`);const J=(PT.js||{})[PT.pid];return {x:J?J.x:el?parseFloat(el.style.left):50,y:J?J.y:el?parseFloat(el.style.top):90,pose:J?J.pose:'stand'}}
+document.addEventListener('click',e=>{if(!PT||!PT.pid||PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;if(e.target.closest('.rmc,.rmjs,button,.rmbowl,.rmtoy,.rmcover'))return;
+  const p=jsFloorPt(sc,e);const me=ptMyJs();const pose=['sit','sleep','hug'].includes(me.pose)?'stand':me.pose;
+  ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'jsa',x:+p.x.toFixed(1),y:+p.y.toFixed(1),pose}).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요')})});
 </script>
 </body>
 </html>

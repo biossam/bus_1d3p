@@ -49,7 +49,7 @@ function readJson(req) {
   });
 }
 function newCode() { for (let k = 0; k < 50; k++) { const c = String(crypto.randomInt(1000, 10000)); if (!rooms.has(c)) return c; } return null; }
-function pubPeople(r) { return [...r.people.values()].map(p => ({ pid: p.pid, nick: p.nick, host: p.pid === r.host, cats: p.cats, look: p.look, on: p.clients.size > 0 })); }
+function pubPeople(r) { return [...r.people.values()].map(p => ({ pid: p.pid, nick: p.nick, host: p.pid === r.host, cats: p.cats, look: p.look, js: p.js || null, on: p.clients.size > 0 })); }
 function broadcast(r, ev) { r.last = now(); r.seq++; const line = `id: ${r.seq}\ndata: ${JSON.stringify(ev)}\n\n`; for (const p of r.people.values()) for (const c of p.clients) c.write(line); }
 function auth(body) { const r = rooms.get(String(body.code || '')); if (!r) return [null, null, 'gone']; const p = r.people.get(String(body.pid || '')); if (!p || !safeEq(p.tok, tokHash(body.tok))) return [r, null, 'auth']; return [r, p, null]; }
 function closeRoom(r, why) { broadcast(r, { t: 'closed', why }); for (const p of r.people.values()) for (const c of p.clients) c.end(); rooms.delete(r.code); }
@@ -123,6 +123,7 @@ const server = http.createServer(async (req, res) => {
           if (n >= total) { const score = {}; Object.values(r.seek.found).forEach(q => score[q] = (score[q] || 0) + 1); r.seek = null; broadcast(r, { t: 'seekend', score }); }
           break;
         }
+        case 'jsa': { const JA = ['stand', 'wave', 'cheer', 'dance', 'sit', 'sleep', 'hug']; p.js = { x: num(body.x, 4, 96), y: num(body.y, 60, 100), pose: JA.includes(body.pose) ? body.pose : 'stand' }; broadcast(r, { t: 'jsa', by, ...p.js }); break; }
         case 'pet': broadcast(r, { t: 'pet', k: String(body.k || '').slice(0, 20).replace(/[^a-z0-9-]/g, ''), by }); break;
         case 'cats': p.cats = cleanCats((body.cats || []).slice(0, by === r.host ? 12 : 3)); broadcast(r, { t: 'people', people: pubPeople(r) }); break;
         case 'leave':
