@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-24 21:25"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-25 10:43"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -90,6 +90,12 @@
 .ptnet{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);z-index:290;background:#4A3B33;color:#fff;border-radius:99px;padding:3px 12px;font-size:12px}
 .ptbar{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}.ptbar b{font-size:13px;color:#4A3B33;width:44px}.ptbar button{width:44px;height:44px;border-radius:12px;border:2px solid #E5DCCF;background:#fff;font-size:22px;cursor:pointer}.ptbar button:active{transform:scale(.92)}
 .ptsays{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.ptsays button{border:2px solid #E5DCCF;background:#fff;border-radius:99px;padding:6px 11px;font:700 13px sans-serif;color:#4A3B33;cursor:pointer}
+.ptseekbtn{width:auto!important;padding:0 14px;font:700 14px sans-serif!important;background:#E9FAF5!important;border-color:#7CD7C2!important;color:#1F7A68}
+.rmsbadge.ptsb{display:flex;gap:4px;align-items:center;white-space:nowrap;max-width:94%;overflow:hidden}.rmsbadge.ptsb i{font-style:normal;color:#fff;border-radius:99px;padding:0 6px;font-size:11px}
+.rmheart.ptfound{color:#fff;border-radius:10px;padding:2px 7px;font-size:11px;white-space:nowrap;font-style:normal}
+.ptrank{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:4px 0}.ptrank i{font-style:normal;color:#fff;border-radius:99px;padding:2px 9px;font-size:13px;border:1.5px solid #fff}
+.ptscene .rmc.ptpend{opacity:.6}
+.ptscene .rmc.rmhid .ptown,.ptscene .rmc.rmhid .rmheart{display:none}
 .rmjs{position:absolute;width:12%;transform:translate(-50%,-100%);transition:left 2.4s linear,top 2.4s linear;cursor:pointer;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}.rmjs svg{display:block;width:100%;height:auto}
 .rmjs.rmflip svg{transform:scaleX(-1)}.rmjs.rmwalk svg{animation:rmbob .4s ease-in-out infinite alternate}.rmjs.jsjump svg{animation:jsjump .5s ease-out}@keyframes jsjump{0%,100%{transform:translateY(0)}40%{transform:translateY(-14%)}}
 .rmjs.off{opacity:.45}.jsbub{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);white-space:nowrap;font:700 11px sans-serif;font-style:normal;color:#4A3B33;background:#fff;border:2px solid #4A3B33;border-radius:12px;padding:3px 8px;animation:rmpop .25s ease-out;z-index:5}
@@ -3502,10 +3508,13 @@ function ptConnect(){const es=new EventSource(`${PT_URL}/api/events?code=${PT.co
   es.onerror=()=>{if(!PT)return;if(es.readyState===2){ptStop();ptMsg('👋 놀이가 끝났어요','방이 닫혔거나 연결이 끊겼어요.','<button class="cambig" data-pt="menu">처음으로</button>')}else{const b=document.getElementById('ptnet');if(b)b.style.display=''}};
   es.onopen=()=>{const b=document.getElementById('ptnet');if(b)b.style.display='none'}}
 function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats||[]).forEach(c=>{if(BREEDS[c.i])o.push({k:p.pid+'-'+c.i,i:c.i,own:p.nick,pid:p.pid,host:p.host})}));return o}
-function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();return}
+function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();if(d.seek)ptSeekStart(d.seek.hides,d.seek.found,null,true);return}
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
     if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);const jb=[...document.querySelectorAll('#ptscene .ptjs')].map(x=>x.dataset.ptj).join();if(ptKeys().map(c=>c.k).join()!==before||jb!==(PT.people||[]).map(p=>p.pid).join())ptPlay();else{ptPeople();(PT.people||[]).forEach(p=>{const j=document.querySelector(`#ptscene [data-ptj="${p.pid}"]`);if(j)j.classList.toggle('off',!p.on)})}ptReward();return}
-  if(d.t==='pos'){d.pos.forEach(p=>{const o=PT.st[p.k];PT.st[p.k]=p;const el=document.querySelector(`#ptscene [data-ptc="${p.k}"]`);if(el)ptApply(el,p,p.w&&o&&(o.x!==p.x||o.y!==p.y))});return}
+  if(d.t==='seek')return ptSeekStart(d.hides,{},d.by);
+  if(d.t==='found')return ptFound(d);
+  if(d.t==='seekend')return ptSeekEnd(d.score);
+  if(d.t==='pos'){if(PT.seek)return;d.pos.forEach(p=>{const o=PT.st[p.k];PT.st[p.k]=p;const el=document.querySelector(`#ptscene [data-ptc="${p.k}"]`);if(el)ptApply(el,p,p.w&&o&&(o.x!==p.x||o.y!==p.y))});return}
   if(d.t==='toy')return ptToy(d.e,d.path,d.by);
   if(d.t==='snack')return ptSnack(d.e,d.x,d.y,d.by);
   if(d.t==='say')return ptBubble(d.by,PT_SAYS[d.m]);
@@ -3530,6 +3539,7 @@ function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const 
     <div class="ptpeople" id="ptpeople"></div>
     <div class="rmscene ptscene" id="ptscene"><div class="rmwall" style="background:${W.css}"></div><div class="rmfloor" style="background:${F.css}"></div>${items}${cats}${(PT.people||[]).map((p,n,a)=>{const x=a.length<2?50:12+76*n/(a.length-1),y=91-(n%2)*5;return `<div class="rmjs ptjs ${p.on?'':'off'}" data-ptj="${p.pid}" style="left:${x}%;top:${y}%;z-index:${Math.round(y)+1}">${jsSvg(p.look||{})}<span class="ptown" style="background:${ptColor(p.pid)}">${p.pid===PT.pid?'나':esc(p.nick)}</span></div>`}).join('')}<div class="ptbubs" id="ptbubs"></div><div class="ptnet" id="ptnet" style="display:none">📶 다시 연결하는 중…</div></div>
     <div class="ptbar"><b>놀잇감</b>${PT_TOYS.map(e=>`<button data-pttoy="${e}">${e}</button>`).join('')}</div>
+    <div class="ptbar"><b>놀이</b><button class="ptseekbtn" data-pt="seek">🙈 다 같이 숨바꼭질</button></div>
     <div class="ptbar"><b>간식</b>${PT_SNACKS.map(e=>`<button data-ptsnack="${e}">${e}</button>`).join('')}</div>
     <div class="ptsays">${PT_SAYS.map((t,n)=>`<button data-ptsay="${n}">${t}</button>`).join('')}</div>
     <p class="camhint">고양이를 누르면 누구 고양이인지 보고 쓰다듬을 수 있어요</p>
@@ -3538,7 +3548,7 @@ function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const 
   ptPeople();if(PT.qr)ptQR(url);if(PT.host){clearInterval(PT.loop);PT.loop=setInterval(ptHostTick,3000);ptHostTick(true)}}
 function ptQR(url){const draw=()=>{const box=document.getElementById('ptqrimg');if(!box)return;try{const q=qrcode(0,'M');q.addData(url);q.make();box.innerHTML=`<img src="${q.createDataURL(6,2)}" alt="초대 QR" width="180" height="180">`}catch(e){box.textContent='QR을 만들 수 없어요. 코드를 알려 주세요.'}};
   if(typeof qrcode==='function')return draw();const sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js';sc.onload=draw;sc.onerror=()=>{const b=document.getElementById('ptqrimg');if(b)b.textContent='QR을 불러오지 못했어요. 코드 '+PT.code+'를 알려 주세요.'};document.head.appendChild(sc)}
-function ptHostTick(initial){if(!PT||!PT.host||!PT.snap)return;if(PT.busy>Date.now())return;const keys=ptKeys();if(!keys.length)return;
+function ptHostTick(initial){if(!PT||!PT.host||!PT.snap)return;if(PT.busy>Date.now()||PT.seek)return;const keys=ptKeys();if(!keys.length)return;
   const spots=[];(PT.snap.items||[]).forEach(it=>{if(RM_ITEMS[it.k])(RM_SPOTS[it.k]||[]).forEach((sp,j)=>spots.push({key:it.id+':'+j,it,sp}))});
   const used={};keys.forEach(c=>{const s=PT.st[c.k];if(s&&s.spot)used[s.spot]=1});const out=[];
   keys.forEach(c=>{let s=PT.st[c.k]||{k:c.k,x:50,y:80,z:81,pose:'sit'};let w=0;
@@ -3549,23 +3559,25 @@ function ptHostTick(initial){if(!PT||!PT.host||!PT.snap)return;if(PT.busy>Date.n
     PT.st[c.k]=s;out.push({k:c.k,x:+s.x.toFixed(1),y:+s.y.toFixed(1),z:s.z,pose:s.pose,w})});
   ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'pos',pos:out}).catch(()=>{})}
 function ptGather(x,y){const keys=ptKeys();return keys.map((c,i)=>{const dx=(i%5-2)*5,dy=(Math.floor(i/5)-1)*4;const cx=Math.max(5,Math.min(95,x+dx)),cy=Math.max(64,Math.min(98,y+6+dy));return [c.k,cx,cy]})}
-function ptRun(list,dur){list.forEach(([k,cx,cy])=>{const el=document.querySelector(`#ptscene [data-ptc="${k}"]`);if(!el)return;el.classList.toggle('rmflip',cx<parseFloat(el.style.left));ptPose(el,'sit');el.classList.add('rmwalk');el.style.transition=`left ${dur}s ease-out,top ${dur}s ease-out`;el.style.left=cx+'%';el.style.top=cy+'%';el.style.zIndex=Math.round(cy)+1})}
-function ptRest(list){if(!PT)return;list.forEach(([k,cx,cy])=>{const el=document.querySelector(`#ptscene [data-ptc="${k}"]`);if(el){el.classList.remove('rmwalk');el.style.transition='';const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)}
+function ptRun(list,dur){if(PT&&PT.seek)return;list.forEach(([k,cx,cy])=>{const el=document.querySelector(`#ptscene [data-ptc="${k}"]`);if(!el)return;el.classList.toggle('rmflip',cx<parseFloat(el.style.left));ptPose(el,'sit');el.classList.add('rmwalk');el.style.transition=`left ${dur}s ease-out,top ${dur}s ease-out`;el.style.left=cx+'%';el.style.top=cy+'%';el.style.zIndex=Math.round(cy)+1})}
+function ptRest(list){if(!PT||PT.seek)return;list.forEach(([k,cx,cy])=>{const el=document.querySelector(`#ptscene [data-ptc="${k}"]`);if(el){el.classList.remove('rmwalk');el.style.transition='';const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)}
   if(PT.st[k])PT.st[k]=Object.assign(PT.st[k],{x:cx,y:cy,z:Math.round(cy)+1,pose:'sit',spot:null})})}
 function ptToy(e,path,by){const sc=document.getElementById('ptscene');if(!sc||!path.length)return;PT.busy=Date.now()+path.length*1300+1500;const p=(PT.people||[]).find(x=>x.pid===by);if(p)ptBubble(by,`${e} 놀잇감을 흔들어요!`);
   const toy=document.createElement('div');toy.className='rmtoy';toy.textContent=e;sc.appendChild(toy);let n=0,last=[];
-  const hop=()=>{if(!PT)return;const [x,y]=path[n];toy.style.left=x+'%';toy.style.top=y+'%';last=ptGather(x,y);ptRun(last,1.1);if(++n<path.length)setTimeout(hop,1300);else setTimeout(()=>{toy.remove();ptRest(last)},1300)};hop()}
+  const hop=()=>{if(!PT)return;if(PT.seek){toy.remove();return}const [x,y]=path[n];toy.style.left=x+'%';toy.style.top=y+'%';last=ptGather(x,y);ptRun(last,1.1);if(++n<path.length)setTimeout(hop,1300);else setTimeout(()=>{toy.remove();ptRest(last)},1300)};hop()}
 function ptSnack(e,x,y,by){const sc=document.getElementById('ptscene');if(!sc)return;PT.busy=Date.now()+5000;ptBubble(by,`${e} 간식을 줬어요!`);const bowl=document.createElement('div');bowl.className='rmbowl';bowl.textContent=e;bowl.style.left=x+'%';bowl.style.top=y+'%';sc.appendChild(bowl);
   const list=ptGather(x,y-4);ptRun(list,1.6);setTimeout(()=>ptRest(list),1900);setTimeout(()=>bowl.remove(),4200)}
 function ptCatCard(k){const c=ptKeys().find(x=>x.k===k);if(!c)return;const b=BREEDS[c.i];ask(catBig(b),esc(b.n),`<b>${esc(c.own)}</b>의 고양이예요<br><span class="small">${esc(b.t)}</span>`+catCredit(b),[{t:'💗 쓰다듬기',cls:'go',fn:()=>{if(PT)ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'pet',k}).catch(()=>{})}}],'닫기')}
 document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-pt],#rmparty [data-ptbring],#rmparty [data-pttoy],#rmparty [data-ptsnack],#rmparty [data-ptsay],#rmparty [data-ptc],[data-rmparty]');if(!t)return;e.preventDefault();e.stopPropagation();
   if(t.dataset.rmparty!=null)return ptOpen();
-  if(!PT)return;const a=t.dataset.pt;const act=(o)=>ptApi('/api/act',Object.assign({code:PT.code,pid:PT.pid,tok:PT.tok},o)).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요')});
+  if(PT&&PT.seek&&t.dataset.ptc)return;
+  if(!PT)return;const a=t.dataset.pt;const act=(o)=>ptApi('/api/act',Object.assign({code:PT.code,pid:PT.pid,tok:PT.tok},o)).catch(err=>{if(err.code==='slow')toast('조금 천천히 눌러 주세요');else if(err.code==='seeking')toast('벌써 숨바꼭질 중이에요!')});
   if(a==='close')return ptClose();
   if(a==='menu'){ptStop();PT={scr:'menu',code:'',nick:PT.nick,bring:[]};return ptDraw()}
   if(a==='tojoin'){PT.scr='join';return ptDraw()}
   if(a==='host')return ptStart('host');
   if(a==='join')return ptStart('join');
+  if(a==='seek'){if(PT.seek)return;const h=ptMakeHides();if(!h.length){toast('숨을 고양이가 없어요');return}act({t:'seek',hides:h});return}
   if(a==='qr'){PT.qr=!PT.qr;return ptPlay()}
   if(t.dataset.ptbring){const i=+t.dataset.ptbring;const k=PT.bring.indexOf(i);if(k>=0)PT.bring.splice(k,1);else{if(PT.bring.length>=3){toast('최대 3마리까지 데려갈 수 있어요');return}PT.bring.push(i)}t.classList.toggle('on',PT.bring.includes(i));return}
   if(t.dataset.pttoy){const path=[];for(let n=0;n<5;n++)path.push([+(10+Math.random()*80).toFixed(1),+(66+Math.random()*28).toFixed(1)]);return act({t:'toy',e:t.dataset.pttoy,path})}
@@ -3576,6 +3588,37 @@ document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-p
 document.addEventListener('input',e=>{if(!PT)return;const t=e.target;if(t.matches('#rmparty [data-ptnick]'))PT.nick=t.value.slice(0,8);else if(t.matches('#rmparty [data-ptcode]')){t.value=t.value.replace(/\D/g,'').slice(0,4);PT.code=t.value}});
 (()=>{try{const q=new URLSearchParams(location.search);const c=(q.get('party')||'').replace(/\D/g,'').slice(0,4);if(!c)return;q.delete('party');history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:'')+location.hash);
   setTimeout(()=>{try{closeModal()}catch(e){}ptOpen(c)},700)}catch(e){}})();
+
+// ----- 다 같이 숨바꼭질 -----
+function ptMakeHides(){const sc=document.getElementById('ptscene');if(!sc||!PT||!PT.snap)return [];const ar=sc.clientWidth/sc.clientHeight||4/3;const spots=[];
+  (PT.snap.items||[]).forEach(it=>{const I=RM_ITEMS[it.k];if(!I||I.p==='wall')return;if(['box','plant','sofa','shelf','lamp','tower','bed','fish','desk','bathtub','washer','basket','cushion'].includes(it.k)){
+    const peekY=it.k==='box'||it.k==='basket'?it.y-I.w*ar*.18:it.y-I.w*ar*.12;spots.push({x:it.x,w:I.w,y:peekY,z:Math.round(it.y)-1})}});
+  const edges=[{x:3,y:82,z:3},{x:97,y:90,z:3},{x:50,y:108,z:3},{x:3,y:99,z:3},{x:97,y:72,z:3},{x:25,y:108,z:3},{x:75,y:108,z:3}];
+  const keys=ptKeys().map(c=>c.k).sort(()=>Math.random()-.5);const pool=spots.sort(()=>Math.random()-.5);
+  return keys.map((k,i)=>{let h;if(i<pool.length){const q=pool[i];h={x:q.x+(Math.random()-.5)*q.w*.4,y:q.y,z:q.z}}else if(i-pool.length<edges.length)h=edges[i-pool.length];else{const q=pool.length?pool[i%pool.length]:edges[i%edges.length];h={x:q.x+(Math.random()-.5)*8,y:q.y,z:q.z}}
+    return {k,x:+h.x.toFixed(1),y:+h.y.toFixed(1),z:h.z}})}
+function ptSeekStart(hides,found,by,quiet){const sc=document.getElementById('ptscene');if(!sc)return;PT.seek={hides,found:Object.assign({},found||{}),score:{}};Object.values(PT.seek.found).forEach(q=>PT.seek.score[q]=(PT.seek.score[q]||0)+1);
+  sc.classList.add('rmseeking');const place=()=>{Object.entries(hides).forEach(([k,h])=>{const el=sc.querySelector(`[data-ptc="${k}"]`);if(!el||PT.seek.found[k])return;clearTimeout(el._t);el.classList.remove('rmwalk');el.style.transition='none';ptPose(el,'sit');el.style.left=h.x+'%';el.style.top=h.y+'%';el.style.zIndex=h.z;el.classList.add('rmhid')});ptSeekBadge()};
+  if(quiet)return place();const p=(PT.people||[]).find(x=>x.pid===by);
+  const cover=document.createElement('div');cover.className='rmcover';cover.innerHTML=`<b>🙈 다 같이 눈 감아요!</b><span>${p?esc(p.nick)+' 친구가 숨바꼭질을 시작했어요 · ':''}하나, 둘, 셋…</span>`;sc.appendChild(cover);
+  setTimeout(()=>{if(!PT||!PT.seek)return cover.remove();place();cover.innerHTML=`<b>🔍 고양이 ${Object.keys(hides).length}마리를 먼저 찾아요!</b><span>먼저 누른 사람이 찾은 걸로 쳐요</span>`;setTimeout(()=>cover.classList.add('rmfade'),1600);setTimeout(()=>cover.remove(),2300)},1600)}
+function ptSeekBadge(){const sc=document.getElementById('ptscene');if(!sc||!PT||!PT.seek)return;let b=sc.querySelector('.rmsbadge');if(!b){b=document.createElement('div');b.className='rmsbadge ptsb';sc.appendChild(b)}
+  const n=Object.keys(PT.seek.found).length,t=Object.keys(PT.seek.hides).length;const sc2=Object.entries(PT.seek.score).sort((a,b)=>b[1]-a[1]).map(([pid,v])=>{const p=(PT.people||[]).find(x=>x.pid===pid);return `<i style="background:${ptColor(pid)}">${esc(p?(pid===PT.pid?'나':p.nick):'?')} ${v}</i>`}).join('');
+  b.innerHTML=`🔍 ${n} / ${t}${sc2?' '+sc2:''}`}
+function ptFound(d){if(!PT||!PT.seek)return;PT.seek.found[d.k]=d.by;PT.seek.score[d.by]=(PT.seek.score[d.by]||0)+1;const el=document.querySelector(`#ptscene [data-ptc="${d.k}"]`);const p=(PT.people||[]).find(x=>x.pid===d.by);
+  if(el){el.classList.remove('rmhid');el.style.transition='';const y=66+Math.random()*26,x=Math.max(8,Math.min(92,parseFloat(el.style.left)));el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;
+    const h=document.createElement('i');h.className='rmheart ptfound';h.style.background=ptColor(d.by);h.textContent=(d.by===PT.pid?'내가':esc(p?p.nick:'친구'))+' 찾았다!';el.appendChild(h);setTimeout(()=>h.remove(),1800);
+    if(PT.st[d.k])Object.assign(PT.st[d.k],{x,y,z:Math.round(y)+1,pose:'sit',spot:null})}
+  ptSeekBadge()}
+function ptSeekEnd(score){if(!PT)return;const sc=document.getElementById('ptscene');PT.seek=null;if(sc){sc.classList.remove('rmseeking');const b=sc.querySelector('.rmsbadge');if(b)b.remove()}
+  const rank=Object.entries(score||{}).sort((a,b)=>b[1]-a[1]);const nm=pid=>{const p=(PT.people||[]).find(x=>x.pid===pid);return pid===PT.pid?'나':(p?p.nick:'친구')};
+  const top=rank.length?rank[0][1]:0;const win=rank.filter(r=>r[1]===top).map(r=>nm(r[0]));const mine=(score||{})[PT.pid]||0;
+  const R=rmS();let bonus='';if(R.ptSeekDay!==today()){R.ptSeekDay=today();R.coins=(R.coins||0)+1;save();bonus='<span>오늘의 숨바꼭질 보너스 ⭐1</span>'}
+  if(sc){const cover=document.createElement('div');cover.className='rmcover ptend';cover.innerHTML=`<b>🎉 다 찾았어요!</b><span>🏆 ${win.map(esc).join(', ')} ${win.length>1?'공동 1등':'1등'} (${top}마리)</span><div class="ptrank">${rank.map(([pid,v])=>`<i style="background:${ptColor(pid)}">${esc(nm(pid))} ${v}마리</i>`).join('')}</div><span>나는 ${mine}마리 찾았어요</span>${bonus}`;sc.appendChild(cover);setTimeout(()=>cover.classList.add('rmfade'),3800);setTimeout(()=>cover.remove(),4500)}
+  PT.busy=Date.now()+3000}
+document.addEventListener('click',e=>{if(!PT||!PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;e.preventDefault();e.stopPropagation();
+  let hit=null,best=1e9;sc.querySelectorAll('.rmc.rmhid:not(.ptpend)').forEach(c=>{const r=c.getBoundingClientRect();if(e.clientX>=r.left-6&&e.clientX<=r.right+6&&e.clientY>=r.top-6&&e.clientY<=r.bottom+6){const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height*.3));if(d<best){best=d;hit=c}}});
+  if(hit){hit.classList.add('ptpend');ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'found',k:hit.dataset.ptc}).then(j=>{hit.classList.remove('ptpend');if(j&&j.late)toast('아깝다! 친구가 먼저 찾았어요')}).catch(()=>hit.classList.remove('ptpend'))}},true);
 </script>
 </body>
 </html>

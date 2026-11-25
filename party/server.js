@@ -69,7 +69,7 @@ const server = http.createServer(async (req, res) => {
       const [r, p, err] = auth({ code: url.searchParams.get('code'), pid: url.searchParams.get('pid'), tok: url.searchParams.get('tok') });
       if (err) return send(req, res, err === 'gone' ? 404 : 403, { err });
       res.writeHead(200, headers(req, { 'Content-Type': 'text/event-stream; charset=utf-8', 'Connection': 'keep-alive', 'X-Accel-Buffering': 'no' }));
-      res.write(`retry: 3000\ndata: ${JSON.stringify({ t: 'hello', snap: r.snap, people: pubPeople(r), pos: r.pos, me: p.pid })}\n\n`);
+      res.write(`retry: 3000\ndata: ${JSON.stringify({ t: 'hello', snap: r.snap, people: pubPeople(r), pos: r.pos, seek: r.seek ? { hides: r.seek.hides, found: r.seek.found } : null, me: p.pid })}\n\n`);
       const wasOn = p.clients.size > 0; p.clients.add(res); p.last = now();
       if (!wasOn) broadcast(r, { t: 'people', people: pubPeople(r) });
       const hb = setInterval(() => res.write(': hb\n\n'), 20e3);
@@ -108,6 +108,21 @@ const server = http.createServer(async (req, res) => {
         case 'toy': { if (!TOYS.has(body.e)) return send(req, res, 400, { err: 'toy' }); const path = (Array.isArray(body.path) ? body.path : []).slice(0, 8).map(q => [num(q[0], 4, 96), num(q[1], 60, 98)]); broadcast(r, { t: 'toy', e: body.e, path, by }); break; }
         case 'snack': { if (!SNACKS.has(body.e)) return send(req, res, 400, { err: 'snack' }); broadcast(r, { t: 'snack', e: body.e, x: num(body.x, 6, 94), y: num(body.y, 64, 98), by }); break; }
         case 'say': broadcast(r, { t: 'say', m: num(body.m, 0, SAYS - 1) | 0, by }); break;
+        case 'seek': {
+          if (r.seek && t - r.seek.at < 5 * 60e3) return send(req, res, 409, { err: 'seeking' });
+          const keys = new Set([...r.people.values()].flatMap(q => q.cats.map(c => q.pid + '-' + c.i)));
+          const hides = {}; (Array.isArray(body.hides) ? body.hides : []).slice(0, 40).forEach(h => { const k = String(h && h.k || ''); if (keys.has(k)) hides[k] = { x: num(h.x, -5, 105), y: num(h.y, 20, 112), z: num(h.z, 0, 200) | 0 }; });
+          if (!Object.keys(hides).length) return send(req, res, 400, { err: 'nocat' });
+          r.seek = { at: t, by, hides, found: {} }; broadcast(r, { t: 'seek', hides, by }); break;
+        }
+        case 'found': {
+          const k = String(body.k || ''); if (!r.seek || !r.seek.hides[k]) return send(req, res, 200, { ok: false });
+          if (r.seek.found[k]) return send(req, res, 200, { ok: false, late: true });
+          r.seek.found[k] = by; const total = Object.keys(r.seek.hides).length, n = Object.keys(r.seek.found).length;
+          broadcast(r, { t: 'found', k, by, n, total });
+          if (n >= total) { const score = {}; Object.values(r.seek.found).forEach(q => score[q] = (score[q] || 0) + 1); r.seek = null; broadcast(r, { t: 'seekend', score }); }
+          break;
+        }
         case 'pet': broadcast(r, { t: 'pet', k: String(body.k || '').slice(0, 20).replace(/[^a-z0-9-]/g, ''), by }); break;
         case 'cats': p.cats = cleanCats((body.cats || []).slice(0, by === r.host ? 12 : 3)); broadcast(r, { t: 'people', people: pubPeople(r) }); break;
         case 'leave':
