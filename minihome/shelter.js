@@ -7,7 +7,7 @@ const SH_CATS=[
  {i:153,n:'삼순이',b:'#F5EFE6',d:'#E08A3C',e:'g',p:'k',ear:'n',f:'',t:'다리를 다쳐 구조됐어요. 지금은 다 나아서 잘 뛰어다녀요.'},
  {i:154,n:'젖소',b:'#FFFFFF',d:'#2E2D38',e:'y',p:'w',ear:'n',f:'',t:'이사 가는 집에 혼자 남겨졌어요. 사람 무릎을 제일 좋아해요.'},
  {i:155,n:'콩떡',b:'#2E2D38',d:'#2E2D38',e:'g',p:'m',ear:'n',f:'',t:'공원 벤치 밑에서 발견된 턱시도예요. 겁이 많지만 장난감을 보면 신나요.'}];
-const SH_DAYS=5;
+const SH_DAYS=3;
 const SH_TIPS=['고양이는 15년 넘게 살기도 해요. 입양은 그 긴 시간을 함께하겠다는 약속이에요.','고양이도 동물등록을 할 수 있어요. 잃어버렸을 때 집을 찾는 데 도움이 돼요.','중성화 수술은 돌봐 줄 사람 없는 아기 고양이가 늘어나는 것을 막아 줘요.','길에서 아기 고양이를 보면 바로 데려오지 말고, 엄마 고양이가 오는지 멀리서 지켜봐요.','"사지 말고 입양하세요" — 보호소에는 가족을 기다리는 동물이 많아요.','입양한 뒤에도 매일 조금씩 놀아 주면 고양이가 더 행복해져요.'];
 const SH_PLEDGE=['매일 밥과 물을 챙겨 줄게요','아프면 병원에 데려갈게요','이사 가도 끝까지 함께할게요','매일 놀아 주고 이야기해 줄게요','화가 나도 때리거나 버리지 않을게요'];
 let SH_ADOPT=false;
@@ -16,7 +16,7 @@ function shBase(i){return SH_CATS.find(c=>c.i===i)}
 function shBreed(i){const b=shBase(i);if(!b)return undefined;const A=(S.room&&S.room.shelter&&S.room.shelter.adopted||{})[i];return A&&A.n?Object.assign({},b,{n:A.n}):b}
 function shIds(){const H=shS();const o=Object.keys(H.adopted).map(Number);if(H.cur&&!o.includes(H.cur.i))o.push(H.cur.i);return o}
 function shDaysN(c){return Object.keys(c.days||{}).length}
-function shTrust(c){return Math.min(100,shDaysN(c)*16+(c.hearts||0)*2)}
+function shTrust(c){return Math.min(100,shDaysN(c)*26+(c.hearts||0)*2)}
 function shReady(c){return shDaysN(c)>=SH_DAYS&&shTrust(c)>=100}
 function shLastStudy(){let t=today();for(let k=0;k<30;k++){const d=S.days&&S.days[dayStr(t-k)];if(d&&d.probs>0)return k}return 99}
 // 고양이별 마음 단계: 0 숨기, 1 멀리서, 2 보통
