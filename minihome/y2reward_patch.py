@@ -45,6 +45,9 @@ for a,b in [("<p>🐾 친구 ${w.an}마리가 홈 화면 어딘가에 숨었어�
 a='RUN.reward={stars,bonus,an,good,n:na,self,fast,pend,wrong,capped:fixOk>bonus};'
 if s.count(a)==1:s=s.replace(a,a+'try{shCare(good,fixOk,RUN.mode)}catch(e){}')
 else:miss.append(('sh',a))
+a="const fast=p.t!=='self'&&Date.now()-((st.shown&&st.shown[st.j])||0)<3000;"
+if s.count(a)==1:s=s.replace(a,"const fast=false;")
+else:miss.append(('nofast',a))
 miss=[m for m in miss if not (m[0]=='-' and ('새 개념 <span' in m[1] or 'class="done"' in m[1] or 'mhcard' in m[1]))]
 css=''.join(open(D+'site/y2/'+c+'.css').read() for c in ['080d3c3','141ab87','7290687'])
 i=s.rindex('</style>');s=s[:i]+css+s[i:]
