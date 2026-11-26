@@ -15,8 +15,12 @@ R("7일 연속 공부하면 한 마리를 선물로 받아요! 하루 쉴 때마
 # home card after hero section
 i=s.index('function homeHTML'); j=s.index('</section>',i)+len('</section>')
 s=s[:j]+"\n  ${(()=>{const R=rmS();const n=rmLive().length;return `<button class=\"mhcard\" data-act=\"room\"><span class=\"mhci\">🏠</span><span><b>${esc(R.name||'나')}의 미니홈피</b><small>고양이 ${n}마리가 살고 있어요 · ⭐ ${R.coins||0}</small></span><span class=\"mhgo\">›</span></button>`})()}"+s[j:]
-css=open(D+'site/room.css').read()+open(D+'site/party.css').read()+open(D+'site/jibsa.css').read()
+css=open(D+'site/room.css').read()+open(D+'site/party.css').read()+open(D+'site/jibsa.css').read()+open(D+'site/shelter.css').read()
 s=s.replace('</style>',css+'</style>',1)
-js=open(D+'site/room.js').read()+open(D+'site/jibsa.js').read()+open(D+'site/qr.js').read()+open(D+'site/party.js').read()
+js=open(D+'site/room.js').read()+open(D+'site/shelter.js').read()+open(D+'site/jibsa.js').read()+open(D+'site/qr.js').read()+open(D+'site/party.js').read()
+js=js.replace('BREEDS[','BRX[')
 i=s.rindex('</script>');s=s[:i]+js+s[i:]
+_a="const isB=c=>typeof c==='object';"
+assert s.count(_a)==1,'isB'
+s=s.replace(_a,_a+"\nconst BRX=new Proxy(BREEDS,{get(t,k){if(typeof k==='string'&&/^\\d+$/.test(k)&&+k>=150)return shBreed(+k);return Reflect.get(t,k)}});",1)
 open(f,'w').write(s);print('room ok')

@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-26 20:38"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-26 20:52"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -117,6 +117,18 @@
 .jsmark{position:absolute;width:18px;height:8px;margin:-4px 0 0 -9px;border:2px solid #FF7563;border-radius:50%;pointer-events:none;animation:jsmark .9s ease-out forwards;z-index:200}@keyframes jsmark{from{opacity:1;transform:scale(.4)}to{opacity:0;transform:scale(1.6)}}
 .jsact{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:10px}.jsact b{font-size:13px;color:#4A3B33;margin-right:2px}.jsact button{border:2px solid #E5DCCF;background:#fff;border-radius:99px;padding:5px 10px;font:700 12.5px sans-serif;color:#4A3B33;cursor:pointer}.jsact button.on{background:#4A3B33;border-color:#4A3B33;color:#fff}
 .jshint{margin:4px 0 0!important;font-size:11.5px}.ptjs.mine .ptown{box-shadow:0 0 0 2px #FFD66B}
+.shcard{background:#fff;border:2px solid #E5DCCF;border-radius:16px;padding:12px 14px;margin-bottom:12px}.shcard.sharp{border-color:#FFC23D;background:#FFFBEF}
+.shhead{display:flex;gap:12px;align-items:center}.shhead b{display:block;font-family:'Jua',sans-serif;font-weight:400;font-size:18px;color:#4A3B33}.shhead small{display:block;font-size:12.5px;color:#7A6A5F;line-height:1.45;margin-top:2px}
+.shbar{position:relative;height:18px;border-radius:99px;background:#F3EEE6;overflow:hidden;margin:12px 0 8px}.shbar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#FFB8C6,#FF7563);border-radius:99px;transition:width .6s}.shbar span{position:relative;display:block;text-align:center;font:700 11.5px/18px sans-serif;color:#4A3B33}
+.shdays{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.shdays i{width:28px;height:28px;border-radius:50%;border:2px dashed #E5DCCF;display:flex;align-items:center;justify-content:center;font:700 12px sans-serif;color:#B5A799;font-style:normal}.shdays i.on{border:2px solid #FF7563;background:#FFF1EE}.shdays span{font-size:12.5px;color:#4A3B33;margin-left:4px}
+.shstage{font-weight:700;color:#4A3B33;margin:10px 0 4px}.shtip{background:#F4FCF9;border-radius:12px;padding:8px 10px;font-size:13px;color:#1F5E50;margin:6px 0}
+.shh{font-family:'Jua',sans-serif;font-weight:400;font-size:17px;color:#4A3B33;margin:6px 0 8px}.shh small{font-family:sans-serif;font-size:12px;color:#8A7B70;margin-left:6px}
+.shlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.shit{background:#fff;border:2px solid #E5DCCF;border-radius:14px;padding:8px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px}
+.shit b{font-size:14px;color:#4A3B33}.shit small{font-size:11px;color:#7A6A5F;line-height:1.35}.shit em{font-style:normal;font-size:12px;font-weight:700;color:#FF7563}.shit em.off{color:#B5A799}.shit .rmbtn{margin-top:4px}
+.shit.now{border-color:#FF7563;background:#FFF6F3}.shit.done{border-color:#7CD7C2;background:#F4FCF9}
+.shpl{display:flex;flex-direction:column;gap:8px;margin:12px 0}.shpl label{display:flex;gap:8px;align-items:center;font-size:14.5px;color:#4A3B33}.shpl input{width:20px;height:20px;accent-color:#FF7563}
+.rmc.shshy{filter:saturate(.85)}.shbub{white-space:nowrap}
+.mhtabs{overflow-x:auto;scrollbar-width:none}.mhtabs::-webkit-scrollbar{display:none}.mhtabs button{flex:1 0 auto;white-space:nowrap;padding:6px 8px;font-size:12.5px}
 </style></head><body>
 <!DOCTYPE html>
 <html lang="ko">
@@ -2646,6 +2658,7 @@ const BREEDS=[
 ['레드 아비시니안', '#D98A55', '#A85A2E', 'y', 't', 'g', '', '붉은 구릿빛 털의 아비시니안이에요.']
 ].map((r,i)=>({i,n:r[0],b:r[1],d:r[2],e:r[3],p:r[4],ear:r[5],f:r[6],t:r[7]}));
 const isB=c=>typeof c==='object';
+const BRX=new Proxy(BREEDS,{get(t,k){if(typeof k==='string'&&/^\d+$/.test(k)&&+k>=150)return shBreed(+k);return Reflect.get(t,k)}});
 const cb=c=>isB(c)?c:CATC[c];
 function bFace(B,closed){
   const has=k=>(B.f||'').includes(k);
@@ -2730,7 +2743,7 @@ function rewardSet(){const ps=RUN.steps.find(s=>s.k==='probs');if(!ps||!ps.list)
   S.fixStar=S.fixStar&&S.fixStar.d===t?S.fixStar:{d:t,n:0};const bonus=Math.min(fixOk,FIX_CAP-S.fixStar.n);S.fixStar.n+=bonus;
   let pend=0;if(RUN.mode!=='fix'&&!an&&na){const due=S.fixDue&&S.fixDue.d===t?S.fixDue.n:0;pend=RUN.mode==='session'?2:1;S.fixDue={d:t,n:Math.min(3,due+pend)}}
   if(RUN.mode==='fix'&&ratio>=.5&&S.fixDue&&S.fixDue.d===t){an=S.fixDue.n;S.fixDue=null}
-  RUN.reward={stars,bonus,an,good,n:na,self,fast,pend,wrong,capped:fixOk>bonus};setDone(an,stars+bonus)}
+  RUN.reward={stars,bonus,an,good,n:na,self,fast,pend,wrong,capped:fixOk>bonus};try{shCare(good,fixOk,RUN.mode)}catch(e){}setDone(an,stars+bonus)}
 function rewardHTML(){const w=RUN.reward;if(!w)return '';const want=w.stars+w.bonus,tot=w.got==null?want:w.got;const e=typeof starToday==='function'?starToday():{n:0};
   const why=(w.n?(RUN.mode==='fix'?`비슷한 문제 ${w.n}개 중 <b>${w.good}개</b>를 고쳤어요`:`${w.n}문제 중 <b>${w.good}개</b>를 맞혔어요`):'앱이 채점하는 문제가 없었어요')+(w.self?` <span class="small">(스스로 채점한 ${w.self}문제는 참여로만 세요)</span>`:'');
   return `<div class="card rwcard"><div class="rwstar">${tot?'⭐'.repeat(Math.min(tot,5))+` <b>+${tot}</b>`:'☆ 0'}</div><p>${why}${w.bonus?` · 틀린 문제 고치기 보너스 ⭐${w.bonus}`:''}${w.capped?' <span class="small">(고치기 보너스는 하루 ⭐'+FIX_CAP+'까지)</span>':''}</p>
@@ -3224,7 +3237,7 @@ function rmJ(w,a,b){const c=w.charCodeAt(w.length-1)-0xAC00;const bat=c>=0&&c<11
 function rmCur(R){return R.rooms.find(r=>r.id===R.cur)||R.rooms[0]}
 function rmMig(R){if(!R.rooms){R.rooms=[{id:1,t:'room',name:'내 방',wall:R.wall||'cream',floor:R.floor||'wood',items:R.items||[]}];R.cur=1;R.rid=2;R.home=R.home||{};delete R.wall;delete R.floor;delete R.items}
   if(!R.home)R.home={};const d=Object.getOwnPropertyDescriptor(R,'items');if(!d||!d.get)['wall','floor','items'].forEach(k=>{delete R[k];Object.defineProperty(R,k,{get(){return rmCur(R)[k]},set(v){rmCur(R)[k]=v},enumerable:false,configurable:true})});return R}
-function rmAll(){const ks=Object.keys(S.dex||{}).map(Number).filter(i=>BREEDS[i]);ks.sort((a,b)=>(S.dex[b]||0)-(S.dex[a]||0));return ks}
+function rmAll(){const ks=Object.keys(S.dex||{}).map(Number).filter(i=>BRX[i]);ks.sort((a,b)=>(S.dex[b]||0)-(S.dex[a]||0));try{return shIds().concat(ks)}catch(e){return ks}}
 function rmHomeOf(i){const R=S.room;const h=R.home[i];return R.rooms.some(r=>r.id===h)?h:R.rooms[0].id}
 function rmMkRoom(t){const R=rmS();const T=RM_RT[t];const same=R.rooms.filter(r=>r.t===t).length;const r={id:R.rid++,t,name:T.n+(same?' '+(same+1):''),wall:T.wall,floor:T.floor,items:[]};
   T.it.forEach(([k,x,y])=>{r.items.push({id:R.nid++,k,x,y,f:0});if(!R.own.includes(k))R.own.push(k)});[T.wall,T.floor].forEach(k=>{if(!R.own.includes(k))R.own.push(k)});R.rooms.push(r);R.cur=r.id;save();return r}
@@ -3238,7 +3251,7 @@ let RM_NEW=false,RM_TAB='room',RM_EDIT=false,RM_SEL=null,RM_T=null;
 function rmItemHTML(it){const I=RM_ITEMS[it.k];if(!I)return '';const sel=RM_EDIT&&RM_SEL===it.id;
   return `<div class="rmi ${RM_EDIT?'ed':''} ${sel?'sel':''}" data-rmi="${it.id}" style="left:${it.x}%;top:${it.y}%;width:${I.w}%;z-index:${I.z===-1?1:(I.p==='wall'?2:Math.round(it.y))};transform:translate(-50%,-100%) scaleX(${it.f?-1:1})"><svg viewBox="0 0 60 60" width="100%">${I.s}</svg></div>`}
 function roomSceneHTML(){const R=rmS();const live=rmLive();
-  const cats=live.map((i,n)=>{const x=10+((i*37+n*23)%80),y=70+((i*13+n*7)%24);return `<div class="rmc" data-rmc="${i}" style="left:${x}%;top:${y}%;z-index:${y+1}">${rmCat(BREEDS[i])}</div>`}).join('');
+  const cats=live.map((i,n)=>{const x=10+((i*37+n*23)%80),y=70+((i*13+n*7)%24);return `<div class="rmc" data-rmc="${i}" style="left:${x}%;top:${y}%;z-index:${y+1}">${rmCat(BRX[i])}</div>`}).join('');
   return `<div class="rmscene" id="rmscene"><div class="rmwall" style="background:${RM_WALL[R.wall].css}"></div><div class="rmfloor" style="background:${RM_FLOOR[R.floor].css}"></div>${R.items.map(rmItemHTML).join('')}${cats}<div class="rmjs" style="left:${R.jx||50}%;top:${R.jy||90}%;z-index:${Math.round(R.jy||90)+1}">${jsSvg(rmLook())}</div>${!live.length?'<div class="rmempty">아직 함께 사는 고양이가 없어요.<br>문제 세트를 풀고 숨은 고양이를 찾아 보세요!</div>':''}</div>`}
 function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S.days[k]&&(S.days[k].sess||S.days[k].solved||S.days[k].n)).length||Object.keys(S.days||{}).length;
   const td=(S.daily&&S.daily.log&&S.daily.log[dayStr(today())])||0;const live=rmLive();
@@ -3264,8 +3277,8 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     <h4 class="rmh">가구</h4><div class="rmgrid">${Object.entries(RM_ITEMS).map(([k,o])=>card('item',k,o)).join('')}</div>
     <h4 class="rmh">벽지</h4><div class="rmgrid">${Object.entries(RM_WALL).map(([k,o])=>card('wall',k,o)).join('')}</div>
     <h4 class="rmh">바닥</h4><div class="rmgrid">${Object.entries(RM_FLOOR).map(([k,o])=>card('floor',k,o)).join('')}</div>`;
-  }else if(RM_TAB==='me'){body=jsTabHTML()}else{
-    const first=R.rooms[0].id;body=`${roomsBar}<p class="rmhint" style="margin:0 0 8px"><b>${RM_RT[cur.t].e} ${esc(cur.name)}</b>에서 살 고양이를 눌러서 골라요. (한 방에 최대 16마리${R.cur===first?'':' · 다시 누르면 '+esc(rmJ(R.rooms[0].name,'으로'))+' 돌아가요'})</p><div class="rmgrid">${all.map(i=>{const b=BREEDS[i];const h=rmHomeOf(i);const here=h===R.cur;const hr=R.rooms.find(r=>r.id===h);return `<button class="rmshop ${here?'own on':''}" data-rmhome="${i}">${catImg(b)?`<img src="${catImg(b)}" alt="" class="rmph" onerror="this.remove()">`:`<svg viewBox="0 -2 40 36" width="46" height="42">${bFace(b)}</svg>`}<span>${esc(b.n)}</span><em>${here?'✓ 이 방':RM_RT[hr.t].e+' '+esc(hr.name)}</em></button>`}).join('')||'<p class="rmhint">아직 없어요. 문제 세트를 풀고 숨은 고양이를 찾아 보세요!</p>'}</div><button class="rmbtn" style="margin-top:10px" data-act="dexopen2">📖 고양이 도감 보기</button>`;
+  }else if(RM_TAB==='me'){body=jsTabHTML()}else if(RM_TAB==='shel'){body=shTabHTML()}else{
+    const first=R.rooms[0].id;body=`${roomsBar}<p class="rmhint" style="margin:0 0 8px"><b>${RM_RT[cur.t].e} ${esc(cur.name)}</b>에서 살 고양이를 눌러서 골라요. (한 방에 최대 16마리${R.cur===first?'':' · 다시 누르면 '+esc(rmJ(R.rooms[0].name,'으로'))+' 돌아가요'})</p><div class="rmgrid">${all.map(i=>{const b=BRX[i];const h=rmHomeOf(i);const here=h===R.cur;const hr=R.rooms.find(r=>r.id===h);return `<button class="rmshop ${here?'own on':''}" data-rmhome="${i}">${catImg(b)?`<img src="${catImg(b)}" alt="" class="rmph" onerror="this.remove()">`:`<svg viewBox="0 -2 40 36" width="46" height="42">${bFace(b)}</svg>`}<span>${esc(b.n)}</span><em>${here?'✓ 이 방':RM_RT[hr.t].e+' '+esc(hr.name)}</em></button>`}).join('')||'<p class="rmhint">아직 없어요. 문제 세트를 풀고 숨은 고양이를 찾아 보세요!</p>'}</div><button class="rmbtn" style="margin-top:10px" data-act="dexopen2">📖 고양이 도감 보기</button>`;
   }
   return `<div class="mh"><div class="mhtop"><span>TODAY <b>${td}</b></span><span>TOTAL <b>${days}</b></span><span class="mhurl">일일삼제 미니홈피</span></div>
   <div class="mhbook"><aside class="mhside"><div class="mhava" data-rmtab="me" title="내 집사 꾸미기">${jsSvg(rmLook())}</div>
@@ -3273,7 +3286,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     <textarea class="mhmsg" data-rmmsg maxlength="60" rows="3" placeholder="오늘의 한마디">${esc(R.msg)}</textarea>
     <div class="mhst"><span>🐱 ${all.length}마리</span><span>⭐ ${R.coins||0}</span></div></aside>
   <section class="mhmain"><h2 class="mhtitle">${esc(nm)}의 ${RM_NEW?'새 방':esc(cur.name)}</h2>
-    <div class="mhtabs">${[['room','🏠 미니룸'],['me','🧑 내 집사'],['shop','🛍 상점'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
+    <div class="mhtabs">${[['room','🏠 미니룸'],['me','🧑 내 집사'],['shop','🛍 상점'],['shel','🐾 보호소'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
 function rmWander(){clearInterval(RM_T);RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}
   document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(Math.random()<.45)return;const x0=parseFloat(el.style.left),x=6+Math.random()*86,y=64+Math.random()*31;
     el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)})},3200)}
@@ -3295,8 +3308,8 @@ document.addEventListener('click',e=>{if(RM_SEEK&&e.target.closest('#rmscene')){
   if(t.dataset.rmnew!=null){RM_NEW=!RM_NEW;RM_EDIT=false;if(RM_TAB==='shop')RM_TAB='room';return rmRender()}
   if(t.dataset.rmmk){const cost=R.rooms.length<2?0:3;if(R.rooms.length>=RM_MAXROOM)return;if((R.coins||0)<cost){toast(`포인트가 ${cost-(R.coins||0)} 더 필요해요 ⭐`);return}R.coins-=cost;const r=rmMkRoom(t.dataset.rmmk);RM_NEW=false;RM_TAB='cats';toast(`${RM_RT[r.t].e} ${rmJ(r.name,'을','를')} 만들었어요! 이 방에서 살 고양이를 골라 주세요`);return rmRender()}
   if(t.dataset.rmhome){const i=+t.dataset.rmhome,first=R.rooms[0].id;const here=rmHomeOf(i)===R.cur;
-    if(here){if(R.cur===first){toast(`다른 방을 골라서 데려가 보세요. 갈 곳 없는 고양이는 ${R.rooms[0].name}에서 살아요`);return}delete R.home[i];toast(`${rmJ(BREEDS[i].n,'이','가')} ${rmJ(R.rooms[0].name,'으로')} 돌아갔어요`)}
-    else{if(rmAll().filter(x=>rmHomeOf(x)===R.cur).length>=16){toast('이 방은 꽉 찼어요 (최대 16마리)');return}if(R.cur===first)delete R.home[i];else R.home[i]=R.cur;toast(`${rmJ(BREEDS[i].n,'이','가')} ${rmJ(rmCur(R).name,'으로')} 이사 왔어요 🐾`)}
+    if(here){if(R.cur===first){toast(`다른 방을 골라서 데려가 보세요. 갈 곳 없는 고양이는 ${R.rooms[0].name}에서 살아요`);return}delete R.home[i];toast(`${rmJ(BRX[i].n,'이','가')} ${rmJ(R.rooms[0].name,'으로')} 돌아갔어요`)}
+    else{if(rmAll().filter(x=>rmHomeOf(x)===R.cur).length>=16){toast('이 방은 꽉 찼어요 (최대 16마리)');return}if(R.cur===first)delete R.home[i];else R.home[i]=R.cur;toast(`${rmJ(BRX[i].n,'이','가')} ${rmJ(rmCur(R).name,'으로')} 이사 왔어요 🐾`)}
     save();return rmRender()}
   if(t.dataset.rmdelroom!=null){if(R.rooms.length<2)return;const c=rmCur(R);ask('🗑',`${esc(rmJ(c.name,'을','를'))} 없앨까요?`,'이 방의 고양이들은 첫 번째 방으로 돌아가요. 가구는 가진 가구에 남아 있어 다른 방에 놓을 수 있어요.',[{t:'없애기',cls:'go',fn:()=>{const R2=rmS();Object.keys(R2.home).forEach(k=>{if(R2.home[k]===c.id)delete R2.home[k]});R2.rooms=R2.rooms.filter(r=>r.id!==c.id);R2.cur=R2.rooms[0].id;RM_EDIT=false;RM_SEL=null;save();rmRender()}}]);return}
   if(t.dataset.rmtab){RM_TAB=t.dataset.rmtab;RM_NEW=false;RM_EDIT=false;RM_SEL=null;return rmRender()}
@@ -3309,7 +3322,7 @@ document.addEventListener('click',e=>{if(RM_SEEK&&e.target.closest('#rmscene')){
     if(!R.own.includes(k)){if((R.coins||0)<o.c){toast(`포인트가 ${o.c-(R.coins||0)} 더 필요해요 ⭐`);return}R.coins-=o.c;R.own.push(k);toast(`${o.n}을(를) 샀어요!`)}
     if(kind==='wall')R.wall=k;else if(kind==='floor')R.floor=k;else{RM_TAB='room';RM_EDIT=true;const id=R.nid++;R.items.push({id,k,x:50,y:o.p==='wall'?40:84,f:0});RM_SEL=id}
     save();return rmRender()}
-  if(t.dataset.rmc!=null){if(RM_EDIT)return;if(RM_SEEK&&t.classList.contains('rmc')){rmFound(t);return}const b=BREEDS[+t.dataset.rmc];if(!b)return;const lv=(R.love&&R.love[b.i])||0;ask(catBig(b),esc(b.n),esc(b.t)+`<br><b>💗 친밀도 ${lv}</b>`+catCredit(b),[],'닫기');return}
+  if(t.dataset.rmc!=null){if(RM_EDIT)return;if(RM_SEEK&&t.classList.contains('rmc')){rmFound(t);return}const b=BRX[+t.dataset.rmc];if(!b)return;const lv=(R.love&&R.love[b.i])||0;ask(catBig(b),esc(b.n),esc(b.t)+`<br><b>💗 친밀도 ${lv}</b>`+catCredit(b),[],'닫기');return}
   if(t.dataset.rmsnack){const k=t.dataset.rmsnack,o=RM_SNACK[k];R.snack=R.snack||{};if(!(R.snack[k]>0))return;R.snack[k]--;R.love=R.love||{};const live=rmLive();live.forEach(i=>R.love[i]=(R.love[i]||0)+o.love);save();(o.g==='toy'?rmPlay:rmFeed)(o.e);return}
 },true);
 document.addEventListener('input',e=>{const t=e.target;if(t.matches('[data-rmname]')){rmS().name=t.value.slice(0,12);save();const h=document.querySelector('.mhtitle');if(h)h.textContent=(t.value||'나')+'의 '+rmCur(rmS()).name}else if(t.matches('[data-rmrname]')){rmCur(rmS()).name=t.value.slice(0,10)||'방';save();const h=document.querySelector('.mhtitle');if(h)h.textContent=(rmS().name||'나')+'의 '+rmCur(rmS()).name}else if(t.matches('[data-rmmsg]')){rmS().msg=t.value.slice(0,60);save()}});
@@ -3335,7 +3348,7 @@ function rmPose(b,pose){
   if(pose==='lie')return `<svg viewBox="-2 -2 44 54">${tail('M38 44c6 0 7-6 3-8')}<ellipse cx="24" cy="44" rx="15" ry="6.5" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M6 49h8M12 49h8" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(-3,13) scale(.78)">${bFace(b)}</g></svg>`;
   if(pose==='stretch')return `<svg viewBox="-2 -2 44 54">${tail('M34 30c6-6 8-12 4-16')}<path d="M6 44c4-6 22-14 30-12 3 1 2 6-1 8-6 3-20 6-29 6z" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M4 48h9M30 46v4" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(-6,20) scale(.68)">${bFace(b)}</g></svg>`;
   return rmCat(b)}
-function rmSetPose(el,pose){if(el._pose===pose)return;el._pose=pose;const b=BREEDS[+el.dataset.rmc];if(!b)return;const h=el.querySelector('.rmheart');el.innerHTML=rmPose(b,pose);if(h)el.appendChild(h);el.classList.toggle('rmwide',pose==='sleep'||pose==='lie'||pose==='stretch')}
+function rmSetPose(el,pose){if(el._pose===pose)return;el._pose=pose;const b=BRX[+el.dataset.rmc];if(!b)return;const h=el.querySelector('.rmheart');el.innerHTML=rmPose(b,pose);if(h)el.appendChild(h);el.classList.toggle('rmwide',pose==='sleep'||pose==='lie'||pose==='stretch')}
 // 가구 위 앉을 자리: [svg x, svg y(바닥선), 포즈, 앞/뒤]
 const RM_SPOTS={tower:[[18,8,'sleep',1],[42,28,'sit',1],[30,52,'sit',1]],sofa:[[24,34,'lie',1],[40,34,'sit',1]],bed:[[30,44,'sleep',1]],cushion:[[30,42,'sleep',1]],rug:[[22,42,'lie',1],[40,44,'sit',1]],
   box:[[30,46,'sit',-1]],plant:[[34,56,'sit',-1]],shelf:[[30,4,'sleep',1],[30,22,'sit',1]],window:[[30,52,'sit',1]],sofa2:[],fish:[[30,40,'sit',-1]],lamp:[[34,56,'sit',-1]],desk:[[46,20,'sleep',1],[20,56,'sit',1]],bathtub:[[24,32,'sit',-1],[40,32,'sit',-1]],bmat:[[30,48,'lie',1]],washer:[[30,6,'sleep',1]],basket:[[30,34,'sit',-1]],wshelf:[[46,40,'sit',1]]};
@@ -3343,14 +3356,14 @@ function rmSpotPos(it,sp){const I=RM_ITEMS[it.k];const sc=document.getElementByI
   return {x:it.x+(fx-.5)*I.w,y:it.y-(1-sp[1]/60)*I.w*ar,z:(I.p==='wall'?2:Math.round(it.y))+sp[3]}}
 // 강아지는 높은 곳(벽 가구, 캣타워·선반·세탁기 꼭대기)에 못 올라가요
 function rmHighSpot(s){return RM_ITEMS[s.it.k].p==='wall'||s.sp[1]<30}
-const rmIsDog=el=>{const b=BREEDS[+el.dataset.rmc];return !!(b&&b.sp==='d')};
+const rmIsDog=el=>{const b=BRX[+el.dataset.rmc];return !!(b&&b.sp==='d')};
 function rmAllSpots(){const R=rmS();const o=[];R.items.forEach(it=>(RM_SPOTS[it.k]||[]).forEach((sp,j)=>o.push({key:it.id+':'+j,it,sp})));return o}
 function rmMove(el,x,y,z,pose,walk=true){const x0=parseFloat(el.style.left);el.classList.toggle('rmflip',x<x0);if(walk){rmSetPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');rmSetPose(el,pose)},walk?2400:0)}
-function rmWander(){clearInterval(RM_T);const used={};
+function rmWander(){clearInterval(RM_T);const used={};try{shPlaceAll()}catch(e){}
   RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}if(RM_SEEK||RM_EDIT)return;try{jsWalk()}catch(e){}
     const spots=rmAllSpots();
-    document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
+    document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(typeof shCtl==='function'&&shCtl(el))return;if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
       if(el._spot){delete used[el._spot];el._spot=null}
       const r=Math.random();const dog=rmIsDog(el);const free=spots.filter(s=>!used[s.key]&&!(dog&&rmHighSpot(s)));
       if(r<.4&&free.length){const s=free[Math.floor(Math.random()*free.length)];const p=rmSpotPos(s.it,s.sp);used[s.key]=1;el._spot=s.key;rmMove(el,p.x,p.y,p.z,s.sp[2])}
@@ -3389,11 +3402,11 @@ async function camStart(){camStop();const v=document.getElementById('camv');cons
   try{const st=await navigator.mediaDevices.getUserMedia({video:{facingMode:CAM.facing,width:{ideal:1280},height:{ideal:960}},audio:false});if(!CAM){st.getTracks().forEach(t=>t.stop());return}
     CAM.stream=st;CAM.bg=null;const v2=document.getElementById('camv');if(v2){v2.srcObject=st;v2.play().catch(()=>{})}if(msg)msg.style.display='none';camDraw(true)}
   catch(e){if(msg){msg.style.display='';msg.innerHTML='카메라를 켤 수 없어요. (권한을 허락했는지 확인해 주세요)<br><b>📷 사진 고르기</b>나 <b>🎨 배경만</b>으로도 찍을 수 있어요.'}}}
-function camCatHTML(c,n){return `<div class="camcat ${n===CAM.sel?'sel':''}" data-camcat="${n}" style="left:${c.x}%;top:${c.y}%;width:${c.s}%">${c.i<0?camJs(c.f):camSvg(BREEDS[c.i],c.pose,c.f)}</div>`}
+function camCatHTML(c,n){return `<div class="camcat ${n===CAM.sel?'sel':''}" data-camcat="${n}" style="left:${c.x}%;top:${c.y}%;width:${c.s}%">${c.i<0?camJs(c.f):camSvg(BRX[c.i],c.pose,c.f)}</div>`}
 function camJs(flip){let v=jsSvg(rmLook(),true);if(flip)v=v.replace(/(<svg[^>]*>)/,'$1<g transform="translate(60,0) scale(-1,1)">').replace(/<\/svg>$/,'</g></svg>');return v}
-function camName(i){return i<0?'내 집사':BREEDS[i].n}
+function camName(i){return i<0?'내 집사':BRX[i].n}
 function camDraw(keepVideo){const el=document.getElementById('rmcam');if(!el||!CAM)return;const R=rmS();const all=rmAll();const live=rmLive();const fr=CAM_FRAMES[CAM.frame];
-  const names=CAM.cats.filter(c=>c.i>=0).map(c=>BREEDS[c.i].n).join(', ');const sc=CAM.cats[CAM.sel];
+  const names=CAM.cats.filter(c=>c.i>=0).map(c=>BRX[c.i].n).join(', ');const sc=CAM.cats[CAM.sel];
   if(CAM.shot){el.innerHTML=`<div class="camwrap"><div class="camtop"><b>📸 찰칵!</b><button class="camx" data-cam="close">✕</button></div>
     <img class="camshot" src="${CAM.shot}" alt="고양이랑 셀카"><p class="camhint">저장이 안 되면 사진을 길게 눌러 저장하세요</p>
     <div class="cambtns"><button class="cambig" data-cam="save">💾 저장하기</button>${navigator.canShare?'<button class="cambtn" data-cam="share">📤 보내기</button>':''}<button class="cambtn" data-cam="again">↩ 다시 찍기</button></div></div>`;return}
@@ -3404,7 +3417,7 @@ function camDraw(keepVideo){const el=document.getElementById('rmcam');if(!el||!C
       <div class="camfoot"><span>🐾 ${esc(R.name||'나')} & ${esc(names||'고양이')}</span><small>${new Date().toLocaleDateString('ko-KR')} · 일일삼제 미니홈피</small></div></div>
     <div class="campanel">
       <div class="camrow"><b>함께 찍을 고양이</b> <small>(최대 3마리 · 끌어서 옮기고, 눌러서 고르세요)</small></div>
-      <div class="camcats"><button class="camc ${CAM.cats.some(c=>c.i<0)?'on':''}" data-campick="-1"><svg viewBox="8 6 44 44" width="34" height="30">${jsSvg(rmLook()).replace(/^<svg[^>]*>|<\/svg>$/g,'')}</svg><span>내 집사</span></button>${(live.length?live.concat(all.filter(i=>!live.includes(i))):all).map(i=>{const on=CAM.cats.findIndex(c=>c.i===i);return `<button class="camc ${on>=0?'on':''}" data-campick="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BREEDS[i])}</svg><span>${esc(BREEDS[i].n)}</span></button>`}).join('')}</div>
+      <div class="camcats"><button class="camc ${CAM.cats.some(c=>c.i<0)?'on':''}" data-campick="-1"><svg viewBox="8 6 44 44" width="34" height="30">${jsSvg(rmLook()).replace(/^<svg[^>]*>|<\/svg>$/g,'')}</svg><span>내 집사</span></button>${(live.length?live.concat(all.filter(i=>!live.includes(i))):all).map(i=>{const on=CAM.cats.findIndex(c=>c.i===i);return `<button class="camc ${on>=0?'on':''}" data-campick="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BRX[i])}</svg><span>${esc(BRX[i].n)}</span></button>`}).join('')}</div>
       ${sc?`<div class="camrow"><b>${esc(camName(sc.i))}</b> ${sc.i<0?'':'포즈'}</div><div class="camopts">${sc.i<0?'':CAM_POSES.map(([k,t])=>`<button class="${sc.pose===k?'on':''}" data-campose="${k}">${t}</button>`).join('')}<button data-cam="flip">↔ 방향</button></div>
       <div class="camrow"><b>크기</b><input type="range" min="14" max="70" value="${sc.s}" data-camsize></div>`:''}
       <div class="camrow"><b>테두리</b>${CAM_FRAMES.map((f,n)=>`<button class="camfr ${CAM.frame===n?'on':''}" data-camfr="${n}" style="background:${f[0]};border-color:${f[1]}"></button>`).join('')}</div>
@@ -3431,9 +3444,9 @@ async function camShoot(){const cd=document.getElementById('camcd');for(const n 
   else if(CAM.bgc){x.fillStyle=CAM.bgc.match(/#[0-9A-Fa-f]{6}/)[0];x.fillRect(P,P,W,H)}
   else if(v&&v.videoWidth){const [a,b,c,d]=cover(v.videoWidth,v.videoHeight);if(CAM.facing==='user'){x.translate(2*P+W,0);x.scale(-1,1)}x.drawImage(v,a,b,c,d);x.setTransform(1,0,0,1,0,0)}
   else{x.fillStyle='#FFF6E6';x.fillRect(P,P,W,H)}
-  for(const c of CAM.cats){const im=await camLoadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(c.i<0?camJs(c.f):camSvg(BREEDS[c.i],c.pose,c.f)));const w=W*c.s/100,h=w*(c.i<0?84/60:c.pose==='wave'?54/48:54/44);x.drawImage(im,P+W*c.x/100-w/2,P+H*c.y/100-h,w,h)}
+  for(const c of CAM.cats){const im=await camLoadImg('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(c.i<0?camJs(c.f):camSvg(BRX[c.i],c.pose,c.f)));const w=W*c.s/100,h=w*(c.i<0?84/60:c.pose==='wave'?54/48:54/44);x.drawImage(im,P+W*c.x/100-w/2,P+H*c.y/100-h,w,h)}
   x.restore();x.fillStyle=fr[1];x.textBaseline='middle';x.font="44px Jua, 'IBM Plex Sans KR', sans-serif";const R=rmS();
-  x.fillText('🐾 '+(R.name||'나')+' & '+(CAM.cats.filter(c=>c.i>=0).map(c=>BREEDS[c.i].n).join(', ')||'고양이'),P+6,H+P+FT*.42,W-12);x.font="26px 'IBM Plex Sans KR', sans-serif";x.globalAlpha=.75;x.fillText(new Date().toLocaleDateString('ko-KR')+' · 일일삼제 미니홈피',P+6,H+P+FT*.78);x.globalAlpha=1;
+  x.fillText('🐾 '+(R.name||'나')+' & '+(CAM.cats.filter(c=>c.i>=0).map(c=>BRX[c.i].n).join(', ')||'고양이'),P+6,H+P+FT*.42,W-12);x.font="26px 'IBM Plex Sans KR', sans-serif";x.globalAlpha=.75;x.fillText(new Date().toLocaleDateString('ko-KR')+' · 일일삼제 미니홈피',P+6,H+P+FT*.78);x.globalAlpha=1;
   CAM.shot=cv.toDataURL('image/png');camStop();R.love=R.love||{};CAM.cats.forEach(c=>{if(c.i>=0)R.love[c.i]=(R.love[c.i]||0)+1});save();camDraw()}
 function camFileName(){const d=new Date();return `고양이셀카_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}.png`}
 document.addEventListener('click',async e=>{const t=e.target.closest('#rmcam [data-cam],#rmcam [data-campick],#rmcam [data-campose],#rmcam [data-camfr]');if(!t||!CAM)return;e.preventDefault();e.stopPropagation();const a=t.dataset.cam;
@@ -3452,6 +3465,76 @@ document.addEventListener('click',async e=>{const t=e.target.closest('#rmcam [da
 },true);
 document.addEventListener('input',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camsize]')){const c=CAM.cats[CAM.sel];if(!c)return;c.s=+t.value;const el=document.querySelector(`#rmcam .camcat[data-camcat="${CAM.sel}"]`);if(el)el.style.width=c.s+'%'}});
 document.addEventListener('change',e=>{if(!CAM)return;const t=e.target;if(t.matches('#rmcam [data-camfile]')&&t.files&&t.files[0]){const rd=new FileReader();rd.onload=()=>{camStop();CAM.bgc=null;CAM.bg=rd.result;camDraw()};rd.readAsDataURL(t.files[0])}});
+
+// ===== SHELTER: 유기묘 보호소 · 임시보호 5일 · 입양 =====
+const SH_CATS=[
+ {i:150,n:'구름이',b:'#9A9488',d:'#4E4A44',e:'g',p:'t',ear:'n',f:'',t:'비 오는 날 아파트 앞 상자 안에서 발견됐어요. 천둥소리를 무서워해요.'},
+ {i:151,n:'치즈',b:'#F0A85A',d:'#B8692A',e:'y',p:'t',ear:'n',f:'',t:'시장 골목에서 혼자 울고 있던 아기 고양이예요. 밥 먹을 때 꾹꾹이를 해요.'},
+ {i:152,n:'까미',b:'#2E2D38',d:'#1E1D26',e:'y',p:'s',ear:'n',f:'',t:'검은 고양이는 무섭다는 편견 때문에 보호소에서 오래 기다렸어요.'},
+ {i:153,n:'삼순이',b:'#F5EFE6',d:'#E08A3C',e:'g',p:'k',ear:'n',f:'',t:'다리를 다쳐 구조됐어요. 지금은 다 나아서 잘 뛰어다녀요.'},
+ {i:154,n:'젖소',b:'#FFFFFF',d:'#2E2D38',e:'y',p:'w',ear:'n',f:'',t:'이사 가는 집에 혼자 남겨졌어요. 사람 무릎을 제일 좋아해요.'},
+ {i:155,n:'콩떡',b:'#2E2D38',d:'#2E2D38',e:'g',p:'m',ear:'n',f:'',t:'공원 벤치 밑에서 발견된 턱시도예요. 겁이 많지만 장난감을 보면 신나요.'}];
+const SH_DAYS=5;
+const SH_TIPS=['고양이는 15년 넘게 살기도 해요. 입양은 그 긴 시간을 함께하겠다는 약속이에요.','고양이도 동물등록을 할 수 있어요. 잃어버렸을 때 집을 찾는 데 도움이 돼요.','중성화 수술은 돌봐 줄 사람 없는 아기 고양이가 늘어나는 것을 막아 줘요.','길에서 아기 고양이를 보면 바로 데려오지 말고, 엄마 고양이가 오는지 멀리서 지켜봐요.','"사지 말고 입양하세요" — 보호소에는 가족을 기다리는 동물이 많아요.','입양한 뒤에도 매일 조금씩 놀아 주면 고양이가 더 행복해져요.'];
+const SH_PLEDGE=['매일 밥과 물을 챙겨 줄게요','아프면 병원에 데려갈게요','이사 가도 끝까지 함께할게요','매일 놀아 주고 이야기해 줄게요','화가 나도 때리거나 버리지 않을게요'];
+let SH_ADOPT=false;
+function shS(){const R=rmS();R.shelter=R.shelter||{cur:null,adopted:{}};R.shelter.adopted=R.shelter.adopted||{};return R.shelter}
+function shBase(i){return SH_CATS.find(c=>c.i===i)}
+function shBreed(i){const b=shBase(i);if(!b)return undefined;const A=(S.room&&S.room.shelter&&S.room.shelter.adopted||{})[i];return A&&A.n?Object.assign({},b,{n:A.n}):b}
+function shIds(){const H=shS();const o=Object.keys(H.adopted).map(Number);if(H.cur&&!o.includes(H.cur.i))o.push(H.cur.i);return o}
+function shDaysN(c){return Object.keys(c.days||{}).length}
+function shTrust(c){return Math.min(100,shDaysN(c)*16+(c.hearts||0)*2)}
+function shReady(c){return shDaysN(c)>=SH_DAYS&&shTrust(c)>=100}
+function shLastStudy(){let t=today();for(let k=0;k<30;k++){const d=S.days&&S.days[dayStr(t-k)];if(d&&d.probs>0)return k}return 99}
+// 고양이별 마음 단계: 0 숨기, 1 멀리서, 2 보통
+function shStage(i){const H=shS();if(H.cur&&H.cur.i===i){const t=shTrust(H.cur);return t<30?0:t<60?1:2}if(H.adopted[i])return shLastStudy()>=3?1:2;return 2}
+function shStageTxt(t){return t<30?'아직 무서워서 가구 뒤에 숨어 있어요':t<60?'멀리서 집사를 지켜보고 있어요':t<100?'조금씩 다가와요. 쓰다듬어도 괜찮대요':'마음을 활짝 열었어요! 이제 가족이 될 수 있어요'}
+// 미니룸에서 낯선 고양이 움직임: true를 돌려주면 평소 돌아다니기를 하지 않아요
+function shCtl(el){const i=+el.dataset.rmc;if(i<150)return false;const st=shStage(i);if(st>=2)return false;
+  const sc=document.getElementById('rmscene');if(!sc)return true;const R=rmS();
+  if(st===0){const it=R.items.find(x=>{const I=RM_ITEMS[x.k];return I&&I.p!=='wall'&&['sofa','box','plant','shelf','tower','bed','desk','basket','washer','bathtub','lamp'].includes(x.k)});
+    if(it){const I=RM_ITEMS[it.k];const ar=sc.clientWidth/sc.clientHeight||4/3;el.style.left=(it.x+I.w*.25)+'%';el.style.top=(it.y-I.w*ar*.12)+'%';el.style.zIndex=Math.round(it.y)-1}
+    else{el.style.left='4%';el.style.top='99%';el.style.zIndex=2}
+    rmSetPose(el,'sit');el.classList.add('shshy');return true}
+  if(!el._shc||Math.random()<.15){const L=Math.random()<.5;el._shc=1;el.classList.toggle('rmflip',!L);el.style.left=(L?5+Math.random()*5:88+Math.random()*6)+'%';el.style.top=(66+Math.random()*5)+'%';el.style.zIndex=67;rmSetPose(el,Math.random()<.5?'sit':'lie')}
+  el.classList.add('shshy');return true}
+function shPlaceAll(){document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(+el.dataset.rmc>=150){el.style.transition='none';shCtl(el);setTimeout(()=>el.style.transition='',60)}})}
+// 공부하면 돌봄: 그날 공부한 날 +1, 맞힌 문제 💗1, 고친 문제 💗2
+function shCare(good,fixOk,mode){const H=shS();const c=H.cur;if(!c||!good)return;const ds=dayStr(today());c.days=c.days||{};const nd=!c.days[ds];c.days[ds]=1;
+  const h=mode==='fix'?fixOk*2:good;c.hearts=(c.hearts||0)+h;save();const b=shBreed(c.i);
+  setTimeout(()=>toast(`💗 ${rmJ(b.n,'이','가')} 마음 +${h}${nd?` · 돌봄 ${shDaysN(c)}일째`:''}${shReady(c)?' · 이제 입양할 수 있어요!':''}`),900)}
+function shFace(b,w){return `<svg viewBox="0 -2 40 36" width="${w}" height="${Math.round(w*.9)}">${bFace(b)}</svg>`}
+function shTabHTML(){const H=shS();const R=rmS();const c=H.cur;const cb=c&&shBreed(c.i);
+  if(SH_ADOPT&&c&&shReady(c))return `<div class="shcard sharp"><div class="shhead">${shFace(cb,70)}<div><b>${esc(cb.n)} 입양 서약서</b><small>${esc(R.name||'나')} 집사가 약속해요</small></div></div>
+    <div class="shpl">${SH_PLEDGE.map((t,n)=>`<label><input type="checkbox" data-shpl="${n}"> <span>${t}</span></label>`).join('')}</div>
+    <div class="camrow"><b>이름</b><input class="ptnick" data-shname maxlength="8" value="${esc(cb.n)}" placeholder="새 이름 (그대로 둬도 돼요)"></div>
+    <div class="cambtns"><button class="cambig" data-shdo>🏡 약속하고 가족이 되기</button><button class="cambtn" data-shback>조금 더 생각할래요</button></div></div>`;
+  let cur='';
+  if(c){const t=shTrust(c),n=shDaysN(c);cur=`<div class="shcard"><div class="shhead">${shFace(cb,70)}<div><b>임시보호 중 · ${esc(cb.n)}</b><small>${esc(cb.t)}</small></div></div>
+    <div class="shbar"><i style="width:${t}%"></i><span>마음 ${t}%</span></div>
+    <div class="shdays">${Array.from({length:SH_DAYS},(_,k)=>`<i class="${k<n?'on':''}">${k<n?'🐾':k+1}</i>`).join('')}<span>돌봄 ${Math.min(n,SH_DAYS)}/${SH_DAYS}일 · 💗 ${c.hearts||0}</span></div>
+    <p class="shstage">${shStageTxt(t)}</p>
+    <p class="shtip">💡 ${SH_TIPS[Math.min(n,SH_TIPS.length-1)]}</p>
+    <p class="rmhint">공부한 날마다 돌봄 1일, 맞힌 문제마다 💗1, 틀린 문제를 고치면 💗2를 받아요. ${SH_DAYS}일 동안 돌보고 마음이 100%가 되면 입양할 수 있어요.</p>
+    ${shReady(c)?'<button class="cambig" data-shadopt>🏡 입양하기</button>':''}<button class="cambtn" data-rmtab="room" style="margin-top:8px">🏠 미니룸에서 보기</button></div>`}
+  const list=SH_CATS.map(b0=>{const A=H.adopted[b0.i];const b=shBreed(b0.i);const now=c&&c.i===b0.i;
+    return `<div class="shit ${A?'done':''} ${now?'now':''}">${shFace(b,54)}<b>${esc(b.n)}</b><small>${A?`🏡 ${esc(R.name||'나')}네 가족 · ${A.d}`:esc(b0.t)}</small>${A?'':now?'<em>임시보호 중</em>':c?'<em class="off">다음 차례</em>':`<button class="rmbtn" data-shfoster="${b0.i}">임시보호 하기</button>`}</div>`}).join('');
+  const nA=Object.keys(H.adopted).length;
+  return `${cur}<h3 class="shh">🐾 보호소의 고양이들 <small>${nA===SH_CATS.length?'모두 가족을 찾았어요! 고마워요 💗':'한 번에 한 마리씩 임시보호할 수 있어요'}</small></h3><div class="shlist">${list}</div>
+   <p class="rmhint" style="margin-top:10px">보호소 고양이는 별(⭐)로 살 수 없어요. 매일 공부하며 돌봐야 마음을 열어요.</p>`}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-shfoster],[data-shadopt],[data-shdo],[data-shback]');if(!t)return;e.preventDefault();e.stopPropagation();const H=shS();
+  if(t.dataset.shfoster){if(H.cur)return;const i=+t.dataset.shfoster;H.cur={i,start:today(),days:{},hearts:0};save();const b=shBreed(i);
+    ask(shFace(b,90),`${esc(b.n)}의 임시보호를 시작해요`,`${esc(b.t)}<br><br>처음에는 무서워서 숨어 있을 거예요. ${SH_DAYS}일 동안 매일 공부하면 조금씩 마음을 열어요.`,[{t:'🏠 미니룸에 데려가기',cls:'go',fn:()=>{RM_TAB='room';rmRender()}}],'닫기');rmRender();return}
+  if(t.dataset.shadopt!=null){SH_ADOPT=true;return rmRender()}
+  if(t.dataset.shback!=null){SH_ADOPT=false;return rmRender()}
+  if(t.dataset.shdo!=null){const cbx=[...document.querySelectorAll('[data-shpl]')];if(cbx.some(x=>!x.checked)){toast('약속을 모두 읽고 체크해 주세요');return}
+    const c=H.cur;if(!c||!shReady(c))return;const nm=((document.querySelector('[data-shname]')||{}).value||'').replace(/[<>&"'`]/g,'').trim().slice(0,8)||shBase(c.i).n;
+    H.adopted[c.i]={n:nm,d:new Date().toLocaleDateString('ko-KR'),pl:SH_PLEDGE.length};H.cur=null;SH_ADOPT=false;save();
+    ask(shFace(shBreed(c.i),96),`${esc(nm)}, 우리 가족이 됐어요! 🏡`,'이제 미니홈피의 식구예요. 며칠 공부를 쉬면 조금 서먹해지지만, 다시 공부하면 금방 다가와요.',[{t:'🏠 미니룸에서 보기',cls:'go',fn:()=>{RM_TAB='room';rmRender()}}],'닫기');rmRender();return}},true);
+window.addEventListener('click',e=>{const el=e.target.closest('#rmscene .rmc.shshy');if(!el||RM_SEEK||RM_EDIT)return;const st=shStage(+el.dataset.rmc);if(st>=2)return;e.preventDefault();e.stopImmediatePropagation();
+  const b=BRX[+el.dataset.rmc];const H=shS();const adopted=!!H.adopted[+el.dataset.rmc];
+  const h=document.createElement('i');h.className='jsbub shbub';h.textContent=adopted?'요즘 조금 서먹해… 같이 공부하자':st===0?'…(무서워서 숨었어요)':'…(멀리서 지켜봐요)';el.appendChild(h);setTimeout(()=>h.remove(),2200);
+  toast(adopted?`${rmJ(b.n,'이','가')} 조금 서먹해해요. 오늘 공부하면 다시 다가와요`:`${rmJ(b.n,'은','는')} 아직 낯설어해요. 공부하면 마음이 열려요`)},true);
 
 // ===== JIBSA: 고양이 집사 캐릭터 (yang2수학과 같은 동작·움직임) =====
 const JS_SKIN=['#FFE3CF','#F7CFAE','#E8B48B','#C98B62','#9A6444'];
@@ -4841,7 +4924,7 @@ function ptErr(e){const m={gone:'그 코드의 방이 없어요. 코드를 다�
 function ptOpen(code){if(PT&&PT.es)return ptPlay();PT={scr:code?'join':'menu',code:code||'',nick:ptDefNick(),bring:[]};ptDraw()}
 function ptClose(){if(PT&&PT.es&&PT.pid){ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'leave'}).catch(()=>{})}ptStop();PT=null;const el=document.getElementById('rmparty');if(el){el.className='rmcam';el.innerHTML=''}if(VIEW==='room')render()}
 function ptStop(){if(!PT)return;if(PT.es){PT.es.close();PT.es=null}PT.polling=false;clearInterval(PT.loop);clearTimeout(PT.rt);clearTimeout(PT.ht)}
-function ptCatPick(max){const all=rmAll();return `<div class="camcats">${all.map(i=>`<button class="camc ${PT.bring.includes(i)?'on':''}" data-ptbring="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BREEDS[i])}</svg><span>${esc(BREEDS[i].n)}</span></button>`).join('')||'<p class="camhint" style="text-align:left">아직 모은 고양이가 없어요. 그래도 놀러 갈 수 있어요!</p>'}</div>`}
+function ptCatPick(max){const all=rmAll();return `<div class="camcats">${all.map(i=>`<button class="camc ${PT.bring.includes(i)?'on':''}" data-ptbring="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BRX[i])}</svg><span>${esc(BRX[i].n)}</span></button>`).join('')||'<p class="camhint" style="text-align:left">아직 모은 고양이가 없어요. 그래도 놀러 갈 수 있어요!</p>'}</div>`}
 function ptDraw(){const el=ptEl();const R=rmS();const cur=rmCur(R);
   const nickIn=`<div class="camrow"><b>내 별명</b><input class="ptnick" data-ptnick maxlength="8" value="${esc(PT.nick)}" placeholder="별명을 꼭 써 주세요 (8자까지)"></div><p class="camhint" style="text-align:left;margin-top:0">진짜 이름 대신 별명을 써도 좋아요. 친구들에게 이 별명이 보여요.</p>`;
   if(PT.scr==='join'){el.innerHTML=`<div class="camwrap"><div class="camtop"><b>👫 친구 방에 놀러 가기</b><button class="camx" data-pt="close">✕</button></div>
@@ -4872,7 +4955,7 @@ async function ptPollLoop(){let fails=0;while(PT&&PT.polling){try{const j=await 
     if(j.hello){PT.gotHello=true;ptOn(j.hello)}(j.evs||[]).forEach(d=>{if(PT)ptOn(d)});if(PT)PT.since=j.seq}
   catch(e){if(!PT||!PT.polling)return;if(e.code==='gone'||e.code==='auth'){ptStop();ptMsg('👋 놀이가 끝났어요','방이 닫혔거나 연결이 끊겼어요.','<button class="cambig" data-pt="menu">처음으로</button>');return}fails++;const b=document.getElementById('ptnet');if(b)b.style.display=''}
   await new Promise(r=>setTimeout(r,fails?2500:1200))}}
-function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats||[]).forEach(c=>{if(BREEDS[c.i])o.push({k:p.pid+'-'+c.i,i:c.i,own:p.nick,pid:p.pid,host:p.host})}));return o}
+function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats||[]).forEach(c=>{if(BRX[c.i])o.push({k:p.pid+'-'+c.i,i:c.i,own:p.nick,pid:p.pid,host:p.host})}));return o}
 function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();if(d.seek)ptSeekStart(d.seek.hides,d.seek.found,null,true);return}
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
     if(d.left)ptBubble(null,`👋 ${esc(d.left)} 친구가 돌아갔어요`);const jb=[...document.querySelectorAll('#ptscene .ptjs')].map(x=>x.dataset.ptj).join();if(ptKeys().map(c=>c.k).join()!==before||jb!==(PT.people||[]).map(p=>p.pid).join())ptPlay();else{ptPeople();(PT.people||[]).forEach(p=>{const j=document.querySelector(`#ptscene [data-ptj="${p.pid}"]`);if(j)j.classList.toggle('off',!p.on)})}ptReward();return}
@@ -4887,19 +4970,19 @@ function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[])
   if(d.t==='snack')return ptSnack(d.e,d.x,d.y,d.by);
   if(d.t==='say')return ptBubble(d.by,PT_SAYS[d.m]);
   if(d.t==='pet'){const el=document.querySelector(`#ptscene [data-ptc="${d.k}"]`);const p=(PT.people||[]).find(x=>x.pid===d.by);if(el){const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)}
-    const [pid,i]=d.k.split('-');if(pid===PT.pid&&d.by!==PT.pid&&BREEDS[+i]){const R=rmS();R.love=R.love||{};R.love[+i]=(R.love[+i]||0)+1;save();ptBubble(null,`💗 ${esc(p?p.nick:'친구')}이(가) 내 ${esc(BREEDS[+i].n)}을(를) 쓰다듬었어요`)}return}
+    const [pid,i]=d.k.split('-');if(pid===PT.pid&&d.by!==PT.pid&&BRX[+i]){const R=rmS();R.love=R.love||{};R.love[+i]=(R.love[+i]||0)+1;save();ptBubble(null,`💗 ${esc(p?p.nick:'친구')}이(가) 내 ${esc(BRX[+i].n)}을(를) 쓰다듬었어요`)}return}
   if(d.t==='closed'){ptStop();ptMsg('👋 놀이가 끝났어요',d.why==='host'?'방 주인이 방을 닫았어요. 또 놀자!':'오래 쉬어서 방이 닫혔어요.','<button class="cambig" data-pt="menu">처음으로</button>')}}
 function ptReward(){const on=(PT.people||[]).filter(p=>p.on).length;if(on<2)return;const R=rmS();const d=today();if(R.ptDay===d)return;R.ptDay=d;if(rmEarn(1))toast('👫 친구랑 놀기 보너스 ⭐1 (하루 한 번)')}
 function ptApply(el,p,walk){const x0=parseFloat(el.style.left);if(Math.abs(p.x-x0)>.5)el.classList.toggle('rmflip',p.x<x0);if(walk){ptPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=p.x+'%';el.style.top=p.y+'%';el.style.zIndex=p.z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');ptPose(el,p.pose)},walk?2400:0)}
-function ptPose(el,pose){if(el._pose===pose)return;el._pose=pose;const keep=[...el.querySelectorAll('.ptown,.rmheart')];el.innerHTML=rmPose(BREEDS[+el.dataset.i],pose);keep.forEach(k=>el.appendChild(k));el.classList.toggle('rmwide',pose==='sleep'||pose==='lie'||pose==='stretch')}
+function ptPose(el,pose){if(el._pose===pose)return;el._pose=pose;const keep=[...el.querySelectorAll('.ptown,.rmheart')];el.innerHTML=rmPose(BRX[+el.dataset.i],pose);keep.forEach(k=>el.appendChild(k));el.classList.toggle('rmwide',pose==='sleep'||pose==='lie'||pose==='stretch')}
 function ptPeople(){const b=document.getElementById('ptpeople');if(!b)return;b.innerHTML=(PT.people||[]).map(p=>`<span class="ptp ${p.on?'':'off'} ${p.pid===PT.pid?'me':''}" data-ptp="${p.pid}" style="--pc:${ptColor(p.pid)}">${p.host?'🏠':'🐾'} ${esc(p.nick)}${p.pid===PT.pid?' (나)':''}${p.on?'':' · 잠깐 나감'}</span>`).join('')}
 function ptBubble(by,txt){const sc=document.getElementById('ptscene');if(!sc||!PT)return;const p=by&&(PT.people||[]).find(x=>x.pid===by);const b=document.createElement('div');b.className='ptbub';b.innerHTML=(p?`<b>${esc(p.nick)}</b> `:'')+txt;
   const box=document.getElementById('ptbubs');(box||sc).appendChild(b);setTimeout(()=>b.classList.add('out'),2600);setTimeout(()=>b.remove(),3200);
   if(p){const j=document.querySelector(`#ptscene [data-ptj="${by}"]`);if(j){j.classList.remove('jsjump');void j.offsetWidth;j.classList.add('jsjump');const h=document.createElement('i');h.className='jsbub';h.textContent=txt.replace(/<[^>]*>/g,'');j.appendChild(h);setTimeout(()=>h.remove(),2400)}const chip=document.querySelector(`#ptpeople [data-ptp="${by}"]`);if(chip){chip.classList.remove('talk');void chip.offsetWidth;chip.classList.add('talk')}}}
 function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const W=RM_WALL[s.wall]||RM_WALL.cream,F=RM_FLOOR[s.floor]||RM_FLOOR.wood;const host=(PT.people||[]).find(p=>p.host);
   const keys=ptKeys();const url=location.origin+location.pathname+'?party='+PT.code;
-  const cats=keys.map((c,n)=>{const p=PT.st[c.k]||{x:10+((c.i*37+n*23)%80),y:70+((c.i*13+n*7)%24),pose:'sit'};p.z=p.z||Math.round(p.y)+1;PT.st[c.k]=Object.assign({k:c.k},p);return `<div class="rmc" data-ptc="${c.k}" data-i="${c.i}" style="left:${p.x}%;top:${p.y}%;z-index:${p.z}">${rmPose(BREEDS[c.i],'sit')}<span class="ptown" style="background:${ptColor(c.pid)}">${c.pid===PT.pid?'나':(c.host?'🏠':'')+esc(c.own)}</span></div>`}).join('');
+  const cats=keys.map((c,n)=>{const p=PT.st[c.k]||{x:10+((c.i*37+n*23)%80),y:70+((c.i*13+n*7)%24),pose:'sit'};p.z=p.z||Math.round(p.y)+1;PT.st[c.k]=Object.assign({k:c.k},p);return `<div class="rmc" data-ptc="${c.k}" data-i="${c.i}" style="left:${p.x}%;top:${p.y}%;z-index:${p.z}">${rmPose(BRX[c.i],'sit')}<span class="ptown" style="background:${ptColor(c.pid)}">${c.pid===PT.pid?'나':(c.host?'🏠':'')+esc(c.own)}</span></div>`}).join('');
   const keep=RM_EDIT;RM_EDIT=false;const items=(s.items||[]).filter(it=>RM_ITEMS[it.k]).map(rmItemHTML).join('');RM_EDIT=keep;
   el.innerHTML=`<div class="camwrap"><div class="camtop"><b>👫 ${esc(host?host.nick:'친구')}의 ${esc(s.name)}</b><button class="camx" data-pt="close">✕</button></div>
     <div class="ptcodebar"><span>방 코드 <b>${PT.code}</b></span><button class="cambtn" data-pt="qr">📱 초대 QR ${PT.qr?'접기':'보기'}</button></div>
@@ -4935,7 +5018,7 @@ function ptToy(e,path,by){const sc=document.getElementById('ptscene');if(!sc||!p
   const hop=()=>{if(!PT)return;if(PT.seek){toy.remove();return}const [x,y]=path[n];toy.style.left=x+'%';toy.style.top=y+'%';last=ptGather(x,y);ptRun(last,1.1);if(++n<path.length)setTimeout(hop,1300);else setTimeout(()=>{toy.remove();ptRest(last)},1300)};hop()}
 function ptSnack(e,x,y,by){const sc=document.getElementById('ptscene');if(!sc)return;PT.busy=Date.now()+5000;ptBubble(by,`${e} 간식을 줬어요!`);const bowl=document.createElement('div');bowl.className='rmbowl';bowl.textContent=e;bowl.style.left=x+'%';bowl.style.top=y+'%';sc.appendChild(bowl);
   const list=ptGather(x,y-4);ptRun(list,1.6);setTimeout(()=>ptRest(list),1900);setTimeout(()=>bowl.remove(),4200)}
-function ptCatCard(k){const c=ptKeys().find(x=>x.k===k);if(!c)return;const b=BREEDS[c.i];ask(catBig(b),esc(b.n),`<b>${esc(c.own)}</b>의 고양이예요<br><span class="small">${esc(b.t)}</span>`+catCredit(b),[{t:'💗 쓰다듬기',cls:'go',fn:()=>{if(PT)ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'pet',k}).catch(()=>{})}}],'닫기')}
+function ptCatCard(k){const c=ptKeys().find(x=>x.k===k);if(!c)return;const b=BRX[c.i];ask(catBig(b),esc(b.n),`<b>${esc(c.own)}</b>의 고양이예요<br><span class="small">${esc(b.t)}</span>`+catCredit(b),[{t:'💗 쓰다듬기',cls:'go',fn:()=>{if(PT)ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'pet',k}).catch(()=>{})}}],'닫기')}
 document.addEventListener('click',e=>{const t=e.target.closest('#rmparty [data-ptjsact],#rmparty [data-pt],#rmparty [data-ptbring],#rmparty [data-pttoy],#rmparty [data-ptsnack],#rmparty [data-ptsay],#rmparty [data-ptc],[data-rmparty]');if(!t)return;e.preventDefault();e.stopPropagation();
   if(t.dataset.rmparty!=null)return ptOpen();
   if(PT&&PT.seek&&t.dataset.ptc)return;

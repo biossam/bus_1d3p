@@ -42,7 +42,7 @@ function rmJ(w,a,b){const c=w.charCodeAt(w.length-1)-0xAC00;const bat=c>=0&&c<11
 function rmCur(R){return R.rooms.find(r=>r.id===R.cur)||R.rooms[0]}
 function rmMig(R){if(!R.rooms){R.rooms=[{id:1,t:'room',name:'내 방',wall:R.wall||'cream',floor:R.floor||'wood',items:R.items||[]}];R.cur=1;R.rid=2;R.home=R.home||{};delete R.wall;delete R.floor;delete R.items}
   if(!R.home)R.home={};const d=Object.getOwnPropertyDescriptor(R,'items');if(!d||!d.get)['wall','floor','items'].forEach(k=>{delete R[k];Object.defineProperty(R,k,{get(){return rmCur(R)[k]},set(v){rmCur(R)[k]=v},enumerable:false,configurable:true})});return R}
-function rmAll(){const ks=Object.keys(S.dex||{}).map(Number).filter(i=>BREEDS[i]);ks.sort((a,b)=>(S.dex[b]||0)-(S.dex[a]||0));return ks}
+function rmAll(){const ks=Object.keys(S.dex||{}).map(Number).filter(i=>BREEDS[i]);ks.sort((a,b)=>(S.dex[b]||0)-(S.dex[a]||0));try{return shIds().concat(ks)}catch(e){return ks}}
 function rmHomeOf(i){const R=S.room;const h=R.home[i];return R.rooms.some(r=>r.id===h)?h:R.rooms[0].id}
 function rmMkRoom(t){const R=rmS();const T=RM_RT[t];const same=R.rooms.filter(r=>r.t===t).length;const r={id:R.rid++,t,name:T.n+(same?' '+(same+1):''),wall:T.wall,floor:T.floor,items:[]};
   T.it.forEach(([k,x,y])=>{r.items.push({id:R.nid++,k,x,y,f:0});if(!R.own.includes(k))R.own.push(k)});[T.wall,T.floor].forEach(k=>{if(!R.own.includes(k))R.own.push(k)});R.rooms.push(r);R.cur=r.id;save();return r}
@@ -82,7 +82,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     <h4 class="rmh">가구</h4><div class="rmgrid">${Object.entries(RM_ITEMS).map(([k,o])=>card('item',k,o)).join('')}</div>
     <h4 class="rmh">벽지</h4><div class="rmgrid">${Object.entries(RM_WALL).map(([k,o])=>card('wall',k,o)).join('')}</div>
     <h4 class="rmh">바닥</h4><div class="rmgrid">${Object.entries(RM_FLOOR).map(([k,o])=>card('floor',k,o)).join('')}</div>`;
-  }else if(RM_TAB==='me'){body=jsTabHTML()}else{
+  }else if(RM_TAB==='me'){body=jsTabHTML()}else if(RM_TAB==='shel'){body=shTabHTML()}else{
     const first=R.rooms[0].id;body=`${roomsBar}<p class="rmhint" style="margin:0 0 8px"><b>${RM_RT[cur.t].e} ${esc(cur.name)}</b>에서 살 고양이를 눌러서 골라요. (한 방에 최대 16마리${R.cur===first?'':' · 다시 누르면 '+esc(rmJ(R.rooms[0].name,'으로'))+' 돌아가요'})</p><div class="rmgrid">${all.map(i=>{const b=BREEDS[i];const h=rmHomeOf(i);const here=h===R.cur;const hr=R.rooms.find(r=>r.id===h);return `<button class="rmshop ${here?'own on':''}" data-rmhome="${i}">${catImg(b)?`<img src="${catImg(b)}" alt="" class="rmph" onerror="this.remove()">`:`<svg viewBox="0 -2 40 36" width="46" height="42">${bFace(b)}</svg>`}<span>${esc(b.n)}</span><em>${here?'✓ 이 방':RM_RT[hr.t].e+' '+esc(hr.name)}</em></button>`}).join('')||'<p class="rmhint">아직 없어요. 문제 세트를 풀고 숨은 고양이를 찾아 보세요!</p>'}</div><button class="rmbtn" style="margin-top:10px" data-act="dexopen2">📖 고양이 도감 보기</button>`;
   }
   return `<div class="mh"><div class="mhtop"><span>TODAY <b>${td}</b></span><span>TOTAL <b>${days}</b></span><span class="mhurl">일일삼제 미니홈피</span></div>
@@ -91,7 +91,7 @@ function roomHTML(){const R=rmS();const days=Object.keys(S.days||{}).filter(k=>S
     <textarea class="mhmsg" data-rmmsg maxlength="60" rows="3" placeholder="오늘의 한마디">${esc(R.msg)}</textarea>
     <div class="mhst"><span>🐱 ${all.length}마리</span><span>⭐ ${R.coins||0}</span></div></aside>
   <section class="mhmain"><h2 class="mhtitle">${esc(nm)}의 ${RM_NEW?'새 방':esc(cur.name)}</h2>
-    <div class="mhtabs">${[['room','🏠 미니룸'],['me','🧑 내 집사'],['shop','🛍 상점'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
+    <div class="mhtabs">${[['room','🏠 미니룸'],['me','🧑 내 집사'],['shop','🛍 상점'],['shel','🐾 보호소'],['cats','🐱 식구들']].map(([k,t])=>`<button class="${RM_TAB===k?'on':''}" data-rmtab="${k}">${t}</button>`).join('')}</div>${body}</section></div></div>`}
 function rmWander(){clearInterval(RM_T);RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}
   document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(Math.random()<.45)return;const x0=parseFloat(el.style.left),x=6+Math.random()*86,y=64+Math.random()*31;
     el.classList.toggle('rmflip',x<x0);el.classList.add('rmwalk');el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('rmwalk'),2400)})},3200)}
@@ -165,10 +165,10 @@ const rmIsDog=el=>{const b=BREEDS[+el.dataset.rmc];return !!(b&&b.sp==='d')};
 function rmAllSpots(){const R=rmS();const o=[];R.items.forEach(it=>(RM_SPOTS[it.k]||[]).forEach((sp,j)=>o.push({key:it.id+':'+j,it,sp})));return o}
 function rmMove(el,x,y,z,pose,walk=true){const x0=parseFloat(el.style.left);el.classList.toggle('rmflip',x<x0);if(walk){rmSetPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');rmSetPose(el,pose)},walk?2400:0)}
-function rmWander(){clearInterval(RM_T);const used={};
+function rmWander(){clearInterval(RM_T);const used={};try{shPlaceAll()}catch(e){}
   RM_T=setInterval(()=>{if(VIEW!=='room'||RM_TAB!=='room'){clearInterval(RM_T);return}if(RM_SEEK||RM_EDIT)return;try{jsWalk()}catch(e){}
     const spots=rmAllSpots();
-    document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
+    document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(typeof shCtl==='function'&&shCtl(el))return;if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
       if(el._spot){delete used[el._spot];el._spot=null}
       const r=Math.random();const dog=rmIsDog(el);const free=spots.filter(s=>!used[s.key]&&!(dog&&rmHighSpot(s)));
       if(r<.4&&free.length){const s=free[Math.floor(Math.random()*free.length)];const p=rmSpotPos(s.it,s.sp);used[s.key]=1;el._spot=s.key;rmMove(el,p.x,p.y,p.z,s.sp[2])}
