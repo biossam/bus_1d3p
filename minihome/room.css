@@ -11,7 +11,7 @@
 .mhst{display:flex;gap:10px;font-size:12px;color:#5B6B8C;font-weight:700}
 .mhmain{min-width:0}.mhtitle{font-size:19px;margin:2px 4px 6px;color:#3D5A99}
 .mhtabs{display:flex;gap:4px;margin-bottom:8px}.mhtabs button{flex:1;border:1.5px solid #C9DAFF;background:#F2F6FF;border-radius:10px;padding:6px 2px;font-size:13px;font-weight:700;color:#5B6B8C;cursor:pointer}.mhtabs button.on{background:#5B8DEF;color:#fff;border-color:#5B8DEF}
-.rmscene{position:relative;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:2px solid #4A3B34;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.rmscene{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:2px solid #4A3B34;user-select:none;-webkit-user-select:none;touch-action:pan-y}
 .rmwall{position:absolute;left:0;right:0;top:0;height:60%}.rmfloor{position:absolute;left:0;right:0;bottom:0;height:40%;border-top:3px solid #4A3B34;box-shadow:inset 0 10px 14px -8px rgba(0,0,0,.25)}
 .rmi{position:absolute;transform-origin:50% 100%}.rmi svg{display:block;overflow:visible}.rmi.ed{cursor:grab;touch-action:none;outline:1.5px dashed rgba(91,141,239,.55);outline-offset:2px;border-radius:6px}.rmi.sel{outline:2.5px solid #FF7563}
 .rmc{position:absolute;width:11%;transform:translate(-50%,-100%);transition:left 2.4s linear,top 2.4s linear;cursor:pointer}
@@ -61,3 +61,8 @@
 .cambtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.cambig{flex:1 1 100%;border:none;border-radius:14px;padding:14px;background:#FF7563;color:#fff;font:400 20px 'Jua',sans-serif;cursor:pointer;box-shadow:0 4px 0 #D9534A}
 .cambtn{flex:1;text-align:center;border:2px solid #E5DCCF;border-radius:12px;padding:9px 6px;background:#fff;font:700 13px sans-serif;color:#4A3B33;cursor:pointer;white-space:nowrap}
 .camshot{display:block;width:100%;border-radius:14px;box-shadow:0 6px 18px rgba(74,59,51,.15)}.camhint{font-size:12px;color:#8A7B70;text-align:center;margin:8px 0 0}
+.rmpaws{position:absolute;bottom:4%;z-index:290;font-size:13px;opacity:.6;pointer-events:none;letter-spacing:6px}
+.rmpaws i{font-style:normal;display:inline-block;transform:translateY(-6px)}
+.rmpaws-l{left:2%;transform:scaleX(-1) rotate(-12deg)}.rmpaws-r{right:2%;transform:rotate(-12deg)}
+.rmesc{position:absolute;bottom:-6px;padding:0;border:0;background:none;line-height:0;cursor:pointer;z-index:5;animation:rmpop .3s ease-out}
+.rmesc-l{left:4px}.rmesc-r{right:4px}

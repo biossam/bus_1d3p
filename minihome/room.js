@@ -47,7 +47,9 @@ function rmHomeOf(i){const R=S.room;const h=R.home[i];return R.rooms.some(r=>r.i
 function rmMkRoom(t){const R=rmS();const T=RM_RT[t];const same=R.rooms.filter(r=>r.t===t).length;const r={id:R.rid++,t,name:T.n+(same?' '+(same+1):''),wall:T.wall,floor:T.floor,items:[]};
   T.it.forEach(([k,x,y])=>{r.items.push({id:R.nid++,k,x,y,f:0});if(!R.own.includes(k))R.own.push(k)});[T.wall,T.floor].forEach(k=>{if(!R.own.includes(k))R.own.push(k)});R.rooms.push(r);R.cur=r.id;save();return r}
 function rmS(){if(!S.room){S.room={name:'',msg:'',wall:'cream',floor:'wood',coins:3,own:['window','cushion','cream','wood'],items:[{id:1,k:'window',x:28,y:34,f:0},{id:2,k:'cushion',x:62,y:86,f:0}],nid:3};save()}return rmMig(S.room)}
-function rmEarn(n){const R=rmS();R.coins=(R.coins||0)+n;save()}
+// 별은 하루 최대 STAR_DAY개까지 모을 수 있어요 (모든 방법 합쳐서). 실제로 준 개수를 돌려줘요
+function starToday(){const R=rmS(),t=today();if(!R.earn||R.earn.d!==t)R.earn={d:t,n:0};return R.earn}
+function rmEarn(n){const R=rmS(),e=starToday();const g=Math.max(0,Math.min(n,STAR_DAY-e.n));if(g){R.coins=(R.coins||0)+g;e.n+=g}save();return g}
 function rmLive(){const R=rmS();return rmAll().filter(i=>rmHomeOf(i)===R.cur).slice(0,16)}
 function rmCat(b){return `<svg viewBox="-2 -2 44 54"><path d="M30 42c9 0 10-10 5-13" stroke="${RM_OL}" stroke-width="5.4" fill="none" stroke-linecap="round"/><path d="M30 42c9 0 10-10 5-13" stroke="${b.b}" stroke-width="3.4" fill="none" stroke-linecap="round"/><ellipse cx="20" cy="40" rx="12" ry="9" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M13 48v-3M27 48v-3" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(1,-1) scale(.95)">${bFace(b)}</g></svg>`}
 let RM_NEW=false,RM_TAB='room',RM_EDIT=false,RM_SEL=null,RM_T=null;
@@ -157,6 +159,9 @@ const RM_SPOTS={tower:[[18,8,'sleep',1],[42,28,'sit',1],[30,52,'sit',1]],sofa:[[
   box:[[30,46,'sit',-1]],plant:[[34,56,'sit',-1]],shelf:[[30,4,'sleep',1],[30,22,'sit',1]],window:[[30,52,'sit',1]],sofa2:[],fish:[[30,40,'sit',-1]],lamp:[[34,56,'sit',-1]],desk:[[46,20,'sleep',1],[20,56,'sit',1]],bathtub:[[24,32,'sit',-1],[40,32,'sit',-1]],bmat:[[30,48,'lie',1]],washer:[[30,6,'sleep',1]],basket:[[30,34,'sit',-1]],wshelf:[[46,40,'sit',1]]};
 function rmSpotPos(it,sp){const I=RM_ITEMS[it.k];const sc=document.getElementById('rmscene');const ar=sc?sc.clientWidth/sc.clientHeight:4/3;const fx=it.f?(60-sp[0])/60:sp[0]/60;
   return {x:it.x+(fx-.5)*I.w,y:it.y-(1-sp[1]/60)*I.w*ar,z:(I.p==='wall'?2:Math.round(it.y))+sp[3]}}
+// 강아지는 높은 곳(벽 가구, 캣타워·선반·세탁기 꼭대기)에 못 올라가요
+function rmHighSpot(s){return RM_ITEMS[s.it.k].p==='wall'||s.sp[1]<30}
+const rmIsDog=el=>{const b=BREEDS[+el.dataset.rmc];return !!(b&&b.sp==='d')};
 function rmAllSpots(){const R=rmS();const o=[];R.items.forEach(it=>(RM_SPOTS[it.k]||[]).forEach((sp,j)=>o.push({key:it.id+':'+j,it,sp})));return o}
 function rmMove(el,x,y,z,pose,walk=true){const x0=parseFloat(el.style.left);el.classList.toggle('rmflip',x<x0);if(walk){rmSetPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');rmSetPose(el,pose)},walk?2400:0)}
@@ -165,7 +170,7 @@ function rmWander(){clearInterval(RM_T);const used={};
     const spots=rmAllSpots();
     document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
       if(el._spot){delete used[el._spot];el._spot=null}
-      const r=Math.random();const free=spots.filter(s=>!used[s.key]);
+      const r=Math.random();const dog=rmIsDog(el);const free=spots.filter(s=>!used[s.key]&&!(dog&&rmHighSpot(s)));
       if(r<.4&&free.length){const s=free[Math.floor(Math.random()*free.length)];const p=rmSpotPos(s.it,s.sp);used[s.key]=1;el._spot=s.key;rmMove(el,p.x,p.y,p.z,s.sp[2])}
       else if(r<.55){rmSetPose(el,'sleep')}else if(r<.65){rmSetPose(el,'stretch');setTimeout(()=>rmSetPose(el,'sit'),1800)}else if(r<.72){rmSetPose(el,'lie')}
       else{const x=6+Math.random()*86,y=64+Math.random()*31;rmMove(el,x,y,Math.round(y)+1,'sit')}})},3000)}
@@ -181,7 +186,7 @@ function rmSeek(){const sc=document.getElementById('rmscene');if(!sc)return;cons
 function rmFound(el){if(!el.classList.contains('rmhid'))return;el.classList.remove('rmhid');el.style.transition='';RM_SEEK.f++;
   const y=66+Math.random()*28,x=Math.max(8,Math.min(92,parseFloat(el.style.left)));el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;
   const h=document.createElement('i');h.className='rmheart';h.textContent='찾았다!';el.appendChild(h);setTimeout(()=>h.remove(),1600);
-  if(RM_SEEK.f>=RM_SEEK.n){const R=rmS();const d=today();let msg=`다 찾았어요! 🎉`;if(R.seekDay!==d){R.seekDay=d;R.coins=(R.coins||0)+1;save();msg+=' 오늘의 숨바꼭질 보너스 ⭐1'}
+  if(RM_SEEK.f>=RM_SEEK.n){const R=rmS();const d=today();let msg=`다 찾았어요! 🎉`;if(R.seekDay!==d){R.seekDay=d;if(rmEarn(1))msg+=' 오늘의 숨바꼭질 보너스 ⭐1'}
     RM_SEEK=null;const sc3=document.getElementById('rmscene');sc3.classList.remove('rmseeking');const bd=sc3.querySelector('.rmsbadge');if(bd)bd.remove();toast(msg);setTimeout(()=>{if(VIEW==='room')render()},1800)}
   else rmSeekBadge()}
 function rmSeekBadge(){const sc=document.getElementById('rmscene');if(!sc||!RM_SEEK)return;let b=sc.querySelector('.rmsbadge');if(!b){b=document.createElement('div');b.className='rmsbadge';sc.appendChild(b)}b.textContent=`🔍 ${RM_SEEK.f} / ${RM_SEEK.n}`}

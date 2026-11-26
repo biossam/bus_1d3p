@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-26 02:06"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
+<!doctype html><html><head><title>일일삼제</title><script>var APPVER="11-26 20:38"</script><link rel="icon" type="image/png" sizes="192x192" href="icon-192.png"><link rel="apple-touch-icon" sizes="180x180" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="일일삼제"><meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#FFF8EE"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.recbox{margin:10px 0 12px;padding:12px 14px;border:2px dashed var(--line,#E9DCC6);border-radius:18px;background:var(--card,#fff)}
 .recbox .rrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.recbox .rbtn{border:0;border-radius:999px;padding:10px 16px;font-weight:800;font-size:15px;background:#FF7563;color:#fff;cursor:pointer}
 .recbox .rbtn.stop{background:#2B2B38}.recbox .rbtn.ghost{background:transparent;color:var(--sub,#8a7f72);border:1.5px solid var(--line,#E9DCC6)}
 .recbox .rt{font-variant-numeric:tabular-nums;font-weight:800}.recbox .dot{width:10px;height:10px;border-radius:50%;background:#FF4B3A;animation:rblink 1s infinite}@keyframes rblink{50%{opacity:.2}}
@@ -22,7 +22,7 @@
 .mhst{display:flex;gap:10px;font-size:12px;color:#5B6B8C;font-weight:700}
 .mhmain{min-width:0}.mhtitle{font-size:19px;margin:2px 4px 6px;color:#3D5A99}
 .mhtabs{display:flex;gap:4px;margin-bottom:8px}.mhtabs button{flex:1;border:1.5px solid #C9DAFF;background:#F2F6FF;border-radius:10px;padding:6px 2px;font-size:13px;font-weight:700;color:#5B6B8C;cursor:pointer}.mhtabs button.on{background:#5B8DEF;color:#fff;border-color:#5B8DEF}
-.rmscene{position:relative;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:2px solid #4A3B34;user-select:none;-webkit-user-select:none;touch-action:pan-y}
+.rmscene{position:relative;isolation:isolate;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:2px solid #4A3B34;user-select:none;-webkit-user-select:none;touch-action:pan-y}
 .rmwall{position:absolute;left:0;right:0;top:0;height:60%}.rmfloor{position:absolute;left:0;right:0;bottom:0;height:40%;border-top:3px solid #4A3B34;box-shadow:inset 0 10px 14px -8px rgba(0,0,0,.25)}
 .rmi{position:absolute;transform-origin:50% 100%}.rmi svg{display:block;overflow:visible}.rmi.ed{cursor:grab;touch-action:none;outline:1.5px dashed rgba(91,141,239,.55);outline-offset:2px;border-radius:6px}.rmi.sel{outline:2.5px solid #FF7563}
 .rmc{position:absolute;width:11%;transform:translate(-50%,-100%);transition:left 2.4s linear,top 2.4s linear;cursor:pointer}
@@ -72,6 +72,11 @@
 .cambtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.cambig{flex:1 1 100%;border:none;border-radius:14px;padding:14px;background:#FF7563;color:#fff;font:400 20px 'Jua',sans-serif;cursor:pointer;box-shadow:0 4px 0 #D9534A}
 .cambtn{flex:1;text-align:center;border:2px solid #E5DCCF;border-radius:12px;padding:9px 6px;background:#fff;font:700 13px sans-serif;color:#4A3B33;cursor:pointer;white-space:nowrap}
 .camshot{display:block;width:100%;border-radius:14px;box-shadow:0 6px 18px rgba(74,59,51,.15)}.camhint{font-size:12px;color:#8A7B70;text-align:center;margin:8px 0 0}
+.rmpaws{position:absolute;bottom:4%;z-index:290;font-size:13px;opacity:.6;pointer-events:none;letter-spacing:6px}
+.rmpaws i{font-style:normal;display:inline-block;transform:translateY(-6px)}
+.rmpaws-l{left:2%;transform:scaleX(-1) rotate(-12deg)}.rmpaws-r{right:2%;transform:rotate(-12deg)}
+.rmesc{position:absolute;bottom:-6px;padding:0;border:0;background:none;line-height:0;cursor:pointer;z-index:5;animation:rmpop .3s ease-out}
+.rmesc-l{left:4px}.rmesc-r{right:4px}
 #modal{z-index:10060!important}
 .rmbtn.party{background:#E6EEFF;border-color:#8FB0F5;color:#2F4FA0}
 .ptcard{background:#fff;border:2px solid #E5DCCF;border-radius:16px;padding:4px 14px 12px}
@@ -377,6 +382,16 @@ details:not([open]) summary h3::after{transform:rotate(-90deg)}
 .vec{position:relative;display:inline-block}.vec::before{content:'';position:absolute;left:.05em;right:.15em;top:.02em;border-top:1.3px solid currentColor}.vec::after{content:'';position:absolute;right:.08em;top:-.16em;border:.2em solid transparent;border-left:.32em solid currentColor;border-right:0}
 .calh{margin-bottom:5px}.cw{text-align:center;font-size:11px;font-weight:700;color:var(--sub)}.cw.sun{color:var(--coral)}.cw.sat{color:var(--sky)}
 .cd.fut{background:transparent;border:1.5px dashed var(--line);opacity:.6}.cd.now{box-shadow:0 0 0 2px var(--ink) inset}
+
+.fastnote{margin:8px 0 0;padding:8px 12px;border-radius:12px;background:#FFF3C9;color:#7A5A00;font-size:14px;font-weight:700}
+.rwcard{text-align:center}.rwcard .rwstar{font-size:28px;letter-spacing:2px;margin:2px 0 6px}.rwcard .rwstar b{font-size:22px;color:#E8A400;letter-spacing:0}
+.rwcard p{margin:6px 0}.rwcard .big{margin-top:10px}
+.helpsum{text-align:left;max-height:46vh;overflow:auto;margin:8px 0}.helpsum ol{padding-left:18px;margin:4px 0}.helpsum li{margin:4px 0}
+.streaknote{margin:8px 0 0;padding:8px 12px;border-radius:12px;background:#FFE3DC;color:#C2410C;font-size:15px;font-weight:800}
+.selfalt{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.selfalt .rfile{display:block;text-align:center;padding:10px;border:2px dashed var(--line,#e6dccb);border-radius:14px;font-size:14px;color:var(--ink,#3a332b);cursor:pointer}
+.selfalt textarea{width:100%;box-sizing:border-box;border:2px solid var(--line,#e6dccb);border-radius:14px;padding:10px 12px;font:inherit;font-size:15px;resize:vertical}
+.notepic{display:block;max-width:100%;max-height:260px;border-radius:12px;margin-top:6px;object-fit:contain}
 </style>
 </head>
 <body>
@@ -2702,7 +2717,33 @@ const CAT_SLOTS=['hero','win','box','brand','daily','tail','loaf','nav','peekb',
 function catOrd(){const d=today();if(CAT_ORDER._d!==d){const sx=(S.seedX=S.seedX||Math.floor(Math.random()*1e6));const a=CAT_SLOTS.slice();let t=(d*2654435761+sx*40503)>>>0;const rnd=()=>{t=(t+0x6D2B79F5)>>>0;let x=Math.imul(t^(t>>>15),1|t);x=(x+Math.imul(x^(x>>>7),61|x))^x;return ((x^(x>>>14))>>>0)/4294967296};for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}const ci=a.indexOf('card');if(ci>=0){a.splice(ci,1);a.push('card')}a._d=d;CAT_ORDER=a}return CAT_ORDER}
 let CAT_PREV=null;
 function catSync(){const t=today();if(S.setDay!==t){S.setDay=t;S.setN=0;S.cats=[];S.catStart=t;save()}else if(S.catStart!==t){S.cats=[];S.catStart=t;save()}return Math.min(S.setN||0,CAT_TOTAL)}
-function setDone(n=1){catSync();try{rmEarn(n)}catch(e){}const b=S.setN||0;S.setN=Math.min(CAT_TOTAL,b+n);if(S.setN>b)S.setNew=S.setN-b;save();weekGift()}
+const STAR_DAY=30;
+function setDone(n=1,stars=n){catSync();let got=0;if(stars>0){try{got=rmEarn(stars)}catch(e){}}if(RUN&&RUN.reward)RUN.reward.got=got;const b=S.setN||0;if(n>0){S.setN=Math.min(CAT_TOTAL,b+n);if(S.setN>b)S.setNew=S.setN-b}save();weekGift()}
+// ===== 보상 규칙: 맞힌 만큼 별, 고친 만큼 보너스, 찍기는 빼기 =====
+const FIX_CAP=10;
+function rewardSet(){const ps=RUN.steps.find(s=>s.k==='probs');if(!ps||!ps.list)return;const n=ps.list.length,t=today();
+  let good=0,fast=0,fixOk=0,self=0;const wrong=[];
+  ps.list.forEach((p,i)=>{const r=!!ps.res[i],f=!!(ps.fast&&ps.fast[i]);if(p.t==='self'){self++;return}if(f)fast++;if(r&&!f){good++;if(p.retry||RUN.mode==='fix')fixOk++}else if(p.t!=='self')wrong.push({id:p.mid||p.id,cid:p.cid,l:p.l,t:p.t})});
+  const na=n-self,ratio=na?good/na:0;let stars=0,an=0;
+  if(RUN.mode==='session'){stars=ratio>=.8?2:ratio>=.5?1:0;an=ratio>=.5?2:0}
+  else if(RUN.mode!=='fix'){stars=ratio>=.999?2:ratio>=2/3?1:0;an=ratio>=.5?1:0}
+  S.fixStar=S.fixStar&&S.fixStar.d===t?S.fixStar:{d:t,n:0};const bonus=Math.min(fixOk,FIX_CAP-S.fixStar.n);S.fixStar.n+=bonus;
+  let pend=0;if(RUN.mode!=='fix'&&!an&&na){const due=S.fixDue&&S.fixDue.d===t?S.fixDue.n:0;pend=RUN.mode==='session'?2:1;S.fixDue={d:t,n:Math.min(3,due+pend)}}
+  if(RUN.mode==='fix'&&ratio>=.5&&S.fixDue&&S.fixDue.d===t){an=S.fixDue.n;S.fixDue=null}
+  RUN.reward={stars,bonus,an,good,n:na,self,fast,pend,wrong,capped:fixOk>bonus};setDone(an,stars+bonus)}
+function rewardHTML(){const w=RUN.reward;if(!w)return '';const want=w.stars+w.bonus,tot=w.got==null?want:w.got;const e=typeof starToday==='function'?starToday():{n:0};
+  const why=(w.n?(RUN.mode==='fix'?`비슷한 문제 ${w.n}개 중 <b>${w.good}개</b>를 고쳤어요`:`${w.n}문제 중 <b>${w.good}개</b>를 맞혔어요`):'앱이 채점하는 문제가 없었어요')+(w.self?` <span class="small">(스스로 채점한 ${w.self}문제는 참여로만 세요)</span>`:'');
+  return `<div class="card rwcard"><div class="rwstar">${tot?'⭐'.repeat(Math.min(tot,5))+` <b>+${tot}</b>`:'☆ 0'}</div><p>${why}${w.bonus?` · 틀린 문제 고치기 보너스 ⭐${w.bonus}`:''}${w.capped?' <span class="small">(고치기 보너스는 하루 ⭐'+FIX_CAP+'까지)</span>':''}</p>
+   ${RUN.streakStars?`<p>🔥 연속 3문제 정답 보너스 ⭐${RUN.streakStars}</p>`:''}
+   ${want>tot?`<p class="small">🌙 오늘 모을 수 있는 별 ⭐${STAR_DAY}개를 다 모았어요. 내일 또 모아요!</p>`:''}<p class="small muted">오늘 모은 별 ⭐${e.n} / ${STAR_DAY}</p>
+   ${w.fast?`<p class="small">⚡ 너무 빨리 고른 ${w.fast}문제는 별에 세지 않았어요.</p>`:''}
+   ${w.an?`<p>🐱 고양이 ${w.an}마리가 홈 화면 어딘가에 숨었어요!</p>`:RUN.mode!=='fix'&&w.pend?'<p>이번에는 고양이가 숨지 않았어요. <b>틀린 문제를 고치면</b> 고양이가 나타나요!</p>':''}
+   <p class="small muted">${RUN.mode==='session'?'80% 이상 ⭐2 · 50% 이상 ⭐1':RUN.mode==='fix'?'고친 문제 1개마다 ⭐1':'모두 맞히면 ⭐2 · ⅔ 이상 ⭐1'} · 절반 이상 맞히면 고양이가 숨어요</p>
+   ${w.wrong.length&&RUN.mode!=='fix'?`<button class="big alt" data-act="fixgo">🔧 틀린 문제 고치기 (${w.wrong.length}개)</button>`:''}</div>`}
+function startFix(list){const L=list.slice(0,5);const cids=[...new Set(L.map(x=>x.cid))].slice(0,3);
+  const probs=L.map(m=>{const q=similarTo(m.id,m);return q?prepare(Object.assign({},q,{mid:m.id,retry:true})):null}).filter(Boolean);if(!probs.length){toast('고칠 문제를 찾지 못했어요');return}
+  const steps=cids.map(cid=>({k:'learn',cid,fix:1}));steps.push({k:'probs',list:probs,j:0,ans:null,res:[]},{k:'done'});
+  RUN={mode:'fix',title:'틀린 문제 고치기',steps,i:0,start:Date.now(),re:()=>startFix(list)};go('run');startTick()}
 function weekGift(){const st=streakInfo();if(st.n<7)return;const k=st.start+':'+Math.floor(st.n/7);if(S.giftKey===k)return;S.dex=S.dex||{};const left=BREEDS.filter(b=>!S.dex[b.i]);S.giftKey=k;if(!left.length){save();return}const br=left[Math.floor(Math.random()*left.length)];S.dex[br.i]=today();try{rmEarn(5)}catch(e){}save();
   setTimeout(()=>ask(`<svg viewBox="0 -2 40 36" width="96" height="86">${bFace(br)}</svg>`,'🎁 일주일 연속 공부 선물!',`${st.n}일 연속으로 공부했어요. <b>${esc(br.n)}</b> 고양이가 무료로 도감에 들어왔어요!<br><span class="small">${esc(br.t)}</span>`,[{t:'📖 도감 보기',cls:'go',fn:openDex}],'고마워요'),1200)}
 function hcat(id,html,cls=''){if(catOrd().indexOf(id)>=catSync())return '';const f=(S.cats||[]).includes(id);return `<button class="hcat ${cls} ${f?'found':''}" data-cat="${id}" aria-label="숨은 고양이">${html}</button>`}
@@ -2817,7 +2858,7 @@ function homeHTML(){
     </div>
     <button class="big" data-act="start">${done?'한 번 더 시작':'시작하기'} ▶</button><button class="pickc" data-lp="pick">📘 개념 골라서 15분</button>
   </section>
-  ${(()=>{const R=rmS();const n=rmLive().length;return `<button class="mhcard" data-act="room"><span class="mhci">🏠</span><span><b>${esc(R.name||'나')}의 미니홈피</b><small>고양이 ${n}마리가 살고 있어요 · ⭐ ${R.coins||0}</small></span><span class="mhgo">›</span></button>`})()}
+  ${(()=>{const R=rmS();const n=rmLive().length;return `<button class="mhcard" data-act="room"><span class="mhci">🏠</span><span><b>${esc(R.name||'나')}의 미니홈피</b><small>고양이 ${n}마리가 살고 있어요 · ⭐ ${R.coins||0} (오늘 ${starToday().n}/${STAR_DAY})</small></span><span class="mhgo">›</span></button>`})()}
   <div class="quick"><button class="qb lib" data-act="shelfopen"><span class="qi">📚</span><b>나의 서재</b><small>이해한 개념 ${CONCEPTS.filter(c=>onShelf(c.id)).length}권 · 🐾 ${catSync()}마리</small></button><button class="qb map" data-act="mapopen"><span class="qi">🗺️</span><b>개념 지도</b><small>${esc(rangeName())} · ${ids.filter(id=>{const m=mastery(id);return m!=null&&m>=.8}).length}/${ids.length} 완성</small></button></div>
   ${dailyHTML()}
   <div class="stats">
@@ -2943,10 +2984,10 @@ function flashHTML(st){const c=st.cards[st.j];
   <div class="fcard ${st.show?'show':''}" data-act="fshow"><div class="fq2">${fmt(c.q)}</div>${st.show?`<div class="fa2">${fmt(c.a)}</div>`:'<div class="hint">머릿속으로 답한 뒤 눌러서 확인</div>'}</div>
   ${st.show?`<div class="three"><button class="rate r0" data-frate="0">몰랐음</button><button class="rate r1" data-frate="1">헷갈림</button><button class="rate r2" data-frate="2">알았음</button></div>`:''}`}
 function learnStepHTML(st){const c=C[st.cid];
-  return `<p class="step">새 개념 <span class="tag s">NEW</span></p><h2 class="h2">${esc(c.t)}</h2>
+  return `<p class="step">${st.fix?'개념 다시 보기':'새 개념 <span class="tag s">NEW</span>'}</p><h2 class="h2">${esc(c.t)}</h2>
   <div class="card sum"><ol>${c.sum.map(s=>`<li>${fmt(s)}</li>`).join('')}</ol></div>
-  <p class="muted">2분 정도 읽고, 다 읽었으면 화면을 넘기세요. 바로 백지 테스트로 떠올려 봐요.</p>
-  <button class="big" data-act="next">다 읽었어요, 덮고 백지 테스트 ▶</button>`}
+  <p class="muted">${st.fix?'틀린 문제와 관련된 개념이에요. 천천히 읽고 비슷한 문제로 다시 도전해요.':'2분 정도 읽고, 다 읽었으면 화면을 넘기세요. 바로 백지 테스트로 떠올려 봐요.'}</p>
+  <button class="big" data-act="next">${st.fix?'다 읽었어요, 다시 도전 ▶':'다 읽었어요, 덮고 백지 테스트 ▶'}</button>`}
 function blankHTML(st){
   if(!st.t0)st.t0=Date.now();
   const one=st.cids.length===1;const c=C[st.cids[0]];
@@ -2976,22 +3017,22 @@ function probsHTML(st){
     st.levelNote=bs<50?'기본 개념부터 다져요':bs<80?'기본 → 실력 → 심화 한 문제씩':'실력·심화로 도전!';
   }
   const p=st.list[st.j];if(!p)return '<p>문제를 불러오지 못했어요.</p>';
-  const a=st.ans;
+  const a=st.ans;st.shown=st.shown||{};if(!a&&!st.shown[st.j])st.shown[st.j]=Date.now();
   let ui='';
   if(p.t==='mc')ui=`<div class="opts">${p.order.map((oi,k)=>{let cls='';if(a){if(oi===0)cls='right';else if(a.pick===oi)cls='wrong';}return `<button class="opt ${cls}" data-pick="${oi}" ${a?'disabled':''}><span class="on">${'①②③④⑤'[k]}</span><span>${fmt(p.x[oi])}</span></button>`}).join('')}</div>`;
   else if(p.t==='ox')ui=`<div class="ox">${[true,false].map(v=>{let cls='';if(a){if(v===p.x)cls='right';else if(a.pick===v)cls='wrong'}return `<button class="oxb ${cls}" data-ox="${v}" ${a?'disabled':''}>${v?'O':'X'}</button>`}).join('')}</div>`;
   else if(p.t==='sa')ui=a?`<div class="saans">내 답: <b>${esc(a.val||'(빈칸)')}</b> · 정답: <b>${fmt(p.x)}</b></div>`:`<div class="sa"><input id="sain" inputmode="text" autocomplete="off" placeholder="답 입력 (예: −3, 5/2)"><button class="btn" data-act="sacheck">확인</button></div>`;
-  else if(p.t==='self')ui=a?'':`<p class="muted small">노트에 풀이를 쓴 다음 모범 풀이와 비교해요.</p>${st.reveal?'':`<div id="recbox" class="recbox">${recHTML(recKey(st))}</div>`}${a===null&&st.reveal?'':`<button class="btn wide" data-act="reveal">모범 풀이 보기</button>`}`;
+  else if(p.t==='self')ui=a?'':`<p class="muted small">노트에 풀이를 쓴 다음 모범 풀이와 비교해요.</p>${st.reveal?'':`<div id="recbox" class="recbox">${recHTML(recKey(st))}</div><div class="selfalt"><label class="rfile">📷 노트에 푼 풀이를 사진으로 올리기<input type="file" accept="image/*" capture="environment" data-notepic hidden></label>${st.pic&&st.pic[st.j]?`<img class="notepic" src="${st.pic[st.j]}" alt="내 노트 사진">`:''}<textarea id="selftxt" rows="3" placeholder="또는 풀이를 글로 써 보세요 (10글자 이상)">${esc((st.txt&&st.txt[st.j])||'')}</textarea><p class="muted small" style="margin:4px 0 0">녹음 · 사진 · 글 중 하나를 남기면 모범 풀이를 볼 수 있어요.</p></div>`}${a===null&&st.reveal?'':`<button class="btn wide" data-act="reveal">모범 풀이 보기</button>`}`;
   if(RUN&&RUN.mode==='exam'&&!a&&!st.reveal&&st.j<st.list.length-1)ui+=`<button class="ghost wide skipb" data-act="pskip">⏭ 나중에 풀기 (맨 뒤로 보내기)</button>`;
   let fb='';
-  if(p.t==='self'&&st.reveal&&!a)fb=`${(REC.st===recKey(st)&&REC.url)?`<div class="card recplay"><b>🎙 내 풀이 녹음 듣기</b><audio controls src="${REC.url}"></audio></div>`:''}<div class="sol"><b>모범 풀이</b><div>${fmt(p.s)}</div></div>${p.ck?`<div class="ckl"><b>✍️ 서술형 감점 체크 — 내 답안에 다 썼나요?</b>${p.ck.map(c=>`<label><input type="checkbox"> <span>${fmt(c)}</span></label>`).join('')}<p class="small muted">하나라도 빠졌으면 부분 점수가 깎여요.</p></div>`:''}<div class="two"><button class="rate r0" data-self="0">틀렸어요</button><button class="rate r2" data-self="1">맞았어요</button></div>`;
-  if(a)fb=`<div class="fb ${a.ok?'ok':'no'}">${a.ok?'정답! 👏':'아쉬워요 — 오답노트에 담았어요'}</div><div class="sol"><b>풀이</b><div>${fmt(p.s)}</div></div><button class="big" data-act="pnext">${st.j+1<st.list.length?'다음 문제 ▶':'결과 보기 ▶'}</button>`;
+  if(p.t==='self'&&st.reveal&&!a)fb=`${(REC.st===recKey(st)&&REC.url)?`<div class="card recplay"><b>🎙 내 풀이 녹음 듣기</b><audio controls src="${REC.url}"></audio></div>`:''}${st.pic&&st.pic[st.j]?`<div class="card recplay"><b>📷 내 노트</b><img class="notepic" src="${st.pic[st.j]}" alt="내 노트 사진"></div>`:''}${st.txt&&st.txt[st.j]?`<div class="card recplay"><b>✏️ 내가 쓴 풀이</b><p style="margin:4px 0 0;white-space:pre-wrap">${esc(st.txt[st.j])}</p></div>`:''}<div class="sol"><b>모범 풀이</b><div>${fmt(p.s)}</div></div>${(p.ck||autoCk(p.s)).length?`<div class="ckl"><b>✍️ ${p.ck?'서술형 감점 체크 — 내 답안에 다 썼나요?':'스스로 채점 체크 — 모범 풀이와 말이 달라도 괜찮아요'}</b>${(p.ck||autoCk(p.s)).map(c=>`<label><input type="checkbox"> <span>${fmt(c)}</span></label>`).join('')}<p class="small muted">모두 체크해야 「맞았어요」를 누를 수 있어요. 빠진 게 있으면 「틀렸어요」를 눌러요. 스스로 채점한 문제는 별에 세지 않아요.</p></div>`:''}<div class="two"><button class="rate r0" data-self="0">틀렸어요</button><button class="rate r2" data-self="1">맞았어요</button></div>`;
+  if(a)fb=`<div class="fb ${a.ok?'ok':'no'}">${a.ok?'정답! 👏':'아쉬워요 — 오답노트에 담았어요'}</div>${a.streakHit?`<p class="streaknote">🔥 연속 3문제 정답!${a.streak?' ⭐+1':' (오늘 별은 다 모았어요)'}</p>`:''}${a.fast?'<p class="fastnote">⚡ 너무 빨리 골랐어요. 문제를 끝까지 읽고 풀어야 별(⭐)에 세어요.</p>':''}<div class="sol"><b>풀이</b><div>${fmt(p.s)}</div></div><button class="big" data-act="pnext">${st.j+1<st.list.length?'다음 문제 ▶':'결과 보기 ▶'}</button>`;
   return `<p class="step">문제 ${st.j+1} / ${st.list.length} ${st.levelNote&&st.j===0?`<span class="note">${st.levelNote}</span>`:''}</p>
   <div class="qmeta"><span class="tag s">${esc(C[p.cid].t)}</span><span class="tag lv${p.l}">${LV[p.l]}</span><span class="tag ty">${TY[p.t]}</span>${p.h?'<span class="tag hp">학평 유형</span>':''}${p.src?`<span class="tag src">${esc(p.src)}</span>`:''}${p.retry?'<span class="tag rt">오답 재도전</span>':''}</div>
   <div class="q">${fmt(p.q)}</div>${ui}${fb}`;
 }
 function doneHTML(){
-  const ps=RUN.steps.find(s=>s.k==='probs');const fl=RUN.steps.find(s=>s.k==='flash');
+  const ps=RUN.steps.find(s=>s.k==='probs');const RW=rewardHTML();const fl=RUN.steps.find(s=>s.k==='flash');
   const ok=ps?ps.res.filter(x=>x).length:0,n=ps?ps.res.length:0;
   const mins=Math.max(1,Math.round((Date.now()-RUN.start)/60000));
   let blank='';
@@ -2999,9 +3040,10 @@ function doneHTML(){
     if(RUN.mode!=='blank'||RUN.blankCids.length===1){const d=st.due-today();blank+=`<p class="muted center">「${esc(C[cid].t)}」 다음 복습: <b>${d<=0?'오늘':d===1?'내일':d+'일 뒤'}</b> (복습 ${st.box}단계)</p>`}}
   const msg=RUN.blankScore!=null&&RUN.blankScore<50?'오늘 헷갈린 개념은 내일 다시 나와요. 반복이 실력이 돼요!':n&&ok/n>=.8?'훌륭해요! 이 속도면 4% 안쪽 충분히 가능해요.':'좋아요. 틀린 문제는 내일 다시 만나요.';
   let pace='';if(RUN.mode==='exam'&&n){const sec=Math.round((Date.now()-RUN.start)/1000),per=Math.round(sec/n),inT=sec<=RUN.target;pace=`<div class="card"><h3>⏱ 실전 속도</h3><p>걸린 시간 <b>${mmss(sec)}</b> / 목표 ${mmss(RUN.target)} · 문항당 평균 <b>${mmss(per)}</b> (목표 2:16)${RUN.steps.find(x=>x.k==='probs').skipped?` · 넘긴 문제 ${RUN.steps.find(x=>x.k==='probs').skipped}번`:''}</p><p class="small muted">${inT&&ok/n>=.8?'시간도 정확도도 좋아요! 실전 감각이 잡혀 있어요.':inT?'시간은 충분해요. 틀린 문제의 조건을 다시 읽는 연습을 해 봐요.':ok/n>=.8?'정확하지만 느려요. 아는 문제는 더 빨리 넘어가는 연습을 해요.':'시간과 정확도 모두 아쉬워요. 개념 정리부터 다시 보고 도전해요.'}</p></div>`}
-  return `<div class="done"><div class="emoji">${RUN.mode==='session'?'🚌':RUN.mode==='exam'?'🎯':'✨'}</div><h2 class="h2 center">${RUN.mode==='session'?'오늘의 15분 끝!':'완료!'}</h2>
+  return `<div class="done"><div class="emoji">${RUN.mode==='session'?'🚌':RUN.mode==='exam'?'🎯':'✨'}</div><h2 class="h2 center">${RUN.mode==='session'?'오늘의 15분 끝!':RUN.mode==='fix'?'다시 도전 끝!':'완료!'}</h2>
   <div class="resrow">${blank}${n?`<div class="res"><b>${ok}/${n}</b><span>문제 정답</span></div>`:''}${fl?`<div class="res"><b>${fl.res.filter(x=>x===2).length}/${fl.cards.length}</b><span>플래시 알았음</span></div>`:''}<div class="res"><b>${mins}분</b><span>학습 시간</span></div></div>
   <p class="center">${msg}</p>
+  ${RW}
   ${pace}
   ${ps&&n?`<div class="card"><h3>문제 다시 보기</h3>${ps.list.map((p,i)=>`<div class="rv ${ps.res[i]?'ok':'no'}"><span>${ps.res[i]?'○':'✕'}</span><span>${esc(C[p.cid].t)} · ${LV[p.l]} · ${TY[p.t]}</span></div>`).join('')}</div>`:''}
   <button class="big" data-act="finish">홈으로</button></div>`;
@@ -3012,7 +3054,7 @@ function nextStep(){RUN.i++;
     {const ps=RUN.steps.find(s=>s.k==='probs');if(ps&&ps.list&&ps.list.length&&ps.res.length>=ps.list.length)RUN.setDone=1}
     if(RUN.mode==='session'){const ps=RUN.steps.find(s=>s.k==='probs');const own=ps.list.map((p,i)=>p.cid===RUN.blankCid?ps.res[i]:null).filter(x=>x!==null);
       const acc=own.length?own.filter(x=>x).length/own.length:null;recordBlank(RUN.blankCid,RUN.blankScore,acc);finishSessionDay()}
-    if(RUN.setDone)setDone(RUN.mode==='session'?2:1);
+    if(RUN.setDone)rewardSet();
   }
   render();window.scrollTo(0,0)}
 
@@ -3052,6 +3094,7 @@ document.addEventListener('click',e=>{
   if(a==='wrongrun'){const list=S.wrong.filter(w=>inRange(w.cid)).slice(0,15).map(w=>{if(w.g)return prepare(Object.assign({},w.g,{id:w.id,cid:w.cid,gen:true,retry:true}));const base=C[w.cid].pr[+w.id.split('-').pop()];return base?prepare(Object.assign({},base,{id:w.id,cid:w.cid,retry:true})):null}).filter(Boolean);return startProbs(list,'오답 재도전','wrong')}
   if(a==='quit'){if(RUN&&RUN.steps[RUN.i].k!=='done'&&!b.dataset.sure){b.dataset.sure=1;b.textContent='나가기?';b.classList.add('warn');setTimeout(()=>{if(b.isConnected){delete b.dataset.sure;b.textContent='✕';b.classList.remove('warn')}},2500);return}go('home');return}
   if(a==='finish'){go('home');return}
+  if(a==='fixgo'&&RUN&&RUN.reward){return startFix(RUN.reward.wrong)}
   if(a==='reset'){document.getElementById('resetbox').innerHTML='<p class="small">정말 모든 기록을 지울까요?</p><button class="ghost wide danger" data-act="reset2">네, 모두 지우기</button>';return}
   if(a==='reset2'){const r=S.range,ex=S.examDate,mp=S.map;S=fresh();S.range=r;S.examDate=ex;S.map=mp;save();toast('초기화했어요');go('home');return}
   if(!st)return;
@@ -3067,12 +3110,13 @@ document.addEventListener('click',e=>{
     nextStep();return}
   if(st.k==='probs'){
     const p=st.list[st.j];
-    const answer=(ok,extra)=>{st.ans=Object.assign({ok},extra);st.res[st.j]=ok;recordProblem(p,ok);render();const f=document.querySelector('.fb');if(f)f.scrollIntoView({behavior:'smooth',block:'center'})};
+    const answer=(ok,extra)=>{const fast=p.t!=='self'&&Date.now()-((st.shown&&st.shown[st.j])||0)<3000;st.fast=st.fast||{};st.fast[st.j]=fast;st.wr=ok?0:(st.wr||0)+1;st.rc=p.t==='self'?(st.rc||0):ok&&!fast?(st.rc||0)+1:0;let streak=0;if(st.rc>=3&&RUN.mode!=='exam'){st.rc=0;streak=rmEarn(1);RUN.streakStars=(RUN.streakStars||0)+streak;if(!streak)RUN.streakCap=1}if(st.wr>=3&&RUN.mode!=='exam'){st.help=p.cid;st.wr=0}st.ans=Object.assign({ok,fast,streak:st.rc===0&&ok&&!fast&&p.t!=='self'?streak:0,streakHit:ok&&!fast&&st.rc===0&&p.t!=='self'},extra);st.res[st.j]=ok;recordProblem(p,ok);render();const f=document.querySelector('.fb');if(f)f.scrollIntoView({behavior:'smooth',block:'center'})};
     if(d.pick!=null&&!st.ans)return answer(+d.pick===0,{pick:+d.pick});
     if(d.ox!=null&&!st.ans){const v=d.ox==='true';return answer(v===p.x,{pick:v})}
     if(a==='sacheck'&&!st.ans){const v=(document.getElementById('sain').value||'').trim();const norm=s=>String(s).replace(/\s/g,'').replace(/−/g,'-').toLowerCase();return answer(String(p.x).split('|').some(x=>norm(x)===norm(v)),{val:v})}
-    if(a==='reveal'){st.reveal=true;render();return}
-    if(d.self!=null&&!st.ans)return answer(d.self==='1',{});
+    if(a==='reveal'){if(p.t==='self'&&!selfReady(st)){toast(((st.txt&&st.txt[st.j])||'').trim()?'풀이를 조금 더 제대로 써 주세요. 숫자와 계산 과정, 이유가 보이게요.':'먼저 녹음하거나, 노트 사진을 올리거나, 풀이를 글로 써 주세요.');return}st.reveal=true;render();return}
+    if(d.self!=null&&!st.ans){if(d.self==='1'){const cb=[...document.querySelectorAll('.ckl input[type=checkbox]')];if(cb.some(c=>!c.checked)){toast('체크리스트를 모두 확인해야 「맞았어요」를 누를 수 있어요.');return}}return answer(d.self==='1',{})}
+    if(a==='pnext'&&st.help){const cid=st.help;st.help=null;const c=C[cid];return ask('💡','잠깐! 개념부터 다시 봐요',`연속으로 3문제를 틀렸어요. 「${esc(c.t)}」 핵심을 읽고 다시 풀어 봐요.`,[{t:'다 읽었어요, 계속 풀기 ▶',cls:'go',fn:()=>{const b=document.querySelector('[data-act="pnext"]');if(b)b.click()}}],'닫기',`<div class="card sum helpsum">${c.pic?`<div class="cpic">${c.pic()}</div>`:''}<ol>${c.sum.map(x=>`<li>${fmt(x)}</li>`).join('')}</ol></div>`)}
     if(a==='pnext'){st.j++;st.ans=null;st.reveal=false;if(st.j>=st.list.length)nextStep();else{render();window.scrollTo(0,0)}return}
   }
 });
@@ -3088,6 +3132,9 @@ initSync();
 
 
 // ===== REC_PATCH: 백지 테스트 녹음 =====
+function selfReady(st){return !!((REC.st===recKey(st)&&REC.url)||(st.pic&&st.pic[st.j])||txtOK((st.txt&&st.txt[st.j])||'',st.list[st.j]))}
+function txtOK(t,p){const x=String(t).replace(/\s/g,'');if(x.length<12)return false;const u=new Set(x).size;if(u<6)return false;const cnt={};let mx=0;for(const c of x){cnt[c]=(cnt[c]||0)+1;mx=Math.max(mx,cnt[c])}if(mx/x.length>.35)return false;const hang=(x.match(/[가-힣]/g)||[]).length,jamo=(x.match(/[ㄱ-ㅎㅏ-ㅣ]/g)||[]).length;const mth=(x.match(/[\d×÷+−\-=]/g)||[]).length;if((hang<4&&mth<6)||jamo>2)return false;if(/(.{2,4})\1\1/.test(x))return false;const q=String(p&&p.q||'');if(/\d/.test(q)&&!/\d/.test(x)&&!/[×÷+−\-=]/.test(x)&&!/(곱|나누|더하|빼|같|크|작)/.test(x))return false;return true}
+function autoCk(){return ['내 답(결론)이 모범 풀이와 같은 뜻이에요','답만 말하지 않고, 푸는 과정이나 이유를 차례대로 말했어요(썼어요)','방법이 달라도 괜찮아요 — 내 방법으로 다시 확인해 보니 맞아요']}
 function recKey(st){if(!st._rid)st._rid=Math.random().toString(36).slice(2);return st._rid+':'+st.j}
 const REC={st:null,mr:null,chunks:[],url:null,t0:0,iv:null,err:false};
 function recReset(st){if(REC.mr&&REC.mr.state!=='inactive'){try{REC.mr.stop()}catch(e){}}if(REC.url)URL.revokeObjectURL(REC.url);clearInterval(REC.iv);Object.assign(REC,{st,mr:null,chunks:[],url:null,t0:0,iv:null})}
@@ -3113,6 +3160,8 @@ async function recStart(){
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-rec]');if(!b)return;e.preventDefault();e.stopPropagation();const a=b.dataset.rec;
   if(a==='start')recStart();else if(a==='stop'){if(REC.mr)REC.mr.stop()}else if(a==='again'){if(REC.url)URL.revokeObjectURL(REC.url);REC.url=null;recStart()}},true);
+document.addEventListener('change',e=>{const q=e.target.closest('[data-notepic]');if(q&&q.files&&q.files[0]){const st=RUN&&RUN.steps[RUN.i];if(st){st.pic=st.pic||{};if(st.pic[st.j])URL.revokeObjectURL(st.pic[st.j]);st.pic[st.j]=URL.createObjectURL(q.files[0]);render()}return}});
+document.addEventListener('input',e=>{if(e.target.id!=='selftxt')return;const st=RUN&&RUN.steps[RUN.i];if(st){st.txt=st.txt||{};st.txt[st.j]=e.target.value}});
 document.addEventListener('change',e=>{const i=e.target.closest('[data-recfile]');if(!i||!i.files||!i.files[0])return;if(REC.url)URL.revokeObjectURL(REC.url);REC.url=URL.createObjectURL(i.files[0]);REC.err=false;recPaint()});
 
 // ===== LAUNCH_PATCH: 접속하면 무엇부터 할지 고르기 =====
@@ -3180,7 +3229,9 @@ function rmHomeOf(i){const R=S.room;const h=R.home[i];return R.rooms.some(r=>r.i
 function rmMkRoom(t){const R=rmS();const T=RM_RT[t];const same=R.rooms.filter(r=>r.t===t).length;const r={id:R.rid++,t,name:T.n+(same?' '+(same+1):''),wall:T.wall,floor:T.floor,items:[]};
   T.it.forEach(([k,x,y])=>{r.items.push({id:R.nid++,k,x,y,f:0});if(!R.own.includes(k))R.own.push(k)});[T.wall,T.floor].forEach(k=>{if(!R.own.includes(k))R.own.push(k)});R.rooms.push(r);R.cur=r.id;save();return r}
 function rmS(){if(!S.room){S.room={name:'',msg:'',wall:'cream',floor:'wood',coins:3,own:['window','cushion','cream','wood'],items:[{id:1,k:'window',x:28,y:34,f:0},{id:2,k:'cushion',x:62,y:86,f:0}],nid:3};save()}return rmMig(S.room)}
-function rmEarn(n){const R=rmS();R.coins=(R.coins||0)+n;save()}
+// 별은 하루 최대 STAR_DAY개까지 모을 수 있어요 (모든 방법 합쳐서). 실제로 준 개수를 돌려줘요
+function starToday(){const R=rmS(),t=today();if(!R.earn||R.earn.d!==t)R.earn={d:t,n:0};return R.earn}
+function rmEarn(n){const R=rmS(),e=starToday();const g=Math.max(0,Math.min(n,STAR_DAY-e.n));if(g){R.coins=(R.coins||0)+g;e.n+=g}save();return g}
 function rmLive(){const R=rmS();return rmAll().filter(i=>rmHomeOf(i)===R.cur).slice(0,16)}
 function rmCat(b){return `<svg viewBox="-2 -2 44 54"><path d="M30 42c9 0 10-10 5-13" stroke="${RM_OL}" stroke-width="5.4" fill="none" stroke-linecap="round"/><path d="M30 42c9 0 10-10 5-13" stroke="${b.b}" stroke-width="3.4" fill="none" stroke-linecap="round"/><ellipse cx="20" cy="40" rx="12" ry="9" fill="${b.b}" stroke="${RM_OL}" stroke-width="1.6"/><path d="M13 48v-3M27 48v-3" stroke="${RM_OL}" stroke-width="2.6" stroke-linecap="round"/><g transform="translate(1,-1) scale(.95)">${bFace(b)}</g></svg>`}
 let RM_NEW=false,RM_TAB='room',RM_EDIT=false,RM_SEL=null,RM_T=null;
@@ -3290,6 +3341,9 @@ const RM_SPOTS={tower:[[18,8,'sleep',1],[42,28,'sit',1],[30,52,'sit',1]],sofa:[[
   box:[[30,46,'sit',-1]],plant:[[34,56,'sit',-1]],shelf:[[30,4,'sleep',1],[30,22,'sit',1]],window:[[30,52,'sit',1]],sofa2:[],fish:[[30,40,'sit',-1]],lamp:[[34,56,'sit',-1]],desk:[[46,20,'sleep',1],[20,56,'sit',1]],bathtub:[[24,32,'sit',-1],[40,32,'sit',-1]],bmat:[[30,48,'lie',1]],washer:[[30,6,'sleep',1]],basket:[[30,34,'sit',-1]],wshelf:[[46,40,'sit',1]]};
 function rmSpotPos(it,sp){const I=RM_ITEMS[it.k];const sc=document.getElementById('rmscene');const ar=sc?sc.clientWidth/sc.clientHeight:4/3;const fx=it.f?(60-sp[0])/60:sp[0]/60;
   return {x:it.x+(fx-.5)*I.w,y:it.y-(1-sp[1]/60)*I.w*ar,z:(I.p==='wall'?2:Math.round(it.y))+sp[3]}}
+// 강아지는 높은 곳(벽 가구, 캣타워·선반·세탁기 꼭대기)에 못 올라가요
+function rmHighSpot(s){return RM_ITEMS[s.it.k].p==='wall'||s.sp[1]<30}
+const rmIsDog=el=>{const b=BREEDS[+el.dataset.rmc];return !!(b&&b.sp==='d')};
 function rmAllSpots(){const R=rmS();const o=[];R.items.forEach(it=>(RM_SPOTS[it.k]||[]).forEach((sp,j)=>o.push({key:it.id+':'+j,it,sp})));return o}
 function rmMove(el,x,y,z,pose,walk=true){const x0=parseFloat(el.style.left);el.classList.toggle('rmflip',x<x0);if(walk){rmSetPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');rmSetPose(el,pose)},walk?2400:0)}
@@ -3298,7 +3352,7 @@ function rmWander(){clearInterval(RM_T);const used={};
     const spots=rmAllSpots();
     document.querySelectorAll('#rmscene .rmc').forEach(el=>{if(el.classList.contains('rmwalk'))return;if(Math.random()<(el._pose==='sleep'?.8:.5))return;
       if(el._spot){delete used[el._spot];el._spot=null}
-      const r=Math.random();const free=spots.filter(s=>!used[s.key]);
+      const r=Math.random();const dog=rmIsDog(el);const free=spots.filter(s=>!used[s.key]&&!(dog&&rmHighSpot(s)));
       if(r<.4&&free.length){const s=free[Math.floor(Math.random()*free.length)];const p=rmSpotPos(s.it,s.sp);used[s.key]=1;el._spot=s.key;rmMove(el,p.x,p.y,p.z,s.sp[2])}
       else if(r<.55){rmSetPose(el,'sleep')}else if(r<.65){rmSetPose(el,'stretch');setTimeout(()=>rmSetPose(el,'sit'),1800)}else if(r<.72){rmSetPose(el,'lie')}
       else{const x=6+Math.random()*86,y=64+Math.random()*31;rmMove(el,x,y,Math.round(y)+1,'sit')}})},3000)}
@@ -3314,7 +3368,7 @@ function rmSeek(){const sc=document.getElementById('rmscene');if(!sc)return;cons
 function rmFound(el){if(!el.classList.contains('rmhid'))return;el.classList.remove('rmhid');el.style.transition='';RM_SEEK.f++;
   const y=66+Math.random()*28,x=Math.max(8,Math.min(92,parseFloat(el.style.left)));el.style.left=x+'%';el.style.top=y+'%';el.style.zIndex=Math.round(y)+1;
   const h=document.createElement('i');h.className='rmheart';h.textContent='찾았다!';el.appendChild(h);setTimeout(()=>h.remove(),1600);
-  if(RM_SEEK.f>=RM_SEEK.n){const R=rmS();const d=today();let msg=`다 찾았어요! 🎉`;if(R.seekDay!==d){R.seekDay=d;R.coins=(R.coins||0)+1;save();msg+=' 오늘의 숨바꼭질 보너스 ⭐1'}
+  if(RM_SEEK.f>=RM_SEEK.n){const R=rmS();const d=today();let msg=`다 찾았어요! 🎉`;if(R.seekDay!==d){R.seekDay=d;if(rmEarn(1))msg+=' 오늘의 숨바꼭질 보너스 ⭐1'}
     RM_SEEK=null;const sc3=document.getElementById('rmscene');sc3.classList.remove('rmseeking');const bd=sc3.querySelector('.rmsbadge');if(bd)bd.remove();toast(msg);setTimeout(()=>{if(VIEW==='room')render()},1800)}
   else rmSeekBadge()}
 function rmSeekBadge(){const sc=document.getElementById('rmscene');if(!sc||!RM_SEEK)return;let b=sc.querySelector('.rmsbadge');if(!b){b=document.createElement('div');b.className='rmsbadge';sc.appendChild(b)}b.textContent=`🔍 ${RM_SEEK.f} / ${RM_SEEK.n}`}
@@ -3405,7 +3459,7 @@ const JS_HC=['#3B2A22','#6B4630','#B07A4A','#E8C16A','#2F3550','#E58FA6','#8C8C9
 const JS_TC=['#FF9F7A','#7CD7C2','#8FB0F5','#FFD66B','#C9A7EB','#FFB8C6','#FFFFFF','#4A4F6B'];
 const JS_PC=['#5B6B8C','#3B3F4F','#B08A6A','#7CA8D9','#E8A0B4'];
 const JS_OPT={
-  hair:[['short','짧은 머리'],['bob','단발'],['long','긴 머리'],['pony','포니테일'],['bun','똥머리'],['curly','곱슬']],
+  hair:[['short','짧은 머리'],['buzz','스포츠 머리'],['spiky','삐죽 머리'],['side','옆가르마'],['bowl','바가지 머리'],['bob','단발'],['long','긴 머리'],['pony','포니테일'],['bun','똥머리'],['curly','곱슬']],
   top:[['apron','집사 앞치마'],['hoodie','동물 귀 후드'],['tee','티셔츠'],['dress','원피스'],['suit','집사 정장']],
   acc:[['none','없음'],['catears','동물 귀띠'],['ribbon','리본'],['glasses','동그란 안경'],['cap','모자'],['flower','꽃핀']],
   face:[['smile','방긋'],['wink','윙크'],['happy','행복'],['ooh','놀람']],
@@ -3437,11 +3491,16 @@ function jsSvg(o,xmlns,pose){o=jsClean(o);pose=pose||'stand';const PZ=JS_POSE[po
   if(o.top==='hoodie')back=`<path d="M10 30C9 8 51 8 50 30l-2 14H12z" fill="${tc}" ${st}/><path d="M13 16l1-11 9 6zM47 16l-1-11-9 6z" fill="${tc}" ${st}/><path d="M15 13l.6-5 4 3zM45 13l-.6-5-4 3z" fill="#FFB8C6"/>`+back;
   // 머리
   const head=`<circle cx="15" cy="31" r="3" fill="${sk}" ${st}/><circle cx="45" cy="31" r="3" fill="${sk}" ${st}/><circle cx="30" cy="28" r="16.5" fill="${sk}" ${st}/>`;
-  const bang={short:`M13.5 27C13 12 47 12 46.5 27C44 21 39 19 35.5 22.5C32.5 18 26 18.5 23.5 22.5C20 20.5 15.5 22 13.5 27z`,
-    bob:`M13.5 28C13 12 47 12 46.5 28C40 26 35 23 32 19C28 24 21 27 13.5 28z`,long:`M13.5 28C13 12 47 12 46.5 28C40 26 35 23 32 19C28 24 21 27 13.5 28z`,
-    pony:`M13.5 27C13 12 47 12 46.5 27C43 22 37 21 33 17C30 22 20 24 13.5 27z`,bun:`M13.5 26C13 12 47 12 46.5 26C42 22 34 19 30 21C26 19 18 22 13.5 26z`,
-    curly:`M13.5 27C13 12 47 12 46.5 27C45 23 42 22 40 23C39 20 35 19 33 21C31 18 27 18 25 21C23 19 19 20 18 23C16 22 14 24 13.5 27z`}[o.hair];
-  front=o.top==='hoodie'&&o.hair!=='curly'?`<path d="${bang}" fill="${hc}" ${st} transform="translate(30 27) scale(.96) translate(-30 -27)"/>`:`<path d="${bang}" fill="${hc}" ${st}/>`;
+  const bang={buzz:`M13.4 26C12.8 6 47.2 6 46.6 26C44 21.5 38 20 30 20C22 20 16 21.5 13.4 26z`,
+    spiky:`M13 27C12.6 15 15 11 18 9.6L19.6 13L22.6 7.2L25.6 11.6L29.6 5.6L32.8 11.4L36.8 7L38.6 12.6L42 9.6C45 11.4 47.4 15 47 27C44 22 39 20.4 34 21.4L30 19.6L26 21.4C21 20.4 16 22 13 27z`,
+    side:`M13 27C12.4 5 47.6 5 47 27C46 23.4 44 21.2 41 20.2C36 18.6 27 16.6 21 20.6C18 22 15 24 13 27z`,
+    bowl:`M13 29.5C12.4 5 47.6 5 47 29.5C46.4 26.6 45.6 24.6 44 24.4H16C14.4 24.6 13.6 26.6 13 29.5z`,
+    short:`M13 27C12.4 5 47.6 5 47 27C44 21 39 19 35.5 22.5C32.5 18 26 18.5 23.5 22.5C20 20.5 15.5 22 13.5 27z`,
+    bob:`M13 28C12.4 5 47.6 5 47 28C40 26 35 23 32 19C28 24 21 27 13.5 28z`,long:`M13 28C12.4 5 47.6 5 47 28C40 26 35 23 32 19C28 24 21 27 13.5 28z`,
+    pony:`M13 27C12.4 5 47.6 5 47 27C43 22 37 21 33 17C30 22 20 24 13.5 27z`,bun:`M13 26C12.4 5 47.6 5 47 26C42 22 34 19 30 21C26 19 18 22 13.5 26z`,
+    curly:`M13 27C12.4 5 47.6 5 47 27C45 23 42 22 40 23C39 20 35 19 33 21C31 18 27 18 25 21C23 19 19 20 18 23C16 22 14 24 13.5 27z`}[o.hair];
+  const part=o.hair==='side'?`<path d="M23.4 9.6q2.6 4.6 1.4 10.4" stroke="${OL}" stroke-width="1.1" fill="none" opacity=".55"/>`:o.hair==='buzz'?`<path d="M18 15.6q12-5 24 0" stroke="#fff" stroke-width="1" fill="none" opacity=".35"/>`:'';
+  front=o.top==='hoodie'&&o.hair!=='curly'?`<path d="${bang}" fill="${hc}" ${st} transform="translate(30 27) scale(.96) translate(-30 -27)"/>`:`<path d="${bang}" fill="${hc}" ${st}/>`;front+=part;
   // 얼굴
   const ey=pose==='read'?32.5:31;const eye=(x)=>`<ellipse cx="${x}" cy="${ey}" rx="1.9" ry="2.5" fill="${OL}"/><circle cx="${x+.7}" cy="${ey-1}" r=".7" fill="#fff"/>`;
   const shut=(x)=>`<path d="M${x-2.2} 30.5q2.2 2.6 4.4 0" stroke="${OL}" stroke-width="1.5" fill="none" stroke-linecap="round"/>`;
@@ -3511,6 +3570,1255 @@ document.addEventListener('click',e=>{if(typeof VIEW==='undefined'||VIEW!=='room
     let [x,y]=pc(r.left+r.width/2,r.bottom+(act[0]==='sit'||act[0]==='sleep'?-r.height*.25:6));if(r.width/sr.width>.2&&act[0]!=='sit'&&act[0]!=='sleep')x=cl(x+(x>50?-12:12),6,94);
     jsGo(el,x,y,()=>{if(act[0]==='sit'||act[0]==='sleep')el.style.zIndex=(parseInt(getComputedStyle(it).zIndex)||Math.round(y))+2;jsPose(el,act[0],act[0]==='sleep'?6000:act[0]==='read'?5000:3200,act[1])},1);return}
   e.preventDefault();e.stopPropagation();const [x,y]=pc(e.clientX,e.clientY);jsMark(sc,x,y);jsGo(el,x,y,()=>{if(Math.random()<.35)jsPose(el,pick(['wave','stretch','clap']),2200,'')},1)},true);
+// 오프라인 QR 만들기 (QRCode for JavaScript, Kazuhiko Arase, MIT · qrcode-terminal 판)
+const QRLIB=(()=>{const M={};const req=n=>M[n.replace('./','')];
+M['QRMode']=(()=>{let __e;__e = {
+    MODE_NUMBER :       1 << 0,
+    MODE_ALPHA_NUM :    1 << 1,
+    MODE_8BIT_BYTE :    1 << 2,
+    MODE_KANJI :        1 << 3
+};
+
+return __e})();
+M['QRMath']=(()=>{let __e;var QRMath = {
+
+	glog : function(n) {
+	
+		if (n < 1) {
+			throw new Error("glog(" + n + ")");
+		}
+		
+		return QRMath.LOG_TABLE[n];
+	},
+	
+	gexp : function(n) {
+	
+		while (n < 0) {
+			n += 255;
+		}
+	
+		while (n >= 256) {
+			n -= 255;
+		}
+	
+		return QRMath.EXP_TABLE[n];
+	},
+	
+	EXP_TABLE : new Array(256),
+	
+	LOG_TABLE : new Array(256)
+
+};
+	
+for (var i = 0; i < 8; i++) {
+	QRMath.EXP_TABLE[i] = 1 << i;
+}
+for (var i = 8; i < 256; i++) {
+	QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+		^ QRMath.EXP_TABLE[i - 5]
+		^ QRMath.EXP_TABLE[i - 6]
+		^ QRMath.EXP_TABLE[i - 8];
+}
+for (var i = 0; i < 255; i++) {
+	QRMath.LOG_TABLE[QRMath.EXP_TABLE[i] ] = i;
+}
+
+__e = QRMath;
+
+return __e})();
+M['QRPolynomial']=(()=>{let __e;var QRMath = req('./QRMath');
+
+function QRPolynomial(num, shift) {
+	if (num.length === undefined) {
+		throw new Error(num.length + "/" + shift);
+	}
+
+	var offset = 0;
+
+	while (offset < num.length && num[offset] === 0) {
+		offset++;
+	}
+
+	this.num = new Array(num.length - offset + shift);
+	for (var i = 0; i < num.length - offset; i++) {
+		this.num[i] = num[i + offset];
+	}
+}
+
+QRPolynomial.prototype = {
+
+	get : function(index) {
+		return this.num[index];
+	},
+	
+	getLength : function() {
+		return this.num.length;
+	},
+	
+	multiply : function(e) {
+	
+		var num = new Array(this.getLength() + e.getLength() - 1);
+	
+		for (var i = 0; i < this.getLength(); i++) {
+			for (var j = 0; j < e.getLength(); j++) {
+				num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i) ) + QRMath.glog(e.get(j) ) );
+			}
+		}
+	
+		return new QRPolynomial(num, 0);
+	},
+	
+	mod : function(e) {
+	
+		if (this.getLength() - e.getLength() < 0) {
+			return this;
+		}
+	
+		var ratio = QRMath.glog(this.get(0) ) - QRMath.glog(e.get(0) );
+	
+		var num = new Array(this.getLength() );
+		
+		for (var i = 0; i < this.getLength(); i++) {
+			num[i] = this.get(i);
+		}
+		
+		for (var x = 0; x < e.getLength(); x++) {
+			num[x] ^= QRMath.gexp(QRMath.glog(e.get(x) ) + ratio);
+		}
+	
+		// recursive call
+		return new QRPolynomial(num, 0).mod(e);
+	}
+};
+
+__e = QRPolynomial;
+
+return __e})();
+M['QRMaskPattern']=(()=>{let __e;__e = {
+	PATTERN000 : 0,
+	PATTERN001 : 1,
+	PATTERN010 : 2,
+	PATTERN011 : 3,
+	PATTERN100 : 4,
+	PATTERN101 : 5,
+	PATTERN110 : 6,
+	PATTERN111 : 7
+};
+
+return __e})();
+M['QRErrorCorrectLevel']=(()=>{let __e;__e = {
+	L : 1,
+	M : 0,
+	Q : 3,
+	H : 2
+};
+
+
+return __e})();
+M['QRUtil']=(()=>{let __e;var QRMode = req('./QRMode');
+var QRPolynomial = req('./QRPolynomial');
+var QRMath = req('./QRMath');
+var QRMaskPattern = req('./QRMaskPattern');
+
+var QRUtil = {
+
+    PATTERN_POSITION_TABLE : [
+        [],
+        [6, 18],
+        [6, 22],
+        [6, 26],
+        [6, 30],
+        [6, 34],
+        [6, 22, 38],
+        [6, 24, 42],
+        [6, 26, 46],
+        [6, 28, 50],
+        [6, 30, 54],        
+        [6, 32, 58],
+        [6, 34, 62],
+        [6, 26, 46, 66],
+        [6, 26, 48, 70],
+        [6, 26, 50, 74],
+        [6, 30, 54, 78],
+        [6, 30, 56, 82],
+        [6, 30, 58, 86],
+        [6, 34, 62, 90],
+        [6, 28, 50, 72, 94],
+        [6, 26, 50, 74, 98],
+        [6, 30, 54, 78, 102],
+        [6, 28, 54, 80, 106],
+        [6, 32, 58, 84, 110],
+        [6, 30, 58, 86, 114],
+        [6, 34, 62, 90, 118],
+        [6, 26, 50, 74, 98, 122],
+        [6, 30, 54, 78, 102, 126],
+        [6, 26, 52, 78, 104, 130],
+        [6, 30, 56, 82, 108, 134],
+        [6, 34, 60, 86, 112, 138],
+        [6, 30, 58, 86, 114, 142],
+        [6, 34, 62, 90, 118, 146],
+        [6, 30, 54, 78, 102, 126, 150],
+        [6, 24, 50, 76, 102, 128, 154],
+        [6, 28, 54, 80, 106, 132, 158],
+        [6, 32, 58, 84, 110, 136, 162],
+        [6, 26, 54, 82, 110, 138, 166],
+        [6, 30, 58, 86, 114, 142, 170]
+    ],
+
+    G15 : (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+    G18 : (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+    G15_MASK : (1 << 14) | (1 << 12) | (1 << 10)    | (1 << 4) | (1 << 1),
+
+    getBCHTypeInfo : function(data) {
+        var d = data << 10;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+            d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) ) );    
+        }
+        return ( (data << 10) | d) ^ QRUtil.G15_MASK;
+    },
+
+    getBCHTypeNumber : function(data) {
+        var d = data << 12;
+        while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+            d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) ) );    
+        }
+        return (data << 12) | d;
+    },
+
+    getBCHDigit : function(data) {
+
+        var digit = 0;
+
+        while (data !== 0) {
+            digit++;
+            data >>>= 1;
+        }
+
+        return digit;
+    },
+
+    getPatternPosition : function(typeNumber) {
+        return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+    },
+
+    getMask : function(maskPattern, i, j) {
+        
+        switch (maskPattern) {
+            
+        case QRMaskPattern.PATTERN000 : return (i + j) % 2 === 0;
+        case QRMaskPattern.PATTERN001 : return i % 2 === 0;
+        case QRMaskPattern.PATTERN010 : return j % 3 === 0;
+        case QRMaskPattern.PATTERN011 : return (i + j) % 3 === 0;
+        case QRMaskPattern.PATTERN100 : return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 === 0;
+        case QRMaskPattern.PATTERN101 : return (i * j) % 2 + (i * j) % 3 === 0;
+        case QRMaskPattern.PATTERN110 : return ( (i * j) % 2 + (i * j) % 3) % 2 === 0;
+        case QRMaskPattern.PATTERN111 : return ( (i * j) % 3 + (i + j) % 2) % 2 === 0;
+
+        default :
+            throw new Error("bad maskPattern:" + maskPattern);
+        }
+    },
+
+    getErrorCorrectPolynomial : function(errorCorrectLength) {
+
+        var a = new QRPolynomial([1], 0);
+
+        for (var i = 0; i < errorCorrectLength; i++) {
+            a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0) );
+        }
+
+        return a;
+    },
+
+    getLengthInBits : function(mode, type) {
+
+        if (1 <= type && type < 10) {
+
+            // 1 - 9
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 10;
+            case QRMode.MODE_ALPHA_NUM  : return 9;
+            case QRMode.MODE_8BIT_BYTE  : return 8;
+            case QRMode.MODE_KANJI      : return 8;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 27) {
+
+            // 10 - 26
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 12;
+            case QRMode.MODE_ALPHA_NUM  : return 11;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 10;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else if (type < 41) {
+
+            // 27 - 40
+
+            switch(mode) {
+            case QRMode.MODE_NUMBER     : return 14;
+            case QRMode.MODE_ALPHA_NUM  : return 13;
+            case QRMode.MODE_8BIT_BYTE  : return 16;
+            case QRMode.MODE_KANJI      : return 12;
+            default :
+                throw new Error("mode:" + mode);
+            }
+
+        } else {
+            throw new Error("type:" + type);
+        }
+    },
+
+    getLostPoint : function(qrCode) {
+        
+        var moduleCount = qrCode.getModuleCount();
+        var lostPoint = 0;
+        var row = 0; 
+        var col = 0;
+
+        
+        // LEVEL1
+        
+        for (row = 0; row < moduleCount; row++) {
+
+            for (col = 0; col < moduleCount; col++) {
+
+                var sameCount = 0;
+                var dark = qrCode.isDark(row, col);
+
+                for (var r = -1; r <= 1; r++) {
+
+                    if (row + r < 0 || moduleCount <= row + r) {
+                        continue;
+                    }
+
+                    for (var c = -1; c <= 1; c++) {
+
+                        if (col + c < 0 || moduleCount <= col + c) {
+                            continue;
+                        }
+
+                        if (r === 0 && c === 0) {
+                            continue;
+                        }
+
+                        if (dark === qrCode.isDark(row + r, col + c) ) {
+                            sameCount++;
+                        }
+                    }
+                }
+
+                if (sameCount > 5) {
+                    lostPoint += (3 + sameCount - 5);
+                }
+            }
+        }
+
+        // LEVEL2
+
+        for (row = 0; row < moduleCount - 1; row++) {
+            for (col = 0; col < moduleCount - 1; col++) {
+                var count = 0;
+                if (qrCode.isDark(row,     col    ) ) count++;
+                if (qrCode.isDark(row + 1, col    ) ) count++;
+                if (qrCode.isDark(row,     col + 1) ) count++;
+                if (qrCode.isDark(row + 1, col + 1) ) count++;
+                if (count === 0 || count === 4) {
+                    lostPoint += 3;
+                }
+            }
+        }
+
+        // LEVEL3
+
+        for (row = 0; row < moduleCount; row++) {
+            for (col = 0; col < moduleCount - 6; col++) {
+                if (qrCode.isDark(row, col) && 
+                        !qrCode.isDark(row, col + 1) && 
+                         qrCode.isDark(row, col + 2) && 
+                         qrCode.isDark(row, col + 3) && 
+                         qrCode.isDark(row, col + 4) && 
+                        !qrCode.isDark(row, col + 5) && 
+                         qrCode.isDark(row, col + 6) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount - 6; row++) {
+                if (qrCode.isDark(row, col) &&
+                        !qrCode.isDark(row + 1, col) &&
+                         qrCode.isDark(row + 2, col) &&
+                         qrCode.isDark(row + 3, col) &&
+                         qrCode.isDark(row + 4, col) &&
+                        !qrCode.isDark(row + 5, col) &&
+                         qrCode.isDark(row + 6, col) ) {
+                    lostPoint += 40;
+                }
+            }
+        }
+
+        // LEVEL4
+        
+        var darkCount = 0;
+
+        for (col = 0; col < moduleCount; col++) {
+            for (row = 0; row < moduleCount; row++) {
+                if (qrCode.isDark(row, col) ) {
+                    darkCount++;
+                }
+            }
+        }
+        
+        var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+        lostPoint += ratio * 10;
+
+        return lostPoint;       
+    }
+
+};
+
+__e = QRUtil;
+
+return __e})();
+M['QRRSBlock']=(()=>{let __e;var QRErrorCorrectLevel = req('./QRErrorCorrectLevel');
+
+function QRRSBlock(totalCount, dataCount) {
+	this.totalCount = totalCount;
+	this.dataCount  = dataCount;
+}
+
+QRRSBlock.RS_BLOCK_TABLE = [
+
+	// L
+	// M
+	// Q
+	// H
+
+	// 1
+	[1, 26, 19],
+	[1, 26, 16],
+	[1, 26, 13],
+	[1, 26, 9],
+	
+	// 2
+	[1, 44, 34],
+	[1, 44, 28],
+	[1, 44, 22],
+	[1, 44, 16],
+
+	// 3
+	[1, 70, 55],
+	[1, 70, 44],
+	[2, 35, 17],
+	[2, 35, 13],
+
+	// 4		
+	[1, 100, 80],
+	[2, 50, 32],
+	[2, 50, 24],
+	[4, 25, 9],
+	
+	// 5
+	[1, 134, 108],
+	[2, 67, 43],
+	[2, 33, 15, 2, 34, 16],
+	[2, 33, 11, 2, 34, 12],
+	
+	// 6
+	[2, 86, 68],
+	[4, 43, 27],
+	[4, 43, 19],
+	[4, 43, 15],
+	
+	// 7		
+	[2, 98, 78],
+	[4, 49, 31],
+	[2, 32, 14, 4, 33, 15],
+	[4, 39, 13, 1, 40, 14],
+	
+	// 8
+	[2, 121, 97],
+	[2, 60, 38, 2, 61, 39],
+	[4, 40, 18, 2, 41, 19],
+	[4, 40, 14, 2, 41, 15],
+	
+	// 9
+	[2, 146, 116],
+	[3, 58, 36, 2, 59, 37],
+	[4, 36, 16, 4, 37, 17],
+	[4, 36, 12, 4, 37, 13],
+	
+	// 10		
+	[2, 86, 68, 2, 87, 69],
+	[4, 69, 43, 1, 70, 44],
+	[6, 43, 19, 2, 44, 20],
+	[6, 43, 15, 2, 44, 16],
+
+	// 11
+	[4, 101, 81],
+	[1, 80, 50, 4, 81, 51],
+	[4, 50, 22, 4, 51, 23],
+	[3, 36, 12, 8, 37, 13],
+
+	// 12
+	[2, 116, 92, 2, 117, 93],
+	[6, 58, 36, 2, 59, 37],
+	[4, 46, 20, 6, 47, 21],
+	[7, 42, 14, 4, 43, 15],
+
+	// 13
+	[4, 133, 107],
+	[8, 59, 37, 1, 60, 38],
+	[8, 44, 20, 4, 45, 21],
+	[12, 33, 11, 4, 34, 12],
+
+	// 14
+	[3, 145, 115, 1, 146, 116],
+	[4, 64, 40, 5, 65, 41],
+	[11, 36, 16, 5, 37, 17],
+	[11, 36, 12, 5, 37, 13],
+
+	// 15
+	[5, 109, 87, 1, 110, 88],
+	[5, 65, 41, 5, 66, 42],
+	[5, 54, 24, 7, 55, 25],
+	[11, 36, 12],
+
+	// 16
+	[5, 122, 98, 1, 123, 99],
+	[7, 73, 45, 3, 74, 46],
+	[15, 43, 19, 2, 44, 20],
+	[3, 45, 15, 13, 46, 16],
+
+	// 17
+	[1, 135, 107, 5, 136, 108],
+	[10, 74, 46, 1, 75, 47],
+	[1, 50, 22, 15, 51, 23],
+	[2, 42, 14, 17, 43, 15],
+
+	// 18
+	[5, 150, 120, 1, 151, 121],
+	[9, 69, 43, 4, 70, 44],
+	[17, 50, 22, 1, 51, 23],
+	[2, 42, 14, 19, 43, 15],
+
+	// 19
+	[3, 141, 113, 4, 142, 114],
+	[3, 70, 44, 11, 71, 45],
+	[17, 47, 21, 4, 48, 22],
+	[9, 39, 13, 16, 40, 14],
+
+	// 20
+	[3, 135, 107, 5, 136, 108],
+	[3, 67, 41, 13, 68, 42],
+	[15, 54, 24, 5, 55, 25],
+	[15, 43, 15, 10, 44, 16],
+
+	// 21
+	[4, 144, 116, 4, 145, 117],
+	[17, 68, 42],
+	[17, 50, 22, 6, 51, 23],
+	[19, 46, 16, 6, 47, 17],
+
+	// 22
+	[2, 139, 111, 7, 140, 112],
+	[17, 74, 46],
+	[7, 54, 24, 16, 55, 25],
+	[34, 37, 13],
+
+	// 23
+	[4, 151, 121, 5, 152, 122],
+	[4, 75, 47, 14, 76, 48],
+	[11, 54, 24, 14, 55, 25],
+	[16, 45, 15, 14, 46, 16],
+
+	// 24
+	[6, 147, 117, 4, 148, 118],
+	[6, 73, 45, 14, 74, 46],
+	[11, 54, 24, 16, 55, 25],
+	[30, 46, 16, 2, 47, 17],
+
+	// 25
+	[8, 132, 106, 4, 133, 107],
+	[8, 75, 47, 13, 76, 48],
+	[7, 54, 24, 22, 55, 25],
+	[22, 45, 15, 13, 46, 16],
+
+	// 26
+	[10, 142, 114, 2, 143, 115],
+	[19, 74, 46, 4, 75, 47],
+	[28, 50, 22, 6, 51, 23],
+	[33, 46, 16, 4, 47, 17],
+
+	// 27
+	[8, 152, 122, 4, 153, 123],
+	[22, 73, 45, 3, 74, 46],
+	[8, 53, 23, 26, 54, 24],
+	[12, 45, 15, 28, 46, 16],
+
+	// 28
+	[3, 147, 117, 10, 148, 118],
+	[3, 73, 45, 23, 74, 46],
+	[4, 54, 24, 31, 55, 25],
+	[11, 45, 15, 31, 46, 16],
+
+	// 29
+	[7, 146, 116, 7, 147, 117],
+	[21, 73, 45, 7, 74, 46],
+	[1, 53, 23, 37, 54, 24],
+	[19, 45, 15, 26, 46, 16],
+
+	// 30
+	[5, 145, 115, 10, 146, 116],
+	[19, 75, 47, 10, 76, 48],
+	[15, 54, 24, 25, 55, 25],
+	[23, 45, 15, 25, 46, 16],
+
+	// 31
+	[13, 145, 115, 3, 146, 116],
+	[2, 74, 46, 29, 75, 47],
+	[42, 54, 24, 1, 55, 25],
+	[23, 45, 15, 28, 46, 16],
+
+	// 32
+	[17, 145, 115],
+	[10, 74, 46, 23, 75, 47],
+	[10, 54, 24, 35, 55, 25],
+	[19, 45, 15, 35, 46, 16],
+
+	// 33
+	[17, 145, 115, 1, 146, 116],
+	[14, 74, 46, 21, 75, 47],
+	[29, 54, 24, 19, 55, 25],
+	[11, 45, 15, 46, 46, 16],
+
+	// 34
+	[13, 145, 115, 6, 146, 116],
+	[14, 74, 46, 23, 75, 47],
+	[44, 54, 24, 7, 55, 25],
+	[59, 46, 16, 1, 47, 17],
+
+	// 35
+	[12, 151, 121, 7, 152, 122],
+	[12, 75, 47, 26, 76, 48],
+	[39, 54, 24, 14, 55, 25],
+	[22, 45, 15, 41, 46, 16],
+
+	// 36
+	[6, 151, 121, 14, 152, 122],
+	[6, 75, 47, 34, 76, 48],
+	[46, 54, 24, 10, 55, 25],
+	[2, 45, 15, 64, 46, 16],
+
+	// 37
+	[17, 152, 122, 4, 153, 123],
+	[29, 74, 46, 14, 75, 47],
+	[49, 54, 24, 10, 55, 25],
+	[24, 45, 15, 46, 46, 16],
+
+	// 38
+	[4, 152, 122, 18, 153, 123],
+	[13, 74, 46, 32, 75, 47],
+	[48, 54, 24, 14, 55, 25],
+	[42, 45, 15, 32, 46, 16],
+
+	// 39
+	[20, 147, 117, 4, 148, 118],
+	[40, 75, 47, 7, 76, 48],
+	[43, 54, 24, 22, 55, 25],
+	[10, 45, 15, 67, 46, 16],
+
+	// 40
+	[19, 148, 118, 6, 149, 119],
+	[18, 75, 47, 31, 76, 48],
+	[34, 54, 24, 34, 55, 25],
+	[20, 45, 15, 61, 46, 16]
+];
+
+QRRSBlock.getRSBlocks = function(typeNumber, errorCorrectLevel) {
+	
+	var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+	
+	if (rsBlock === undefined) {
+		throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+	}
+
+	var length = rsBlock.length / 3;
+	
+	var list = [];
+	
+	for (var i = 0; i < length; i++) {
+
+		var count = rsBlock[i * 3 + 0];
+		var totalCount = rsBlock[i * 3 + 1];
+		var dataCount  = rsBlock[i * 3 + 2];
+
+		for (var j = 0; j < count; j++) {
+			list.push(new QRRSBlock(totalCount, dataCount) );	
+		}
+	}
+	
+	return list;
+};
+
+QRRSBlock.getRsBlockTable = function(typeNumber, errorCorrectLevel) {
+
+	switch(errorCorrectLevel) {
+	case QRErrorCorrectLevel.L :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+	case QRErrorCorrectLevel.M :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+	case QRErrorCorrectLevel.Q :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+	case QRErrorCorrectLevel.H :
+		return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+	default :
+		return undefined;
+	}
+};
+
+__e = QRRSBlock;
+
+return __e})();
+M['QRBitBuffer']=(()=>{let __e;function QRBitBuffer() {
+	this.buffer = [];
+	this.length = 0;
+}
+
+QRBitBuffer.prototype = {
+
+	get : function(index) {
+		var bufIndex = Math.floor(index / 8);
+		return ( (this.buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+	},
+	
+	put : function(num, length) {
+		for (var i = 0; i < length; i++) {
+			this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+		}
+	},
+	
+	getLengthInBits : function() {
+		return this.length;
+	},
+	
+	putBit : function(bit) {
+	
+		var bufIndex = Math.floor(this.length / 8);
+		if (this.buffer.length <= bufIndex) {
+			this.buffer.push(0);
+		}
+	
+		if (bit) {
+			this.buffer[bufIndex] |= (0x80 >>> (this.length % 8) );
+		}
+	
+		this.length++;
+	}
+};
+
+__e = QRBitBuffer;
+
+return __e})();
+M['QR8bitByte']=(()=>{let __e;var QRMode = req('./QRMode');
+
+function QR8bitByte(data) {
+	this.mode = QRMode.MODE_8BIT_BYTE;
+	this.data = data;
+}
+
+QR8bitByte.prototype = {
+
+	getLength : function() {
+		return this.data.length;
+	},
+	
+	write : function(buffer) {
+		for (var i = 0; i < this.data.length; i++) {
+			// not JIS ...
+			buffer.put(this.data.charCodeAt(i), 8);
+		}
+	}
+};
+
+__e = QR8bitByte;
+
+return __e})();
+M['index']=(()=>{let __e;//---------------------------------------------------------------------
+// QRCode for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//   http://www.opensource.org/licenses/mit-license.php
+//
+// The word "QR Code" is registered trademark of 
+// DENSO WAVE INCORPORATED
+//   http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+// Modified to work in node for this project (and some refactoring)
+//---------------------------------------------------------------------
+
+var QR8bitByte = req('./QR8bitByte');
+var QRUtil = req('./QRUtil');
+var QRPolynomial = req('./QRPolynomial');
+var QRRSBlock = req('./QRRSBlock');
+var QRBitBuffer = req('./QRBitBuffer');
+
+function QRCode(typeNumber, errorCorrectLevel) {
+	this.typeNumber = typeNumber;
+	this.errorCorrectLevel = errorCorrectLevel;
+	this.modules = null;
+	this.moduleCount = 0;
+	this.dataCache = null;
+	this.dataList = [];
+}
+
+QRCode.prototype = {
+	
+	addData : function(data) {
+		var newData = new QR8bitByte(data);
+		this.dataList.push(newData);
+		this.dataCache = null;
+	},
+	
+	isDark : function(row, col) {
+		if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+			throw new Error(row + "," + col);
+		}
+		return this.modules[row][col];
+	},
+
+	getModuleCount : function() {
+		return this.moduleCount;
+	},
+	
+	make : function() {
+		// Calculate automatically typeNumber if provided is < 1
+		if (this.typeNumber < 1 ){
+			var typeNumber = 1;
+			for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+				var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+
+				var buffer = new QRBitBuffer();
+				var totalDataCount = 0;
+				for (var i = 0; i < rsBlocks.length; i++) {
+					totalDataCount += rsBlocks[i].dataCount;
+				}
+
+				for (var x = 0; x < this.dataList.length; x++) {
+					var data = this.dataList[x];
+					buffer.put(data.mode, 4);
+					buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+					data.write(buffer);
+				}
+				if (buffer.getLengthInBits() <= totalDataCount * 8)
+					break;
+			}
+			this.typeNumber = typeNumber;
+		}
+		this.makeImpl(false, this.getBestMaskPattern() );
+	},
+	
+	makeImpl : function(test, maskPattern) {
+		
+		this.moduleCount = this.typeNumber * 4 + 17;
+		this.modules = new Array(this.moduleCount);
+		
+		for (var row = 0; row < this.moduleCount; row++) {
+			
+			this.modules[row] = new Array(this.moduleCount);
+			
+			for (var col = 0; col < this.moduleCount; col++) {
+				this.modules[row][col] = null;//(col + row) % 3;
+			}
+		}
+	
+		this.setupPositionProbePattern(0, 0);
+		this.setupPositionProbePattern(this.moduleCount - 7, 0);
+		this.setupPositionProbePattern(0, this.moduleCount - 7);
+		this.setupPositionAdjustPattern();
+		this.setupTimingPattern();
+		this.setupTypeInfo(test, maskPattern);
+		
+		if (this.typeNumber >= 7) {
+			this.setupTypeNumber(test);
+		}
+	
+		if (this.dataCache === null) {
+			this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+		}
+	
+		this.mapData(this.dataCache, maskPattern);
+	},
+
+	setupPositionProbePattern : function(row, col)  {
+		
+		for (var r = -1; r <= 7; r++) {
+			
+			if (row + r <= -1 || this.moduleCount <= row + r) continue;
+			
+			for (var c = -1; c <= 7; c++) {
+				
+				if (col + c <= -1 || this.moduleCount <= col + c) continue;
+				
+				if ( (0 <= r && r <= 6 && (c === 0 || c === 6) ) || 
+                     (0 <= c && c <= 6 && (r === 0 || r === 6) ) || 
+                     (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+					this.modules[row + r][col + c] = true;
+				} else {
+					this.modules[row + r][col + c] = false;
+				}
+			}		
+		}		
+	},
+	
+	getBestMaskPattern : function() {
+	
+		var minLostPoint = 0;
+		var pattern = 0;
+	
+		for (var i = 0; i < 8; i++) {
+			
+			this.makeImpl(true, i);
+	
+			var lostPoint = QRUtil.getLostPoint(this);
+	
+			if (i === 0 || minLostPoint >  lostPoint) {
+				minLostPoint = lostPoint;
+				pattern = i;
+			}
+		}
+	
+		return pattern;
+	},
+	
+	createMovieClip : function(target_mc, instance_name, depth) {
+	
+		var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+		var cs = 1;
+	
+		this.make();
+
+		for (var row = 0; row < this.modules.length; row++) {
+			
+			var y = row * cs;
+			
+			for (var col = 0; col < this.modules[row].length; col++) {
+	
+				var x = col * cs;
+				var dark = this.modules[row][col];
+			
+				if (dark) {
+					qr_mc.beginFill(0, 100);
+					qr_mc.moveTo(x, y);
+					qr_mc.lineTo(x + cs, y);
+					qr_mc.lineTo(x + cs, y + cs);
+					qr_mc.lineTo(x, y + cs);
+					qr_mc.endFill();
+				}
+			}
+		}
+		
+		return qr_mc;
+	},
+
+	setupTimingPattern : function() {
+		
+		for (var r = 8; r < this.moduleCount - 8; r++) {
+			if (this.modules[r][6] !== null) {
+				continue;
+			}
+			this.modules[r][6] = (r % 2 === 0);
+		}
+	
+		for (var c = 8; c < this.moduleCount - 8; c++) {
+			if (this.modules[6][c] !== null) {
+				continue;
+			}
+			this.modules[6][c] = (c % 2 === 0);
+		}
+	},
+	
+	setupPositionAdjustPattern : function() {
+	
+		var pos = QRUtil.getPatternPosition(this.typeNumber);
+		
+		for (var i = 0; i < pos.length; i++) {
+		
+			for (var j = 0; j < pos.length; j++) {
+			
+				var row = pos[i];
+				var col = pos[j];
+				
+				if (this.modules[row][col] !== null) {
+					continue;
+				}
+				
+				for (var r = -2; r <= 2; r++) {
+				
+					for (var c = -2; c <= 2; c++) {
+					
+						if (Math.abs(r) === 2 || 
+                            Math.abs(c) === 2 ||
+                            (r === 0 && c === 0) ) {
+							this.modules[row + r][col + c] = true;
+						} else {
+							this.modules[row + r][col + c] = false;
+						}
+					}
+				}
+			}
+		}
+	},
+	
+	setupTypeNumber : function(test) {
+	
+		var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+        var mod;
+	
+		for (var i = 0; i < 18; i++) {
+			mod = (!test && ( (bits >> i) & 1) === 1);
+			this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+		}
+	
+		for (var x = 0; x < 18; x++) {
+			mod = (!test && ( (bits >> x) & 1) === 1);
+			this.modules[x % 3 + this.moduleCount - 8 - 3][Math.floor(x / 3)] = mod;
+		}
+	},
+	
+	setupTypeInfo : function(test, maskPattern) {
+	
+		var data = (this.errorCorrectLevel << 3) | maskPattern;
+		var bits = QRUtil.getBCHTypeInfo(data);
+        var mod;
+	
+		// vertical		
+		for (var v = 0; v < 15; v++) {
+	
+			mod = (!test && ( (bits >> v) & 1) === 1);
+	
+			if (v < 6) {
+				this.modules[v][8] = mod;
+			} else if (v < 8) {
+				this.modules[v + 1][8] = mod;
+			} else {
+				this.modules[this.moduleCount - 15 + v][8] = mod;
+			}
+		}
+	
+		// horizontal
+		for (var h = 0; h < 15; h++) {
+	
+			mod = (!test && ( (bits >> h) & 1) === 1);
+			
+			if (h < 8) {
+				this.modules[8][this.moduleCount - h - 1] = mod;
+			} else if (h < 9) {
+				this.modules[8][15 - h - 1 + 1] = mod;
+			} else {
+				this.modules[8][15 - h - 1] = mod;
+			}
+		}
+	
+		// fixed module
+		this.modules[this.moduleCount - 8][8] = (!test);
+	
+	},
+	
+	mapData : function(data, maskPattern) {
+		
+		var inc = -1;
+		var row = this.moduleCount - 1;
+		var bitIndex = 7;
+		var byteIndex = 0;
+		
+		for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+	
+			if (col === 6) col--;
+	
+			while (true) {
+	
+				for (var c = 0; c < 2; c++) {
+					
+					if (this.modules[row][col - c] === null) {
+						
+						var dark = false;
+	
+						if (byteIndex < data.length) {
+							dark = ( ( (data[byteIndex] >>> bitIndex) & 1) === 1);
+						}
+	
+						var mask = QRUtil.getMask(maskPattern, row, col - c);
+	
+						if (mask) {
+							dark = !dark;
+						}
+						
+						this.modules[row][col - c] = dark;
+						bitIndex--;
+	
+						if (bitIndex === -1) {
+							byteIndex++;
+							bitIndex = 7;
+						}
+					}
+				}
+								
+				row += inc;
+	
+				if (row < 0 || this.moduleCount <= row) {
+					row -= inc;
+					inc = -inc;
+					break;
+				}
+			}
+		}
+		
+	}
+
+};
+
+QRCode.PAD0 = 0xEC;
+QRCode.PAD1 = 0x11;
+
+QRCode.createData = function(typeNumber, errorCorrectLevel, dataList) {
+	
+	var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+	
+	var buffer = new QRBitBuffer();
+	
+	for (var i = 0; i < dataList.length; i++) {
+		var data = dataList[i];
+		buffer.put(data.mode, 4);
+		buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber) );
+		data.write(buffer);
+	}
+
+	// calc num max data.
+	var totalDataCount = 0;
+	for (var x = 0; x < rsBlocks.length; x++) {
+		totalDataCount += rsBlocks[x].dataCount;
+	}
+
+	if (buffer.getLengthInBits() > totalDataCount * 8) {
+		throw new Error("code length overflow. (" + 
+            buffer.getLengthInBits() + 
+            ">" +  
+            totalDataCount * 8 + 
+            ")");
+	}
+
+	// end code
+	if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+		buffer.put(0, 4);
+	}
+
+	// padding
+	while (buffer.getLengthInBits() % 8 !== 0) {
+		buffer.putBit(false);
+	}
+
+	// padding
+	while (true) {
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD0, 8);
+		
+		if (buffer.getLengthInBits() >= totalDataCount * 8) {
+			break;
+		}
+		buffer.put(QRCode.PAD1, 8);
+	}
+
+	return QRCode.createBytes(buffer, rsBlocks);
+};
+
+QRCode.createBytes = function(buffer, rsBlocks) {
+
+	var offset = 0;
+	
+	var maxDcCount = 0;
+	var maxEcCount = 0;
+	
+	var dcdata = new Array(rsBlocks.length);
+	var ecdata = new Array(rsBlocks.length);
+	
+	for (var r = 0; r < rsBlocks.length; r++) {
+
+		var dcCount = rsBlocks[r].dataCount;
+		var ecCount = rsBlocks[r].totalCount - dcCount;
+
+		maxDcCount = Math.max(maxDcCount, dcCount);
+		maxEcCount = Math.max(maxEcCount, ecCount);
+		
+		dcdata[r] = new Array(dcCount);
+		
+		for (var i = 0; i < dcdata[r].length; i++) {
+			dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+		}
+		offset += dcCount;
+		
+		var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+		var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+		var modPoly = rawPoly.mod(rsPoly);
+		ecdata[r] = new Array(rsPoly.getLength() - 1);
+		for (var x = 0; x < ecdata[r].length; x++) {
+            var modIndex = x + modPoly.getLength() - ecdata[r].length;
+			ecdata[r][x] = (modIndex >= 0)? modPoly.get(modIndex) : 0;
+		}
+
+	}
+	
+	var totalCodeCount = 0;
+	for (var y = 0; y < rsBlocks.length; y++) {
+		totalCodeCount += rsBlocks[y].totalCount;
+	}
+
+	var data = new Array(totalCodeCount);
+	var index = 0;
+
+	for (var z = 0; z < maxDcCount; z++) {
+		for (var s = 0; s < rsBlocks.length; s++) {
+			if (z < dcdata[s].length) {
+				data[index++] = dcdata[s][z];
+			}
+		}
+	}
+
+	for (var xx = 0; xx < maxEcCount; xx++) {
+		for (var t = 0; t < rsBlocks.length; t++) {
+			if (xx < ecdata[t].length) {
+				data[index++] = ecdata[t][xx];
+			}
+		}
+	}
+
+	return data;
+
+};
+
+__e = QRCode;
+
+return __e})();
+return {QRCode:M['index'],EC:M['QRErrorCorrectLevel']}})();
+function qrSVG(text,px){const q=new QRLIB.QRCode(-1,QRLIB.EC.M);q.addData(text);q.make();const n=q.getModuleCount(),m=2;let d='';for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))d+=`M${c+m} ${r+m}h1v1h-1z`;return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${n+2*m} ${n+2*m}" width="${px}" height="${px}" shape-rendering="crispEdges"><rect width="100%" height="100%" fill="#fff"/><path d="${d}" fill="#000"/></svg>`}
 
 // ===== PARTY: 친구랑 놀기 (QR 초대 · 실시간) =====
 const PT_URL=(()=>{try{const o=localStorage.getItem('ptURL');if(o)return o}catch(e){}return /^(localhost|127\.)/.test(location.hostname)?'http://localhost:8790':'https://bus-cat-party.onrender.com'})();
@@ -3523,14 +4831,16 @@ function ptColor(pid){const i=(PT&&PT.people||[]).findIndex(p=>p.pid===pid);retu
 function ptEl(){let el=document.getElementById('rmparty');if(!el){el=document.createElement('div');el.id='rmparty';document.body.appendChild(el)}el.className='rmcam on';return el}
 function ptNick(){const R=rmS();return (PT&&PT.nick)||R.name||''}
 async function ptApi(path,body){const r=await fetch(PT_URL+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});let j={};try{j=await r.json()}catch(e){}if(!r.ok)throw Object.assign(new Error(j.err||'net'),{code:j.err||'net'});return j}
-async function ptWake(){const t0=Date.now();let first=true;while(Date.now()-t0<90000){try{const c=new AbortController();const tm=setTimeout(()=>c.abort(),first?4000:15000);const r=await fetch(PT_URL+'/health',{signal:c.signal,cache:'no-store'});clearTimeout(tm);if(r.ok)return true}catch(e){}
+let PT_BLOCK=0;
+async function ptWake(){PT_BLOCK=0;const t0=Date.now();let first=true;while(Date.now()-t0<90000){try{const c=new AbortController();const tm=setTimeout(()=>c.abort(),first?4000:15000);const t1=Date.now();const r=await fetch(PT_URL+'/health',{signal:c.signal,cache:'no-store'});clearTimeout(tm);let j=null;try{j=await r.json()}catch(e){}if(r.ok&&j&&j.ok)return true;if(r.ok){PT_BLOCK=(PT_BLOCK||0)+3}}catch(e){if(Date.now()-t0<20000&&e.name!=='AbortError')PT_BLOCK=(PT_BLOCK||0)+1}if((PT_BLOCK||0)>=4){PT_BLOCK=0;return false}
     if(first){first=false;ptMsg('⏳ 놀이터 문을 여는 중이에요','처음 열 때는 30초~1분쯤 걸려요. 잠시만 기다려 주세요!')}if(!PT)return false;await new Promise(r=>setTimeout(r,2500))}return false}
 function ptMsg(t,sub,btn){const el=ptEl();el.innerHTML=`<div class="camwrap"><div class="camtop"><b>👫 친구랑 놀기</b><button class="camx" data-pt="close">✕</button></div><div class="ptmsg"><div class="ptspin"></div><b>${t}</b><p>${sub||''}</p>${btn||''}</div></div>`}
+function ptSrvBox(){return `<details class="ptsrv"><summary>선생님용 · 놀이터 서버 주소 바꾸기</summary><input data-ptsrvin value="${esc(PT_URL)}" inputmode="url" autocomplete="off"><button class="cambtn" data-ptsrvsave>저장하고 다시 열기</button><button class="cambtn" data-ptsrvreset>처음 주소로</button></details>`}
 function ptErr(e){const m={gone:'그 코드의 방이 없어요. 코드를 다시 확인하거나, 친구에게 방을 다시 열어 달라고 해요.',many:'방이 꽉 찼어요 (최대 8명).',slow:'너무 빨리 눌렀어요. 잠시 뒤에 다시 해 봐요.',full:'놀이터가 붐벼요. 잠시 뒤에 다시 해 봐요.',origin:'이 주소에서는 놀이터를 쓸 수 없어요.'}[e.code]||'인터넷 연결을 확인하고 다시 해 봐요.';
   ptMsg('😿 들어갈 수 없어요',m,'<button class="cambig" data-pt="menu">처음으로</button>')}
 function ptOpen(code){if(PT&&PT.es)return ptPlay();PT={scr:code?'join':'menu',code:code||'',nick:ptDefNick(),bring:[]};ptDraw()}
 function ptClose(){if(PT&&PT.es&&PT.pid){ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'leave'}).catch(()=>{})}ptStop();PT=null;const el=document.getElementById('rmparty');if(el){el.className='rmcam';el.innerHTML=''}if(VIEW==='room')render()}
-function ptStop(){if(!PT)return;if(PT.es){PT.es.close();PT.es=null}clearInterval(PT.loop);clearTimeout(PT.rt)}
+function ptStop(){if(!PT)return;if(PT.es){PT.es.close();PT.es=null}PT.polling=false;clearInterval(PT.loop);clearTimeout(PT.rt);clearTimeout(PT.ht)}
 function ptCatPick(max){const all=rmAll();return `<div class="camcats">${all.map(i=>`<button class="camc ${PT.bring.includes(i)?'on':''}" data-ptbring="${i}"><svg viewBox="0 -2 40 36" width="34" height="30">${bFace(BREEDS[i])}</svg><span>${esc(BREEDS[i].n)}</span></button>`).join('')||'<p class="camhint" style="text-align:left">아직 모은 고양이가 없어요. 그래도 놀러 갈 수 있어요!</p>'}</div>`}
 function ptDraw(){const el=ptEl();const R=rmS();const cur=rmCur(R);
   const nickIn=`<div class="camrow"><b>내 별명</b><input class="ptnick" data-ptnick maxlength="8" value="${esc(PT.nick)}" placeholder="별명을 꼭 써 주세요 (8자까지)"></div><p class="camhint" style="text-align:left;margin-top:0">진짜 이름 대신 별명을 써도 좋아요. 친구들에게 이 별명이 보여요.</p>`;
@@ -3547,14 +4857,21 @@ function ptDraw(){const el=ptEl();const R=rmS();const cur=rmCur(R);
     <p class="camhint">놀이터에서는 정해진 말과 이모지만 쓸 수 있어요. 방 정보는 놀이 중에만 잠깐 서버에 있고, 놀이가 끝나면 지워져요.</p></div>`}
 async function ptStart(kind){const R=rmS();PT.nick=(PT.nick||'').trim();if(!PT.nick){toast('친구들이 알아볼 수 있게 별명을 써 주세요');const n=document.querySelector('#rmparty [data-ptnick]');if(n)n.focus();return}R.ptNick=PT.nick;save();
   if(kind==='join'&&!/^\d{4}$/.test(PT.code)){toast('4자리 방 코드를 넣어 주세요');return}
-  ptMsg('🚪 놀이터로 가는 중…','');if(!await ptWake()){if(PT)ptMsg('😿 놀이터에 연결할 수 없어요','인터넷 연결을 확인하고 다시 해 봐요.','<button class="cambig" data-pt="menu">처음으로</button>');return}
+  ptMsg('🚪 놀이터로 가는 중…','');if(!await ptWake()){if(PT)ptMsg('😿 놀이터에 연결할 수 없어요',`학교·기관 인터넷에서는 놀이터 서버(<b>${esc(PT_URL.replace(/^https?:\/\//,''))}</b>)가 막혀 있을 수 있어요. 휴대폰 데이터로 해 보거나, 선생님께 이 주소를 열어 달라고 부탁해요.`,`<button class="cambig" data-pt="menu">처음으로</button>${ptSrvBox()}`);return}
   try{let j;if(kind==='host'){const cur=rmCur(R);j=await ptApi('/api/create',{nick:PT.nick,look:rmLook(),cats:rmLive().slice(0,12).map(i=>({i})),snap:{name:cur.name,t:cur.t,wall:cur.wall,floor:cur.floor,items:cur.items.map(it=>({k:it.k,x:it.x,y:it.y,f:it.f}))}})}
     else j=await ptApi('/api/join',{code:PT.code,nick:PT.nick,look:rmLook(),cats:PT.bring.map(i=>({i}))});
     Object.assign(PT,{code:j.code,pid:j.pid,tok:j.tok,host:kind==='host',st:{},people:[],scr:'play',qr:kind==='host'});ptConnect()}catch(e){if(PT)ptErr(e)}}
-function ptConnect(){const es=new EventSource(`${PT_URL}/api/events?code=${PT.code}&pid=${PT.pid}&tok=${encodeURIComponent(PT.tok)}`);PT.es=es;
-  es.onmessage=ev=>{if(!PT)return;let d;try{d=JSON.parse(ev.data)}catch(e){return}ptOn(d)};
-  es.onerror=()=>{if(!PT)return;if(es.readyState===2){ptStop();ptMsg('👋 놀이가 끝났어요','방이 닫혔거나 연결이 끊겼어요.','<button class="cambig" data-pt="menu">처음으로</button>')}else{const b=document.getElementById('ptnet');if(b)b.style.display=''}};
+// 실시간 연결: 먼저 이벤트 스트림(SSE)을 쓰고, 6초 안에 첫 소식이 안 오면(학교 망 등) 1.2초마다 물어보기로 바꿔요
+function ptConnect(){PT.since=0;PT.gotHello=false;let es;try{es=new EventSource(`${PT_URL}/api/events?code=${PT.code}&pid=${PT.pid}&tok=${encodeURIComponent(PT.tok)}`)}catch(e){return ptPollStart()}PT.es=es;
+  PT.ht=setTimeout(()=>{if(PT&&!PT.gotHello)ptPollStart()},6000);
+  es.onmessage=ev=>{if(!PT)return;let d;try{d=JSON.parse(ev.data)}catch(e){return}if(ev.lastEventId)PT.since=+ev.lastEventId;if(d.t==='hello')PT.gotHello=true;ptOn(d)};
+  es.onerror=()=>{if(!PT)return;if(!PT.gotHello){return ptPollStart()}if(es.readyState===2){ptStop();ptMsg('👋 놀이가 끝났어요','방이 닫혔거나 연결이 끊겼어요.','<button class="cambig" data-pt="menu">처음으로</button>')}else{const b=document.getElementById('ptnet');if(b)b.style.display=''}};
   es.onopen=()=>{const b=document.getElementById('ptnet');if(b)b.style.display='none'}}
+function ptPollStart(){if(!PT||PT.polling)return;clearTimeout(PT.ht);if(PT.es&&PT.es.close&&!PT.es.poll)PT.es.close();PT.polling=true;PT.es={poll:1,readyState:1,close(){if(PT)PT.polling=false}};PT.since=0;ptPollLoop()}
+async function ptPollLoop(){let fails=0;while(PT&&PT.polling){try{const j=await ptApi('/api/poll',{code:PT.code,pid:PT.pid,tok:PT.tok,since:PT.since||0});if(!PT||!PT.polling)return;fails=0;const b=document.getElementById('ptnet');if(b)b.style.display='none';
+    if(j.hello){PT.gotHello=true;ptOn(j.hello)}(j.evs||[]).forEach(d=>{if(PT)ptOn(d)});if(PT)PT.since=j.seq}
+  catch(e){if(!PT||!PT.polling)return;if(e.code==='gone'||e.code==='auth'){ptStop();ptMsg('👋 놀이가 끝났어요','방이 닫혔거나 연결이 끊겼어요.','<button class="cambig" data-pt="menu">처음으로</button>');return}fails++;const b=document.getElementById('ptnet');if(b)b.style.display=''}
+  await new Promise(r=>setTimeout(r,fails?2500:1200))}}
 function ptKeys(){const o=[];if(!PT)return o;(PT.people||[]).forEach(p=>(p.cats||[]).forEach(c=>{if(BREEDS[c.i])o.push({k:p.pid+'-'+c.i,i:c.i,own:p.nick,pid:p.pid,host:p.host})}));return o}
 function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[]).forEach(p=>PT.st[p.k]=p);ptPlay();ptReward();if(d.seek)ptSeekStart(d.seek.hides,d.seek.found,null,true);return}
   if(d.t==='people'){const before=ptKeys().map(c=>c.k).join();PT.people=d.people;if(d.join){ptBubble(null,`🐾 ${esc(d.join)} 친구가 놀러 왔어요!`);if(PT.host){const R=rmS();R.guests=(R.guests||[]).concat({n:d.join,d:new Date().toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}).slice(-30);save()}}
@@ -3572,7 +4889,7 @@ function ptOn(d){if(d.t==='hello'){PT.snap=d.snap;PT.people=d.people;(d.pos||[])
   if(d.t==='pet'){const el=document.querySelector(`#ptscene [data-ptc="${d.k}"]`);const p=(PT.people||[]).find(x=>x.pid===d.by);if(el){const h=document.createElement('i');h.className='rmheart';h.textContent='💗';el.appendChild(h);setTimeout(()=>h.remove(),1600)}
     const [pid,i]=d.k.split('-');if(pid===PT.pid&&d.by!==PT.pid&&BREEDS[+i]){const R=rmS();R.love=R.love||{};R.love[+i]=(R.love[+i]||0)+1;save();ptBubble(null,`💗 ${esc(p?p.nick:'친구')}이(가) 내 ${esc(BREEDS[+i].n)}을(를) 쓰다듬었어요`)}return}
   if(d.t==='closed'){ptStop();ptMsg('👋 놀이가 끝났어요',d.why==='host'?'방 주인이 방을 닫았어요. 또 놀자!':'오래 쉬어서 방이 닫혔어요.','<button class="cambig" data-pt="menu">처음으로</button>')}}
-function ptReward(){const on=(PT.people||[]).filter(p=>p.on).length;if(on<2)return;const R=rmS();const d=today();if(R.ptDay===d)return;R.ptDay=d;R.coins=(R.coins||0)+1;save();toast('👫 친구랑 놀기 보너스 ⭐1 (하루 한 번)')}
+function ptReward(){const on=(PT.people||[]).filter(p=>p.on).length;if(on<2)return;const R=rmS();const d=today();if(R.ptDay===d)return;R.ptDay=d;if(rmEarn(1))toast('👫 친구랑 놀기 보너스 ⭐1 (하루 한 번)')}
 function ptApply(el,p,walk){const x0=parseFloat(el.style.left);if(Math.abs(p.x-x0)>.5)el.classList.toggle('rmflip',p.x<x0);if(walk){ptPose(el,'sit');el.classList.add('rmwalk')}
   el.style.left=p.x+'%';el.style.top=p.y+'%';el.style.zIndex=p.z;clearTimeout(el._t);el._t=setTimeout(()=>{el.classList.remove('rmwalk');ptPose(el,p.pose)},walk?2400:0)}
 function ptPose(el,pose){if(el._pose===pose)return;el._pose=pose;const keep=[...el.querySelectorAll('.ptown,.rmheart')];el.innerHTML=rmPose(BREEDS[+el.dataset.i],pose);keep.forEach(k=>el.appendChild(k));el.classList.toggle('rmwide',pose==='sleep'||pose==='lie'||pose==='stretch')}
@@ -3598,8 +4915,7 @@ function ptPlay(){if(!PT||!PT.snap)return;const el=ptEl();const s=PT.snap;const 
     <div class="cambtns"><button class="cambtn" data-pt="close">${PT.host?'🚪 방 닫고 나가기':'🏠 집으로 돌아가기'}</button></div></div>`;
   document.querySelectorAll('#ptscene .rmc').forEach(c=>{const p=PT.st[c.dataset.ptc];if(p&&p.pose)ptPose(c,p.pose)});
   ptPeople();if(PT.qr)ptQR(url);if(PT.host){clearInterval(PT.loop);PT.loop=setInterval(ptHostTick,3000);ptHostTick(true)}}
-function ptQR(url){const draw=()=>{const box=document.getElementById('ptqrimg');if(!box)return;try{const q=qrcode(0,'M');q.addData(url);q.make();box.innerHTML=`<img src="${q.createDataURL(6,2)}" alt="초대 QR" width="180" height="180">`}catch(e){box.textContent='QR을 만들 수 없어요. 코드를 알려 주세요.'}};
-  if(typeof qrcode==='function')return draw();const sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js';sc.onload=draw;sc.onerror=()=>{const b=document.getElementById('ptqrimg');if(b)b.textContent='QR을 불러오지 못했어요. 코드 '+PT.code+'를 알려 주세요.'};document.head.appendChild(sc)}
+function ptQR(url){const box=document.getElementById('ptqrimg');if(!box)return;try{box.innerHTML=qrSVG(url,180)}catch(e){box.textContent='QR을 만들 수 없어요. 코드를 알려 주세요.'}}
 function ptHostTick(initial){if(!PT||!PT.host||!PT.snap)return;if(PT.busy>Date.now()||PT.seek)return;const keys=ptKeys();if(!keys.length)return;
   const spots=[];(PT.snap.items||[]).forEach(it=>{if(RM_ITEMS[it.k])(RM_SPOTS[it.k]||[]).forEach((sp,j)=>spots.push({key:it.id+':'+j,it,sp}))});
   const used={};keys.forEach(c=>{const s=PT.st[c.k];if(s&&s.spot)used[s.spot]=1});const out=[];
@@ -3666,12 +4982,16 @@ function ptFound(d){if(!PT||!PT.seek)return;PT.seek.found[d.k]=d.by;PT.seek.scor
 function ptSeekEnd(score){if(!PT)return;const sc=document.getElementById('ptscene');PT.seek=null;if(sc){sc.classList.remove('rmseeking');const b=sc.querySelector('.rmsbadge');if(b)b.remove()}
   const rank=Object.entries(score||{}).sort((a,b)=>b[1]-a[1]);const nm=pid=>{const p=(PT.people||[]).find(x=>x.pid===pid);return pid===PT.pid?'나':(p?p.nick:'친구')};
   const top=rank.length?rank[0][1]:0;const win=rank.filter(r=>r[1]===top).map(r=>nm(r[0]));const mine=(score||{})[PT.pid]||0;
-  const R=rmS();let bonus='';if(R.ptSeekDay!==today()){R.ptSeekDay=today();R.coins=(R.coins||0)+1;save();bonus='<span>오늘의 숨바꼭질 보너스 ⭐1</span>'}
+  const R=rmS();let bonus='';if(R.ptSeekDay!==today()){R.ptSeekDay=today();if(rmEarn(1))bonus='<span>오늘의 숨바꼭질 보너스 ⭐1</span>'}
   if(sc){const cover=document.createElement('div');cover.className='rmcover ptend';cover.innerHTML=`<b>🎉 다 찾았어요!</b><span>🏆 ${win.map(esc).join(', ')} ${win.length>1?'공동 1등':'1등'} (${top}마리)</span><div class="ptrank">${rank.map(([pid,v])=>`<i style="background:${ptColor(pid)}">${esc(nm(pid))} ${v}마리</i>`).join('')}</div><span>나는 ${mine}마리 찾았어요</span>${bonus}`;sc.appendChild(cover);setTimeout(()=>cover.classList.add('rmfade'),3800);setTimeout(()=>cover.remove(),4500)}
   PT.busy=Date.now()+3000}
 document.addEventListener('click',e=>{if(!PT||!PT.seek)return;const sc=e.target.closest('#ptscene');if(!sc)return;e.preventDefault();e.stopPropagation();
   let hit=null,best=1e9;sc.querySelectorAll('.rmc.rmhid:not(.ptpend)').forEach(c=>{const r=c.getBoundingClientRect();if(e.clientX>=r.left-6&&e.clientX<=r.right+6&&e.clientY>=r.top-6&&e.clientY<=r.bottom+6){const d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height*.3));if(d<best){best=d;hit=c}}});
   if(hit){hit.classList.add('ptpend');ptApi('/api/act',{code:PT.code,pid:PT.pid,tok:PT.tok,t:'found',k:hit.dataset.ptc}).then(j=>{hit.classList.remove('ptpend');if(j&&j.late)toast('아깝다! 친구가 먼저 찾았어요')}).catch(()=>hit.classList.remove('ptpend'))}},true);
+
+document.addEventListener('click',e=>{const t=e.target.closest('[data-ptsrvsave],[data-ptsrvreset]');if(!t)return;e.preventDefault();e.stopPropagation();
+  try{if(t.dataset.ptsrvreset!=null){localStorage.removeItem('ptURL')}else{const v=(document.querySelector('[data-ptsrvin]')||{}).value||'';const u=v.trim().replace(/\/+$/,'');if(!/^https:\/\/[a-z0-9.-]+(:\d+)?$/i.test(u)){toast('https:// 로 시작하는 주소를 넣어 주세요');return}localStorage.setItem('ptURL',u)}}catch(err){}
+  toast('주소를 바꿨어요. 다시 열어요');setTimeout(()=>location.reload(),600)},true);
 
 // ----- 친구랑 놀기: 내 집사 움직이기 (yang2수학 동작 사용) -----
 const PT_JACT=[['stand','🧍 서기','']].concat(JS_ACTS);
